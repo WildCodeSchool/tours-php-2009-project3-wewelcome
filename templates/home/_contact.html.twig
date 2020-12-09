@@ -1,0 +1,27 @@
+<h2>Coordonnées</h2>
+<address>
+    <p>Mr Alexandre DELALANDES</p>
+    <p>Email : <a href="mailto:wewelcome.test@gmail.com">wewelcome.test@gmail.com</a></p>
+    <p>Tel. : <a href="tel:">06 00 00 00 00</a></p>
+    <p>Adresse : xx rue du test, 37000 Tours</p>
+    <p>Zone d'intervention :</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d346335.59479099093!2d0.5650539465908879!3d47.299746769129214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd9384c167013%3A0x30dc8d7053327d0!2sIndre-et-Loire!5e0!3m2!1sfr!2sfr!4v1607519068296!5m2!1sfr!2sfr" width="300" height="225" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+</address>
+<h2>Contact</h2>
+<form method="post" action="{{ path('home_contact_mail') }}">
+    <input type="radio" name="subject" value="conciergerie" id="conciergerie" checked>
+    <label for="conciergerie">Conciergerie</label>
+    <input type="radio" name="subject" value="intendance" id="intendance">
+    <label for="intendance">Intendance</label><br/>
+    <label for="lastName">Nom :</label>
+    <input type="text" name="lastName" placeholder="votre nom"><br/>
+    <label for="lastName">Prénom :</label>
+    <input type="text" name="firstName" placeholder="votre prénom"><br/>
+    <label for="phone">Téléphone :</label>
+    <input type="tel" name="phone" placeholder="0600000000"><br/>
+    <label for="mail">Email :</label>
+    <input type="mail" name="mail" placeholder="exemple@test.com"><br/>
+    <label for="message">Message :</label>
+    <textarea name="message" placeholder="votre message"></textarea><br/>
+    <input type="submit" value="Envoyer">
+</form>
