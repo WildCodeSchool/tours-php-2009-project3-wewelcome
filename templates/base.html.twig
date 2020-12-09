@@ -3,17 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}WeWelcome{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body>
-
-{% block body %}{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    <section class="navBar">
+        <div class="logoWewelcome">
+            <a href="">
+                <img src="build\images\WeWELCOME-Logo-RVB-500px.8d7a2900.png" alt="wewelcomeLogo" width="350" height="200">
+            </a>
+        </div>
+        <div class="navButton">
+            <ul class="listNav">
+                <li><a href="">Concierge</a></li>
+                <li><a href="">Intendance</a></li>
+                <li><a href="">Logement</a></li>
+                <li><a href="">Contact</a></li>
+            </ul>
+            <a href="">English</a>
+        </div>
+    </section>
+    {% block body %}
+    {% endblock %}
+    <section class="footer">
+        <div class="networkFooter">
+            <ul>
+                <li><img src="build\images\instagram_icon.5f5b7d5b.png" alt="Instagram_Logo" width="42" height="42"></a></li>
+                <li><a href="https://www.facebook.com/wewelcome.fr">
+                        <img src="build\images\facebook_icon.1ec33151.png" alt="Facebook_Logo" width="42" height="42">
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
+                        <img src="build\images\linkedin_icon.d5fe90a3.png" alt="LinkedIn_Logo" width="42" height="42">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="othersLinksFooter">
+            <ul>
+                <li><a href="">Plan du site</a></li>
+                <li><a href="">Mentions légales</a></li>
+                <li><a href="">CGU</a></li>
+                <li><a href="">Travailler avec moi</a></li>
+            </ul>
+        </div>
+    </section>
 </body>
 </html>
