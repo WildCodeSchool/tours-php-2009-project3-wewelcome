@@ -30,7 +30,11 @@
     <section class="footer">
         <div class="networkFooter">
             <ul>
-                <li><img src="build\images\instagram_icon.5f5b7d5b.png" alt="Instagram_Logo" width="42" height="42"></a></li>
+                <li>
+                    <a href="">
+                        <img src="build\images\instagram_icon.5f5b7d5b.png" alt="Instagram_Logo" width="42" height="42">
+                    </a>
+                </li>
                 <li><a href="https://www.facebook.com/wewelcome.fr">
                         <img src="build\images\facebook_icon.1ec33151.png" alt="Facebook_Logo" width="42" height="42">
                     </a>
@@ -51,5 +55,8 @@
             </ul>
         </div>
     </section>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>
