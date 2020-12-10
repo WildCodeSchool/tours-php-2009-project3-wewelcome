@@ -3,38 +3,46 @@
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\DataCollector\MailMessageDataCollector;
+use App\Form\MailMessageType;
+use Symfony\Component\Mailer\MailerInterface;
+use Symfony\Component\Mime\Email;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(): Response
+    public function index(Request $request, MailerInterface $mailer): Response
     {
-        return $this->render('home/index.html.twig');
+        $mailMessage = new MailMessageDataCollector();
+        $form = $this->createForm(MailMessageType::class, $mailMessage);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->sendMail($mailer);
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('home/index.html.twig', ['form' => $form->createView()]);
     }
 
-    /**
-     * @Route("/contact_mail", name="home_contact_mail")
-     */
-    public function sendMail(): Response
+    private function sendMail(MailerInterface $mailer): void
     {
-        $from = $_POST['mail'];
-        $receiver = "wewelcome.test@gmail.com";
-        $subject = "Demande de contact : " . $_POST['firstName'] . " " . $_POST['lastName'];
-        $message = "Nom : " . $_POST['lastName'] . " Prénom : " . $_POST['firstName'] . " Sujet : "
-            . $_POST['subject'] . " Téléphone : " . $_POST['phone'] . " Mail : " . $_POST['mail'] .
-            " Message : " . $_POST['message'];
+        $email = (new Email())
+            ->from($_POST['mail_message']['email'])
+            ->to('wewelcome.test@gmail.com')
+            ->subject("Message client : " . $_POST['mail_message']['subject'])
+            ->html("
+                <p>Nom : " . $_POST['mail_message']['firstName'] . " " . $_POST['mail_message']['lastName'] . "</p>
+                <p>Message : " . $_POST['mail_message']['message'] . "</p>
+                <p>Téléphone : " . $_POST['mail_message']['phone'] . "</p>
+                <p>Email : " . $_POST['mail_message']['email'] . "</p>
+            ");
 
-        $success = mail($receiver, $subject, $message, "From: <$from>");
-
-        if ($success) {
-            var_dump("Votre message à bien été envoyé.");
-        } else {
-            var_dump("Une erreur s'est produite à l'envoi de votre message.");
-        }
-        return $this->render('home/index.html.twig');
+        $mailer->send($email);
     }
 }
