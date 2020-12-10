@@ -1,6 +1,18 @@
 @import 'variables.scss';
 
 body {
-    background-color: $wild-color;
-    color: $light-color;
+    background-color: $white;
+    color: $black;
+}
+h2 {
+    font-family: $primary-title;
+    font-size: 40px;
+}
+h3 {
+    font-family: $secondary-title;
+    font-size: 30px;
+}
+p {
+    font-family: $primary-text;
+    font-size: 20px;
 }
