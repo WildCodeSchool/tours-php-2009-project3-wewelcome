@@ -1,28 +1,26 @@
-/***COLORS___start***/
-$primary-color: #6E20A0;
-$primary-color-tint1: #7F3CA9;
-$primary-color-tint2: #9C61C1;
-$secondary-color: #988F86;
-$tertiary-color: #59ABE3;
-$quaternary-color: #26C281;
-$white: #FFFAFA;
+$primary-color: #6e20a0;
+$primary-color-tint1: #7f3ca9;
+$primary-color-tint2: #9c61c1;
+$secondary-color: #988f86;
+$tertiary-color: #59abe3;
+$quaternary-color: #26c281;
+$white: #fffafa;
 $black: #020202;
-/***COLORS___end***/
 
-/***FONTS___start***/
+@font-face {
+    font-family: 'MontserratAlternates-ExtraBold';
+    src: url('../fonts/montserrat_full_version/MontserratAlternates-ExtraBold.otf');
+}
 $primary-title: 'MontserratAlternates-ExtraBold', sans-serif;
-    @font-face {
-        font-family: 'MontserratAlternates-ExtraBold';
-        src: url(../fonts/montserrat_full_version/MontserratAlternates-ExtraBold.otf);
-    }
+
+@font-face {
+    font-family: 'MontserratAlternates-SemiBold';
+    src: url('../fonts/montserrat_full_version/MontserratAlternates-SemiBold.otf');
+}
 $secondary-title: 'MontserratAlternates-SemiBold', sans-serif;
-    @font-face {
-        font-family: 'MontserratAlternates-SemiBold';
-        src: url(../fonts/montserrat_full_version/MontserratAlternates-SemiBold.otf);
-    }    
+
+@font-face {
+    font-family: 'Montserrat-ExtraLight';
+    src: url('../fonts/montserrat_full_version/Montserrat-ExtraLight.otf');
+}
 $primary-text: 'Montserrat-ExtraLight', sans-serif;
-    @font-face {
-        font-family: 'Montserrat-ExtraLight';
-        src: url(../fonts/montserrat_full_version/Montserrat-ExtraLight.otf);
-    }
-/***FONTS___end***/

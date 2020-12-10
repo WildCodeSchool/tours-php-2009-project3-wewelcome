@@ -1,23 +1,30 @@
 @import 'variables.scss';
 
-.purpose_and_values {
-    background: url(../images/Indre-et-loire.png) no-repeat right;
+.purpose-and-values {
+    background: url('../images/Indre-et-loire.png') no-repeat right;
     height: 800px;
 }
-.purpose_and_values div {
-    width: 800px;
-    line-height: 30px;
-    text-align: justify;
+
+.purpose-and-values {
+    div {
+        width: 800px;
+        line-height: 30px;
+        text-align: justify;
+    }
 }
+
 .container-key-figures {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
 }
-.container-key-figures p {
-    width: 100px;
-    height: 100px;
-    background-color: $primary-color;
-    color: $white;
-    text-align: center;
+
+.container-key-figures {
+    p {
+        width: 100px;
+        height: 100px;
+        background-color: $primary-color;
+        color: $white;
+        text-align: center;
+    }
 }
