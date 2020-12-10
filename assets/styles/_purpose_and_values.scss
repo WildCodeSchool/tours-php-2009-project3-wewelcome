@@ -3,7 +3,9 @@
 .purpose-and-values {
     background: url('../images/Indre-et-loire.png') no-repeat right;
     height: 800px;
-    
+}
+
+.purpose-and-values {
     div {
         width: 800px;
         line-height: 30px;
@@ -15,7 +17,9 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    
+}
+
+.container-key-figures {
     p {
         width: 100px;
         height: 100px;
