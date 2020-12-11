@@ -1,10 +1,10 @@
 <?php
 
-namespace App\DataCollector;
+namespace App\FormData;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
-class MailMessageDataCollector
+class MailMessageData
 {
     /**
      * @var string
