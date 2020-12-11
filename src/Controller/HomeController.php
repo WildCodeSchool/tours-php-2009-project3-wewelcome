@@ -23,25 +23,25 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->sendMail($mailer);
+            $this->sendMail($mailer, $mailMessage);
             return $this->redirectToRoute('home');
         }
 
         return $this->render('home/index.html.twig', ['form' => $form->createView()]);
     }
 
-    private function sendMail(MailerInterface $mailer): void
+    private function sendMail(MailerInterface $mailer, MailMessageData $mailMessage): void
     {
         $email = (new Email())
             ->from($_POST['mail_message']['email'])
             ->to('wewelcome.test@gmail.com')
-            ->subject("Message client : " . $_POST['mail_message']['subject'])
+            ->subject("Message client : " . $mailMessage->getSubject())
             ->html("
-                <p>Sujet : " . $_POST['mail_message']['subject'] . "</p>
-                <p>Nom : " . $_POST['mail_message']['firstName'] . " " . $_POST['mail_message']['lastName'] . "</p>
-                <p>Message : " . $_POST['mail_message']['message'] . "</p>
-                <p>Téléphone : " . $_POST['mail_message']['phone'] . "</p>
-                <p>Email : " . $_POST['mail_message']['email'] . "</p>
+                <p>Sujet : " . $mailMessage->getSubject() . "</p>
+                <p>Nom : " . $mailMessage->getFirstName() . " " . $mailMessage->getLastName() . "</p>
+                <p>Message : " . $mailMessage->getMessage() . "</p>
+                <p>Téléphone : " . $mailMessage->getPhone() . "</p>
+                <p>Email : " . $mailMessage->getEmail() . "</p>
             ");
 
         $mailer->send($email);
