@@ -9,7 +9,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\FormData\MailMessageData;
 use App\Form\MailMessageType;
 use Symfony\Component\Mailer\MailerInterface;
-use Symfony\Component\Mime\Email;
+use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 
 class HomeController extends AbstractController
 {
@@ -32,17 +32,12 @@ class HomeController extends AbstractController
 
     private function sendMail(MailerInterface $mailer, MailMessageData $mailMessage): void
     {
-        $email = (new Email())
-            ->from($_POST['mail_message']['email'])
+        $email = (new TemplatedEmail())
+            ->from($mailMessage->getEmail())
             ->to('wewelcome.test@gmail.com')
-            ->subject("Message client : " . $mailMessage->getSubject())
-            ->html("
-                <p>Sujet : " . $mailMessage->getSubject() . "</p>
-                <p>Nom : " . $mailMessage->getFirstName() . " " . $mailMessage->getLastName() . "</p>
-                <p>Message : " . $mailMessage->getMessage() . "</p>
-                <p>Téléphone : " . $mailMessage->getPhone() . "</p>
-                <p>Email : " . $mailMessage->getEmail() . "</p>
-            ");
+            ->subject('Message client : ' . $mailMessage->getSubject())
+            ->htmlTemplate('emails/contact.html.twig')
+            ->context(['message' => $mailMessage]);
 
         $mailer->send($email);
     }
