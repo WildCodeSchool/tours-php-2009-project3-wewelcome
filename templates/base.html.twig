@@ -3,17 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}WeWelcome{% endblock %}</title>
     {% block stylesheets %}
         {{ encore_entry_link_tags('app') }}
     {% endblock %}
 </head>
 <body>
-
-{% block body %}{% endblock %}
-
-{% block javascripts %}
-    {{ encore_entry_script_tags('app') }}
-{% endblock %}
+    <section>
+            <a href="">
+                <img src="build\images\WeWELCOME-Logo-RVB-500px.8d7a2900.png" alt="wewelcomeLogo" width="350" height="200">
+            </a>
+            <nav>
+                <a href="">Concierge</a>
+                <a href="">Intendance</a>
+                <a href="">Logement</a>
+                <a href="">Contact</a>
+                <a href="">English</a>
+            </nav>
+    </section>
+    {% block body %}
+    {% endblock %}
+    <section>
+        <nav>
+            <a href="">
+                <img src="build\images\instagram_icon.5f5b7d5b.png" alt="Instagram_Logo" width="42" height="42">
+            </a><a href="https://www.facebook.com/wewelcome.fr">
+                <img src="build\images\facebook_icon.1ec33151.png" alt="Facebook_Logo" width="42" height="42">
+            </a>
+            <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
+                <img src="build\images\linkedin_icon.d5fe90a3.png" alt="LinkedIn_Logo" width="42" height="42">
+            </a>
+        </nav>
+        <nav>
+            <a href="">Plan du site</a>
+            <a href="">Mentions légales</a>
+            <a href="">CGU</a>
+            <a href="">Travailler avec moi</a>
+        </nav>
+    </section>
+    {% block javascripts %}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
 </body>
 </html>
