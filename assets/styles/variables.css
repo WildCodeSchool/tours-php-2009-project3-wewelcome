@@ -1,0 +1,28 @@
+:root {
+    --primary-color: #6e20a0;
+    --primary-color-tint1: #7f3ca9;
+    --primary-color-tint2: #9c61c1;
+    --secondary-color: #988f86;
+    --tertiary-color: #59abe3;
+    --quaternary-color: #26c281;
+    --white: #fffafa;
+    --black: #020202;
+    --primary-title: 'MontserratAlternates-ExtraBold', sans-serif;
+    --secondary-title: 'MontserratAlternates-SemiBold', sans-serif;
+    --primary-text: 'Montserrat-ExtraLight', sans-serif;
+}
+
+@font-face {
+    font-family: 'MontserratAlternates-ExtraBold';
+    src: url('../fonts/MontserratAlternates-ExtraBold.otf');
+}
+
+@font-face {
+    font-family: 'MontserratAlternates-SemiBold';
+    src: url('../fonts/MontserratAlternates-SemiBold.otf');
+}
+
+@font-face {
+    font-family: 'Montserrat-ExtraLight';
+    src: url('../fonts/Montserrat-ExtraLight.otf');
+}
