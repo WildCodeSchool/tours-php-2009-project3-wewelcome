@@ -44,7 +44,7 @@ p {
     right: 50px;
     width: 1000px;
     text-align: center;
-    font-family: Georgia, serif;
+    font-family: var(--primary-title);
     font-size: 60px;
     color: white;
     text-shadow: 5px 5px 5px black;
