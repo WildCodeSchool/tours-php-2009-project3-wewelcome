@@ -23,22 +23,18 @@ class HomeController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->sendMail($mailer, $mailMessage);
-            return $this->redirectToRoute('home');
-        }
-
-        return $this->render('home/index.html.twig', ['form' => $form->createView()]);
-    }
-
-    private function sendMail(MailerInterface $mailer, MailMessageData $mailMessage): void
-    {
-        $email = (new TemplatedEmail())
+            $email = (new TemplatedEmail())
             ->from($mailMessage->getEmail())
             ->to('wewelcome.test@gmail.com')
             ->subject('Message client : ' . $mailMessage->getSubject())
             ->htmlTemplate('emails/contact.html.twig')
             ->context(['message' => $mailMessage]);
 
-        $mailer->send($email);
+            $mailer->send($email);
+
+            return $this->redirectToRoute('home');
+        }
+
+        return $this->render('home/index.html.twig', ['form' => $form->createView()]);
     }
 }

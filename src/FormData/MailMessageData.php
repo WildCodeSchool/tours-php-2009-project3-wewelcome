@@ -10,6 +10,7 @@ class MailMessageData
      * @var string
      * @Assert\NotBlank(message="Veuillez choisir un sujet")
      * @Assert\Type(type="string")
+     * @Assert\Length(max="255")
      */
     private $subject;
 
@@ -17,13 +18,15 @@ class MailMessageData
      * @var string
      * @Assert\NotBlank(message="Veuillez saisir votre numéro de téléphone")
      * @Assert\Type(type="string")
+     * @Assert\Length(max="25")
      */
     private $phone;
 
     /**
      * @var string
      * @Assert\NotBlank(message="Veuillez saisir votre email")
-     * @Assert\Type(type="string")
+     * @Assert\Email
+     * @Assert\Length(max="100")
      */
     private $email;
 
@@ -31,6 +34,7 @@ class MailMessageData
      * @var string
      * @Assert\NotBlank(message="Veuillez saisir votre prénom")
      * @Assert\Type(type="string")
+     * @Assert\Length(max="50")
      */
     private $firstName;
 
@@ -38,6 +42,7 @@ class MailMessageData
      * @var string
      * @Assert\NotBlank(message="Veuillez saisir votre nom")
      * @Assert\Type(type="string")
+     * @Assert\Length(max="50")
      */
     private $lastName;
 
@@ -45,6 +50,7 @@ class MailMessageData
      * @var string
      * @Assert\NotBlank(message="Veuillez saisir votre message")
      * @Assert\Type(type="string")
+     * @Assert\Length(max="1500")
      */
     private $message;
 
