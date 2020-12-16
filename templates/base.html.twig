@@ -9,7 +9,7 @@
 </head>
 <body>
     <section class="navBar">
-            <a class="topLogo" href="{{ path('home') }}">
+            <a id="topLogo" href="{{ path('home') }}">
                 <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
             </a>
             <nav>
@@ -23,6 +23,7 @@
     {% block body %}
     {% endblock %}
     <section>
+        <button id="returnTop">Top</button>
         <nav>
             <h2>Coordonnées</h2>
             <address>
@@ -48,6 +49,7 @@
             <a href="">Travailler avec moi</a>
         </nav>
     </section>
+    <script src="/assets/js/base.js"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>

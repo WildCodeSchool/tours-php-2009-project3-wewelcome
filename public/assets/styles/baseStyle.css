@@ -25,19 +25,58 @@ p {
     font-size: 20px;
 }
 
-/* start nav bar style */
+/* START nav bar style */
 .navBar {
     display: flex;
-    width: 100%
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    background-color: rgb(44, 36, 36);
 }
 
-.topLogo {
+#topLogo {
     width: 50%;
+    visibility: hidden;
+}
+
+#topLogo img {
+    width: 200px;
 }
 
 .navBar nav {
     width: 60%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-self:center;
 }
-/* end nav bar style*/
+/* END nav bar style*/
+
+/* START back to top style */
+#returnTop {
+    color: rgb(83, 81, 81);
+    margin: 1rem;
+    text-decoration: none;
+    display: none;
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    z-index: 1;
+    font-size: 18px;
+    border: solid;
+    outline: none;
+    background-color: whitesmoke;
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+    width: 50px;
+    height: 50px;
+}
+
+#returnTop:hover {
+    transform: scale(1.10);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+/* END back to top */
