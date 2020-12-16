@@ -3,7 +3,161 @@
 {% block title %}WeWelcome{% endblock %}
 
 {% block body %}
-    {% include "/home/_purpose_and_values.html.twig" %}
-    {% include 'home/_contact.html.twig' %}
-    {% include "/home/activity.html.twig" %}
+
+<section class="home">
+    <div class="home-carousel">
+        <img class="home-logo" src="{{ asset('build/images/WeWELCOME-Logo-RVB-1000px_modified.2c461d1a.png') }}" alt=""/>
+        <p class="home-text">« Conciergerie locative & Intendance pour maisons et appartements »</p>
+        <figure>
+            <img src="{{ asset('build/images/home-conciergerie.8d9d3afc.jpg') }}" alt=""/>
+            <img src="{{ asset('build/images/home-intendance.a5b0927b.jpg') }}" alt=""/>
+            <img src="{{ asset('build/images/home-region.b7f807cd.jpg') }}" alt=""/>
+            <img src="{{ asset('build/images/home-conciergerie.8d9d3afc.jpg') }}" alt=""/>
+        </figure>
+    </div>
+</section>
+
+<section class="purpose-and-values">
+    <h2>But et valeurs</h2>
+    <div>
+        <h3>A quel besoin répond l’entreprise</h3>
+        <p>« Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?
+        wewelcome est votre assistant dédié !</p>
+        <p>Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement. »</p>
+    </div>
+    <div>
+        <h3>Nos valeurs</h3>
+        <p>« wewelcome vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.</p>
+        <p>wewelcome est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention. »</p>
+    </div>
+    <div class="container-key-figures">
+        <p>+50<br><span>clients</span></p>
+        <p>+45<br><span>conciergeries</span></p>
+        <p>90%<br><span>taux d'occupation</span></p>
+    </div>
+</section>
+
+<section class="activities">
+    <div class="conciergeriePresentation">
+        <h2>Conciergerie</h2>
+        <div class="pictogrammeConciergerie">
+            <figure>
+                <img src="{{ asset('build/images/accueil_depart_voyageurs.c8595d3a.png') }}" alt="Accueil des voyageurs" width="42" heigth="42">
+                <figcaption>Accueil des voyageurs</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/assistance.4243a76f.png') }}" alt="Assistance des voyageurs" width="42" heigth="42">
+                <figcaption>Assistance des voyageurs</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/general.bde6a539.png') }}" alt="général" width="42" heigth="42">
+                <figcaption>Général</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/Linge.1117f0bb.png') }}" alt="Linge" width="42" heigth="42">
+                <figcaption>Linge</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/menage.14eb5f40.png') }}" alt="Ménage" width="42" heigth="42">
+                <figcaption>Ménage</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/panierBienvenue.da6ac834.png') }}" alt="Panier de bienvenue" width="42" heigth="42">
+                <figcaption>Panier de bienvenue</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/serviceIntendance.9f8f2107.png') }}" alt="service d'intendance" width="42" heigth="42">
+                <figcaption>Service d'intendance</figcaption>
+            </figure>
+        </div>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+        </p>
+        <a href="">Plus d'info</a>
+        <a href="">Contact</a>
+    </div>
+    <div class="intendancePresentation">
+        <h2>Intendance</h2>
+        <div class="pictogrammeIntendance">
+            <figure>
+                <img src="{{ asset('build/images/assistanceIntendance.77984b2c.png') }}" alt="Assistance" width="42" heigth="42">
+                <figcaption>Assistance</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/course.4b32bc7e.png') }}" alt="Courses" width="42" heigth="42">
+                <figcaption>Courses</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/picsine.7c430bda.png') }}" alt="Entretien picsine" width="42" heigth="42">
+                <figcaption>Entretien piscine</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/jardin.02bdb2d7.png') }}" alt="Entretien jardin" width="42" heigth="42">
+                <figcaption>Entretien jardin</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/entretienIntExt.959209cd.png') }}" alt="Entretien intérieur et Extérieur" width="42" heigth="42">
+                <figcaption>Entretien intérieur et extérieur</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/generalInt.d7084d84.png') }}" alt="Général" width="42" heigth="42">
+                <figcaption>Général</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/miseRouteVeille.717824eb.png') }}" alt="Mise en route/veille" width="42" heigth="42">
+                <figcaption>Mise en route/veille</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/petitTravaux.2cc3cddf.png') }}" alt="Petits travaux" width="42" heigth="42">
+                <figcaption>Petits travaux</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/suiviTravaux.0aec5935.png') }}" alt="Suivi de travaux" width="42" heigth="42">
+                <figcaption>Suivi de travaux</figcaption>
+            </figure>
+            <figure>
+                <img src="{{ asset('build/images/surveillanceRegulier.4790130a.png') }}" alt="Surveillance régulière" width="42" heigth="42">
+                <figcaption>Surveillance régulière</figcaption>
+            </figure>
+        </div>
+        <div class="textIntendance">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            </p>
+            <a href="">Plus d'info</a>
+        </div>
+        <a href="">Contact</a>
+    </div>
+</section>
+
+<section class="partenaireParticulier">
+    <h2>Partenaires</h2>
+    <div class="logoPartenaire">
+        <!-- visible part -->
+        <nav>
+            <a href=""><img src="{{ asset('build/images/partenaireAbritel.c4772922.png') }}" alt="Abritel" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireAirbnb.254afb4d.jpg') }}" alt="Airbnb" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireBooking.99b19167.png') }}" alt="Booking" width="125" heigth="125"></a>
+        </nav>
+        <input type="checkbox" name="displayMore">
+        <!-- hidden part -->
+        <div class="partenaireInvisible">
+            <a href=""><img src="{{ asset('build/images/partenaireFewo-direkt.a4ce5a8f.png') }}" alt="Fewo-direkt" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireGites.48dd28f6.jpg') }}" alt="Gites.fr" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireHomelidays.2079fdda.png') }}" alt="Homelidays" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireODTAmboiseVaLoire.2fe915a9.jpg') }}" alt="ODT Amboise Val de Loire" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireODTMontlouisVouvray.dd201d79.png') }}" alt="ODT Mont luis Vouvray" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireODTToursVaLoire.acc0fd4d.png') }}" alt="ODT Tours Val de Loire" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireTouraineVaLoire.3edb48fb.jpg') }}" alt="Touraine Val de Loire" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireValLoireFrance.84836987.png') }}" alt="Val de Loire France" width="125" heigth="125"></a>
+            <a href=""><img src="{{ asset('build/images/partenaireVRBO.cccadb79.png') }}" alt="VRBO" width="125" heigth="125"></a>
+        </div>
+        <input type="checkbox" name="displayless">
+    </div>
+</secton>
+
+{% include "/home/_contact.html.twig" %}
+
 {% endblock %}
