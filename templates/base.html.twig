@@ -2,16 +2,15 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="{{ asset('build/images/favicon.png') }}" />
+    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
-    {% block stylesheets %}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
+    <link rel="stylesheet" href="/assets/styles/baseStyle.css">
+    {% block stylesheets %}{% endblock %}
 </head>
 <body>
     <section>
             <a href="">
-                <img src="build\images\WeWELCOME-Logo-RVB-500px.8d7a2900.png" alt="wewelcomeLogo" width="350" height="200">
+                <img src="/assets/images/WeWELCOME-Logo-RVB-500px.png" alt="wewelcomeLogo" width="350" height="200">
             </a>
             <nav>
                 <a href="">Concierge</a>
@@ -26,12 +25,12 @@
     <section>
         <nav>
             <a href="">
-                <img src="build\images\instagram_icon.5f5b7d5b.png" alt="Instagram_Logo" width="42" height="42">
+                <img src="/assets/images/instagram_icon.png" alt="Instagram_Logo" width="42" height="42">
             </a><a href="https://www.facebook.com/wewelcome.fr">
-                <img src="build\images\facebook_icon.1ec33151.png" alt="Facebook_Logo" width="42" height="42">
+                <img src="/assets/images/facebook_icon.png" alt="Facebook_Logo" width="42" height="42">
             </a>
             <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
-                <img src="build\images\linkedin_icon.d5fe90a3.png" alt="LinkedIn_Logo" width="42" height="42">
+                <img src="/assets/images/linkedin_icon.png" alt="LinkedIn_Logo" width="42" height="42">
             </a>
         </nav>
         <nav>
@@ -41,8 +40,6 @@
             <a href="">Travailler avec moi</a>
         </nav>
     </section>
-    {% block javascripts %}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
+    {% block javascripts %}{% endblock %}
 </body>
 </html>
