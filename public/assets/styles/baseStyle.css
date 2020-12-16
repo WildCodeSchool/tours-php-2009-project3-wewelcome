@@ -1,5 +1,10 @@
 @import 'variables.css';
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: var(--white);
     color: --black;
@@ -19,3 +24,20 @@ p {
     font-family: var(--primary-text);
     font-size: 20px;
 }
+
+/* start nav bar style */
+.navBar {
+    display: flex;
+    width: 100%
+}
+
+.topLogo {
+    width: 50%;
+}
+
+.navBar nav {
+    width: 60%;
+    display: flex;
+    justify-content: space-between;
+}
+/* end nav bar style*/
