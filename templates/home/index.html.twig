@@ -1,8 +1,25 @@
 {% extends 'base.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/assets/styles/indexStyle.css">
+{% endblock %}
 
 {% block title %}WeWelcome{% endblock %}
 
 {% block body %}
+
+<section class="home">
+    <div class="home-carousel">
+        <img class="home-logo" src="/assets/images/WeWELCOME-Logo-RVB-1000px_modified.png" alt=""/>
+        <p class="home-text">« Conciergerie locative & Intendance pour maisons et appartements »</p>
+        <figure>
+            <img src="/assets/images/home-conciergerie.jpg" alt=""/>
+            <img src="/assets/images/home-intendance.jpg" alt=""/>
+            <img src="/assets/images/home-region.jpg" alt=""/>
+            <img src="/assets/build/images/home-conciergerie.jpg" alt=""/>
+        </figure>
+    </div>
+</section>
+
 <section class="purpose-and-values">
     <h2>But et valeurs</h2>
     <div>
@@ -22,6 +39,7 @@
         <p>90%<br><span>taux d'occupation</span></p>
     </div>
 </section>
+
 <section class="activities">
     <div class="conciergeriePresentation">
         <h2>Conciergerie</h2>
@@ -116,6 +134,7 @@
         <a href="">Contact</a>
     </div>
 </section>
+
 <section class="partenaireParticulier">
     <h2>Partenaires</h2>
     <div class="logoPartenaire">
@@ -141,4 +160,7 @@
         <input type="checkbox" name="displayless">
     </div>
 </secton>
+
+{% include "/home/_contact.html.twig" %}
+
 {% endblock %}
