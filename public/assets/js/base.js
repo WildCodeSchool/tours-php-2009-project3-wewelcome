@@ -2,7 +2,7 @@ const mybutton = document.getElementById('returnTop');
 const myLogo = document.getElementById('topLogo');
 const myNav = document.querySelector('.navBar');
 const myNavLinks = document.querySelectorAll('.navLink');
-var i = 0;
+let i = 0;
 
 //background-color: rgba(44, 36, 36, 0);
 function scrollFunction() {
