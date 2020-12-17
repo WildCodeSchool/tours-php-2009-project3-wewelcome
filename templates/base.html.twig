@@ -9,16 +9,16 @@
 </head>
 <body>
     <section class="navBar">
-            <a id="topLogo" href="{{ path('home') }}">
-                <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
-            </a>
-            <nav>
-                <a href="">Concierge</a>
-                <a href="">Intendance</a>
-                <a href="">Logement</a>
-                <a href="">Contact</a>
-                <a href="">English</a>
-            </nav>
+        <a id="topLogo" href="{{ path('home') }}">
+            <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
+        </a>
+        <nav>
+            <a class="navLink" href="">Concierge</a>
+            <a class="navLink" href="">Intendance</a>
+            <a class="navLink" href="">Logement</a>
+            <a class="navLink" href="">Contact</a>
+            <a class="navLink" href="">English</a>
+        </nav>
     </section>
     {% block body %}
     {% endblock %}

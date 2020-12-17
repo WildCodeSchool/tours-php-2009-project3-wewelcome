@@ -1,13 +1,18 @@
 const mybutton = document.getElementById('returnTop');
 const myLogo = document.getElementById('topLogo');
+const myNav = document.querySelector('.navBar');
 
+//background-color: rgba(44, 36, 36, 0);
 function scrollFunction() {
-    if (document.documentElement.scrollTop > 500) {
+    if (document.documentElement.scrollTop > 300) {
       mybutton.style.display = "block";
       myLogo.style.visibility = "visible";
+      myNav.style.backgroundColor = "rgba(85, 69, 69, 0.897)";
     } else {
       mybutton.style.display = "none";
       myLogo.style.visibility = "hidden";
+      myNav.style.backgroundColor = "rgba(85, 69, 69, 0)";
+
     }
   }
   

@@ -5,6 +5,10 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--white);
     color: --black;
@@ -31,7 +35,7 @@ p {
     width: 100%;
     position: fixed;
     z-index: 10;
-    background-color: rgb(44, 36, 36);
+    background-color: rgba(85, 69, 69, 0);
 }
 
 #topLogo {
@@ -41,19 +45,32 @@ p {
 
 #topLogo img {
     width: 200px;
+    height: 36px;
 }
 
 .navBar nav {
     width: 60%;
     display: flex;
-    justify-content: space-around;
-    align-self:center;
+    align-items: center;
+}
+
+.navLink {
+    text-decoration: none;
+    font-weight: bold;
+    width: 20%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.navLink:hover {
+    background-color: #9c61c183;
 }
 /* END nav bar style*/
 
 /* START back to top style */
 #returnTop {
-    color: rgb(83, 81, 81);
+    color: rgba(83, 81, 81, 0.897);
     margin: 1rem;
     text-decoration: none;
     display: none;
