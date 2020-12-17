@@ -182,3 +182,17 @@ footer {
     font-weight: bold;
 }
 /* END footer */
+
+/* START contact form */
+#contact {
+    text-align: center;
+}
+
+.contactForm {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* END contact form */
