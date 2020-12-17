@@ -29,6 +29,11 @@ p {
     font-size: 20px;
 }
 
+a {
+    color: whitesmoke;
+    text-decoration: none;
+}
+
 /* START nav bar style */
 .navBar {
     display: flex;
@@ -55,12 +60,12 @@ p {
 }
 
 .navLink {
-    text-decoration: none;
     font-weight: bold;
     width: 20%;
     text-align: center;
     padding-top: 10px;
     padding-bottom: 10px;
+    color: var(--primary-color);
 }
 
 .navLink:hover {
@@ -97,3 +102,57 @@ p {
     transition: all 0.3s ease-in-out;
   }
 /* END back to top */
+
+/* START footer */
+footer {
+    background: rgba(83, 81, 81);
+    width: 100%;
+    margin-top: 10px;
+    display: flex;
+}
+
+.footerLeft {
+    width: 50%;
+    text-align: center;
+}
+
+.footerRight {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.socialNetwork {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.socialNetworkLogo {
+    width: 60px;
+    height: 60px;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 60%;
+}
+
+.footerLinks a {
+    margin-top: 7px;
+    margin-bottom: 7px;
+    font-size: larger;
+}
+
+.footerLinks a:hover {
+    color: var(--primary-color);
+}
+
+.footerLeft h2 {
+    font-size: 25px;
+}
+/* END footer */

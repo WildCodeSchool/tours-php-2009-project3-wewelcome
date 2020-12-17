@@ -1,6 +1,8 @@
 const mybutton = document.getElementById('returnTop');
 const myLogo = document.getElementById('topLogo');
 const myNav = document.querySelector('.navBar');
+const myNavLinks = document.querySelectorAll('.navLink');
+var i = 0;
 
 //background-color: rgba(44, 36, 36, 0);
 function scrollFunction() {
@@ -8,11 +10,18 @@ function scrollFunction() {
       mybutton.style.display = "block";
       myLogo.style.visibility = "visible";
       myNav.style.backgroundColor = "rgba(85, 69, 69, 0.897)";
+
+      for (i = 0; i < myNavLinks.length; ++i) {
+        myNavLinks[i].style.color = "whitesmoke";
+      }
     } else {
       mybutton.style.display = "none";
       myLogo.style.visibility = "hidden";
       myNav.style.backgroundColor = "rgba(85, 69, 69, 0)";
-
+      
+      for (i = 0; i < myNavLinks.length; ++i) {
+        myNavLinks[i].style.color = "var(--primary-color)";
+      }
     }
   }
   
