@@ -19,8 +19,8 @@ class MailMessageType extends AbstractType
         $builder
             ->add('subject', ChoiceType::class, [
                 'choices'  => [
-                    'Conciergerie' => 'Conciergerie',
-                    'Intendance' => 'Intendance',
+                    ' Conciergerie' => 'Conciergerie',
+                    ' Intendance' => 'Intendance',
                 ],
                 'expanded' => true,
                 'multiple' => false,

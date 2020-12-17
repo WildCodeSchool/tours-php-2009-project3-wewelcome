@@ -10,6 +10,12 @@ body {
     color: --black;
 }
 
+html {
+    scroll-behavior: smooth;
+    font-family: var(--primary-text);
+    font-size: 20px;
+}
+
 h2 {
     font-family: var(--primary-title);
     font-size: 40px;
@@ -18,11 +24,6 @@ h2 {
 h3 {
     font-family: var(--secondary-title);
     font-size: 30px;
-}
-
-p {
-    font-family: var(--primary-text);
-    font-size: 20px;
 }
 
 a {
@@ -41,7 +42,7 @@ a {
 }
 
 #topLogo {
-    width: 42%;
+    width: 30%;
     visibility: hidden;
     margin-left: 3%;
 }
@@ -57,7 +58,7 @@ a {
 }
 
 .navBar nav {
-    width: 60%;
+    width: 70%;
     display: flex;
     align-items: center;
 }
@@ -190,9 +191,56 @@ footer {
 
 .contactForm {
     display: flex;
-    flex-direction: column;
-    width: 40%;
+    width: 70%;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.contactForm label {
+    width: 30%;
+    align-self: center;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.radioContact, .inputContact {
+    width: 60%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.radioContact {
+    text-align: center;
+}
+
+.radioContact label:hover, .radioContact input:hover {
+    cursor: pointer;
+}
+
+.contactSubmit {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 20%;
+    height: 40px;
+}
+
+.contactSubmit:hover {
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
+}
+
+.message {
+    height: 80px;
+    resize: none;
+    width: 63%;
 }
 /* END contact form */
