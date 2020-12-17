@@ -32,6 +32,7 @@ p {
 a {
     color: whitesmoke;
     text-decoration: none;
+    font-family: var(--primary-text);
 }
 
 /* START nav bar style */
@@ -44,8 +45,14 @@ a {
 }
 
 #topLogo {
-    width: 50%;
+    width: 42%;
     visibility: hidden;
+    margin-left: 3%;
+}
+
+#topLogo:hover {
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
 }
 
 #topLogo img {
@@ -70,6 +77,8 @@ a {
 
 .navLink:hover {
     background-color: #9c61c183;
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
 }
 /* END nav bar style*/
 
@@ -80,8 +89,8 @@ a {
     text-decoration: none;
     display: none;
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 20px;
+    right: 20px;
     z-index: 1;
     font-size: 18px;
     border: solid;
@@ -91,8 +100,8 @@ a {
     padding: 1px;
     border-radius: 50%;
     transition: all 0.1s ease-in-out;
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
 }
 
 #returnTop:hover {
@@ -107,20 +116,12 @@ a {
 footer {
     background: rgba(83, 81, 81);
     width: 100%;
-    margin-top: 10px;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 90px;
     display: flex;
-}
-
-.footerLeft {
-    width: 50%;
-    text-align: center;
-}
-
-.footerRight {
-    width: 50%;
-    text-align: center;
+    color: whitesmoke;
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
 }
 
@@ -135,6 +136,32 @@ footer {
     height: 60px;
 }
 
+.socialNetworkLogo:hover {
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
+}
+
+.footerLeft {
+    width: 30%;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.footerLeft h2 {
+    color: var(--primary-color);
+    font-size: 25px;
+}
+
+.footerRight {
+    width: 50%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+
 .footerLinks {
     display: flex;
     flex-direction: column;
@@ -143,16 +170,18 @@ footer {
 }
 
 .footerLinks a {
-    margin-top: 7px;
-    margin-bottom: 7px;
     font-size: larger;
+    font-weight: bold;
 }
 
 .footerLinks a:hover {
     color: var(--primary-color);
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
 }
 
-.footerLeft h2 {
-    font-size: 25px;
+.info p {
+    font-size: 20px;
+    font-style: normal;  
 }
 /* END footer */
