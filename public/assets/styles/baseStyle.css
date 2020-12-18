@@ -32,6 +32,15 @@ a {
     font-family: var(--primary-text);
 }
 
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid rgb(24, 21, 21);
+    width: 60%;
+    margin: 20px auto 20px auto;
+}
+
 /* START nav bar style */
 .navBar {
     display: flex;
