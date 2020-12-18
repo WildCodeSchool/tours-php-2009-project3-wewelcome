@@ -1,10 +1,16 @@
 <h2 id="contact">Contact</h2>
-{{ form_start(form) }}
-{{ form_row(form.subject, {'label' : 'Sujet :'}) }}
-{{ form_row(form.firstName, {'label' : 'Prénom : '}) }}
-{{ form_row(form.lastName, {'label' : 'Nom : '}) }}
-{{ form_row(form.phone, {'label' : 'Téléphone : '}) }}
-{{ form_row(form.email, {'label' : 'Email : '}) }}
-{{ form_row(form.message, {'label' : 'Message : '}) }}
-<input type='submit' value='Envoyer'>
+{{ form_start(form, {'attr' : {'class' : 'contactForm'}}) }}
+    {{ form_label(form.subject, 'Sujet :') }}
+    {{ form_widget(form.subject, {'attr' : {'class' : 'radioContact'}}) }}
+    {{ form_label(form.firstName, 'Prénom : ') }}
+    {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'votre prénom'}}) }}
+    {{ form_label(form.lastName, 'Nom : ') }}
+    {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'votre nom'}}) }}
+    {{ form_label(form.phone, 'Téléphone : ') }}
+    {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact', 'placeholder' : 'votre téléphone'}}) }}
+    {{ form_label(form.email, 'Email : ') }}
+    {{ form_widget(form.email, {'attr' : {'class' : 'inputContact', 'placeholder' : 'votre email'}}) }}
+    {{ form_label(form.message, 'Message : ') }}
+    {{ form_widget(form.message, {'attr' : {'class' : 'inputContact message', 'placeholder' : 'votre message'}}) }}
+    <input class="contactSubmit" type='submit' value='Envoyer'>
 {{ form_end(form) }}
