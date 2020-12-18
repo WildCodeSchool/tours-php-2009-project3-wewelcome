@@ -3,31 +3,29 @@
 /***SECTION HOME___start***/
 .home-carousel {
     position: relative;
-    width: 80%;
-    max-width: 1300px;
-    height: 800px;
+    height: 100vh;
     overflow: hidden;
     margin: 0 auto;
 }
 
 .home-logo {
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     width: 800px;
     top: 50px;
     left: 50px;
 }
 
 .home-text {
+    z-index: 1;
     position: absolute;
-    z-index: 2;
-    bottom: 50px;
-    right: 50px;
-    width: 1000px;
+    bottom: 100px;
+    right: 100px;
+    width: 1100px;
     text-align: center;
     font-family: var(--primary-title);
-    font-size: 60px;
-    color: white;
+    font-size: 4vw;
+    color: var(--white);
     text-shadow: 5px 5px 5px black;
 }
 
@@ -39,7 +37,7 @@
     font-size: 0;
     text-align: left;
     left: 0;
-    animation: 40s slidy infinite ease-in;
+    animation: 30s slidy infinite ease-in-out;
 }
 
 .home-carousel figure img {
@@ -63,35 +61,160 @@
 }
 /***SECTION HOME___end***/
 
-/***SECTION PURPOSE AND VALUES___start***/
-.purpose-and-values {
-    background: url('../images/Indre-et-loire.png') no-repeat right;
-    height: 800px;
+/***ALL SECTIONS EXCEPT HOME___start***/
+.section-except-home { 
+    height: 100vh;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
 }
+/***ALL SECTIONS EXCEPT HOME___start***/
 
-.purpose-and-values div {
-    width: 800px;
-    line-height: 30px;
-    text-align: justify;
-}
-
-.container-key-figures {
+/***SECTION VALUES AND PURPOSE___start***/
+.values,
+.purpose {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.container-key-figures p {
+.values h2,
+.purpose h2 {
+    z-index: 1;
+    margin-bottom: -40px;
+    padding: 0 40px;
     font-family: var(--primary-title);
-    font-size: 50px;
-    color: var(--primary-color);
+    font-size: 4vw;
+    letter-spacing: 0.3vw;
+    color: var(--primary-color-tint2);
+    background-color: var(--white);
+}
+
+.values p,
+.purpose p {
+    width: 1200px;
+    padding: 80px 50px 50px;
+    border: solid 1px var(--secondary-color);
+    font-family: var(--tertiary-text);
+    font-size: 2vw;
+    line-height: 3vw;
+    text-align: justify;
+    letter-spacing: 0.3vw;
+}
+
+#quotes {
     font-weight: bold;
+    font-size: 3vw;
+    color: var(--primary-color);
+}
+/***SECTION VALUES AND PURPOSE___end***/
+
+/***SECTION SERVICE VISION___start***/
+.service-vision {
+    position: relative;
+    text-align: center;
+    padding-top: 20vh;
+    color: var(--quaternary-color);
+}
+
+.service-vision h2 {
+    font-family: var(--primary-title);
+    font-size: 4vw;
+    letter-spacing: 0.3vw;
+    text-shadow: 5px 5px 5px black;
+}
+
+.service-vision p {
+    font-family: var(--tertiary-text);
+    font-size: 3vw;
+    text-transform: uppercase;
+    text-shadow: 5px 5px 5px black;
+}
+
+#service-vision-1,
+#service-vision-2,
+#service-vision-3,
+#service-vision-4 {
+    position: absolute;
+    left: -50vh;
+}
+
+#service-vision-1 {
+    top: 40vh;
+}
+
+#service-vision-2 {
+    top: 50vh;
+}
+
+#service-vision-3 {
+    top: 60vh;
+}
+
+#service-vision-4 {
+    top: 70vh;
+}
+/***SECTION SERVICE VISION___end***/
+
+/***SECTION KEY-FIGURES___start***/
+.key-figures {
+    position: relative;
+    padding-top: 20vh;
+    color: var(--tertiary-color);
+}
+
+.key-figures h2 {
+    font-family: var(--primary-title);
+    font-size: 4vw;
+    letter-spacing: 0.3vw;
     text-align: center;
 }
-.container-key-figures p span {
-    font-family: var(--primary-text);
-    font-size: 25px;
+
+.key-figures p {
+    font-family: var(--tertiary-text);
+    font-size: 3vw;
+    text-align: end;
 }
+
+#key-figure-1,
+#key-figure-2,
+#key-figure-3,
+#key-figure-4 {
+    position: absolute;
+    left: -50vh;
+    width: 500px;
+    padding: 0;
+}
+
+#key-figure-1 {
+    top: 40vh;
+}
+
+#key-figure-2 {
+    top: 55vh;
+}
+
+#key-figure-3 {
+    top: 70vh;
+}
+
+#key-figure-4 {
+    top: 85vh;
+}
+
+#key-figure-1 span,
+#key-figure-2 span,
+#key-figure-3 span,
+#key-figure-4 span {
+    font-family: var(--secondary-text);
+    font-size: 2vw;
+}
+
+/***SECTION KEY-FIGURES___end***/
+
+/***SECTION ACTIVITY___start***/
+
 /***SECTION Partenaire***/
 .partner {
     display: flex;
@@ -99,11 +222,13 @@
     justify-content: center;
     text-align: center;
 }
+
 .logoPartner {
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+
 .navPartnerVisibile {
     display: grid;
     grid-gap: 0.5em;
@@ -112,6 +237,7 @@
     padding-left: 3em;
     justify-content: center;
 }
+
 .navPartnerInvisible {
     display: none;
     grid-gap: 0.5em;
@@ -121,28 +247,28 @@
     justify-content: center;
     align-items: center;
 }
+
 .boxVisibility {
     justify-content: end center;
 }
+
 .imgPartner {
     width: 100px;
     margin: 10px;
 }
+
 .imgPartner:hover {
     transform: scale(1.3);
     transition: all 0.3s ease-in-out;
     box-shadow: 8px 8px 5px #9c61c19c;
 }
+
 #allPartners {
     width: 25%;
     max-width: 200px;
     margin-left: auto;
     margin-right: auto;
-
 }
-/***SECTION PURPOSE AND VALUES___end***/
-
-/***SECTION ACTIVITY___start***/
 
 .activities h2 {
     text-align: center;
@@ -194,7 +320,5 @@
 .textIntendance, .prendreContact, .plusdinfos {
     margin-top: 1rem;
 }
-
-
 
 /***SECTION ACTIVITY___end***/
