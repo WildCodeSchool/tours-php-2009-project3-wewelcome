@@ -7,168 +7,187 @@
 {% block title %}WeWelcome{% endblock %}
 
 {% block body %}
-<section class="home">
-    <div class="home-carousel">
-        <img class="home-logo" src="/assets/images/WeWELCOME-Logo-RVB-1000px_modified.png" alt=""/>
-        <p class="home-text">« Conciergerie locative & Intendance pour maisons et appartements »</p>
-        <figure>
-            <img src="/assets/images/home-conciergerie.jpg" alt=""/>
-            <img src="/assets/images/home-intendance.jpg" alt=""/>
-            <img src="/assets/images/home-region.jpg" alt=""/>
-            <img src="/assets/images/home-conciergerie.jpg" alt=""/>
-        </figure>
-    </div>
-</section>
-<section class="purpose-and-values">
-    <h2>But et valeurs</h2>
-    <div>
-        <h3>A quel besoin répond l’entreprise</h3>
-        <p>« Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?
-        wewelcome est votre assistant dédié !</p>
-        <p>Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement. »</p>
-    </div>
-    <div>
-        <h3>Nos valeurs</h3>
-        <p>« wewelcome vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.</p>
-        <p>wewelcome est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention. »</p>
-    </div>
-    <div class="container-key-figures">
-        <p>+50<br><span>clients</span></p>
-        <p>+45<br><span>conciergeries</span></p>
-        <p>90%<br><span>taux d'occupation</span></p>
-    </div>
-</section>
-<section class="activities">
-    <div class="conciergeriePresentation">
-        <h2>Conciergerie</h2>
-        <div class="pictogrammeConciergerie">
+    <section class="home">
+        <div class="home-carousel">
+            <img class="home-logo" src="/assets/images/WeWELCOME-Logo-RVB-1000px_modified.png" alt="Logo we welcome"/>
+            <p class="home-text">« Conciergerie locative & Intendance pour maisons et appartements »</p>
             <figure>
-                <img src="/assets/images/accueil_depart_voyageurs.png" alt="Accueil des voyageurs" width="42" heigth="42">
-                <figcaption>Accueil des voyageurs</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/assistance.png" alt="Assistance des voyageurs" width="42" heigth="42">
-                <figcaption>Assistance des voyageurs</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/general.png" alt="général" width="42" heigth="42">
-                <figcaption>Général</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/Linge.png" alt="Linge" width="42" heigth="42">
-                <figcaption>Linge</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/menage.png" alt="Ménage" width="42" heigth="42">
-                <figcaption>Ménage</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/panierBienvenue.png" alt="Panier de bienvenue" width="42" heigth="42">
-                <figcaption>Panier de bienvenue</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/serviceIntendance.png" alt="service d'intendance" width="42" heigth="42">
-                <figcaption>Service d'intendance</figcaption>
+                <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+                <img src="/assets/images/home-intendance.jpg" alt="photo de l'extérieur d'une maison"/>
+                <img src="/assets/images/home-region.jpg" alt="photo de personnes faisant du vélo sur le bord de la loire"/>
+                <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
             </figure>
         </div>
-        <div class="textIntendance">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            </p>
-            <div class="plusdinfos">
-                <a href="">Plus d'infos</a>
+    </section>
+
+    <section class="values section-except-home">
+        <h2>Nos valeurs</h2>
+        <p><span id="quotes">«</span> WeWelcome vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+        WeWelcome est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention. <span id="quotes">»</span></p>
+    </section>
+
+    <section class="service-vision section-except-home"
+    style="background-image: url(/assets/images/hammock-425773_1920.jpg);">
+        <h2>WeWelcome, la tranquilité assurée !</h2>
+        <p id="service-vision-1">confiance</p>
+        <p id="service-vision-2">qualité</p>
+        <p id="service-vision-3">efficacité</p>
+        <p id="service-vision-4">proximité</p>
+    </section>
+
+    <section class="purpose section-except-home">
+        <h2>Notre but</h2>
+        <p><span id="quotes">«</span> Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?
+        WeWelcome est votre assistant dédié !<br>
+        Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement. <span id="quotes">»</span></p>
+    </section>
+    
+    <section class="key-figures section-except-home"
+    style="background-image: url(/assets/images/Indre-et-loire.png);">
+        <h2>Implanté en Touraine</h2>
+        <p id="key-figure-1">+50 <br><span>propriétaires déjà satisfaits</span></p>
+        <p id="key-figure-2">+500 <br><span>voyageurs conquis</span></p>
+        <p id="key-figure-3">+90% <br><span>de taux d'occupation</span></p>
+        <p id="key-figure-4">Disponible 7j/7</p>
+    </section>
+
+    <section class="activities">
+        <div class="conciergeriePresentation">
+            <h2>Conciergerie</h2>
+            <div class="pictogrammeConciergerie">
+                <figure>
+                    <img src="/assets/images/accueil_depart_voyageurs.png" alt="Accueil des voyageurs" width="42" heigth="42">
+                    <figcaption>Accueil des voyageurs</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/assistance.png" alt="Assistance des voyageurs" width="42" heigth="42">
+                    <figcaption>Assistance des voyageurs</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/general.png" alt="général" width="42" heigth="42">
+                    <figcaption>Général</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/Linge.png" alt="Linge" width="42" heigth="42">
+                    <figcaption>Linge</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/menage.png" alt="Ménage" width="42" heigth="42">
+                    <figcaption>Ménage</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/panierBienvenue.png" alt="Panier de bienvenue" width="42" heigth="42">
+                    <figcaption>Panier de bienvenue</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/serviceIntendance.png" alt="service d'intendance" width="42" heigth="42">
+                    <figcaption>Service d'intendance</figcaption>
+                </figure>
+            </div>
+            <div class="textIntendance">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                </p>
+                <div class="plusdinfos">
+                    <a href="">Plus d'infos</a>
+                </div>
+            </div>
+            <div class="prendreContact">
+                <a href="">Prendre contact</a>
             </div>
         </div>
-        <div class="prendreContact">
-            <a href="">Prendre contact</a>
-        </div>
-    </div>
-    <div class="intendancePresentation">
-        <h2>Intendance</h2>
-        <div class="pictogrammeIntendance">
-            <figure>
-                <img src="/assets/images/assistanceIntendance.png" alt="Assistance" width="42" heigth="42">
-                <figcaption>Assistance</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/course.png" alt="Courses" width="42" heigth="42">
-                <figcaption>Courses</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/picsine.png" alt="Entretien picsine" width="42" heigth="42">
-                <figcaption>Entretien piscine</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/jardin.png" alt="Entretien jardin" width="42" heigth="42">
-                <figcaption>Entretien jardin</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/entretienIntExt.png" alt="Entretien intérieur et Extérieur" width="42" heigth="42">
-                <figcaption>Entretien intérieur et extérieur</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/generalInt.png" alt="Général" width="42" heigth="42">
-                <figcaption>Général</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/miseRouteVeille.png" alt="Mise en route/veille" width="42" heigth="42">
-                <figcaption>Mise en route/veille</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/petitTravaux.png" alt="Petits travaux" width="42" heigth="42">
-                <figcaption>Petits travaux</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/suiviTravaux.png" alt="Suivi de travaux" width="42" heigth="42">
-                <figcaption>Suivi de travaux</figcaption>
-            </figure>
-            <figure>
-                <img src="/assets/images/surveillanceRegulier.png" alt="Surveillance régulière" width="42" heigth="42">
-                <figcaption>Surveillance régulière</figcaption>
-            </figure>
-        </div>
-        <div class="textIntendance">
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-            </p>
-            <div class="plusdinfos">
-                <a href="">Plus d'infos</a>
+        <div class="intendancePresentation">
+            <h2>Intendance</h2>
+            <div class="pictogrammeIntendance">
+                <figure>
+                    <img src="/assets/images/assistanceIntendance.png" alt="Assistance" width="42" heigth="42">
+                    <figcaption>Assistance</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/course.png" alt="Courses" width="42" heigth="42">
+                    <figcaption>Courses</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/picsine.png" alt="Entretien picsine" width="42" heigth="42">
+                    <figcaption>Entretien piscine</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/jardin.png" alt="Entretien jardin" width="42" heigth="42">
+                    <figcaption>Entretien jardin</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/entretienIntExt.png" alt="Entretien intérieur et Extérieur" width="42" heigth="42">
+                    <figcaption>Entretien intérieur et extérieur</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/generalInt.png" alt="Général" width="42" heigth="42">
+                    <figcaption>Général</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/miseRouteVeille.png" alt="Mise en route/veille" width="42" heigth="42">
+                    <figcaption>Mise en route/veille</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/petitTravaux.png" alt="Petits travaux" width="42" heigth="42">
+                    <figcaption>Petits travaux</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/suiviTravaux.png" alt="Suivi de travaux" width="42" heigth="42">
+                    <figcaption>Suivi de travaux</figcaption>
+                </figure>
+                <figure>
+                    <img src="/assets/images/surveillanceRegulier.png" alt="Surveillance régulière" width="42" heigth="42">
+                    <figcaption>Surveillance régulière</figcaption>
+                </figure>
+            </div>
+            <div class="textIntendance">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+                </p>
+                <div class="plusdinfos">
+                    <a href="">Plus d'infos</a>
+                </div>
+            </div>
+            <div class="prendreContact">
+                <a href="">Prendre contact</a>
             </div>
         </div>
-        <div class="prendreContact">
-            <a href="">Prendre contact</a>
+    </section>
+
+    <section class="partner">
+        <h2>Partenaires</h2>
+        <hr/>
+        <div class="logoPartner">
+            <!-- visible part -->
+            <nav class="navPartnerVisibile">
+                <a href=""><img src="/assets/images/partenaireAbritel.png" alt="Abritel" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireAirbnb.jpg" alt="Airbnb" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireBooking.png" alt="Booking" class="imgPartner"></a>
+            </nav>
+            <!-- hidden part -->
+            <nav class="navPartnerInvisible">
+                <a href=""><img src="/assets/images/partenaireFewo-direkt.png" alt="Fewo-direkt" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireGites.jpg" alt="Gites.fr" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireValLoireFrance.png" alt="Val de Loire France" class="imgPartner"></a>
+                <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
+            </nav>
+            <button id="allPartners">voir tous nos partenaires</button>
         </div>
-    </div>
-</section>
-<section class="partner">
-    <h2>Partenaires</h2>
-    <hr/>
-    <div class="logoPartner">
-        <!-- visible part -->
-        <nav class="navPartnerVisibile">
-            <a href=""><img src="/assets/images/partenaireAbritel.png" alt="Abritel" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireAirbnb.jpg" alt="Airbnb" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireBooking.png" alt="Booking" class="imgPartner"></a>
-        </nav>
-        <nav class="navPartnerInvisible">
-            <a href=""><img src="/assets/images/partenaireFewo-direkt.png" alt="Fewo-direkt" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireGites.jpg" alt="Gites.fr" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireValLoireFrance.png" alt="Val de Loire France" class="imgPartner"></a>
-            <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
-        </nav>
-        <button id="allPartners">voir tous nos partenaires</button>
-    </div>
-</section>
-{% include 'home/_contact.html.twig' %}
+    </section>
+
+    <!--Formulaire de contact-->
+    {% include 'home/_contact.html.twig' %}
+
 {% endblock %}
 
 {% block javascripts  %}
+    <script src="/assets/js/index.js"></script>
     <script src="/assets/js/indexPartner.js"></script> 
 {% endblock %}
