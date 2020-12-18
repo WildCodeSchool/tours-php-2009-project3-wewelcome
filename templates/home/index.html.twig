@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-    <link rel="stylesheet" href="/assets/styles/indexStyle.css">
+<link rel="stylesheet" href="/assets/styles/indexStyle.css">
 {% endblock %}
 
 {% block title %}WeWelcome{% endblock %}
@@ -71,12 +71,18 @@
                 <figcaption>Service d'intendance</figcaption>
             </figure>
         </div>
-        <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-        </p>
-        <a href="">Plus d'info</a>
-        <a href="">Contact</a>
+        <div class="textIntendance">
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
+            </p>
+            <div class="plusdinfos">
+                <a href="">Plus d'infos</a>
+            </div>
+        </div>
+        <div class="prendreContact">
+            <a href="">Prendre contact</a>
+        </div>
     </div>
     <div class="intendancePresentation">
         <h2>Intendance</h2>
@@ -127,9 +133,13 @@
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
             </p>
-            <a href="">Plus d'info</a>
+            <div class="plusdinfos">
+                <a href="">Plus d'infos</a>
+            </div>
         </div>
-        <a href="">Contact</a>
+        <div class="prendreContact">
+            <a href="">Prendre contact</a>
+        </div>
     </div>
 </section>
 <section class="partner">

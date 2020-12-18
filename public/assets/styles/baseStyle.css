@@ -1,8 +1,19 @@
 @import 'variables.css';
 
+* {
+    margin: 0;
+    padding: 0;
+}
+
 body {
     background-color: var(--white);
     color: --black;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-family: var(--primary-text);
+    font-size: 20px;
 }
 
 h2 {
@@ -15,7 +26,230 @@ h3 {
     font-size: 30px;
 }
 
-p {
+a {
+    color: whitesmoke;
+    text-decoration: none;
     font-family: var(--primary-text);
-    font-size: 20px;
 }
+
+hr {
+    display: block;
+    height: 2px;
+    border: 0;
+    border-top: 1px solid rgb(24, 21, 21);
+    width: 60%;
+    margin: 20px auto 20px auto;
+}
+
+/* START nav bar style */
+.navBar {
+    display: flex;
+    width: 100%;
+    position: fixed;
+    z-index: 10;
+    background-color: rgba(85, 69, 69, 0);
+}
+
+#topLogo {
+    width: 30%;
+    visibility: hidden;
+    margin-left: 3%;
+}
+
+#topLogo:hover {
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
+}
+
+#topLogo img {
+    width: 200px;
+    height: 36px;
+}
+
+.navBar nav {
+    width: 70%;
+    display: flex;
+    align-items: center;
+}
+
+.navLink {
+    font-weight: bold;
+    width: 20%;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.navLink:hover {
+    background-color: #9c61c183;
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
+}
+/* END nav bar style*/
+
+/* START back to top style */
+#returnTop {
+    color: rgba(83, 81, 81, 0.897);
+    margin: 1rem;
+    text-decoration: none;
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+    font-size: 18px;
+    border: solid;
+    outline: none;
+    background-color: whitesmoke;
+    cursor: pointer;
+    padding: 1px;
+    border-radius: 50%;
+    transition: all 0.1s ease-in-out;
+    width: 60px;
+    height: 60px;
+}
+
+#returnTop:hover {
+    transform: scale(1.10);
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+  }
+/* END back to top */
+
+/* START footer */
+footer {
+    background: rgba(83, 81, 81);
+    width: 100%;
+    margin-top: 30px;
+    padding-top: 30px;
+    padding-bottom: 40px;
+    display: flex;
+    color: whitesmoke;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.socialNetwork {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.socialNetworkLogo {
+    width: 50px;
+    height: 50px;
+}
+
+.socialNetworkLogo:hover {
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
+}
+
+.footerLeft {
+    width: 40%;
+    text-align: center;
+    margin-left: 10%;
+    margin-top: 20px;
+}
+
+.footerLeft h2 {
+    color: var(--primary-color);
+    font-size: 25px;
+}
+
+.footerRight {
+    width: 40%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    margin-right: 10%;
+    margin-top: 20px;
+}
+
+.footerLinks {
+    display: flex;
+    flex-direction: column;
+    height: 60%;
+}
+
+.footerLinks a {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.footerLinks a:hover {
+    color: var(--primary-color);
+    transform: scale(1.10);
+    transition: all 0.3s ease-in-out;
+}
+
+.info p {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: bold;
+}
+/* END footer */
+
+/* START contact form */
+#contact {
+    text-align: center;
+}
+
+.contactForm {
+    display: flex;
+    width: 70%;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    flex-wrap: wrap;
+}
+
+.contactForm label {
+    width: 30%;
+    align-self: center;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.radioContact, .inputContact {
+    width: 60%;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.radioContact {
+    text-align: center;
+}
+
+.radioContact label:hover, .radioContact input:hover {
+    cursor: pointer;
+}
+
+.contactSubmit {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 20%;
+    height: 40px;
+}
+
+.contactSubmit:hover {
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
+}
+
+.message {
+    height: 80px;
+    resize: none;
+    width: 63%;
+}
+/* END contact form */

@@ -139,3 +139,61 @@
     margin-right: auto;
 
 }
+/***SECTION PURPOSE AND VALUES___end***/
+
+/***SECTION ACTIVITY___start***/
+
+.activities h2 {
+    text-align: center;
+    margin: 3rem;
+}
+
+.activities {
+    display: flex;
+    margin: 1rem;
+}
+
+.activities img, figcaption {
+    display: block;
+    margin: auto;
+    width: 6rem;
+    text-align: center;
+}
+
+.activities figure:hover {
+    transform: scale(1.2);
+    transition-duration: 1s;
+}
+
+.pictogrammeConciergerie, .pictogrammeIntendance {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+}
+
+.plusdinfos {
+    text-align: right;
+}
+
+.prendreContact {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.conciergeriePresentation, .intendancePresentation {
+    opacity: 0.5;
+}
+
+.conciergeriePresentation:hover, .intendancePresentation:hover {
+    opacity: 1;
+    transition-duration: 1s;
+    background-color: white;
+}
+
+.textIntendance, .prendreContact, .plusdinfos {
+    margin-top: 1rem;
+}
+
+
+
+/***SECTION ACTIVITY___end***/

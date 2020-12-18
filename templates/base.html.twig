@@ -2,52 +2,57 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/assets/images/favicon.png" />
+    <link rel="icon" type="image/png" href="/assets/images/WeWELCOME-Icon-1-24x24px.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
     <link rel="stylesheet" href="/assets/styles/baseStyle.css">
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-    <section>
-            <a href="">
-                <img src="/assets/images/WeWELCOME-Logo-RVB-500px.png" alt="wewelcomeLogo" width="350" height="200">
-            </a>
-            <nav>
-                <a href="">Concierge</a>
-                <a href="">Intendance</a>
-                <a href="">Logement</a>
-                <a href="">Contact</a>
-                <a href="">English</a>
-            </nav>
+    <section class="navBar">
+        <a id="topLogo" href="{{ path('home') }}">
+            <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
+        </a>
+        <nav>
+            <a class="navLink" href="">Conciergerie</a>
+            <a class="navLink" href="">Intendance</a>
+            <a class="navLink" href="">Logement</a>
+            <a class="navLink" href="#contact">Contact</a>
+            <a class="navLink" href="">English</a>
+        </nav>
     </section>
     {% block body %}
     {% endblock %}
-    <section>
-        <nav>
+    <footer>
+        <button id="returnTop">Top</button>
+        <div class="socialNetwork">
+            <a href="">
+                <img class="socialNetworkLogo" src="/assets/images/instagram_icon.png" alt="Logo Instagram">
+            </a>
+            <a href="https://www.facebook.com/wewelcome.fr">
+                <img class="socialNetworkLogo" src="/assets/images/facebook_icon.png" alt="Logo Facebook">
+            </a>
+            <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
+                <img class="socialNetworkLogo" src="/assets/images/linkedin_icon.png" alt="Logo LinkdIn">
+            </a>
+        </div>
+        <div class="footerLeft">
             <h2>Coordonnées</h2>
-            <address>
+            <address class="info">
                 <p>Mr Alexandre DELALANDES</p>
                 <p>Tel. : <a href="tel:">06 00 00 00 00</a></p>
                 <p>Adresse : xx rue du test, 37000 Tours</p>
-                <p>Zone d'intervention :</p>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d346335.59479099093!2d0.5650539465908879!3d47.299746769129214!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fcd9384c167013%3A0x30dc8d7053327d0!2sIndre-et-Loire!5e0!3m2!1sfr!2sfr!4v1607519068296!5m2!1sfr!2sfr" width="300" height="225" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </address>
-            <a href="">
-                <img src="/assets/images/instagram_icon.png" alt="Instagram_Logo" width="42" height="42">
-            </a><a href="https://www.facebook.com/wewelcome.fr">
-                <img src="/assets/images/facebook_icon.png" alt="Facebook_Logo" width="42" height="42">
-            </a>
-            <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
-                <img src="/assets/images/linkedin_icon.png" alt="LinkedIn_Logo" width="42" height="42">
-            </a>
-        </nav>
-        <nav>
-            <a href="">Plan du site</a>
-            <a href="">Mentions légales</a>
-            <a href="">CGU</a>
-            <a href="">Travailler avec moi</a>
-        </nav>
-    </section>
+        </div>
+        <div class="footerRight">            
+            <nav class="footerLinks">
+                <a href="">Plan du site</a>
+                <a href="">Mentions légales</a>
+                <a href="">CGU</a>
+                <a href="">Travailler avec moi</a>
+            </nav>
+        </div>
+    </footer>
+    <script src="/assets/js/base.js"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>
