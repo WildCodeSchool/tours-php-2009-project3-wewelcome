@@ -92,4 +92,50 @@
     font-family: var(--primary-text);
     font-size: 25px;
 }
-/***SECTION PURPOSE AND VALUES___end***/
+/***SECTION Partenaire***/
+.partner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+.logoPartner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.navPartnerVisibile {
+    display: grid;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(3, 250px);
+    grid-row: auto;
+    padding-left: 3em;
+    justify-content: center;
+}
+.navPartnerInvisible {
+    display: none;
+    grid-gap: 0.5em;
+    grid-template-columns: repeat(3, 250px);
+    grid-row: auto;
+    padding-left: 3em;
+    justify-content: center;
+    align-items: center;
+}
+.boxVisibility {
+    justify-content: end center;
+}
+.imgPartner {
+    width: 100px;
+    margin: 10px;
+}
+.imgPartner:hover {
+    transform: scale(1.3);
+    transition: all 0.3s ease-in-out;
+}
+#allPartners {
+    width: 25%;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+
+}
