@@ -64,13 +64,12 @@
     z-index:2;
     font-size:150%;
     margin-left: 2.5%;
-    /*background-color: #59ace365;*/
-    /*color: var(--primary-color);*/
     font-weight: bold;
     border-radius: 20%;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
 }
+
 /* END picture and picto with explication of concierge */
 
 /* START button which send to contact form */

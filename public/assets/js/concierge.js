@@ -15,10 +15,11 @@ function showWelcomingText()
         myText.style.visibility = 'hidden';
         myImg.src = "/assets/images/concierge_index.jpg";
         myImg.style.opacity= "1";
+
     } else {
         myText.style.visibility = 'visible';
         myImg.src = "/assets/images/welcoming.jpg";
-        myImg.style.opacity= "0.7";
+        myImg.style.opacity = "0.7";
     }
 }
 
