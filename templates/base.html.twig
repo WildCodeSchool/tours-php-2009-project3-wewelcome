@@ -8,31 +8,17 @@
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
-<<<<<<< HEAD
-    <section>
-            <a href="">
-                <img src="build\images\WeWELCOME-Logo-RVB-500px.8d7a2900.png" alt="wewelcomeLogo" width="350" height="200">
-            </a>
-            <nav>
-                <a href="{{ path('concierge') }}">Concierge</a>
-                <a href="">Intendance</a>
-                <a href="">Logement</a>
-                <a href="">Contact</a>
-                <a href="">English</a>
-            </nav>
-=======
     <section class="navBar">
         <a id="topLogo" href="{{ path('home') }}">
             <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
         </a>
         <nav>
-            <a class="navLink" href="">Conciergerie</a>
+            <a class="navLink" href="{{ path('concierge') }}">Conciergerie</a>
             <a class="navLink" href="">Intendance</a>
             <a class="navLink" href="">Logement</a>
             <a class="navLink" href="#contact">Contact</a>
             <a class="navLink" href="">English</a>
         </nav>
->>>>>>> 07b5f311b9e443c8b1d271f3a47acf63b25ac917
     </section>
     {% block body %}
     {% endblock %}
