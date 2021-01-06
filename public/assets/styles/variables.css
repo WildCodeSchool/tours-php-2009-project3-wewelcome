@@ -10,6 +10,8 @@
     --primary-title: 'MontserratAlternates-ExtraBold', sans-serif;
     --secondary-title: 'MontserratAlternates-SemiBold', sans-serif;
     --primary-text: 'Montserrat-ExtraLight', sans-serif;
+    --secondary-text: 'Montserrat-Light', sans-serif;
+    --tertiary-text: 'Montserrat-Regular', sans-serif;
 }
 
 @font-face {
@@ -25,4 +27,14 @@
 @font-face {
     font-family: 'Montserrat-ExtraLight';
     src: url('../fonts/Montserrat-ExtraLight.otf');
+}
+
+@font-face {
+    font-family: 'Montserrat-Light';
+    src: url('../fonts/Montserrat-Light.otf');
+}
+
+@font-face {
+    font-family: 'Montserrat-Regular';
+    src: url('../fonts/Montserrat-Regular.otf');
 }
