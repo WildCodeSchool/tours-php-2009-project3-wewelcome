@@ -50,7 +50,6 @@ hr {
 }
 
 #topLogo {
-    /*visibility: hidden;*/
     margin-left: 3%;
 }
 
@@ -77,12 +76,12 @@ hr {
     text-align: center;
     color: var(--primary-color);
     font-weight: bold;
+    transition: all 0.3s ease-in-out;
 }
 
 .navLink:hover {
-    background-color: #9c61c183;
+    background-color: var(--primary-color-tint2);
     transform: scale(1.10);
-    transition: all 0.3s ease-in-out;
 }
 /* END nav bar style*/
 
@@ -99,7 +98,7 @@ hr {
     font-size: 18px;
     border: solid;
     outline: none;
-    background-color: whitesmoke;
+    background-color: var(--white);
     cursor: pointer;
     padding: 1px;
     border-radius: 50%;
@@ -112,8 +111,7 @@ hr {
     transform: scale(1.10);
     color: var(--primary-color);
     cursor: pointer;
-    transition: all 0.3s ease-in-out;
-  }
+}
 /* END back to top */
 
 /* START footer */

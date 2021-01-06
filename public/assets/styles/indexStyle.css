@@ -7,15 +7,7 @@
     overflow: hidden;
     margin: 0 auto;
 }
-/*
-.home-logo {
-    position: absolute;
-    z-index: 1;
-    width: 500px;
-    top: 30px;
-    left: 30px;
-}
-*/
+
 .home-text {
     z-index: 1;
     position: absolute;
@@ -26,7 +18,7 @@
     font-family: var(--primary-title);
     font-size: 4vw;
     color: var(--white);
-    text-shadow: 5px 5px 5px black;
+    text-shadow: 5px 5px 5px var(--black);
 }
 
 .home-carousel figure {
