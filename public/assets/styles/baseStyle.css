@@ -47,12 +47,10 @@ hr {
     width: 100%;
     position: fixed;
     z-index: 10;
-    background-color: rgba(85, 69, 69, 0);
 }
 
 #topLogo {
-    width: 30%;
-    visibility: hidden;
+    /*visibility: hidden;*/
     margin-left: 3%;
 }
 
@@ -62,23 +60,23 @@ hr {
 }
 
 #topLogo img {
-    width: 200px;
-    height: 36px;
+    width: 400px;
 }
 
 .navBar nav {
+    position: absolute;
+    right: 0;
     width: 70%;
     display: flex;
     align-items: center;
 }
 
 .navLink {
-    font-weight: bold;
     width: 20%;
+    padding: 10px 0;
     text-align: center;
-    padding-top: 10px;
-    padding-bottom: 10px;
     color: var(--primary-color);
+    font-weight: bold;
 }
 
 .navLink:hover {

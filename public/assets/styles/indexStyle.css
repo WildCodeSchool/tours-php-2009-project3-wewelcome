@@ -7,15 +7,15 @@
     overflow: hidden;
     margin: 0 auto;
 }
-
+/*
 .home-logo {
     position: absolute;
     z-index: 1;
-    width: 800px;
-    top: 50px;
-    left: 50px;
+    width: 500px;
+    top: 30px;
+    left: 30px;
 }
-
+*/
 .home-text {
     z-index: 1;
     position: absolute;
