@@ -27,7 +27,7 @@ h3 {
 }
 
 a {
-    color: whitesmoke;
+    color: var(--white);
     text-decoration: none;
     font-family: var(--primary-text);
 }
@@ -36,7 +36,7 @@ hr {
     display: block;
     height: 2px;
     border: 0;
-    border-top: 1px solid rgb(24, 21, 21);
+    border-top: 1px solid var(--black);
     width: 60%;
     margin: 20px auto 20px auto;
 }
@@ -51,11 +51,11 @@ hr {
 
 #topLogo {
     margin-left: 3%;
+    transition: all 0.3s ease-in-out;
 }
 
 #topLogo:hover {
-    transform: scale(1.10);
-    transition: all 0.3s ease-in-out;
+    transform: scale(1.1);
 }
 
 #topLogo img {
@@ -81,7 +81,8 @@ hr {
 
 .navLink:hover {
     background-color: var(--primary-color-tint2);
-    transform: scale(1.10);
+    color: var(--white);
+    transform: scale(1.1);
 }
 /* END nav bar style*/
 
@@ -253,3 +254,29 @@ footer {
     width: 63%;
 }
 /* END contact form */
+
+/***CALL TO ACTION___start***/
+
+.button-contact {
+    width: 300px;
+    padding: 20px 30px;
+    border-top: solid 5px var(--primary-color);
+    border-bottom: solid 5px var(--primary-color);
+    background-color: var(--primary-color);
+    font-family: var(--secondary-title);
+    color: var(--white);
+    text-transform: uppercase;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+}
+
+.button-contact:hover {
+    padding: 20px 60px;
+    border-top: solid 5px var(--primary-color);
+    border-bottom: solid 5px var(--primary-color);
+    background-color: var(--white);
+    color: var(--primary-color);
+    letter-spacing: 5px;
+}
+
+/***CALL TO ACTION___end***/

@@ -7,26 +7,26 @@
     --quaternary-color: #26c281;
     --white: #fffafa;
     --black: #020202;
-    --primary-title: 'MontserratAlternates-ExtraBold', sans-serif;
-    --secondary-title: 'MontserratAlternates-SemiBold', sans-serif;
-    --primary-text: 'Montserrat-ExtraLight', sans-serif;
+    --primary-title: 'Montserrat-Bold', sans-serif;
+    --secondary-title: 'Montserrat-SemiBold', sans-serif;
+    --primary-text: 'Montserrat-Regular', sans-serif;
     --secondary-text: 'Montserrat-Light', sans-serif;
-    --tertiary-text: 'Montserrat-Regular', sans-serif;
+    --tertiary-text: 'Montserrat-ExtraLight', sans-serif;
 }
 
 @font-face {
-    font-family: 'MontserratAlternates-ExtraBold';
-    src: url('../fonts/MontserratAlternates-ExtraBold.otf');
+    font-family: 'Montserrat-Bold';
+    src: url('../fonts/Montserrat-Bold.otf');
 }
 
 @font-face {
-    font-family: 'MontserratAlternates-SemiBold';
-    src: url('../fonts/MontserratAlternates-SemiBold.otf');
+    font-family: 'Montserrat-SemiBold';
+    src: url('../fonts/Montserrat-SemiBold.otf');
 }
 
 @font-face {
-    font-family: 'Montserrat-ExtraLight';
-    src: url('../fonts/Montserrat-ExtraLight.otf');
+    font-family: 'Montserrat-Regular';
+    src: url('../fonts/Montserrat-Regular.otf');
 }
 
 @font-face {
@@ -35,6 +35,6 @@
 }
 
 @font-face {
-    font-family: 'Montserrat-Regular';
-    src: url('../fonts/Montserrat-Regular.otf');
+    font-family: 'Montserrat-ExtraLight';
+    src: url('../fonts/Montserrat-ExtraLight.otf');
 }
