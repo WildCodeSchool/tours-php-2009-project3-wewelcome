@@ -9,22 +9,28 @@ const pictoStewardship = document.getElementById('pictoStewardship');
 function showWelcomingText()
 {
     let myText = document.getElementById('textWelcoming');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge_index.jpg";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/welcoming.jpg";
     }
 }
 
 function showAssistanceText()
 {
     let myText = document.getElementById('textAssistance');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge_index.jpg";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/assistanceImg.png";
     }
 }
 
