@@ -1,0 +1,110 @@
+/*** section Tariff ***/
+.tariffSection {
+    text-align: center;
+    justify-items: center;
+}
+
+.texTariff {
+    width: 20%;
+    text-align: center;
+    margin: auto;
+}
+
+.imgTariff {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/*** End section Tariff ***/
+
+/*** section full services / deco ***/
+.fullServicesLayingOut {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin-top: 2em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-bottom: 2em;
+    background-color:  lightgray;
+}
+
+.contentParts {
+    display: flex;
+    justify-content: center;
+}
+
+.fullServicesPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.layoutPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.imgFullServicesLayout {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.textFullServicesLayout{
+    width: 50%;
+    margin: auto;
+}
+
+.linkQuote {
+    background-color: black;
+    border: solid black 1px;
+    width: 220px;
+    margin: auto;
+    border-radius: 25px;
+}
+
+.linkQuote:hover {
+    background-color:  lightgray;
+    color: black;
+    border: solid black 1px;
+    margin: auto;
+}
+/*** End section Full services / laying out ***/
+
+/*** Section profitability Rental Legislation ***/
+.profitabilityRentalLegislation {
+    display: flex;
+    justify-content: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+}
+
+.profitabilityRentalPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.legislationPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.titleLegislationPart {
+    margin-bottom: 1.3em;
+}
+
+.textProfitabilityRentalPart {
+    width: 50%;
+    margin: auto;
+}
+
+.imgProfitabilityRentalPart {
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}

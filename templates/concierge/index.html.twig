@@ -1,9 +1,67 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/conciergerieStyle.css">
+{% endblock %}
+
 {% block title %}Conciergerie - {{ parent() }}{% endblock %}
 
 {% block body %}
 <h2>Conciergerie</h2>
+<section class="tariffSection">
+    <h2>Tarifs</h2>
+    <hr/>
+    <p class="texTariff">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna 
+        aliqua. Ut enim ad minim veniam, quis ...
+    </p>
+    <img class="imgTariff" src="/assets/images/exempleTarif.png">
+</section>
+<section class="fullServicesLayingOut">
+    <div class="contentParts">
+        <div class="fullServicesPart">
+            <h2>Services Complémentaires</h2>
+            <img class="imgFullServicesLayout" src="/assets/images/fullService.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+        <div class="layoutPart">
+            <h2> Aménagement et décoration</h2>
+            <img class="imgFullServicesLayout" src="/assets/images/AmenagementInterieur.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+    </div>
+    <a class="linkQuote" href="#contact">Je demande un devis</a>
+</section>
+<section class="profitabilityRentalLegislation">
+    <div class="profitabilityRentalPart">
+        <h2>Rentabilité de la location saisonnière</h2>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ...
+        </p>
+    </div>
+    <div class="legislationPart">
+        <h2 class="titleLegislationPart">Législation</h2>
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ..
+        </P>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
+    </div>
+</section>
+
 
 {% include "/home/_contact.html.twig" %}
 {% endblock %}
