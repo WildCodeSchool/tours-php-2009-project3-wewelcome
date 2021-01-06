@@ -1,15 +1,82 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/conciergerieStyle.css">
+<link rel="stylesheet" href="/assets/styles/conciergeStyle.css">
 {% endblock %}
 
 {% block title %}Conciergerie - {{ parent() }}{% endblock %}
 
 {% block body %}
-<h2>Conciergerie</h2>
+<section class="generalInfo">
+    <div class="left">
+        <img id="conciergeImg" src="/assets/images/concierge_index.jpg" alt="Photo d'un salon avec miroir">
+        <div class="hidden">
+            <p id="textWelcoming" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Welcome</p>
+            <p id="textAssistance" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Assistance</p>
+            <p id="textGeneral" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. General</p>
+            <p id="textLinens" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Linens</p>
+            <p id="textCleaning" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Cleaning</p>
+            <p id="textFoodBasket" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Food Basket</p>
+            <p id="textStewardship" class="textPicto">Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+            elit, sed do eiusmod tempor incididunt. Stewardship</p>
+        </div>
+    </div>
+    <div class="right">
+        <h2>Conciergerie</h2>
+        <hr />
+        <h3 class="title">Services</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <div class="conciergeDetails">
+            <figure>
+                <img id="pictoWelcoming" src="/assets/images/accueil_depart_voyageurs.png" alt="Accueil des voyageurs">
+                <figcaption>Accueil des voyageurs</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoAssistance" src="/assets/images/assistance.png" alt="Assistance des voyageurs">
+                <figcaption>Assistance des voyageurs</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoGeneral" src="/assets/images/general.png" alt="général">
+                <figcaption>Général</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoLinens" src="/assets/images/Linge.png" alt="Linge">
+                <figcaption>Linge</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoCleaning" src="/assets/images/menage.png" alt="Ménage">
+                <figcaption>Ménage</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoFoodBasket" src="/assets/images/panierBienvenue.png" alt="Panier de bienvenue">
+                <figcaption>Panier de bienvenue</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoStewardship" src="/assets/images/serviceIntendance.png" alt="service d'intendance">
+                <figcaption>Service d'intendance</figcaption>
+            </figure>
+        </div>
+        <h3 class="title">Formules</h3>
+        <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
+        <a href="#contact"><button class="contactButton">Je demande un devis</button></a>
+    </div>
+</section>
 <section class="tariffSection">
-    <h2>Tarifs</h2>
+    <h3>Tarifs</h3>
     <hr/>
     <p class="texTariff">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit,
@@ -21,7 +88,7 @@
 <section class="fullServicesLayingOut">
     <div class="contentParts">
         <div class="fullServicesPart">
-            <h2>Services Complémentaires</h2>
+            <h3>Services Complémentaires</h3>
             <img class="imgFullServicesLayout" src="/assets/images/fullService.jpg">
             <p class="textFullServicesLayout">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -30,7 +97,7 @@
             </p>
         </div>
         <div class="layoutPart">
-            <h2> Aménagement et décoration</h2>
+            <h3> Aménagement et décoration</h3>
             <img class="imgFullServicesLayout" src="/assets/images/AmenagementInterieur.jpg">
             <p class="textFullServicesLayout">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -43,7 +110,7 @@
 </section>
 <section class="profitabilityRentalLegislation">
     <div class="profitabilityRentalPart">
-        <h2>Rentabilité de la location saisonnière</h2>
+        <h3>Rentabilité de la location saisonnière</h3>
         <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
         <p class="textProfitabilityRentalPart">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
@@ -52,7 +119,7 @@
         </p>
     </div>
     <div class="legislationPart">
-        <h2 class="titleLegislationPart">Législation</h2>
+        <h3 class="titleLegislationPart">Législation</h3>
         <p class="textProfitabilityRentalPart">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
             sed do eiusmod tempor incididunt ut labore et dolore magna 
@@ -61,7 +128,9 @@
         <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
     </div>
 </section>
-
-
 {% include "/home/_contact.html.twig" %}
+{% endblock %}
+
+{% block javascripts  %}
+    <script src="/assets/js/concierge.js"></script>
 {% endblock %}
