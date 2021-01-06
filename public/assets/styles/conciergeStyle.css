@@ -1,0 +1,92 @@
+/* START picture and picto with explication of concierge */
+.generalInfo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+}
+
+.left {
+    width: 50%;
+}
+
+.left img {
+    width: 100%;
+    height: auto;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.conciergeDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.conciergeDetails img {
+    width: 40%;
+}
+
+.conciergeDetails img:hover {
+    transform: scale(1.1);
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.blue {
+    color: var(--tertiary-color);
+    font-weight: bold;
+    font-family: var(--secondary-title);
+}
+
+.title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.right p {
+    padding-bottom: 15px;
+}
+
+.textPicto {
+    position:absolute;
+    top:40%;
+    width:45%;
+    height:auto;
+    padding: 5px 5px 5px 5px;
+    z-index:2;
+    font-size:150%;
+    margin-left: 2.5%;
+    background-color: #59ace38a;
+    color: var(--primary-color);
+    font-weight: bold;
+    border-radius: 20%;
+    visibility: hidden;
+}
+/* END picture and picto with explication of concierge */
+
+/* START button which send to contact form */
+.contactButton {
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+}
+
+.contactButton:hover {
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
+}
+/* END button which send to contact form */
