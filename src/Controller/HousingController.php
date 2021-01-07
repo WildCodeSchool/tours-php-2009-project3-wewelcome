@@ -14,7 +14,7 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 class HousingController extends AbstractController
 {
     /**
-     * @Route("/housing", name="housing")
+     * @Route("/logement", name="housing")
      */
     public function index(Request $request, MailerInterface $mailer): Response
     {
