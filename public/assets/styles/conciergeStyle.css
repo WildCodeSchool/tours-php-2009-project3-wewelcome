@@ -81,6 +81,9 @@
     border-radius: 5px;
     width: 40%;
     height: 40px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contactButton:hover {
@@ -147,25 +150,33 @@
 .imgFullServicesLayout {
     margin-top: 1em;
     margin-bottom: 1em;
+    width: 90%;
+    height: 50%;
+    overflow: hidden;
 }
 
 .textFullServicesLayout{
-    width: 50%;
+    width: 90%;
     margin: auto;
 }
 
 .linkQuote {
-    background-color: black;
-    border: solid black 1px;
-    width: 220px;
-    margin: auto;
-    border-radius: 25px;
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 20%;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .linkQuote:hover {
-    color: black;
-    border: solid black 1px;
-    margin: auto;
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
 }
 /*** End section Full services / laying out ***/
 
