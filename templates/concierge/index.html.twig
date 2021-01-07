@@ -1,10 +1,10 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Conciergerie - {{ parent() }}{% endblock %}
-
 {% block stylesheets %}
 <link rel="stylesheet" href="/assets/styles/conciergeStyle.css">
 {% endblock %}
+
+{% block title %}Conciergerie - {{ parent() }}{% endblock %}
 
 {% block body %}
 <section class="generalInfo">
@@ -73,6 +73,59 @@
         <h3 class="title">Formules</h3>
         <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
         <a href="#contact"><button class="contactButton">Je demande un devis</button></a>
+    </div>
+</section>
+<section class="tariffSection">
+    <h3>Tarifs</h3>
+    <hr/>
+    <p class="texTariff">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna 
+        aliqua. Ut enim ad minim veniam, quis ...
+    </p>
+    <img class="imgTariff" src="/assets/images/exempleTarif.png">
+</section>
+<section class="fullServicesLayingOut">
+    <div class="contentParts">
+        <div class="fullServicesPart">
+            <h3>Services Complémentaires</h3>
+            <img class="imgFullServicesLayout" src="/assets/images/fullService.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+        <div class="layoutPart">
+            <h3> Aménagement et décoration</h3>
+            <img class="imgFullServicesLayout" src="/assets/images/AmenagementInterieur.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+    </div>
+    <a class="linkQuote" href="#contact">Je demande un devis</a>
+</section>
+<section class="profitabilityRentalLegislation">
+    <div class="profitabilityRentalPart">
+        <h3>Rentabilité de la location saisonnière</h3>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ...
+        </p>
+    </div>
+    <div class="legislationPart">
+        <h3 class="titleLegislationPart">Législation</h3>
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ..
+        </P>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/legislationImage.jpg">
     </div>
 </section>
 {% include "/home/_contact.html.twig" %}
