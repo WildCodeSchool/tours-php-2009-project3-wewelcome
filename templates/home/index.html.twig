@@ -177,6 +177,9 @@
                 <a href=""><img src="/assets/images/partners/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire" class="imgPartner"></a>
                 <a href=""><img src="/assets/images/partners/partenaireValLoireFrance.png" alt="Val de Loire France" class="imgPartner"></a>
                 <a href=""><img src="/assets/images/partners/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
+                {% for partner in partners %}
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% endfor %}
             </nav>
             <button id="allPartners">voir tous nos partenaires</button>
         </div>

@@ -8,6 +8,8 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class PartnerFormType extends AbstractType
 {
@@ -16,7 +18,18 @@ class PartnerFormType extends AbstractType
         $builder
             ->add('name', TextType::class)
             ->add('url', TextType::class)
-            ->add('logo', TextType::class)
+            ->add('logo', FileType::class, [
+                'constraints' => [
+                    new File([
+                        'maxSize' => '200k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                        ],
+                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                    ])
+                ],
+            ])
             ->add('type', ChoiceType::class, [
                 'choices'  => [
                     'Plateforme d\'hébergement' => 'hostingPlatform',

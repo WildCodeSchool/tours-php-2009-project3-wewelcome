@@ -13,20 +13,48 @@ use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Form\PartnerFormType;
 use App\Entity\Partner;
 use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\PartnerRepository;
+use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request, MailerInterface $mailer, EntityManagerInterface $entityManager): Response
-    {
+    public function index(
+        Request $request,
+        MailerInterface $mailer,
+        EntityManagerInterface $entityManager,
+        PartnerRepository $partnerRepository,
+        SluggerInterface $slug
+    ): Response {
+        $error = '';
+
+        $partners = $partnerRepository->findAll();
+
         /** Display the add partner form and add it in the DB */
         $partner = new Partner();
         $partnerForm = $this->createForm(PartnerFormType::class, $partner);
         $partnerForm->handleRequest($request);
 
         if ($partnerForm->isSubmitted() && $partnerForm->isValid()) {
+            $logoPartnerFile = $partnerForm->get('logo')->getData();
+
+            $logoSlugName = $slug->slug($partner->getName());
+            $logoFileName = $logoSlugName . '-' . uniqid() . '.' . $logoPartnerFile->guessExtension();
+
+            try {
+                $logoPartnerFile->move(
+                    $this->getParameter('partners_directory'),
+                    $logoFileName
+                );
+            } catch (FileException $e) {
+                $error = 'Le fichier n\'a pas pu être ajouté.';
+            }
+
+            $partner->setLogo($logoFileName);
             $entityManager->persist($partner);
             $entityManager->flush();
 
@@ -53,7 +81,9 @@ class HomeController extends AbstractController
 
         return $this->render('home/index.html.twig', [
             'form' => $form->createView(),
-            'partnerForm' => $partnerForm->createView()
+            'partnerForm' => $partnerForm->createView(),
+            'partners' => $partners,
+            'error' => $error
         ]);
     }
 }

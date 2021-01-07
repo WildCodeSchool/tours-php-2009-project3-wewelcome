@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\PartnerRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PartnerRepository::class)
@@ -24,6 +25,7 @@ class Partner
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Url
      */
     private string $url;
 
@@ -42,7 +44,7 @@ class Partner
         return $this->id;
     }
 
-    public function getName(): ?string
+    public function getName(): string
     {
         return $this->name;
     }
