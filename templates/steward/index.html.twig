@@ -1,13 +1,12 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="/asset/styles/stewardship.css">
+<link rel="stylesheet" href="/asset/styles/steward.css">
 {% endblock %}
 
-{% block title %}WeWelcome{% endblock %}
+{% block title %}Intendance - {{ parent() }}{% endblock %}
 
 {% block body %}
-
 <!--Formulaire de contact-->
 <section class="contact">
     {% include 'home/_contact.html.twig' %}
