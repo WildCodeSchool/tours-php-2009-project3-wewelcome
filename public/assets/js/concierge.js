@@ -13,12 +13,12 @@ function showWelcomingText()
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
-        myImg.src = "/assets/images/concierge_index.jpg";
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
         myImg.style.opacity= "1";
 
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = "/assets/images/welcoming.jpg";
+        myImg.src = "/assets/images/concierge/welcomingImg.jpg";
         myImg.style.opacity = "0.7";
     }
 }
@@ -30,11 +30,11 @@ function showAssistanceText()
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
-        myImg.src = "/assets/images/concierge_index.jpg";
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = "/assets/images/assistanceImg.png";
+        myImg.src = "/assets/images/concierge/assistanceImg.png";
         myImg.style.opacity= "0.7";
     }
 }
@@ -42,55 +42,80 @@ function showAssistanceText()
 function showGeneralText()
 {
     let myText = document.getElementById('textGeneral');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/generalImg.jpg";
+        myImg.style.opacity= "0.7";
     }
 }
 
 function showLinensText()
 {
     let myText = document.getElementById('textLinens');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/linensImg.jpg";
+        myImg.style.opacity= "0.7";
     }
 }
 
 function showCleaningText()
 {
     let myText = document.getElementById('textCleaning');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/cleaningImg.jpg";
+        myImg.style.opacity= "0.7";
     }
 }
 
 function showFoodBasketText()
 {
     let myText = document.getElementById('textFoodBasket');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/foodBasketImg.jpg";
+        myImg.style.opacity= "0.7";
     }
 }
 
 function showStewardShipText()
 {
     let myText = document.getElementById('textStewardship');
+    let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/intendanceImg.jpg";
+        myImg.style.opacity= "0.7";
     }
 }
 
