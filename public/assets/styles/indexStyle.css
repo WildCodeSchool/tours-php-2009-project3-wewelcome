@@ -17,12 +17,12 @@
 }
 
 .home-text {
-    margin: 350px auto 100px;
-    width: 1000px;
+    margin: 30vh auto 10vh;
+    width: 70vw;
     font-family: var(--primary-title);
-    letter-spacing: 5px;
-    font-size: 3vw;
+    font-size: 3.5rem;
     color: var(--white);
+    letter-spacing: 0.5rem;
     text-shadow: 5px 5px 20px var(--black);
 }
 
@@ -68,110 +68,70 @@
 /***ALL SECTIONS EXCEPT HOME___start***/
 
 /***SECTION VALUES AND PURPOSE___start***/
-.values,
-.purpose {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.values h2,
-.purpose h2 {
-    z-index: 1;
-    margin-bottom: -40px;
-    padding: 0 40px;
-    font-family: var(--primary-title);
-    font-size: 4vw;
-    letter-spacing: 0.3vw;
-    color: var(--primary-color-tint2);
-    background-color: var(--white);
-}
-
-.values p,
-.purpose p {
-    width: 1200px;
-    padding: 80px 50px 50px;
-    border: solid 1px var(--secondary-color);
-    font-family: var(--tertiary-text);
-    font-size: 2vw;
-    line-height: 3vw;
-    text-align: justify;
-    letter-spacing: 0.3vw;
-}
-
-#quotes {
-    font-weight: bold;
-    font-size: 3vw;
-    color: var(--primary-color);
-}
-/***SECTION VALUES AND PURPOSE___end***/
-
-/***SECTION SERVICE VISION___start***/
-.service-vision {
-    position: relative;
+.purpose,
+.values {
     text-align: center;
     padding-top: 20vh;
-    color: var(--quaternary-color);
 }
 
-.service-vision h2 {
-    font-family: var(--primary-title);
-    font-size: 4vw;
-    letter-spacing: 0.3vw;
-    text-shadow: 5px 5px 5px black;
+.purpose section,
+.values section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5vh;
 }
 
-.service-vision p {
-    font-family: var(--tertiary-text);
-    font-size: 3vw;
-    text-transform: uppercase;
-    text-shadow: 5px 5px 5px black;
+.purpose,
+.values {
+    background-color: var(--secondary-color-tint1);
+    color: var(--black);
 }
 
-#service-vision-1,
-#service-vision-2,
-#service-vision-3,
-#service-vision-4 {
-    position: absolute;
-    left: -50vh;
+.purpose-text,
+.values-text {
+    padding: 2vw;
+    font-family: var(--primary-text);
+    font-size: 1.8rem;
+    line-height: 3rem;
+    text-align: justify;
 }
 
-#service-vision-1 {
-    top: 40vh;
+.purpose-text span,
+.values-text span {
+    font-family: var(--secondary-title);
+    font-size: 2vw;
+    color: var(--primary-color);
+    line-height: 3.5rem;
 }
 
-#service-vision-2 {
-    top: 50vh;
+.purpose-picture,
+.values-picture {
+    padding: 2vw;
 }
 
-#service-vision-3 {
-    top: 60vh;
+.purpose-picture img,
+.values-picture img {
+    height: 60vh;
 }
 
-#service-vision-4 {
-    top: 70vh;
-}
-/***SECTION SERVICE VISION___end***/
+/***SECTION VALUES AND PURPOSE___end***/
 
 /***SECTION KEY-FIGURES___start***/
 .key-figures {
     position: relative;
     padding-top: 20vh;
-    color: var(--tertiary-color);
+    background-color: var(--white);
 }
 
 .key-figures h2 {
     font-family: var(--primary-title);
-    font-size: 4vw;
-    letter-spacing: 0.3vw;
+    font-size: 3rem;
+    color: var(--primary-color);
+    letter-spacing: 0.5rem;
+    text-shadow: 2px 2px 10px var(--white);
     text-align: center;
-}
-
-.key-figures p {
-    font-family: var(--tertiary-text);
-    font-size: 3vw;
-    text-align: end;
 }
 
 #key-figure-1,
@@ -179,36 +139,106 @@
 #key-figure-3,
 #key-figure-4 {
     position: absolute;
-    left: -50vh;
-    width: 500px;
-    padding: 0;
+    left: -100vw;
+    width: 200px;
+    font-family: var(--primary-title);
+    font-size: 3rem;
+    color: var(--white);
+    background-color: var(--primary-color);
+    text-align: center;
 }
 
-#key-figure-1 {
+#key-figure-11,
+#key-figure-21,
+#key-figure-31,
+#key-figure-41 {
+    position: absolute;
+    right: -100vw;
+    width: 800px;
+    font-family: var(--primary-text);
+    font-size: 1.8rem;
+    line-height: 3rem;
+    color: var(--black);
+}
+
+#key-figure-1,
+#key-figure-11 {
     top: 40vh;
 }
 
-#key-figure-2 {
+#key-figure-2,
+#key-figure-21 {
     top: 55vh;
 }
 
-#key-figure-3 {
+#key-figure-3,
+#key-figure-31 {
     top: 70vh;
 }
 
-#key-figure-4 {
+#key-figure-4,
+#key-figure-41 {
     top: 85vh;
 }
 
-#key-figure-1 span,
-#key-figure-2 span,
-#key-figure-3 span,
-#key-figure-4 span {
-    font-family: var(--secondary-text);
-    font-size: 2vw;
+#key-figure-contact {
+    position: absolute;
+    right: -100vw;
+    top: 85vh;
 }
 
 /***SECTION KEY-FIGURES___end***/
+
+/***SECTION SERVICE VISION___start***/
+.service-vision {
+    position: relative;
+    padding-top: 20vh;
+}
+
+.service-vision h2 {
+    font-family: var(--primary-title);
+    font-size: 3rem;
+    color: var(--primary-color);
+    letter-spacing: 0.5rem;
+    text-shadow: 2px 2px 10px var(--white);
+    text-align: center;
+}
+
+#service-vision-1,
+#service-vision-2,
+#service-vision-3,
+#service-vision-4 {
+    position: absolute;
+    left: -100vw;
+    font-family: var(--primary-title);
+    font-size: 3rem;
+    color: var(--white);
+    text-shadow: 2px 2px 10px var(--black);
+    text-align: center;
+}
+
+#service-vision-1 {
+    top: 40vh;
+}
+
+#service-vision-2 {
+    top: 55vh;
+}
+
+#service-vision-3 {
+    top: 70vh;
+}
+
+#service-vision-4 {
+    top: 85vh;
+}
+
+#service-vision-contact {
+    position: absolute;
+    right: -100vw;
+    top: 85vh;
+}
+/***SECTION SERVICE VISION___end***/
 
 /***SECTION ACTIVITY___start***/
 

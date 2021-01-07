@@ -44,9 +44,11 @@ hr {
 /* START nav bar style */
 .navBar {
     display: flex;
+    align-items: center;
     width: 100%;
     position: fixed;
     z-index: 10;
+    padding: 5px;
 }
 
 #topLogo {
@@ -266,6 +268,7 @@ footer {
     font-family: var(--secondary-title);
     color: var(--white);
     text-transform: uppercase;
+    text-align: center;
     transition: all 0.2s ease-in;
     cursor: pointer;
 }
