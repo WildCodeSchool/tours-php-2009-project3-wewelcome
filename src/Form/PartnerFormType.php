@@ -32,7 +32,7 @@ class PartnerFormType extends AbstractType
             ])
             ->add('type', ChoiceType::class, [
                 'choices'  => [
-                    'Plateforme d\'hébergement' => 'hostingPlatform',
+                    'Plateforme de réservation' => 'hostingPlatform',
                     'Autre' => 'other',
                 ],
             ])

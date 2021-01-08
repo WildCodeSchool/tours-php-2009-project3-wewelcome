@@ -41,6 +41,11 @@ hr {
     margin: 20px auto 20px auto;
 }
 
+.adminPanel {
+    background-color: var(--secondary-color);
+}
+
+
 /* START nav bar style */
 .navBar {
     display: flex;
@@ -256,3 +261,21 @@ footer {
     width: 63%;
 }
 /* END contact form */
+
+/* START admin forms */
+.adminForm {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    width: 80%;
+    max-width: 700px;
+    flex-wrap: wrap;
+}
+
+.adminForm label {
+    width: 50%;
+    align-self: center;
+    text-align: right;
+    margin-right: 5px;
+}
+/* END admin forms */

@@ -183,10 +183,19 @@
             </nav>
             <button id="allPartners">voir tous nos partenaires</button>
         </div>
-        {{ form_start(partnerForm) }}
-            {{ form_widget(partnerForm) }}
+        <div class="adminPanel">
+        {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+            {{ form_widget(partnerForm.name) }}
+            {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+            {{ form_widget(partnerForm.url) }}
+            {{ form_label(partnerForm.logo, 'Logo au format png ou jpeg :') }}
+            {{ form_widget(partnerForm.logo) }}
+            {{ form_label(partnerForm.type, 'Type :') }}
+            {{ form_widget(partnerForm.type) }}
             <input type='submit' value='Ajouter'>
         {{ form_end(partnerForm) }}
+        </div>
     </section>
 
     <!--Formulaire de contact-->
