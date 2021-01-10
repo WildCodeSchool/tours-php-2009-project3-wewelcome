@@ -335,6 +335,7 @@ footer {
 /***CALL TO ACTION___start***/
 
 .button-contact {
+    box-sizing: border-box;
     width: 300px;
     padding: 20px 30px;
     border-top: solid 5px var(--primary-color);
@@ -343,6 +344,7 @@ footer {
     border-left: none;
     background-color: var(--primary-color);
     font-family: var(--secondary-title);
+    font-size: 1rem;
     color: var(--white);
     text-transform: uppercase;
     text-align: center;
@@ -351,12 +353,11 @@ footer {
 }
 
 .button-contact:hover {
-    padding: 20px 60px;
     border-top: solid 5px var(--primary-color);
     border-bottom: solid 5px var(--primary-color);
     background-color: var(--white);
     color: var(--primary-color);
-    letter-spacing: 5px;
+    letter-spacing: 3px;
 }
 
 /***CALL TO ACTION___end***/
