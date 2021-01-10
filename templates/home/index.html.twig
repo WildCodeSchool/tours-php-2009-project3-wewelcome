@@ -179,16 +179,19 @@
                 <a href=""><img src="/assets/images/partners/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
                 {% for partner in partners %}
                 <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
                 <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
                     <button class="btn">Effacer</button>
                 </form>
+                {% endif %}
                 {% endfor %}
             </nav>
             <button id="allPartners">voir tous nos partenaires</button>
         </div>
         <!-- Add a new partner -->
+        {% if app.user %}
         <div class="adminPanel">
             <div class="add">
             {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
@@ -204,6 +207,7 @@
             {{ form_end(partnerForm) }}
             </div>
         </div>
+        {% endif %}
     </section>
 
     <!--Formulaire de contact-->
