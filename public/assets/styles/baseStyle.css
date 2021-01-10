@@ -261,6 +261,7 @@ footer {
     background-color: var(--primary-color-tint2);
     color: var(--white);
     font-weight: bold;
+    cursor: pointer;
 }
 .contact-objet input[type="radio"]:checked + label {
     background-color: var(--primary-color);
