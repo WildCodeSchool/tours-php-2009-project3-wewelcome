@@ -17,9 +17,17 @@ use App\Repository\PartnerRepository;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Filesystem\Filesystem;
 
 class HomeController extends AbstractController
 {
+    private string $kernelRoot;
+
+    public function __construct(string $kernelRoot)
+    {
+        $this->kernelRoot = $kernelRoot;
+    }
+
     /**
      * @Route("/", name="home")
      */
@@ -93,6 +101,10 @@ class HomeController extends AbstractController
     public function deletePartner(Request $request, Partner $partner): Response
     {
         if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
+            $filesystem = new Filesystem();
+            $path = $this->kernelRoot . '/public/assets/images/partners/' . $partner->getLogo();
+            $filesystem->remove($path);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partner);
             $entityManager->flush();
