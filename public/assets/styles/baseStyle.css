@@ -18,7 +18,18 @@ html {
 
 h2 {
     font-family: var(--primary-title);
-    font-size: 40px;
+    font-size: 3rem;
+    letter-spacing: 0.5rem;
+    text-align: center;
+    padding-top: 10vh;
+}
+
+.h2-primary-color {
+    color: var(--primary-color);
+}
+
+.h2-white {
+    color: var(--white);
 }
 
 h3 {
@@ -34,11 +45,17 @@ a {
 
 hr {
     display: block;
-    height: 2px;
     border: 0;
-    border-top: 1px solid var(--black);
-    width: 60%;
-    margin: 20px auto 20px auto;
+    width: 20vw;
+    margin: 2vw auto;
+}
+
+.hr-primary-color {
+    border-top: 1vh solid var(--primary-color);
+}
+
+.hr-white {
+    border-top: 1vh solid var(--white);
 }
 
 /* START nav bar style */
@@ -197,23 +214,6 @@ footer {
     padding-top: 10vh;
     padding-bottom: 20vh;
     background-color: var(--secondary-color-tint1);
-}
-
-.contact h2 {
-    padding-top: 10vh;
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--primary-color);
-    letter-spacing: 0.5rem;
-    text-align: center;
-}
-
-.contact-hr {
-    display: block;
-    border: 0;
-    border-top: 1vh solid var(--primary-color);
-    width: 20vw;
-    margin: 1vw auto;
 }
 
 .contactForm {

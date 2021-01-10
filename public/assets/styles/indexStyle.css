@@ -125,15 +125,6 @@
     background-color: var(--white);
 }
 
-.key-figures h2 {
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--primary-color);
-    letter-spacing: 0.5rem;
-    text-shadow: 2px 2px 10px var(--white);
-    text-align: center;
-}
-
 #key-figure-1,
 #key-figure-2,
 #key-figure-3,
@@ -197,12 +188,7 @@
 
 .service-vision h2 {
     padding: 2vh;
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--primary-color);
-    letter-spacing: 0.5rem;
     text-shadow: 2px 2px 10px var(--white);
-    text-align: center;
     background-color: var(--secondary-color-opacity);
 }
 
@@ -305,25 +291,9 @@
 /***SECTION PARTNERS___start***/
 .partners {
     text-align: center;
-    padding-top: 20vh;
+    padding-top: 10vh;
     padding-bottom: 20vh;
     background-color: var(--primary-color);
-}
-
-.partners h2 {
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--white);
-    letter-spacing: 0.5rem;
-    text-align: center;
-}
-
-.partners-hr {
-    display: block;
-    border: 0;
-    border-top: 1vh solid var(--white);
-    width: 20vw;
-    margin: 2vw auto;
 }
 
 .partners-booking,
