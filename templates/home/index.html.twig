@@ -179,22 +179,30 @@
                 <a href=""><img src="/assets/images/partners/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
                 {% for partner in partners %}
                 <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
                 {% endfor %}
             </nav>
             <button id="allPartners">voir tous nos partenaires</button>
         </div>
+        <!-- Add a new partner -->
         <div class="adminPanel">
-        {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
-            {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
-            {{ form_widget(partnerForm.name) }}
-            {{ form_label(partnerForm.url, 'Lien vers le site :') }}
-            {{ form_widget(partnerForm.url) }}
-            {{ form_label(partnerForm.logo, 'Logo au format png ou jpeg :') }}
-            {{ form_widget(partnerForm.logo) }}
-            {{ form_label(partnerForm.type, 'Type :') }}
-            {{ form_widget(partnerForm.type) }}
-            <input type='submit' value='Ajouter'>
-        {{ form_end(partnerForm) }}
+            <div class="add">
+            {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
+                {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+                {{ form_widget(partnerForm.name) }}
+                {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+                {{ form_widget(partnerForm.url) }}
+                {{ form_label(partnerForm.logo, 'Logo au format png ou jpeg :') }}
+                {{ form_widget(partnerForm.logo) }}
+                {{ form_label(partnerForm.type, 'Type :') }}
+                {{ form_widget(partnerForm.type) }}
+                <input type='submit' value='Ajouter'>
+            {{ form_end(partnerForm) }}
+            </div>
         </div>
     </section>
 

@@ -86,4 +86,18 @@ class HomeController extends AbstractController
             'error' => $error
         ]);
     }
+
+    /**
+     * @Route("/{id}", name="partner_delete", methods={"DELETE"})
+     */
+    public function deletePartner(Request $request, Partner $partner): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($partner);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('home');
+    }
 }
