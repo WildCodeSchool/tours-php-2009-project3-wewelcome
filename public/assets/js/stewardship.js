@@ -3,7 +3,6 @@ const srcImgRight = "/assets/images/stewardship/stewardShipIndex.jpg";
 const pictoStewardshipAssistance = document.getElementById('pictoStewardshipAssistance');
 const pictoShopping = document.getElementById('pictoShopping');
 const pictoEntretienIntExt = document.getElementById('pictoEntretienIntExt');
-const pictoGeneralInt = document.getElementById('pictoGeneralInt');
 const pictoGarden = document.getElementById('pictoGarden');
 const pictoTurnOnOff = document.getElementById('pictoTurnOnOff');
 const pictoLittleWork = document.getElementById('pictoLittleWork');
@@ -47,22 +46,6 @@ function showShopping()
 function showEntretienIntExt()
 {
     let myText = document.getElementById('textEntretienIntExt');
-    let myImg = document.getElementById('stewardImg');
-
-    if (myText.style.visibility === 'visible') {
-        myText.style.visibility = 'hidden';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "1";
-    } else {
-        myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
-    }
-}
-
-function showGeneralInt()
-{
-    let myText = document.getElementById('textGeneralInt');
     let myImg = document.getElementById('stewardImg');
 
     if (myText.style.visibility === 'visible') {
@@ -180,9 +163,6 @@ pictoShopping.addEventListener('mouseleave', showShopping);
 
 pictoEntretienIntExt.addEventListener('mouseover', showEntretienIntExt);
 pictoEntretienIntExt.addEventListener('mouseleave', showEntretienIntExt);
-
-pictoGeneralInt.addEventListener('mouseover', showGeneralInt);
-pictoGeneralInt.addEventListener('mouseleave', showGeneralInt);
 
 pictoGarden.addEventListener('mouseover', showGarden);
 pictoGarden.addEventListener('mouseleave', showGarden);
