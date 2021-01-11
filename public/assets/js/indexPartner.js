@@ -1,14 +1,30 @@
-let allPartners = document.getElementById("allPartners");
+const partnersBookingAll = document.querySelector(".partners-booking-all");
+const partnersOthersAll = document.querySelector(".partners-others-all");
+const partnersBookingAllButton = document.querySelector("#partners-booking-all-button");
+const partnersOthersAllButton = document.querySelector("#partners-others-all-button");
 
-function showMorePartners()
+function showPartnersBookingAll()
 {
-    const navPartnerInvisible = document.querySelector('.navPartnerInvisible');
-
-    if (navPartnerInvisible.style.display === "grid") {
-        navPartnerInvisible.style.display = "none";
+    if (partnersBookingAll.style.display === "grid") {
+        partnersBookingAll.style.display = "none";
+        partnersBookingAllButton.value = "+";
     } else {
-        navPartnerInvisible.style.display = "grid";
+        partnersBookingAll.style.display = "grid";
+        partnersBookingAllButton.value = "-";
     }
 }
 
-allPartners.addEventListener("click", showMorePartners);
+partnersBookingAllButton.addEventListener("click", showPartnersBookingAll);
+
+function showPartnersOthersAll()
+{
+    if (partnersOthersAll.style.display === "grid") {
+        partnersOthersAll.style.display = "none";
+        partnersOthersAllButton.value = "+";
+    } else {
+        partnersOthersAll.style.display = "grid";
+        partnersOthersAllButton.value = "-";
+    }
+}
+
+partnersOthersAllButton.addEventListener("click", showPartnersOthersAll);

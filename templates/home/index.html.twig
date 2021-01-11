@@ -9,8 +9,10 @@
 {% block body %}
     <section class="home">
         <div class="home-carousel">
-            <img class="home-logo" src="/assets/images/WeWELCOME-Logo-RVB-1000px_modified.png" alt="Logo we welcome"/>
-            <p class="home-text">« Conciergerie locative & Intendance pour maisons et appartements »</p>
+            <div>
+                <p class="home-text">Conciergerie locative & Intendance pour maisons et appartements</p>
+                <a class="button-contact" href="#contact">Contactez-nous</a>
+            </div>
             <figure>
                 <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
                 <img src="/assets/images/home-intendance.jpg" alt="photo de l'extérieur d'une maison"/>
@@ -20,10 +22,45 @@
         </div>
     </section>
 
+    <section class="purpose section-except-home">
+        <section>
+            <article class="purpose-text">
+                <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
+                <span>WeWelcome est votre assistant dédié !</span><br>
+                Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+            </article>
+            <article class="purpose-picture">
+                <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+            </article>
+        </section>
+        <a class="button-contact" href="#contact">Contactez-nous</a>
+    </section>
+
+    <section class="key-figures section-except-home"
+    style="background-image: url(/assets/images/Touraine.png);">
+        <h2>Implanté en Touraine</h2>
+        <p id="key-figure-1">+50</p>
+        <p id="key-figure-11">propriétaires déjà satisfaits</p>
+        <p id="key-figure-2">+500</p>
+        <p id="key-figure-21">voyageurs conquis</p>
+        <p id="key-figure-3">+90%</p>
+        <p id="key-figure-31">de taux d'occupation</p>
+        <p id="key-figure-4">7j/7</p>
+        <p id="key-figure-41">disponible pour vous</p>
+        <a class="button-contact" id="key-figure-contact" href="#contact">Contactez-nous</a>
+    </section>
+
     <section class="values section-except-home">
-        <h2>Nos valeurs</h2>
-        <p><span id="quotes">«</span> WeWelcome vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
-        WeWelcome est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention. <span id="quotes">»</span></p>
+        <section>
+            <article class="values-picture">
+                <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+            </article>
+            <article class="values-text">
+                <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+                <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+            </article>
+        </section>
+        <a class="button-contact" href="#contact">Contactez-nous</a>
     </section>
 
     <section class="service-vision section-except-home"
@@ -33,22 +70,7 @@
         <p id="service-vision-2">qualité</p>
         <p id="service-vision-3">efficacité</p>
         <p id="service-vision-4">proximité</p>
-    </section>
-
-    <section class="purpose section-except-home">
-        <h2>Notre but</h2>
-        <p><span id="quotes">«</span> Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?
-        WeWelcome est votre assistant dédié !<br>
-        Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement. <span id="quotes">»</span></p>
-    </section>
-    
-    <section class="key-figures section-except-home"
-    style="background-image: url(/assets/images/Indre-et-loire.png);">
-        <h2>Implanté en Touraine</h2>
-        <p id="key-figure-1">+50 <br><span>propriétaires déjà satisfaits</span></p>
-        <p id="key-figure-2">+500 <br><span>voyageurs conquis</span></p>
-        <p id="key-figure-3">+90% <br><span>de taux d'occupation</span></p>
-        <p id="key-figure-4">Disponible 7j/7</p>
+        <a class="button-contact" id="service-vision-contact" href="#contact">Contactez-nous</a>
     </section>
 
     <section class="activities">
@@ -156,40 +178,52 @@
         </div>
     </section>
 
-    <section class="partner">
-        <h2>Partenaires</h2>
-        <hr/>
-        <div class="logoPartner">
-            <!-- visible part -->
-            <nav class="navPartnerVisibile">
-                <a href=""><img src="/assets/images/partners/partenaireAbritel.png" alt="Abritel" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireAirbnb.jpg" alt="Airbnb" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireBooking.png" alt="Booking" class="imgPartner"></a>
-            </nav>
-            <!-- hidden part -->
-            <nav class="navPartnerInvisible">
-                <a href=""><img src="/assets/images/partners/partenaireFewo-direkt.png" alt="Fewo-direkt" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireGites.jpg" alt="Gites.fr" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireHomelidays.png" alt="Homelidays" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireValLoireFrance.png" alt="Val de Loire France" class="imgPartner"></a>
-                <a href=""><img src="/assets/images/partners/partenaireVRBO.png" alt="VRBO" class = "imgPartner"></a>
-                {% for partner in partners %}
-                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
-                {% if app.user %}
-                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
-                    <input type="hidden" name="_method" value="DELETE">
-                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                    <button class="btn">Effacer</button>
-                </form>
-                {% endif %}
-                {% endfor %}
-            </nav>
-            <button id="allPartners">voir tous nos partenaires</button>
-        </div>
+    <section class="partners">
+        <h2>Nos partenaires</h2>
+        <hr class="partners-hr">
+        <nav class="partners-booking">
+            <a href=""><img src="/assets/images/partners/partenaireAbritel.png" alt="Abritel"></a>
+            <a href=""><img src="/assets/images/partners/partenaireAirbnb.jpg" alt="Airbnb"></a>
+            <a href=""><img src="/assets/images/partners/partenaireBooking.png" alt="Booking"></a>
+            <a href=""><img src="/assets/images/partners/partenaireFewo-direkt.png" alt="Fewo-direkt"></a>
+            <a href=""><img src="/assets/images/partners/partenaireGites.jpg" alt="Gites.fr"></a>
+        </nav>
+        <input type="button" id="partners-booking-all-button" value="+">
+        <nav class="partners-booking-all">
+            <a href=""><img src="/assets/images/partners/partenaireHomelidays.png" alt="Homelidays"></a>
+            <a href=""><img src="/assets/images/partners/partenaireVRBO.png" alt="VRBO"></a>
+            {% for partner in hostingPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
+        </nav>
+        <hr class="partners-hr">
+        <nav class="partners-others">
+            <a href=""><img src="/assets/images/partners/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire"></a>
+            <a href=""><img src="/assets/images/partners/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire"></a>
+            <a href=""><img src="/assets/images/partners/partenaireValLoireFrance.png" alt="Val de Loire France"></a>
+            <a href=""><img src="/assets/images/partners/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire"></a>
+            <a href=""><img src="/assets/images/partners/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray"></a>
+        </nav>
+        <input type="button" id="partners-others-all-button" value="+">
+        <nav class="partners-others-all">
+        {% for partner in otherPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
+        </nav>
         <!-- Add a new partner -->
         {% if app.user %}
         <div class="adminPanel">

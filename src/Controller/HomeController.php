@@ -40,7 +40,8 @@ class HomeController extends AbstractController
     ): Response {
         $error = '';
 
-        $partners = $partnerRepository->findAll();
+        $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
+        $othersPartners = $partnerRepository->findBy(['type' => 'other']);
 
         /** Display the add partner form and add it in the DB */
         $partner = new Partner();
@@ -90,7 +91,8 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'form' => $form->createView(),
             'partnerForm' => $partnerForm->createView(),
-            'partners' => $partners,
+            'hostingPartners' => $hostingPartners,
+            'otherPartners' => $othersPartners,
             'error' => $error
         ]);
     }
