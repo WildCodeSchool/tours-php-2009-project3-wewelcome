@@ -2,15 +2,12 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="/assets/styles/housingStyle.css">
+<link rel="stylesheet" href="/assets/styles/adminStyle.css">
 {% endblock %}
 
-
-
 {% block body %}
-
     <h2 class="h2housing">Logement</h2>
     <hr class="hrTitleHousing">
-
     <section class="theyTrustUsWithTitle">
         <h3>Ils nous font confiance</h3>
         <div class="theyTrustUs">
@@ -27,26 +24,22 @@
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
             </div>
             {% for house in houses %}
-            <div>
+            <div class="adminPanel">
                 <a href="{{ house.url }}" target="blank">
                     <img src="assets/images/housing/{{ house.photo }}" alt="">
                 </a>
                 <p>{{ house.description }}</p>
+                <form method="post" action="{{ path('housing_delete', {'id' : house.id}) }}" onsubmit="return confirm('Ce logement sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ house.id) }}">
+                    <input type="submit" value="Effacer">
+                </form>
+                <button class="update"><a href="{{ path('housing_edit', {'id': house.id }) }}">Modifier</a></button>
             </div>
             {% endfor %}
         </div>
         <div class="adminPanel">
-            <div class="add">
-            {{ form_start(housingForm, {'attr' : {'class' : 'adminForm'}}) }}
-                {{ form_label(housingForm.photo, 'Photo :') }}
-                {{ form_widget(housingForm.photo) }}
-                {{ form_label(housingForm.url, 'Lien vers l\'annonce :') }}
-                {{ form_widget(housingForm.url) }}
-                {{ form_label(housingForm.description, 'Description :') }}
-                {{ form_widget(housingForm.description) }}
-                <input type='submit' value='Ajouter'>
-            {{ form_end(housingForm) }}
-            </div>
+            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
         </div>
     </section>
 

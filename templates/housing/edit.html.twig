@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/adminStyle.css">
+{% endblock %}
+
+{% block body %}
+<div class="adminPanel">
+    <h1>Modifier un logement</h1>
+    {{ include('housing/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <a href="{{ path('housing') }}">Retour</a>
+</div>
+{% endblock %}

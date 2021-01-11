@@ -20,12 +20,12 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class HousingController extends AbstractController
 {
-    /*private string $kernelRoot;
+    private string $kernelRoot;
 
     public function __construct(string $kernelRoot)
     {
         $this->kernelRoot = $kernelRoot;
-    }*/
+    }
 
     /**
      * @Route("/logement", name="housing")
@@ -93,5 +93,43 @@ class HousingController extends AbstractController
             'businessTravel' => $businessTravel,
             'error' => $error
             ]);
+    }
+
+    /**
+     * @Route("/{id}", name="housing_delete", methods={"DELETE"})
+     */
+    public function deleteHousing(Request $request, Housing $housing): Response
+    {
+        if ($this->isCsrfTokenValid('delete' . $housing->getId(), $request->request->get('_token'))) {
+            $filesystem = new Filesystem();
+            $path = $this->kernelRoot . '/public/assets/images/housing/' . $housing->getPhoto();
+            $filesystem->remove($path);
+
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->remove($housing);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('housing');
+    }
+
+    /**
+     * @Route("/{id}/edit", name="housing_edit", methods={"GET","POST"})
+     */
+    public function edit(Request $request, Housing $housing): Response
+    {
+        $form = $this->createForm(HousingFormType::class, $housing);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $this->getDoctrine()->getManager()->flush();
+
+            return $this->redirectToRoute('housing');
+        }
+
+        return $this->render('housing/edit.html.twig', [
+            'housing' => $housing,
+            'housingForm' => $form->createView(),
+        ]);
     }
 }
