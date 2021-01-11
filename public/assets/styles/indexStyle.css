@@ -1,9 +1,12 @@
 @import 'variables.css';
 
+body {
+    background-color: var(--secondary-color-tint1);
+}
 /***SECTION HOME___start***/
 .home-carousel {
     position: relative;
-    height: 100vh;
+    height: 50vw;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -60,7 +63,7 @@
 
 /***ALL SECTIONS EXCEPT HOME___start***/
 .section-except-home { 
-    height: 100vh;
+    height: 50vw;
     background-size: cover;
     background-repeat: no-repeat;
     background-attachment: fixed;
@@ -71,7 +74,7 @@
 .purpose,
 .values {
     text-align: center;
-    padding-top: 20vh;
+    padding-top: 5vw;
 }
 
 .purpose section,
@@ -80,7 +83,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-    padding-bottom: 5vh;
+    padding-bottom: 5vw;
 }
 
 .purpose,
@@ -93,17 +96,17 @@
 .values-text {
     padding: 2vw;
     font-family: var(--primary-text);
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 1.8vw;
+    line-height: 3vw;
     text-align: justify;
 }
 
 .purpose-text span,
 .values-text span {
     font-family: var(--secondary-title);
-    font-size: 2rem;
+    font-size: 2vw;
     color: var(--primary-color);
-    line-height: 3.5rem;
+    line-height: 3.5vw;
 }
 
 .purpose-picture,
@@ -113,7 +116,7 @@
 
 .purpose-picture img,
 .values-picture img {
-    height: 60vh;
+    height: 30vw;
 }
 
 /***SECTION VALUES AND PURPOSE___end***/
