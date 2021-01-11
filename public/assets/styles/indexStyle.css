@@ -17,12 +17,12 @@
 }
 
 .home-text {
-    margin: 30vh auto 10vh;
+    margin: 15vw auto 5vw;
     width: 70vw;
     font-family: var(--primary-title);
-    font-size: 3.5rem;
+    font-size: 3.5vw;
     color: var(--white);
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.5vw;
     text-shadow: 5px 5px 20px var(--black);
 }
 
@@ -236,8 +236,8 @@
     justify-content: center;
     text-align: center;
     align-items: center;
-    padding-top: 10vh;
-    padding-bottom: 20vh;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
 }
 
 .activities-all {
@@ -285,7 +285,6 @@
     width: 10vw;
     height: 6vw;
     overflow: hidden;
-    background-color: var(--white);
     font-family: var(--secondary-title);
     font-size: 0.8vw;
     color: var(--black);
