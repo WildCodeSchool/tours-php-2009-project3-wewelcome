@@ -322,8 +322,8 @@
 /***SECTION PARTNERS___start***/
 .partners {
     text-align: center;
-    padding-top: 10vh;
-    padding-bottom: 20vh;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
     background-color: var(--primary-color);
 }
 
@@ -369,16 +369,17 @@
     width: 3vw;
     height: 3vw;
     border-radius: 100%;
-    border: solid 1rem var(--primary-color);
     font-family: var(--primary-text);
-    font-size: 2rem;
+    font-size: 2vw;
     text-align: center;
     border: none;
+    transition: all 0.3s;
 }
 
 #partners-booking-all-button:hover,
 #partners-others-all-button:hover {
-    transform: scale(1.2);
-    box-shadow: 5px 5px 20px var(--black);
+    transform: scale(1.1);
+    color: var(--white);
+    background-color: var(--black);
 }
 /***SECTION PARTNERS___end***/

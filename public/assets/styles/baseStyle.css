@@ -21,7 +21,7 @@ h2 {
     font-size: 3vw;
     letter-spacing: 0.5vw;
     text-align: center;
-    padding-top: 10vh;
+    padding-top: 5vw;
 }
 
 .h2-primary-color {
@@ -53,11 +53,11 @@ hr {
 }
 
 .hr-primary-color {
-    border-top: 1vh solid var(--primary-color);
+    border-top: 0.5vw solid var(--primary-color);
 }
 
 .hr-white {
-    border-top: 1vh solid var(--white);
+    border-top: 0.5vw solid var(--white);
 }
 
 /* START nav bar style */
@@ -231,8 +231,8 @@ footer {
 
 /* START contact form */
 .contact {
-    padding-top: 10vh;
-    padding-bottom: 20vh;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
     background-color: var(--secondary-color-tint1);
 }
 
@@ -241,7 +241,7 @@ footer {
     flex-direction: column;
     margin: 0.5vw auto;
     padding: 0.5vw;
-    height: 60vh;
+    height: 30vw;
     width: 60vw;
     align-items: center;
     text-align: center;
