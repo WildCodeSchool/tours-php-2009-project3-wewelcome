@@ -1,5 +1,5 @@
 const mybutton = document.getElementById('returnTop');
-const myLogo = document.getElementById('topLogo');
+const myLogo = document.querySelector('#topLogo img');
 const myNav = document.querySelector('.navBar');
 const myNavLinks = document.querySelectorAll('.navLink');
 let i = 0;
@@ -7,16 +7,20 @@ let i = 0;
 function scrollFunction() {
     if (document.documentElement.scrollTop > 300) {
       mybutton.style.display = "block";
-      myLogo.style.visibility = "visible";
-      myNav.style.backgroundColor = "rgba(85, 69, 69, 0.897)";
+      myLogo.style.width = "200px";
+      myLogo.style.transition = "width 1s ease-in-out";
+      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-500px-white.png");
+      myNav.style.backgroundColor = "var(--primary-color)";
 
       for (i = 0; i < myNavLinks.length; ++i) {
         myNavLinks[i].style.color = "whitesmoke";
       }
     } else {
       mybutton.style.display = "none";
-      myLogo.style.visibility = "hidden";
-      myNav.style.backgroundColor = "rgba(85, 69, 69, 0)";
+      myLogo.style.width = "400px";
+      myLogo.style.transition = "width 1s ease-in-out";
+      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-500px-color.png");
+      myNav.style.backgroundColor = "rgba(255, 255, 255, 0)";
       
       for (i = 0; i < myNavLinks.length; ++i) {
         myNavLinks[i].style.color = "var(--primary-color)";
