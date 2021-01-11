@@ -34,7 +34,9 @@ h2 {
 
 h3 {
     font-family: var(--secondary-title);
-    font-size: 30px;
+    font-size: 2rem;
+    letter-spacing: 0.3rem;
+    text-align: center;
 }
 
 a {
