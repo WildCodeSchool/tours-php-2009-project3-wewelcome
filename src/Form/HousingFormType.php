@@ -20,7 +20,7 @@ class HousingFormType extends AbstractType
             ->add('photo', FileType::class, [
                 'constraints' => [
                     new File([
-                        'maxSize' => '200k',
+                        'maxSize' => '500k',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg',
@@ -31,7 +31,6 @@ class HousingFormType extends AbstractType
             ])
             ->add('description', TextareaType::class)
             ->add('url', UrlType::class)
-            ->add('isBusinessTravel')
         ;
     }
 

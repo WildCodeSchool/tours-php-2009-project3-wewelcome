@@ -20,12 +20,12 @@ use Symfony\Component\Filesystem\Filesystem;
 
 class HousingController extends AbstractController
 {
-    private string $kernelRoot;
+    /*private string $kernelRoot;
 
     public function __construct(string $kernelRoot)
     {
         $this->kernelRoot = $kernelRoot;
-    }
+    }*/
 
     /**
      * @Route("/logement", name="housing")
@@ -41,7 +41,7 @@ class HousingController extends AbstractController
         $houses = $housingRepository->findBy(['isBusinessTravel' => false]);
         $businessTravel = $housingRepository->findOneBy(['isBusinessTravel' => true]);
 
-        /** Display the add partner form and add it in the DB */
+        /** Display the add housing form and add it in the DB */
         $housing = new Housing();
         $housingForm = $this->createForm(HousingFormType::class, $housing);
         $housingForm->handleRequest($request);
@@ -61,6 +61,7 @@ class HousingController extends AbstractController
             }
 
             $housing->setPhoto($photoFileName);
+            $housing->setIsBusinessTravel(false);
             $entityManager->persist($housing);
             $entityManager->flush();
 
