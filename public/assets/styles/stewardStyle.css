@@ -1,4 +1,4 @@
-/* START picture and picto with explication of concierge */
+/* START picture and picto with explication of Stewardship */
 .generalInfo {
     display: flex;
     flex-wrap: wrap;
@@ -76,7 +76,7 @@
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
 }
 
-/* END picture and picto with explication of concierge */
+/* END picture and picto with explication of Stewardship */
 
 /* START button which send to contact form */
 .contactButton {
