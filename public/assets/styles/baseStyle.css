@@ -18,8 +18,8 @@ html {
 
 h2 {
     font-family: var(--primary-title);
-    font-size: 3rem;
-    letter-spacing: 0.5rem;
+    font-size: 3vw;
+    letter-spacing: 0.5vw;
     text-align: center;
     padding-top: 10vh;
 }
@@ -34,8 +34,8 @@ h2 {
 
 h3 {
     font-family: var(--secondary-title);
-    font-size: 2rem;
-    letter-spacing: 0.3rem;
+    font-size: 2vw;
+    letter-spacing: 0.3vw;
     text-align: center;
 }
 
@@ -256,7 +256,7 @@ footer {
 .contact-objet label:first-child {
     padding-bottom: 1.5vw;
     font-family: var(--secondary-title);
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     color: var(--primary-color);
 }
 
@@ -268,22 +268,24 @@ footer {
     margin: 0 3vw;
     padding: 0.5vw 2.5vw;
     box-sizing: border-box;
-    border-radius: 0.5rem;
+    border-radius: 0.5vw;
+    border: solid 0.2vw var(--white);
     background-color: var(--white);
     font-family: var(--primary-text);
-    font-size: 1.5rem;
+    font-size: 1.5vw;
     color: var(--secondary-color);
     text-align: center;
     transition: all 0.5s ease-out;
 }
 
 .contact-objet input[type="radio"]:hover + label {
-    background-color: var(--primary-color-tint2);
-    color: var(--white);
+    border: solid 0.2vw var(--primary-color);
+    color: var(--primary-color);
     font-weight: bold;
     cursor: pointer;
 }
 .contact-objet input[type="radio"]:checked + label {
+    border: solid 0.2vw var(--primary-color);
     background-color: var(--primary-color);
     color: var(--white);
     font-weight: bold;
@@ -311,7 +313,7 @@ footer {
     width: 100%;
     box-sizing: border-box;
     font-family: var(--primary-text);
-    font-size: 0.8rem;
+    font-size: 0.8vw;
     text-align: left;
     visibility: hidden;
 }
@@ -325,9 +327,9 @@ footer {
     padding: 0.5vw;
     box-sizing: border-box;
     font-family: var(--primary-text);
-    font-size: 1rem;
-    border-radius: 0.5rem;
-    border: solid 2px var(--white);
+    font-size: 1vw;
+    border-radius: 0.5vw;
+    border: solid 0.2vw var(--white);
     resize : none;
 }
 
@@ -339,7 +341,7 @@ footer {
 
 .contact-inputs div input:hover,
 .contact-inputs div textarea:hover {
-    border: solid 2px var(--primary-color);
+    border: solid 0.2vw var(--primary-color);
     box-sizing: border-box;
     font-weight: bold;
 }
