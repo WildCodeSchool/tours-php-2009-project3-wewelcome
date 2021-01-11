@@ -124,7 +124,7 @@ body {
 /***SECTION KEY-FIGURES___start***/
 .key-figures {
     position: relative;
-    padding-top: 20vh;
+    padding-top: 5vw;
     background-color: var(--white);
 }
 
@@ -134,9 +134,9 @@ body {
 #key-figure-4 {
     position: absolute;
     left: -100vw;
-    width: 200px;
+    width: 4em;
     font-family: var(--primary-title);
-    font-size: 3rem;
+    font-size: 3vw;
     color: var(--white);
     background-color: var(--primary-color);
     text-align: center;
@@ -148,37 +148,37 @@ body {
 #key-figure-41 {
     position: absolute;
     right: -100vw;
-    width: 800px;
+    width: 20em;
     font-family: var(--primary-text);
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 1.8vw;
+    line-height: 3vw;
     color: var(--black);
 }
 
 #key-figure-1,
 #key-figure-11 {
-    top: 40vh;
+    top: 20vw;
 }
 
 #key-figure-2,
 #key-figure-21 {
-    top: 55vh;
+    top: 26vw;
 }
 
 #key-figure-3,
 #key-figure-31 {
-    top: 70vh;
+    top: 32vw;
 }
 
 #key-figure-4,
 #key-figure-41 {
-    top: 85vh;
+    top: 38vw;
 }
 
 #key-figure-contact {
     position: absolute;
     right: -100vw;
-    top: 85vh;
+    top: 42vw;
 }
 
 /***SECTION KEY-FIGURES___end***/
@@ -186,13 +186,13 @@ body {
 /***SECTION SERVICE VISION___start***/
 .service-vision {
     position: relative;
-    padding-top: 20vh;
+    padding-top: 5vw;
 }
 
 .service-vision h2 {
-    padding: 2vh;
-    text-shadow: 2px 2px 10px var(--white);
+    padding: 2vw;
     background-color: var(--secondary-color-opacity);
+    text-shadow: 5px 5px 20px var(--black);
 }
 
 #service-vision-1,
@@ -202,7 +202,7 @@ body {
     position: absolute;
     left: -100vw;
     font-family: var(--primary-title);
-    font-size: 3rem;
+    font-size: 3vw;
     color: var(--white);
     text-shadow: 2px 2px 10px var(--black);
     text-align: center;
@@ -210,25 +210,25 @@ body {
 }
 
 #service-vision-1 {
-    top: 40vh;
+    top: 20vw;
 }
 
 #service-vision-2 {
-    top: 55vh;
+    top: 26vw;
 }
 
 #service-vision-3 {
-    top: 70vh;
+    top: 32vw;
 }
 
 #service-vision-4 {
-    top: 85vh;
+    top: 38vw;
 }
 
 #service-vision-contact {
     position: absolute;
     right: -100vw;
-    top: 85vh;
+    top: 42vw;
 }
 /***SECTION SERVICE VISION___end***/
 
@@ -241,6 +241,7 @@ body {
     align-items: center;
     padding-top: 5vw;
     padding-bottom: 10vw;
+    background-color: var(--white);
 }
 
 .activities-all {
