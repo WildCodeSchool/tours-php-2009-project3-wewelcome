@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <link rel="icon" type="image/png" href="/assets/images/WeWELCOME-Icon-1-24x24px.png" />
+    <link rel="icon" type="image/png" href="/assets/images/logo-wewelcome-24px-color.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
     <link rel="stylesheet" href="/assets/styles/baseStyle.css">
     {% block stylesheets %}{% endblock %}
@@ -10,12 +10,12 @@
 <body>
     <section class="navBar">
         <a id="topLogo" href="{{ path('home') }}">
-            <img src="/assets/images/wewelcome_logo_top.png" alt="wewelcomeLogo">
+            <img src="/assets/images/logo-wewelcome-500px-color.png" alt="wewelcomeLogo">
         </a>
         <nav>
-            <a class="navLink" href="">Conciergerie</a>
+            <a class="navLink" href="{{ path('concierge') }}">Conciergerie</a>
             <a class="navLink" href="{{ path('steward') }}">Intendance</a>
-            <a class="navLink" href="">Logement</a>
+            <a class="navLink" href="{{ path('housing') }}">Logement</a>
             <a class="navLink" href="#contact">Contact</a>
             <a class="navLink" href="">English</a>
         </nav>

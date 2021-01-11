@@ -1,0 +1,33 @@
+.h2housing {
+    text-align: center;
+    padding-top: 5rem;
+}
+
+.hrTitleHousing {
+    padding-bottom: 4rem;
+}
+
+h3 {
+    text-align: center;
+}
+
+.theyTrustUs, .businessTrips {
+    margin: 1rem;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.businessTripsWithTitle {
+    background-color: lightgray;
+    padding: 2rem 0rem;
+}
+
+.theyTrustUs img, .businessTrips img {
+    width: 28rem;
+}
+
+.theyTrustUs div, .businessTrips div {
+    margin: 1rem;
+}
+
+
