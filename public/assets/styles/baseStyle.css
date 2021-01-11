@@ -138,77 +138,95 @@ hr {
 
 /* START footer */
 footer {
-    background: rgba(83, 81, 81);
-    width: 100%;
-    margin-top: 30px;
-    padding-top: 30px;
-    padding-bottom: 40px;
     display: flex;
-    color: whitesmoke;
-    display: flex;
-    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2vw;
+    background-color: var(--primary-color);
+    font-family: var(--primary-text);
+    font-size: 1.2vw;
+    color: var(--white);
 }
 
 .socialNetwork {
-    width: 100%;
+    width: 40%;
     display: flex;
-    justify-content: space-evenly;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 .socialNetworkLogo {
-    width: 50px;
-    height: 50px;
+    margin: 0 3vw;
+    width: 4vw;
+    transition: all 0.3s ease-in-out;
 }
 
 .socialNetworkLogo:hover {
-    transform: scale(1.10);
-    transition: all 0.3s ease-in-out;
+    transform: scale(1.5);
 }
 
-.footerLeft {
-    width: 40%;
-    text-align: center;
-    margin-left: 10%;
-    margin-top: 20px;
-}
-
-.footerLeft h2 {
-    color: var(--primary-color);
-    font-size: 25px;
-}
-
+.footerLeft,
 .footerRight {
-    width: 40%;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    padding-top: 10px;
-    margin-right: 10%;
-    margin-top: 20px;
-}
-
-.footerLinks {
     display: flex;
     flex-direction: column;
-    height: 60%;
+    align-items: center;
+    justify-content: center;
+    font-style: normal;
+    text-align: center;
+    width: 30%;
+    margin: 0 2vw;
 }
 
-.footerLinks a {
-    font-size: 20px;
+.footerLeft p,
+.footerLeft label,
+.footerLeft a {
+    margin: 0.2vw;
+    padding: 0.2vw;
+    width: 100%;
+}
+
+.footerLeft p {
+    font-family: var(--primary-title);
+    font-size: 1.5vw;
+}
+
+#numero {
+    display: none;
+    width: 60%;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    background-color: var(--white);
+    border-radius: 10vw;
+    color: var(--primary-color);
     font-weight: bold;
 }
+#label-telephone {
+    font-size: 80%;
+}
+#telephone {
+    display: none;
+}
 
-.footerLinks a:hover {
-    color: var(--primary-color);
-    transform: scale(1.10);
+#telephone:checked + #numero {
+    display: block;
+}
+
+.footerRight a {
+    margin: 0.2vw;
+    padding: 0.2vw;
+    width: 70%;
     transition: all 0.3s ease-in-out;
 }
 
-.info p {
-    font-size: 20px;
-    font-style: normal;
-    font-weight: bold;
+.footerRight a:hover {
+    transform: scale(1.1);
+    background-color: var(--white);
+    color: var(--primary-color);
+    text-decoration: underline;
 }
+
 /* END footer */
 
 /* START contact form */
