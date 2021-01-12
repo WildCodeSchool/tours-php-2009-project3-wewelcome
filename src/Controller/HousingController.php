@@ -103,15 +103,33 @@ class HousingController extends AbstractController
     }
 
     /**
-     * @Route("/{id}/edit", name="housing_edit", methods={"GET","POST"})
+     * @Route("/logement/{id}/edit", name="housing_edit", methods={"GET","POST"})
      */
-    public function edit(Request $request, Housing $housing): Response
-    {
+    public function edit(
+        Request $request,
+        Housing $housing,
+        FileManager $fileManager,
+        EntityManagerInterface $entityManager
+    ): Response {
         $form = $this->createForm(HousingFormType::class, $housing);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $housingFile = $form->get('photoFile')->getData();
+
+            if ($housingFile != null) {
+                $fileManager->deleteFile($housing->getPhoto(), $this->getParameter('housing_directory'));
+
+                $results = $fileManager->saveFile(
+                    'housing',
+                    $housingFile,
+                    $this->getParameter('housing_directory')
+                );
+
+                $housing->setPhoto($results['fileName']);
+            }
+
+            $entityManager->flush();
 
             return $this->redirectToRoute('housing');
         }
