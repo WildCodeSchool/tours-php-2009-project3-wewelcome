@@ -258,8 +258,10 @@ body {
 }
 
 .activities-concierge,
-.activities-stewradship {
+.activities-stewardship {
     width: 50vw;
+    display: flex;
+    flex-direction: column;
 }
 
 .concierge-title {
@@ -310,6 +312,12 @@ body {
     font-family: var(--primary-title);
     font-size: 1.2vw;
     padding: 1vw;
+    transition: all 0.5s ease-in-out;
+}
+
+.concierge-more-infos span,
+.stewardship-more-infos span {
+    text-transform: uppercase;
 }
 
 .concierge-more-infos {
