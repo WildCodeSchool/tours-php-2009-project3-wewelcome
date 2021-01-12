@@ -85,12 +85,15 @@ class HomeController extends AbstractController
     /**
      * @Route("/{id}", name="partner_delete", methods={"DELETE"})
      */
-    public function deletePartner(Request $request, Partner $partner, FileManager $fileManager): Response
-    {
+    public function deletePartner(
+        Request $request,
+        Partner $partner,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager
+    ): Response {
         if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
             $fileManager->deleteFile($partner->getLogo(), $this->getParameter('partners_directory'));
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($partner);
             $entityManager->flush();
         }

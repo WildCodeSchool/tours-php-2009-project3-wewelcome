@@ -9,7 +9,10 @@ use Symfony\Component\Filesystem\Filesystem;
 class FileManager
 {
 
-    /**
+    /** this method take an uploaded file, it's original name and a folder where save it, as parameters
+     *  the original file name is transform for a better one
+     *  and then the file is save in the folder
+     *  it return an error if the upload gone wrong and the newFileName of the file
      * @return array<string>
      */
     public function saveFile(string $fileName, UploadedFile $file, string $folder): array
