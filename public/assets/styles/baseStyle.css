@@ -13,7 +13,6 @@ body {
 html {
     scroll-behavior: smooth;
     font-family: var(--primary-text);
-    font-size: 20px;
 }
 
 h2 {
@@ -358,15 +357,15 @@ footer {
 
 .button-contact {
     box-sizing: border-box;
-    width: 300px;
-    padding: 20px 30px;
-    border-top: solid 5px var(--primary-color);
-    border-bottom: solid 5px var(--primary-color);
+    width: 20vw;
+    padding: 1vw;
+    border-top: solid 0.4vw var(--primary-color);
+    border-bottom: solid 0.4vw var(--primary-color);
     border-right: none;
     border-left: none;
     background-color: var(--primary-color);
     font-family: var(--secondary-title);
-    font-size: 1rem;
+    font-size: 1vw;
     color: var(--white);
     text-transform: uppercase;
     text-align: center;
@@ -375,11 +374,13 @@ footer {
 }
 
 .button-contact:hover {
-    border-top: solid 5px var(--primary-color);
-    border-bottom: solid 5px var(--primary-color);
+    width: 20vw;
+    padding: 1vw;
+    border-top: solid 0.4vw var(--primary-color);
+    border-bottom: solid 0.4vw var(--primary-color);
     background-color: var(--white);
     color: var(--primary-color);
-    letter-spacing: 3px;
+    letter-spacing: 0.2vw;
 }
 
 /***CALL TO ACTION___end***/
