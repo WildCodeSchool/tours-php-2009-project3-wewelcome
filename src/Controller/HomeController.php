@@ -10,24 +10,15 @@ use App\FormData\MailMessageData;
 use App\Form\MailMessageType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use App\Form\PartnerFormType;
+use App\Form\PartnerType;
 use App\Entity\Partner;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PartnerRepository;
-use Symfony\Component\String\Slugger\SluggerInterface;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
 
 class HomeController extends AbstractController
 {
-    private string $kernelRoot;
-
-    public function __construct(string $kernelRoot)
-    {
-        $this->kernelRoot = $kernelRoot;
-    }
-
     /**
      * @Route("/", name="home")
      */
@@ -36,7 +27,7 @@ class HomeController extends AbstractController
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
         PartnerRepository $partnerRepository,
-        SluggerInterface $slug
+        FileManager $fileManager
     ): Response {
         $error = '';
 
@@ -45,25 +36,19 @@ class HomeController extends AbstractController
 
         /** Display the add partner form and add it in the DB */
         $partner = new Partner();
-        $partnerForm = $this->createForm(PartnerFormType::class, $partner);
+        $partnerForm = $this->createForm(PartnerType::class, $partner);
         $partnerForm->handleRequest($request);
 
         if ($partnerForm->isSubmitted() && $partnerForm->isValid()) {
-            $logoPartnerFile = $partnerForm->get('logo')->getData();
+            $logoPartnerFile = $partnerForm->get('logoFile')->getData();
 
-            $logoSlugName = $slug->slug($partner->getName());
-            $logoFileName = $logoSlugName . '-' . uniqid() . '.' . $logoPartnerFile->guessExtension();
+            $results = $fileManager->saveFile(
+                $partner->getName(),
+                $logoPartnerFile,
+                $this->getParameter('partners_directory')
+            );
 
-            try {
-                $logoPartnerFile->move(
-                    $this->getParameter('partners_directory'),
-                    $logoFileName
-                );
-            } catch (FileException $e) {
-                $error = 'Le fichier n\'a pas pu être ajouté.';
-            }
-
-            $partner->setLogo($logoFileName);
+            $partner->setLogo($results['fileName']);
             $entityManager->persist($partner);
             $entityManager->flush();
 
@@ -104,7 +89,7 @@ class HomeController extends AbstractController
     {
         if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
             $filesystem = new Filesystem();
-            $path = $this->kernelRoot . '/public/assets/images/partners/' . $partner->getLogo();
+            $path = $this->getParameter('partners_directory') . $partner->getLogo();
             $filesystem->remove($path);
 
             $entityManager = $this->getDoctrine()->getManager();

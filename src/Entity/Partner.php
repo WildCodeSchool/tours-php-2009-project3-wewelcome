@@ -68,7 +68,7 @@ class Partner
         return $this;
     }
 
-    public function getLogo(): ?string
+    public function getLogo(): string
     {
         return $this->logo;
     }

@@ -11,14 +11,15 @@ use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 
-class PartnerFormType extends AbstractType
+class PartnerType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', TextType::class)
             ->add('url', TextType::class)
-            ->add('logo', FileType::class, [
+            ->add('logoFile', FileType::class, [
+                'mapped' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',
