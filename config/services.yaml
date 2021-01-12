@@ -5,6 +5,7 @@
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     housing_directory: '%kernel.project_dir%/public/assets/images/housing'
+    partners_directory: '%kernel.project_dir%/public/assets/images/partners/'
 
 services:
     # default configuration for services in *this* file
@@ -26,8 +27,6 @@ services:
     # as action arguments even if you don't extend any base controller class
     App\Controller\:
         resource: '../src/Controller/'
-        arguments:
-            - '%kernel.project_dir%'
         tags: ['controller.service_arguments']
 
     # add more service definitions when explicit configuration is needed

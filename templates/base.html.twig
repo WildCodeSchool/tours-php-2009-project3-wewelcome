@@ -18,6 +18,9 @@
             <a class="navLink" href="{{ path('housing') }}">Logement</a>
             <a class="navLink" href="#contact">Contact</a>
             <a class="navLink" href="">English</a>
+            {% if app.user %}
+            <p>ADMIN PANEL</p>
+            {% endif %}
         </nav>
     </section>
     {% block body %}
@@ -49,6 +52,11 @@
                 <a href="">Mentions légales</a>
                 <a href="">CGU</a>
                 <a href="">Travailler avec moi</a>
+                {% if app.user %}
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+                {% else %}
+                <a href="{{ path('app_login') }}">Admin panel</a>
+                {% endif %}
             </nav>
         </div>
     </footer>

@@ -26,3 +26,8 @@
 npm-debug.log
 yarn-error.log
 ###< symfony/webpack-encore-bundle ###
+
+###>dynamics photo folder ###
+/public/assets/images/partners/
+/public/assets/images/housing/
+###>dynamics photo folder ###

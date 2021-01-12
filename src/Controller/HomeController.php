@@ -10,14 +10,52 @@ use App\FormData\MailMessageData;
 use App\Form\MailMessageType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use App\Form\PartnerType;
+use App\Entity\Partner;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\PartnerRepository;
+use App\Services\FileManager;
+use Symfony\Component\Filesystem\Filesystem;
 
 class HomeController extends AbstractController
 {
     /**
      * @Route("/", name="home")
      */
-    public function index(Request $request, MailerInterface $mailer): Response
-    {
+    public function index(
+        Request $request,
+        MailerInterface $mailer,
+        EntityManagerInterface $entityManager,
+        PartnerRepository $partnerRepository,
+        FileManager $fileManager
+    ): Response {
+        $error = '';
+
+        $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
+        $othersPartners = $partnerRepository->findBy(['type' => 'other']);
+
+        /** Display the add partner form and add it in the DB */
+        $partner = new Partner();
+        $partnerForm = $this->createForm(PartnerType::class, $partner);
+        $partnerForm->handleRequest($request);
+
+        if ($partnerForm->isSubmitted() && $partnerForm->isValid()) {
+            $logoPartnerFile = $partnerForm->get('logoFile')->getData();
+
+            $results = $fileManager->saveFile(
+                $partner->getName(),
+                $logoPartnerFile,
+                $this->getParameter('partners_directory')
+            );
+
+            $partner->setLogo($results['fileName']);
+            $entityManager->persist($partner);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+
+        /** display the contact form and send an email to Alexandre */
         $mailMessage = new MailMessageData();
         $form = $this->createForm(MailMessageType::class, $mailMessage);
         $form->handleRequest($request);
@@ -35,6 +73,31 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('home/index.html.twig', ['form' => $form->createView()]);
+        return $this->render('home/index.html.twig', [
+            'form' => $form->createView(),
+            'partnerForm' => $partnerForm->createView(),
+            'hostingPartners' => $hostingPartners,
+            'otherPartners' => $othersPartners,
+            'error' => $error
+        ]);
+    }
+
+    /**
+     * @Route("/partenaire/{id}", name="partner_delete", methods={"DELETE"})
+     */
+    public function deletePartner(
+        Request $request,
+        Partner $partner,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $partner->getId(), $request->request->get('_token'))) {
+            $fileManager->deleteFile($partner->getLogo(), $this->getParameter('partners_directory'));
+
+            $entityManager->remove($partner);
+            $entityManager->flush();
+        }
+
+        return $this->redirectToRoute('home');
     }
 }

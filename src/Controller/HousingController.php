@@ -14,19 +14,11 @@ use App\Form\HousingFormType;
 use App\Entity\Housing;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\HousingRepository;
-use Symfony\Component\HttpFoundation\File\Exception\FileException;
-use Symfony\Component\HttpFoundation\File\UploadedFile;
+use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
 
 class HousingController extends AbstractController
 {
-    private string $kernelRoot;
-
-    public function __construct(string $kernelRoot)
-    {
-        $this->kernelRoot = $kernelRoot;
-    }
-
     /**
      * @Route("/logement", name="housing")
      */
@@ -34,7 +26,8 @@ class HousingController extends AbstractController
         Request $request,
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
-        HousingRepository $housingRepository
+        HousingRepository $housingRepository,
+        FileManager $fileManager
     ): Response {
         $error = '';
 
@@ -49,18 +42,13 @@ class HousingController extends AbstractController
         if ($housingForm->isSubmitted() && $housingForm->isValid()) {
             $photoHousingFile = $housingForm->get('photoFile')->getData();
 
-            $photoFileName = 'housing-' . uniqid() . '.' . $photoHousingFile->guessExtension();
+            $results = $fileManager->saveFile(
+                'housing',
+                $photoHousingFile,
+                $this->getParameter('housing_directory')
+            );
 
-            try {
-                $photoHousingFile->move(
-                    $this->getParameter('housing_directory'),
-                    $photoFileName
-                );
-            } catch (FileException $e) {
-                $error = 'Le fichier n\'a pas pu être ajouté.';
-            }
-
-            $housing->setPhoto($photoFileName);
+            $housing->setPhoto($results['fileName']);
             $housing->setIsBusinessTravel(false);
             $entityManager->persist($housing);
             $entityManager->flush();
@@ -96,16 +84,17 @@ class HousingController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="housing_delete", methods={"DELETE"})
+     * @Route("/logement/{id}", name="housing_delete", methods={"DELETE"})
      */
-    public function deleteHousing(Request $request, Housing $housing): Response
-    {
+    public function deleteHousing(
+        Request $request,
+        Housing $housing,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager
+    ): Response {
         if ($this->isCsrfTokenValid('delete' . $housing->getId(), $request->request->get('_token'))) {
-            $filesystem = new Filesystem();
-            $path = $this->kernelRoot . '/public/assets/images/housing/' . $housing->getPhoto();
-            $filesystem->remove($path);
+            $fileManager->deleteFile($housing->getPhoto(), $this->getParameter('housing_directory'));
 
-            $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($housing);
             $entityManager->flush();
         }

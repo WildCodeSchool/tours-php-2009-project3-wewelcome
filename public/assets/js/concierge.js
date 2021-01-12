@@ -1,10 +1,63 @@
+const pictoPostingOnline = document.getElementById('pictoPostingOnline');
+const pictoBookingManagement = document.getElementById('pictoBookingManagement');
+const pictoBookingOptimization = document.getElementById('pictoBookingOptimization');
 const pictoWelcoming = document.getElementById('pictoWelcoming');
 const pictoAssistance = document.getElementById('pictoAssistance');
-const pictoGeneral = document.getElementById('pictoGeneral');
+const pictoFoodBasket = document.getElementById('pictoFoodBasket');
 const pictoLinens = document.getElementById('pictoLinens');
 const pictoCleaning = document.getElementById('pictoCleaning');
-const pictoFoodBasket = document.getElementById('pictoFoodBasket');
 const pictoStewardship = document.getElementById('pictoStewardship');
+
+function showPostingOnline()
+{
+    let myText = document.getElementById('textPostingOnline');
+    let myImg = document.getElementById('conciergeImg');
+
+    if (myText.style.visibility === 'visible') {
+        myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
+
+    } else {
+        myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/welcomingImg.jpg";
+        myImg.style.opacity = "0.7";
+    }
+}
+
+function showBookingManagement()
+{
+    let myText = document.getElementById('textBookingManagement');
+    let myImg = document.getElementById('conciergeImg');
+
+    if (myText.style.visibility === 'visible') {
+        myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
+
+    } else {
+        myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/welcomingImg.jpg";
+        myImg.style.opacity = "0.7";
+    }
+}
+
+function showBookingOptimization()
+{
+    let myText = document.getElementById('textBookingOptimization');
+    let myImg = document.getElementById('conciergeImg');
+
+    if (myText.style.visibility === 'visible') {
+        myText.style.visibility = 'hidden';
+        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.opacity= "1";
+
+    } else {
+        myText.style.visibility = 'visible';
+        myImg.src = "/assets/images/concierge/welcomingImg.jpg";
+        myImg.style.opacity = "0.7";
+    }
+}
 
 function showWelcomingText()
 {
@@ -39,9 +92,9 @@ function showAssistanceText()
     }
 }
 
-function showGeneralText()
+function showFoodBasketText()
 {
-    let myText = document.getElementById('textGeneral');
+    let myText = document.getElementById('textFoodBasket');
     let myImg = document.getElementById('conciergeImg');
 
     if (myText.style.visibility === 'visible') {
@@ -50,7 +103,7 @@ function showGeneralText()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = "/assets/images/concierge/generalImg.jpg";
+        myImg.src = "/assets/images/concierge/foodBasketImg.jpg";
         myImg.style.opacity= "0.7";
     }
 }
@@ -87,22 +140,6 @@ function showCleaningText()
     }
 }
 
-function showFoodBasketText()
-{
-    let myText = document.getElementById('textFoodBasket');
-    let myImg = document.getElementById('conciergeImg');
-
-    if (myText.style.visibility === 'visible') {
-        myText.style.visibility = 'hidden';
-        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
-        myImg.style.opacity= "1";
-    } else {
-        myText.style.visibility = 'visible';
-        myImg.src = "/assets/images/concierge/foodBasketImg.jpg";
-        myImg.style.opacity= "0.7";
-    }
-}
-
 function showStewardShipText()
 {
     let myText = document.getElementById('textStewardship');
@@ -119,23 +156,29 @@ function showStewardShipText()
     }
 }
 
+pictoPostingOnline.addEventListener('mouseover', showPostingOnline);
+pictoPostingOnline.addEventListener('mouseleave', showPostingOnline);
+
+pictoBookingManagement.addEventListener('mouseover', showBookingManagement);
+pictoBookingManagement.addEventListener('mouseleave', showBookingManagement);
+
+pictoBookingOptimization.addEventListener('mouseover', showBookingOptimization);
+pictoBookingOptimization.addEventListener('mouseleave', showBookingOptimization);
+
 pictoWelcoming.addEventListener('mouseover', showWelcomingText);
 pictoWelcoming.addEventListener('mouseleave', showWelcomingText);
 
 pictoAssistance.addEventListener('mouseover', showAssistanceText);
 pictoAssistance.addEventListener('mouseleave', showAssistanceText);
 
-pictoGeneral.addEventListener('mouseover', showGeneralText);
-pictoGeneral.addEventListener('mouseleave', showGeneralText);
+pictoFoodBasket.addEventListener('mouseover', showFoodBasketText);
+pictoFoodBasket.addEventListener('mouseleave', showFoodBasketText);
 
 pictoLinens.addEventListener('mouseover', showLinensText);
 pictoLinens.addEventListener('mouseleave', showLinensText);
 
 pictoCleaning.addEventListener('mouseover', showCleaningText);
 pictoCleaning.addEventListener('mouseleave', showCleaningText);
-
-pictoFoodBasket.addEventListener('mouseover', showFoodBasketText);
-pictoFoodBasket.addEventListener('mouseleave', showFoodBasketText);
 
 pictoStewardship.addEventListener('mouseover', showStewardShipText);
 pictoStewardship.addEventListener('mouseleave', showStewardShipText);

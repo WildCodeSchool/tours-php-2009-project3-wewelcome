@@ -42,7 +42,7 @@ class Housing
         return $this->id;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto(): string
     {
         return $this->photo;
     }
