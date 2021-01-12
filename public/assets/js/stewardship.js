@@ -1,4 +1,6 @@
 const srcImgRight = "/assets/images/stewardship/stewardShipIndex.jpg";
+const srcImgChange = "/assets/images/home-intendance.jpg";
+const opacityChange = "0.7";
 
 const pictoStewardshipAssistance = document.getElementById('pictoStewardshipAssistance');
 const pictoShopping = document.getElementById('pictoShopping');
@@ -22,8 +24,8 @@ function showStewardshipAssistance()
 
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity = "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -38,8 +40,8 @@ function showShopping()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -54,8 +56,8 @@ function showEntretienIntExt()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -70,8 +72,8 @@ function showGarden()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -86,8 +88,8 @@ function showTurnOnOff()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -102,8 +104,8 @@ function showLittleWork()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -118,8 +120,8 @@ function showPool()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -134,8 +136,8 @@ function showFollowUpWork()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
 
@@ -150,13 +152,10 @@ function showRegularMonitoring()
         myImg.style.opacity= "1";
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = srcImgRight;
-        myImg.style.opacity= "0.7";
+        myImg.src = srcImgChange;
+        myImg.style.opacity = opacityChange;
     }
 }
-
-pictoStewardshipAssistance.addEventListener('mouseover', showStewardshipAssistance);
-pictoStewardshipAssistance.addEventListener('mouseleave', showStewardshipAssistance);
 
 pictoShopping.addEventListener('mouseover', showShopping);
 pictoShopping.addEventListener('mouseleave', showShopping);
@@ -181,3 +180,6 @@ pictoFollowUpWork.addEventListener('mouseleave', showFollowUpWork);
 
 pictoRegularMonitoring.addEventListener('mouseover', showRegularMonitoring);
 pictoRegularMonitoring.addEventListener('mouseleave', showRegularMonitoring);
+
+pictoStewardshipAssistance.addEventListener('mouseover', showStewardshipAssistance);
+pictoStewardshipAssistance.addEventListener('mouseleave', showStewardshipAssistance);
