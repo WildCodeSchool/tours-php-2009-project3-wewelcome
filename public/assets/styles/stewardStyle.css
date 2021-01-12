@@ -12,8 +12,7 @@
 
 .imgFull {
     position: relative;
-    width: 100%;
-    height: 100%;
+    height: 30vh;
 }
 
 .right img {
@@ -103,7 +102,7 @@
 /*** Section Tariff / Taxation ***/
 .stewardTariffTaxation {
     display: flex;
-    background-color: #d3d3d3;
+    background-color: var(--white);
     justify-content: center;
     padding-top: 2em;
     padding-bottom: 2em;
