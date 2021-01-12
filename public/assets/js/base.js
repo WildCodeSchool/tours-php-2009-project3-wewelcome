@@ -9,7 +9,7 @@ function scrollFunction() {
       mybutton.style.display = "block";
       myLogo.style.width = "10vw";
       myLogo.style.transition = "width 1s ease-in-out";
-      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-500px-white.png");
+      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-white.png");
       myNav.style.backgroundColor = "var(--primary-color)";
       myNav.style.alignItems = "center";
 
@@ -20,7 +20,7 @@ function scrollFunction() {
       mybutton.style.display = "none";
       myLogo.style.width = "20vw";
       myLogo.style.transition = "width 1s ease-in-out";
-      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-500px-color.png");
+      myLogo.setAttribute("src", "/assets/images/logo-wewelcome-color.png");
       myNav.style.backgroundColor = "rgba(255, 255, 255, 0)";
       myNav.style.alignItems = "start";
       
@@ -37,4 +37,3 @@ function scrollFunction() {
   
   window.addEventListener('scroll', scrollFunction);
   mybutton.addEventListener('click', topFunction);
-  
