@@ -47,7 +47,7 @@ class HousingController extends AbstractController
         $housingForm->handleRequest($request);
 
         if ($housingForm->isSubmitted() && $housingForm->isValid()) {
-            $photoHousingFile = $housingForm->get('photo')->getData();
+            $photoHousingFile = $housingForm->get('photoFile')->getData();
 
             $photoFileName = 'housing-' . uniqid() . '.' . $photoHousingFile->guessExtension();
 

@@ -17,7 +17,7 @@ class HousingFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('photo', FileType::class, [
+            ->add('photoFile', FileType::class, [
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
