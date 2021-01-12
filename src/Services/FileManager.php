@@ -36,6 +36,13 @@ class FileManager
         return ['error' => $error, 'fileName' => $newFileName];
     }
 
+    public function deleteFile(string $fileName, string $folder): void
+    {
+        $filesystem = new Filesystem();
+        $path = $folder . $fileName;
+        $filesystem->remove($path);
+    }
+
     public function getNewFileName(string $oldName, string $delimiter = '-'): ?string
     {
         $newName = iconv('UTF-8', 'ASCII//TRANSLIT', $oldName);
