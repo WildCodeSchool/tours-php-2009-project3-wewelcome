@@ -1,20 +1,24 @@
 .h2housing {
     text-align: center;
-    padding-top: 5rem;
+    padding-top: 7rem;
 }
 
 .hrTitleHousing {
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
 }
 
 h3 {
     text-align: center;
 }
 
-.theyTrustUs, .businessTrips {
+.theyTrustUs {
     margin: 1rem;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+}
+
+.theyTrustUs img {
+    width: 28rem;
 }
 
 .businessTripsWithTitle {
@@ -22,12 +26,25 @@ h3 {
     padding: 2rem 0rem;
 }
 
-.theyTrustUs img, .businessTrips img {
-    width: 28rem;
+.theyTrustUs div {
+    margin: 1rem;
 }
 
-.theyTrustUs div, .businessTrips div {
-    margin: 1rem;
+.businessTrips {
+    margin: 2rem;
+}
+
+.businessTrips img {
+    width: 40rem;
+}
+
+.businessTrips {
+    display: flex;
+    flex-direction: row;
+}
+
+.businessTrips p {
+    margin-left: 1rem;
 }
 
 

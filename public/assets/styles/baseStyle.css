@@ -59,6 +59,11 @@ hr {
     border-top: 0.5vw solid var(--white);
 }
 
+.adminPanel {
+    background-color: var(--secondary-color);
+}
+
+
 /* START nav bar style */
 .navBar {
     display: flex;
@@ -349,8 +354,6 @@ footer {
     color: var(--primary-color);
 }
 
-/* END contact form */
-
 /***CALL TO ACTION___start***/
 
 .button-contact {
@@ -380,5 +383,23 @@ footer {
     color: var(--primary-color);
     letter-spacing: 0.2vw;
 }
-
 /***CALL TO ACTION___end***/
+
+/* START admin forms */
+.adminForm {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    display: flex;
+    width: 80%;
+    max-width: 700px;
+    flex-wrap: wrap;
+}
+
+.adminForm label {
+    width: 50%;
+    align-self: center;
+    text-align: right;
+    margin-right: 5px;
+}
+/* END admin forms */
+

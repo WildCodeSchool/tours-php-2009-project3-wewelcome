@@ -188,6 +188,16 @@
         <nav class="partners-booking-all">
             <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays"></a>
             <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO"></a>
+            {% for partner in hostingPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
         </nav>
         <hr class="hr-white">
         <nav class="partners-others">
@@ -199,7 +209,35 @@
         </nav>
         <input type="button" id="partners-others-all-button" value="+">
         <nav class="partners-others-all">
+        {% for partner in otherPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
         </nav>
+        <!-- Add a new partner -->
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
+                {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+                {{ form_widget(partnerForm.name) }}
+                {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+                {{ form_widget(partnerForm.url) }}
+                {{ form_label(partnerForm.logoFile, 'Logo au format png ou jpeg :') }}
+                {{ form_widget(partnerForm.logoFile) }}
+                {{ form_label(partnerForm.type, 'Type :') }}
+                {{ form_widget(partnerForm.type) }}
+                <input type='submit' value='Ajouter'>
+            {{ form_end(partnerForm) }}
+            </div>
+        </div>
+        {% endif %}
     </section>
 
     {% include 'home/_contact.html.twig' %}
