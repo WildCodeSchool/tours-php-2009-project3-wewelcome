@@ -62,15 +62,14 @@ hr {
 /* START nav bar style */
 .navBar {
     display: flex;
-    align-items: center;
+    align-items: start;
     width: 100%;
     position: fixed;
     z-index: 10;
-    padding: 5px;
+    padding: 0vw 1vw;
 }
 
 #topLogo {
-    margin-left: 3%;
     transition: all 0.3s ease-in-out;
 }
 
@@ -79,7 +78,7 @@ hr {
 }
 
 #topLogo img {
-    width: 400px;
+    width: 20vw;
 }
 
 .navBar nav {
@@ -87,12 +86,11 @@ hr {
     right: 0;
     width: 70%;
     display: flex;
-    align-items: center;
 }
 
 .navLink {
     width: 20%;
-    padding: 10px 0;
+    padding: 0.5vw 0;
     text-align: center;
     color: var(--primary-color);
     font-weight: bold;
