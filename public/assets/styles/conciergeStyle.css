@@ -4,6 +4,7 @@
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
+    padding-bottom: 1em;
 }
 
 .left {
@@ -121,10 +122,8 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    margin-top: 2em;
     padding-top: 1em;
     padding-bottom: 1em;
-    margin-bottom: 2em;
 }
 
 .contentParts {
@@ -183,8 +182,8 @@
 .profitabilityRentalLegislation {
     display: flex;
     justify-content: center;
-    margin-top: 2em;
-    margin-bottom: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
     background-color:  lightgray;
 }
 
