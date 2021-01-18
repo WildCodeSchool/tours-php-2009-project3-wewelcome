@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\HousingRepository;
 use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HousingController extends AbstractController
 {
@@ -32,7 +33,7 @@ class HousingController extends AbstractController
         $error = '';
 
         $houses = $housingRepository->findBy(['isBusinessTravel' => false]);
-        $businessTravel = $housingRepository->findOneBy(['isBusinessTravel' => true]);
+        $businessTrip = $housingRepository->findOneBy(['isBusinessTravel' => true]);
 
         /** Display the add housing form and add it in the DB */
         $housing = new Housing();
@@ -78,13 +79,14 @@ class HousingController extends AbstractController
             'form' => $form->createView(),
             'housingForm' => $housingForm->createView(),
             'houses' => $houses,
-            'businessTravel' => $businessTravel,
+            'businessTrip' => $businessTrip,
             'error' => $error
             ]);
     }
 
     /**
      * @Route("/logement/{id}", name="housing_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deleteHousing(
         Request $request,
@@ -104,8 +106,9 @@ class HousingController extends AbstractController
 
     /**
      * @Route("/logement/{id}/edit", name="housing_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function edit(
+    public function editHousing(
         Request $request,
         Housing $housing,
         FileManager $fileManager,
@@ -134,9 +137,48 @@ class HousingController extends AbstractController
             return $this->redirectToRoute('housing');
         }
 
-        return $this->render('housing/edit.html.twig', [
+        return $this->render('housing/editHousing.html.twig', [
             'housing' => $housing,
             'housingForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/voyage-d-affaires/{id}/edit", name="business_trip_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editBusinessTrip(
+        Request $request,
+        Housing $businessTrip,
+        FileManager $fileManager,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $form = $this->createForm(HousingFormType::class, $businessTrip);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $businessTripFile = $form->get('photoFile')->getData();
+
+            if ($businessTripFile != null) {
+                $fileManager->deleteFile($businessTrip->getPhoto(), $this->getParameter('housing_directory'));
+
+                $results = $fileManager->saveFile(
+                    'businessTrip',
+                    $businessTripFile,
+                    $this->getParameter('housing_directory')
+                );
+
+                $businessTrip->setPhoto($results['fileName']);
+            }
+
+            $entityManager->flush();
+
+            return $this->redirectToRoute('housing');
+        }
+
+        return $this->render('housing/editBusinessTrip.html.twig', [
+            'businessTrip' => $businessTrip,
+            'businessTripForm' => $form->createView(),
         ]);
     }
 }

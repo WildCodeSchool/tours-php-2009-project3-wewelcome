@@ -16,6 +16,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PartnerRepository;
 use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends AbstractController
 {
@@ -84,6 +85,7 @@ class HomeController extends AbstractController
 
     /**
      * @Route("/partenaire/{id}", name="partner_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function deletePartner(
         Request $request,

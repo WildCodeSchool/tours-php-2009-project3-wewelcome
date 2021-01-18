@@ -32,7 +32,7 @@ class HousingFormType extends AbstractType
                 ],
             ])
             ->add('description', TextareaType::class)
-            ->add('url', UrlType::class)
+            ->add('url', UrlType::class, ['required' => false,])
         ;
     }
 
