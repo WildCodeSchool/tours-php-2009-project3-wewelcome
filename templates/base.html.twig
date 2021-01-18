@@ -10,11 +10,11 @@
 <body>
     <section class="navBar">
         <a id="topLogo" href="{{ path('home') }}">
-            <img src="/assets/images/logo-wewelcome-500px-color.png" alt="wewelcomeLogo">
+            <img src="/assets/images/logo-wewelcome-color.png" alt="wewelcomeLogo">
         </a>
         <nav>
             <a class="navLink" href="{{ path('concierge') }}">Conciergerie</a>
-            <a class="navLink" href="">Intendance</a>
+            <a class="navLink" href="{{ path('steward') }}">Intendance</a>
             <a class="navLink" href="{{ path('housing') }}">Logement</a>
             <a class="navLink" href="#contact">Contact</a>
             <a class="navLink" href="">English</a>
@@ -27,38 +27,34 @@
     {% endblock %}
     <footer>
         <button id="returnTop">Top</button>
-        <div class="socialNetwork">
-            <a href="">
-                <img class="socialNetworkLogo" src="/assets/images/instagram_icon.png" alt="Logo Instagram">
-            </a>
+        <address class="footerLeft">
+            <p>Alexandre DELALANDES</p>
+            <label for="telephone" id="label-telephone">Cliquer pour voir le numéro de téléphone</label>
+            <input type="checkbox" id="telephone">
+            <a id="numero" for="telephone" href="tel:">06 63 64 62 20</a>
+        </address>
+        <nav class="socialNetwork">
             <a href="https://www.facebook.com/wewelcome.fr">
-                <img class="socialNetworkLogo" src="/assets/images/facebook_icon.png" alt="Logo Facebook">
+                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-facebook-white.png" alt="Logo Facebook">
             </a>
             <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
-                <img class="socialNetworkLogo" src="/assets/images/linkedin_icon.png" alt="Logo LinkdIn">
+                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-linkedin-white.png" alt="Logo LinkdIn">
             </a>
-        </div>
-        <div class="footerLeft">
-            <h2>Coordonnées</h2>
-            <address class="info">
-                <p>Mr Alexandre DELALANDES</p>
-                <p>Tel. : <a href="tel:">06 00 00 00 00</a></p>
-                <p>Adresse : xx rue du test, 37000 Tours</p>
-            </address>
-        </div>
-        <div class="footerRight">            
-            <nav class="footerLinks">
-                <a href="">Plan du site</a>
-                <a href="">Mentions légales</a>
-                <a href="">CGU</a>
-                <a href="">Travailler avec moi</a>
-                {% if app.user %}
+            <a href="">
+                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-instagram-white.png" alt="Logo Instagram">
+            </a>
+        </nav>
+        <nav class="footerRight">
+            <a href="">Travailler avec moi</a>
+            <a href="">Plan du site</a>
+            <a href="">Mentions légales</a>
+            <a href="">CGU</a>
+            {% if app.user %}
                 <a href="{{ path('app_logout') }}">Se déconnecter</a>
-                {% else %}
+            {% else %}
                 <a href="{{ path('app_login') }}">Admin panel</a>
-                {% endif %}
-            </nav>
-        </div>
+            {% endif %}
+        </nav>
     </footer>
     <script src="/assets/js/base.js"></script>
     {% block javascripts %}{% endblock %}
