@@ -2,7 +2,6 @@
 
 {% block stylesheets %}
 <link rel="stylesheet" href="/assets/styles/housingStyle.css">
-<link rel="stylesheet" href="/assets/styles/adminStyle.css">
 {% endblock %}
 
 {% block body %}
@@ -66,18 +65,24 @@
                     <img src="assets/images/housing/{{ house.photo }}" alt="">
                 </a>
                 <p>{{ house.description }}</p>
+                {% if app.user %}
                 <form method="post" action="{{ path('housing_delete', {'id' : house.id}) }}" onsubmit="return confirm('Ce logement sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ house.id) }}">
                     <input type="submit" value="Effacer">
                 </form>
                 <button class="update"><a href="{{ path('housing_edit', {'id': house.id }) }}">Modifier</a></button>
+                {% endif %}
             </div>
             {% endfor %}
-        </div>                    
-        <div class="adminPanel">
-            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
         </div>
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
+            </div>
+        </div>
+        {% endif %}
     </section>
     <section class="businessTripsWithTitle">
         <h3>Voyages d'affaires</h3>
