@@ -21,6 +21,7 @@ class MailMessageType extends AbstractType
                 'choices'  => [
                     ' Conciergerie' => 'Conciergerie',
                     ' Intendance' => 'Intendance',
+                    ' Autre' => 'Autre',
                 ],
                 'expanded' => true,
                 'multiple' => false,
