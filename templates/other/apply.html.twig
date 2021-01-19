@@ -7,8 +7,22 @@
 {% block title %}Nous rejoindre - {{ parent() }}{% endblock %}
 
 {% block body %}
+<h2>Nous rejoindre</h2>
 {{ form_start(form, {'attr' : {'class' : 'applyForm'}}) }}
-    {{ form_widget(form) }}
+    {{ form_label(form.firstName, 'Prénom : ') }}
+    {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact'}}) }}
+    {{ form_label(form.lastName, 'Nom : ') }}
+    {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact'}}) }}
+    {{ form_label(form.phone, 'Téléphone : ') }}
+    {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact'}}) }}
+    {{ form_label(form.email, 'Email : ') }}
+    {{ form_widget(form.email, {'attr' : {'class' : 'inputContact'}}) }}
+    {{ form_label(form.message, 'Message : ') }}
+    {{ form_widget(form.message, {'attr' : {'class' : 'inputContact'}}) }}
+    {{ form_label(form.cvFile, 'CV : ') }}
+    {{ form_widget(form.cvFile) }}
+    {{ form_label(form.coverLetterFile, 'Lettre de motivation : ') }}
+    {{ form_widget(form.coverLetterFile) }}
     <input class="button-contact" type='submit' value='Envoyer'>
 {{ form_end(form) }}
 {% endblock %}

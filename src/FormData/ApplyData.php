@@ -117,7 +117,7 @@ class ApplyData
         return $this;
     }
 
-    public function getCvFile(): UploadedFile
+    public function getCvFile(): ?UploadedFile
     {
         return $this->cvFile;
     }
@@ -129,7 +129,7 @@ class ApplyData
         return $this;
     }
 
-    public function getCoverLetterFile(): UploadedFile
+    public function getCoverLetterFile(): ?UploadedFile
     {
         return $this->coverLetterFile;
     }
