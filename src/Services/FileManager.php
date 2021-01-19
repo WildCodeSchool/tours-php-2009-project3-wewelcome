@@ -22,7 +22,7 @@ class FileManager
         $modifiedName = $this->getNewFileName($fileName);
 
         if ($modifiedName === null) {
-            $modifiedName = 'partner';
+            $modifiedName = 'file';
         }
 
         $newFileName = $modifiedName . '-' . uniqid() . '.' . $file->guessExtension();

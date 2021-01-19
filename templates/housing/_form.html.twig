@@ -1,0 +1,9 @@
+{{ form_start(housingForm, {'attr' : {'class' : 'adminForm'}}) }}
+    {{ form_label(housingForm.photoFile, 'Photo :') }}
+    {{ form_widget(housingForm.photoFile) }}
+    {{ form_label(housingForm.url, 'Lien vers l\'annonce :') }}
+    {{ form_widget(housingForm.url) }}
+    {{ form_label(housingForm.description, 'Description :') }}
+    {{ form_widget(housingForm.description) }}
+    <button>{{ button_label }}</button>
+{{ form_end(housingForm) }}

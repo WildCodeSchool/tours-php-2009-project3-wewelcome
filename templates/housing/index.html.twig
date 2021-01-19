@@ -4,13 +4,10 @@
 <link rel="stylesheet" href="/assets/styles/housingStyle.css">
 {% endblock %}
 
-
-
 {% block body %}
 
     <h2 class="h2housing">Logements</h2>
     <hr class="hrTitleHousing">
-
     <section class="theyTrustUsWithTitle">
         <h3>Ils nous font confiance</h3>
         <div class="theyTrustUs">
@@ -62,9 +59,31 @@
                 <img src="assets/images/home-conciergerie.jpg" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
             </div>
+            {% for house in houses %}
+            <div>
+                <a href="{{ house.url }}" target="blank">
+                    <img src="assets/images/housing/{{ house.photo }}" alt="">
+                </a>
+                <p>{{ house.description }}</p>
+                {% if app.user %}
+                <button class="update"><a href="{{ path('housing_edit', {'id': house.id }) }}">Modifier</a></button>
+                <form method="post" action="{{ path('housing_delete', {'id' : house.id}) }}" onsubmit="return confirm('Ce logement sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ house.id) }}">
+                    <input type="submit" value="Effacer">
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
+            </div>
+        </div>
+        {% endif %}
     </section>
-
     <section class="businessTripsWithTitle">
         <h3>Voyages d'affaires</h3>
         <div class="businessTrips">
@@ -78,6 +97,15 @@
             Quos deleniti qui porro reiciendis et, corrupti error dicta excepturi. Vel optio ea repellendus asperiores quo eaque maxime, ullam deleniti numquam mollitia excepturi molestiae reiciendis sunt, voluptate dicta dolorem quas.
             </p>
         </div>
+        {% if businessTrip %}
+        <div class="businessTrips">
+            <img src="assets/images/housing/{{ businessTrip.photo }}">
+            <p>{{ businessTrip.description }}</p>
+        </div>
+        {% endif %}
+        {% if app.user %}
+        <button class="update"><a href="{{ path('business_trip_edit', {'id': businessTrip.id }) }}">Modifier</a></button>
+        {% endif %}
     </section>
    
 {% include "/home/_contact.html.twig" %}
