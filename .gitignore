@@ -28,3 +28,4 @@ yarn-error.log
 ###< symfony/webpack-encore-bundle ###
 
 /public/assets/images/partners/
+/public/assets/images/housing/
