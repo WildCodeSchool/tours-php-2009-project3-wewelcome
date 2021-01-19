@@ -24,6 +24,7 @@ class ApplyType extends AbstractType
             ->add('email', EmailType::class)
             ->add('message', TextareaType::class)
             ->add('cvFile', FileType::class, [
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '1M',
@@ -33,6 +34,7 @@ class ApplyType extends AbstractType
                 ],
             ])
             ->add('coverLetterFile', FileType::class, [
+                'required' => true,
                 'constraints' => [
                     new File([
                         'maxSize' => '1M',

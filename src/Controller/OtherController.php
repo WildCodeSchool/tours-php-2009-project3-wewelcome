@@ -27,28 +27,33 @@ class OtherController extends AbstractController
             $cvName = $apply->getLastName() . '-' . $apply->getFirstName() . '-cv';
             $coverLetterName = $apply->getLastName() . '-' . $apply->getFirstName() . '-lettre_motiv';
 
-            $cvResults = $fileManager->saveFile(
-                $cvName,
-                $apply->getCvFile(),
-                $this->getParameter('temp_directory')
-            );
+            if ($apply->getCvFile() !== null && $apply->getCoverLetterFile() !== null) {
+                $cvResults = $fileManager->saveFile(
+                    $cvName,
+                    $apply->getCvFile(),
+                    $this->getParameter('temp_directory')
+                );
 
-            $coverLetterResults = $fileManager->saveFile(
-                $coverLetterName,
-                $apply->getCoverLetterFile(),
-                $this->getParameter('temp_directory')
-            );
+                $coverLetterResults = $fileManager->saveFile(
+                    $coverLetterName,
+                    $apply->getCoverLetterFile(),
+                    $this->getParameter('temp_directory')
+                );
 
-            $email = (new TemplatedEmail())
-            ->from($apply->getEmail())
-            ->to('wewelcome.test@gmail.com')
-            ->subject('Nouvelle candidature : ' . $apply->getFirstName() . ' ' . $apply->getLastName())
-            ->htmlTemplate('emails/apply.html.twig')
-            ->context(['message' => $apply])
-            ->attachFromPath($this->getParameter('temp_directory') . $cvResults['fileName'])
-            ->attachFromPath($this->getParameter('temp_directory') . $coverLetterResults['fileName']);
+                $email = (new TemplatedEmail())
+                ->from($apply->getEmail())
+                ->to('wewelcome.test@gmail.com')
+                ->subject('Nouvelle candidature : ' . $apply->getFirstName() . ' ' . $apply->getLastName())
+                ->htmlTemplate('emails/apply.html.twig')
+                ->context(['message' => $apply])
+                ->attachFromPath($this->getParameter('temp_directory') . $cvResults['fileName'])
+                ->attachFromPath($this->getParameter('temp_directory') . $coverLetterResults['fileName']);
 
-            $mailer->send($email);
+                $mailer->send($email);
+
+                $fileManager->deleteFile($cvResults['fileName'], $this->getParameter('temp_directory'));
+                $fileManager->deleteFile($coverLetterResults['fileName'], $this->getParameter('temp_directory'));
+            }
 
             return $this->redirectToRoute('work_with_us');
         }
