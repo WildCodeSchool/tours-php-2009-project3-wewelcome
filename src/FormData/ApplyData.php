@@ -3,7 +3,7 @@
 namespace App\FormData;
 
 use Symfony\Component\Validator\Constraints as Assert;
-use Symfony\Component\Validator\Constraints\File;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class ApplyData
 {
@@ -48,12 +48,12 @@ class ApplyData
     private $message;
 
     /**
-     * @var File
+     * @var UploadedFile
      */
     private $cvFile;
 
     /**
-     * @var File
+     * @var UploadedFile
      */
     private $coverLetterFile;
 
@@ -117,24 +117,24 @@ class ApplyData
         return $this;
     }
 
-    public function getCvFile(): ?File
+    public function getCvFile(): UploadedFile
     {
         return $this->cvFile;
     }
 
-    public function setCvFile(File $cvFile): self
+    public function setCvFile(UploadedFile $cvFile): self
     {
         $this->cvFile = $cvFile;
 
         return $this;
     }
 
-    public function getCoverLetterFile(): ?File
+    public function getCoverLetterFile(): UploadedFile
     {
         return $this->coverLetterFile;
     }
 
-    public function setCoverLetterFile(File $coverLetterFile): self
+    public function setCoverLetterFile(UploadedFile $coverLetterFile): self
     {
         $this->coverLetterFile = $coverLetterFile;
 

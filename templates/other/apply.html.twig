@@ -1,7 +1,13 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/otherStyle.css">
+{% endblock %}
+
+{% block title %}Nous rejoindre - {{ parent() }}{% endblock %}
+
 {% block body %}
-{{ form_start(form) }}
+{{ form_start(form, {'attr' : {'class' : 'applyForm'}}) }}
     {{ form_widget(form) }}
     <input class="button-contact" type='submit' value='Envoyer'>
 {{ form_end(form) }}

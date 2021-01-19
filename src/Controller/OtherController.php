@@ -10,21 +10,48 @@ use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use App\Form\ApplyType;
 use App\FormData\ApplyData;
+use App\Services\FileManager;
 
 class OtherController extends AbstractController
 {
     /**
      * @Route("/nous-rejoindre", name="work_with_us")
      */
-    public function workWithUs(Request $request): Response
+    public function workWithUs(Request $request, MailerInterface $mailer, FileManager $fileManager): Response
     {
         $apply = new ApplyData();
         $form = $this->createForm(ApplyType::class, $apply);
         $form->handleRequest($request);
 
-        /*if ($form->isSubmitted() && $form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $cvName = $apply->getLastName() . '-' . $apply->getFirstName() . '-cv';
+            $coverLetterName = $apply->getLastName() . '-' . $apply->getFirstName() . '-lettre_motiv';
 
-        }*/
+            $cvResults = $fileManager->saveFile(
+                $cvName,
+                $apply->getCvFile(),
+                $this->getParameter('temp_directory')
+            );
+
+            $coverLetterResults = $fileManager->saveFile(
+                $coverLetterName,
+                $apply->getCoverLetterFile(),
+                $this->getParameter('temp_directory')
+            );
+
+            $email = (new TemplatedEmail())
+            ->from($apply->getEmail())
+            ->to('wewelcome.test@gmail.com')
+            ->subject('Nouvelle candidature : ' . $apply->getFirstName() . ' ' . $apply->getLastName())
+            ->htmlTemplate('emails/apply.html.twig')
+            ->context(['message' => $apply])
+            ->attachFromPath($this->getParameter('temp_directory') . $cvResults['fileName'])
+            ->attachFromPath($this->getParameter('temp_directory') . $coverLetterResults['fileName']);
+
+            $mailer->send($email);
+
+            return $this->redirectToRoute('work_with_us');
+        }
 
         return $this->render('other/apply.html.twig', ['form' => $form->createView()]);
     }
