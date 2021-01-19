@@ -386,6 +386,14 @@ footer {
 /***CALL TO ACTION___end***/
 
 /* START admin forms */
+.adminPanel h1 {
+    padding-top: 10%;
+}
+
+.update a {
+    color: gray;
+}
+
 .adminForm {
     margin-top: 15px;
     margin-bottom: 15px;
