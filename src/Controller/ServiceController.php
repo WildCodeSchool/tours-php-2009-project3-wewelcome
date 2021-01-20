@@ -79,12 +79,12 @@ class ServiceController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('housing');
+            return $this->redirectToRoute('concierge');
         }
 
         return $this->render('concierge/editService.html.twig', [
             'service' => $service,
-            'housingForm' => $form->createView(),
+            'serviceForm' => $form->createView(),
         ]);
     }
 }

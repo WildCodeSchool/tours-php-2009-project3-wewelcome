@@ -116,7 +116,9 @@
             </figure>
             {% endfor %}
         </div>
-        {{ include ('/services/_add.html.twig', {'button_label': 'Ajouter'}) }}
+        {% if app.user %}
+        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
+        {% endif %}
         <h3 class="title">Formules</h3>
         <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
         <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>

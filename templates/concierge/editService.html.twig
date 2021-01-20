@@ -1,12 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block stylesheets %}
-
-{% endblock %}
-
 {% block title %}WeWelcome{% endblock %}
 
 {% block body %}
-hi
-{{ include ('/services/_update.html.twig', {'button_label': 'Valider'}) }}
+<div class="adminPanel">
+    <h1>Modifier un service</h1>
+    {{ include ('/services/_form.html.twig', {'button_label': 'Modifier'}) }}
+    <a href="{{ path('concierge') }}">Retour</a>
+</div>
 {% endblock %}

@@ -18,6 +18,7 @@ class ServiceType extends AbstractType
         $builder
             ->add('logoFile', FileType::class, [
                 'mapped' => false,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',
@@ -32,6 +33,7 @@ class ServiceType extends AbstractType
             ->add('title', TextType::class)
             ->add('photoFile', FileType::class, [
                 'mapped' => false,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '600k',
