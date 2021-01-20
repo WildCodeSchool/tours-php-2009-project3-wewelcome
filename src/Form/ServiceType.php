@@ -16,13 +16,25 @@ class ServiceType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('logo', TextType::class)
-            ->add('logoTitle', TextType::class)
-            ->add('photoFile', FileType::class, [
+            ->add('logoFile', FileType::class, [
                 'mapped' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',
+                        'mimeTypes' => [
+                            'image/png',
+                            'image/jpeg',
+                        ],
+                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                    ])
+                ],
+            ])
+            ->add('title', TextType::class)
+            ->add('photoFile', FileType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'maxSize' => '600k',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg',

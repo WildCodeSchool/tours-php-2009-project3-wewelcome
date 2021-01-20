@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block title %}WeWelcome{% endblock %}
+
+{% block body %}
+hi
+{{ include ('/services/_update.html.twig', {'button_label': 'Valider'}) }}
+{% endblock %}

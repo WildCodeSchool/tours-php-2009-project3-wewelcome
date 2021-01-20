@@ -25,7 +25,7 @@ class Service
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $logoTitle;
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -47,7 +47,7 @@ class Service
         return $this->id;
     }
 
-    public function getLogo(): ?string
+    public function getLogo(): string
     {
         return $this->logo;
     }
@@ -59,19 +59,19 @@ class Service
         return $this;
     }
 
-    public function getLogoTitle(): ?string
+    public function getTitle(): ?string
     {
-        return $this->logoTitle;
+        return $this->title;
     }
 
-    public function setLogoTitle(string $logoTitle): self
+    public function setTitle(string $title): self
     {
-        $this->logoTitle = $logoTitle;
+        $this->title = $title;
 
         return $this;
     }
 
-    public function getPhoto(): ?string
+    public function getPhoto(): string
     {
         return $this->photo;
     }

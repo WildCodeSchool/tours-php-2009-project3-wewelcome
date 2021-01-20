@@ -15,7 +15,7 @@ use App\Entity\Partner;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PartnerRepository;
 use App\Services\FileManager;
-use Symfony\Component\Filesystem\Filesystem;
+//use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends AbstractController

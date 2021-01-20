@@ -101,7 +101,22 @@
                 <img id="pictoStewardship" src="/assets/images/services/conciergerie/9-services-intendance.png">
                 <figcaption>Service intendance</figcaption>
             </figure>
+            {% for service in services %}
+            <figure>
+                <img id="pictoStewardship" src="/assets/images/servicesImg/{{ service.logo }}">
+                <figcaption>{{ service.title }}</figcaption>
+                {% if app.user %}
+                <button class="update"><a href="{{ path('service_edit', {'id': service.id }) }}">Modifier</a></button>
+                <form method="post" action="{{ path('service_delete', {'id' : service.id}) }}" onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </figure>
+            {% endfor %}
         </div>
+        {{ include ('/services/_add.html.twig', {'button_label': 'Ajouter'}) }}
         <h3 class="title">Formules</h3>
         <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
         <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>

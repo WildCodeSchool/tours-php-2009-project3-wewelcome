@@ -10,14 +10,58 @@ use App\FormData\MailMessageData;
 use App\Form\MailMessageType;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
+use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Service;
+use App\Form\ServiceType;
+use App\Repository\ServiceRepository;
+use App\Services\FileManager;
+use Symfony\Component\Filesystem\Filesystem;
 
 class ConciergeController extends AbstractController
 {
     /**
      * @Route("/conciergerie", name="concierge")
      */
-    public function index(Request $request, MailerInterface $mailer): Response
-    {
+    public function index(
+        Request $request,
+        MailerInterface $mailer,
+        ServiceRepository $serviceRepository,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager
+    ): Response {
+        $services = $serviceRepository->findBy(['relatedTo' => 'concierge']);
+
+        /** Display the add service form and add it in the DB */
+        $service = new Service();
+        $serviceForm = $this->createForm(ServiceType::class, $service);
+        $serviceForm->handleRequest($request);
+
+        if ($serviceForm->isSubmitted() && $serviceForm->isValid()) {
+            $logoServiceFile = $serviceForm->get('logoFile')->getData();
+            $photoServiceFile = $serviceForm->get('photoFile')->getData();
+
+            $resultsLogo = $fileManager->saveFile(
+                $service->getTitle() . '-logo',
+                $logoServiceFile,
+                $this->getParameter('services_directory')
+            );
+
+            $resultsPhoto = $fileManager->saveFile(
+                $service->getTitle() . '-photo',
+                $photoServiceFile,
+                $this->getParameter('services_directory')
+            );
+
+            $service->setLogo($resultsLogo['fileName']);
+            $service->setPhoto($resultsPhoto['fileName']);
+            $service->setRelatedTo('concierge');
+            $entityManager->persist($service);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('concierge');
+        }
+
+        /** display the contact form and send an email to Alexandre */
         $mailMessage = new MailMessageData();
         $form = $this->createForm(MailMessageType::class, $mailMessage);
         $form->handleRequest($request);
@@ -35,6 +79,10 @@ class ConciergeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
-        return $this->render('concierge/index.html.twig', ['form' => $form->createView()]);
+        return $this->render('concierge/index.html.twig', [
+            'form' => $form->createView(),
+            'serviceForm' => $serviceForm->createView(),
+            'services' => $services
+        ]);
     }
 }
