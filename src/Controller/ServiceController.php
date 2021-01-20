@@ -33,18 +33,19 @@ class ServiceController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('concierge');
+        return $this->redirect($request->server->get('HTTP_REFERER'));
     }
 
     /**
-     * @Route("/service/{id}/edit", name="service_edit", methods={"GET","POST"})
+     * @Route("/service/{id}/{source}/edit", name="service_edit", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function editService(
         Request $request,
         Service $service,
         FileManager $fileManager,
-        EntityManagerInterface $entityManager
+        EntityManagerInterface $entityManager,
+        string $source
     ): Response {
         $form = $this->createForm(ServiceType::class, $service);
         $form->handleRequest($request);
@@ -78,11 +79,15 @@ class ServiceController extends AbstractController
             }
 
             $entityManager->flush();
-
-            return $this->redirectToRoute('concierge');
+            
+            if ($source === 'concierge') {
+                return $this->redirectToRoute('concierge');
+            } else if ($source === 'steward') {
+                return $this->redirectToRoute('steward');
+            }
         }
 
-        return $this->render('concierge/editService.html.twig', [
+        return $this->render('services/edit.html.twig', [
             'service' => $service,
             'serviceForm' => $form->createView(),
         ]);

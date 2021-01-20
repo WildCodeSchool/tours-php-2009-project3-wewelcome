@@ -15,8 +15,8 @@ use App\Entity\Partner;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PartnerRepository;
 use App\Services\FileManager;
-//use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\ServiceRepository;
 
 class HomeController extends AbstractController
 {
@@ -27,10 +27,13 @@ class HomeController extends AbstractController
         Request $request,
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
+        ServiceRepository $serviceRepository,
         PartnerRepository $partnerRepository,
         FileManager $fileManager
     ): Response {
         $error = '';
+
+        $servicesConcierge = $serviceRepository->findBy(['relatedTo' => 'concierge']);
 
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
@@ -79,6 +82,7 @@ class HomeController extends AbstractController
             'partnerForm' => $partnerForm->createView(),
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
+            'servicesConcierge' => $servicesConcierge,
             'error' => $error
         ]);
     }

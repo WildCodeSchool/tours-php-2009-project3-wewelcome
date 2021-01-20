@@ -15,7 +15,6 @@ use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
 use App\Services\FileManager;
-use Symfony\Component\Filesystem\Filesystem;
 
 class ConciergeController extends AbstractController
 {
@@ -76,7 +75,7 @@ class ConciergeController extends AbstractController
 
             $mailer->send($email);
 
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('concierge');
         }
 
         return $this->render('concierge/index.html.twig', [

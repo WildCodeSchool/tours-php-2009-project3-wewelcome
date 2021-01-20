@@ -106,7 +106,7 @@
                 <img id="pictoStewardship" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
-                <button class="update"><a href="{{ path('service_edit', {'id': service.id }) }}">Modifier</a></button>
+                <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">Modifier</a></button>
                 <form method="post" action="{{ path('service_delete', {'id' : service.id}) }}" onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">

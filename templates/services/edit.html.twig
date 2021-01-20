@@ -6,6 +6,10 @@
 <div class="adminPanel">
     <h1>Modifier un service</h1>
     {{ include ('/services/_form.html.twig', {'button_label': 'Modifier'}) }}
+    {% if service.relatedTo == 'concierge' %}
     <a href="{{ path('concierge') }}">Retour</a>
+    {% else %}
+    <a href="{{ path('steward') }}">Retour</a>
+    {% endif %}
 </div>
 {% endblock %}
