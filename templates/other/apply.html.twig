@@ -1,28 +1,36 @@
 {% extends 'base.html.twig' %}
 
 {% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/otherStyle.css">
 {% endblock %}
 
 {% block title %}Nous rejoindre - {{ parent() }}{% endblock %}
 
 {% block body %}
-<h2>Nous rejoindre</h2>
-{{ form_start(form, {'attr' : {'class' : 'applyForm'}}) }}
-    {{ form_label(form.firstName, 'Prénom : ') }}
-    {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact'}}) }}
-    {{ form_label(form.lastName, 'Nom : ') }}
-    {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact'}}) }}
-    {{ form_label(form.phone, 'Téléphone : ') }}
-    {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact'}}) }}
-    {{ form_label(form.email, 'Email : ') }}
-    {{ form_widget(form.email, {'attr' : {'class' : 'inputContact'}}) }}
-    {{ form_label(form.message, 'Message : ') }}
-    {{ form_widget(form.message, {'attr' : {'class' : 'inputContact'}}) }}
-    {{ form_label(form.cvFile, 'CV : ') }}
-    {{ form_widget(form.cvFile) }}
-    {{ form_label(form.coverLetterFile, 'Lettre de motivation : ') }}
-    {{ form_widget(form.coverLetterFile) }}
-    <input class="button-contact" type='submit' value='Envoyer'>
-{{ form_end(form) }}
+    <section class="contact" id="contactApply">
+        <h2 class="h2-primary-color">Nous rejoindre</h2>
+        <hr class="hr-primary-color">
+        {{ form_start(form, {'attr' : {'class' : 'contactForm'}}) }}
+            <div class="contact-inputs">
+                <div>
+                    {{ form_label(form.firstName, 'Prénom : ') }}
+                    {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre prénom ici'}}) }}
+                    {{ form_label(form.lastName, 'Nom : ') }}
+                    {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre nom ici'}}) }}
+                    {{ form_label(form.phone, 'Téléphone : ') }}
+                    {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre numéro de téléphone ici'}}) }}
+                    {{ form_label(form.email, 'Email : ') }}
+                    {{ form_widget(form.email, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre email ici'}}) }}
+                    {{ form_label(form.cvFile, 'CV : ') }}
+                    {{ form_widget(form.cvFile) }}
+                    {{ form_label(form.coverLetterFile, 'Lettre de motivation : ') }}
+                    {{ form_widget(form.coverLetterFile) }}
+                </div>
+                <div>
+                    {{ form_label(form.message, 'Message : ') }}
+                    {{ form_widget(form.message, {'attr' : {'class' : 'inputContact message', 'placeholder' : 'Saisissez l\'objet de votre message ici'}}) }}
+                </div>
+            </div>
+            <input class="button-contact" type='submit' value='Envoyer'>
+        {{ form_end(form) }}
+    </section>
 {% endblock %}
