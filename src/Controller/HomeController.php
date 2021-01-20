@@ -34,6 +34,7 @@ class HomeController extends AbstractController
         $error = '';
 
         $servicesConcierge = $serviceRepository->findBy(['relatedTo' => 'concierge']);
+        $servicesSteward = $serviceRepository->findBy(['relatedTo' => 'steward']);
 
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
@@ -83,6 +84,7 @@ class HomeController extends AbstractController
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
             'servicesConcierge' => $servicesConcierge,
+            'servicesSteward' => $servicesSteward,
             'error' => $error
         ]);
     }

@@ -78,10 +78,17 @@ class ConciergeController extends AbstractController
             return $this->redirectToRoute('concierge');
         }
 
+        $photos = [];
+
+        foreach ($services as $service) {
+            $photos[] = $service->getPhoto();
+        }
+
         return $this->render('concierge/index.html.twig', [
             'form' => $form->createView(),
             'serviceForm' => $serviceForm->createView(),
-            'services' => $services
+            'services' => $services,
+            'photos' => $photos
         ]);
     }
 }

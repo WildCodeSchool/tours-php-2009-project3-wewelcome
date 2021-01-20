@@ -8,7 +8,7 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left">
+    <div class="left" data-photos="{{ photos|json_encode }}">
         <img id="conciergeImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
         <div class="hidden">
             <p id="textPostingOnline" class="textPicto">
@@ -56,6 +56,11 @@
                 elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit, sed do eiusmod tempor incididunt. Stewardship
             </p>
+            {% set j =0 %}
+            {% for service in services %}
+                <p id="text{{ j }}" class="textPicto">{{ service.description }}</p>
+                {% set j = j +1 %}
+            {% endfor %}
         </div>
     </div>
     <div class="right">
@@ -101,9 +106,10 @@
                 <img id="pictoStewardship" src="/assets/images/services/conciergerie/9-services-intendance.png">
                 <figcaption>Service intendance</figcaption>
             </figure>
+            {% set i = 0 %}
             {% for service in services %}
             <figure>
-                <img id="pictoStewardship" src="/assets/images/servicesImg/{{ service.logo }}">
+                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">Modifier</a></button>
@@ -113,6 +119,7 @@
                     <button class="btn">Effacer</button>
                 </form>
                 {% endif %}
+                {% set i = i +1 %}
             </figure>
             {% endfor %}
         </div>
@@ -181,5 +188,6 @@
 {% endblock %}
 
 {% block javascripts  %}
-    <script src="/assets/js/concierge.js"></script>
+    <!--<script src="/assets/js/concierge.js"></script>-->
+    <script src="/assets/js/concierge2.js"></script>
 {% endblock %}
