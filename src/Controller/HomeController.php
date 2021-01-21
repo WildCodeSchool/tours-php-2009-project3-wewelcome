@@ -186,4 +186,44 @@ class HomeController extends AbstractController
             'carouselForm' => $carouselForm->createView()
         ]);
     }
+
+    /**
+     * This method allows you to reset the carousel to default.
+     * If there is a carousel in the database, it is deleted.
+     * @Route("/default-carousel", name="default_carousel", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function defaultCarousel(
+        EntityManagerInterface $entityManager,
+        HomeRepository $homeRepository,
+        FileManager $fileManager
+    ): Response {
+
+        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
+        //Creation of a carousel object if one does not exist in the database
+        //Otherwise sending the carousel in the view will not work
+        if ($carousel == null) {
+            $carousel = new Home();
+        }
+        //Delete photos in the home folder if there are any
+        if ($carousel != null) {
+            //Delete photos in the home folder if there are any
+            if ($carousel->getPictureOne() !== null) {
+                $fileManager->deleteFile($carousel->getPictureOne(), $this->getParameter('home_directory'));
+            }
+            if ($carousel->getPictureTwo() !== null) {
+                $fileManager->deleteFile($carousel->getPictureTwo(), $this->getParameter('home_directory'));
+            }
+            if ($carousel->getPictureThree() !== null) {
+                $fileManager->deleteFile($carousel->getPictureThree(), $this->getParameter('home_directory'));
+            }
+        }
+        //Deleting the carousel object from the database if not null
+        if ($carousel != null) {
+            $entityManager->remove($carousel);
+        }
+        $entityManager->flush();
+
+        return $this->redirectToRoute('home');
+    }
 }
