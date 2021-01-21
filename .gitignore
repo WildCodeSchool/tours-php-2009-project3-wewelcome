@@ -31,3 +31,7 @@ yarn-error.log
 /public/assets/images/partners/
 /public/assets/images/housing/
 ###>dynamics photo folders ###
+
+###>temporary files folder ###
+/public/temp/
+###>temporary files folder ###

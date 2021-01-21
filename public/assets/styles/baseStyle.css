@@ -315,9 +315,9 @@ footer {
     width: 100%;
     box-sizing: border-box;
     font-family: var(--primary-text);
-    font-size: 0.8vw;
+    font-size: 1.5vw;
     text-align: left;
-    visibility: hidden;
+    padding-top: 1vw;
 }
 
 .contact-inputs div input,
@@ -352,6 +352,13 @@ footer {
 .contact-inputs div textarea:hover::placeholder {
     font-family: var(--primary-text);
     color: var(--primary-color);
+}
+
+/* START contact form */
+
+#contactApply {
+    padding-top: 0vw;
+    padding-bottom: 13vw;
 }
 
 /***CALL TO ACTION___start***/
