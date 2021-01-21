@@ -1,0 +1,402 @@
+@import 'variables.css';
+
+body {
+    background-color: var(--secondary-color-tint1);
+}
+/***SECTION HOME___start***/
+.home-carousel {
+    position: relative;
+    height: 50vw;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.home-carousel div {
+    z-index: 1;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home-text {
+    margin: 5vw auto;
+    width: 70vw;
+    font-family: var(--primary-title);
+    font-size: 3.5vw;
+    color: var(--white);
+    letter-spacing: 0.5vw;
+    text-shadow: 5px 5px 20px var(--black);
+}
+
+.home-carousel figure {
+    position: relative;
+    width: 400%;
+    margin: 0;
+    padding: 0;
+    font-size: 0;
+    text-align: left;
+    left: 0;
+    animation: 30s slidy infinite ease-in-out;
+}
+
+.home-carousel figure img {
+    width: 25%;
+    height: auto;
+    float: left;
+}
+
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+
+    28% { left: -100%; }
+    53% { left: -100%; }
+
+    61% { left: -200%; }
+    87% { left: -200%; }
+
+    95% { left: -300%; }
+    100% { left: -300%; }
+}
+/***SECTION HOME___end***/
+
+/***ALL SECTIONS EXCEPT HOME___start***/
+.section-except-home { 
+    height: 50vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+/***ALL SECTIONS EXCEPT HOME___start***/
+
+/***SECTION VALUES AND PURPOSE___start***/
+.purpose,
+.values {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2vw;
+}
+
+.purpose section,
+.values section {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 2vw;
+}
+
+.purpose,
+.values {
+    background-color: var(--secondary-color-tint1);
+    color: var(--black);
+}
+
+.purpose-text,
+.values-text {
+    padding: 2vw;
+    font-family: var(--primary-text);
+    font-size: 1.8vw;
+    line-height: 3vw;
+    text-align: justify;
+}
+
+.purpose-text span,
+.values-text span {
+    font-family: var(--secondary-title);
+    font-size: 2vw;
+    color: var(--primary-color);
+    line-height: 3.5vw;
+}
+
+.purpose-picture,
+.values-picture {
+    padding: 2vw;
+}
+
+.purpose-picture img,
+.values-picture img {
+    height: 30vw;
+}
+
+/***SECTION VALUES AND PURPOSE___end***/
+
+/***SECTION KEY-FIGURES___start***/
+.key-figures {
+    position: relative;
+    padding-top: 5vw;
+    background-color: var(--white);
+}
+
+#key-figure-1,
+#key-figure-2,
+#key-figure-3,
+#key-figure-4 {
+    position: absolute;
+    left: -100vw;
+    width: 4em;
+    font-family: var(--primary-title);
+    font-size: 3vw;
+    color: var(--white);
+    background-color: var(--primary-color);
+    text-align: center;
+}
+
+#key-figure-11,
+#key-figure-21,
+#key-figure-31,
+#key-figure-41 {
+    position: absolute;
+    right: -100vw;
+    width: 20em;
+    font-family: var(--primary-text);
+    font-size: 1.8vw;
+    line-height: 3vw;
+    color: var(--black);
+}
+
+#key-figure-1,
+#key-figure-11 {
+    top: 20vw;
+}
+
+#key-figure-2,
+#key-figure-21 {
+    top: 26vw;
+}
+
+#key-figure-3,
+#key-figure-31 {
+    top: 32vw;
+}
+
+#key-figure-4,
+#key-figure-41 {
+    top: 38vw;
+}
+
+#key-figure-contact {
+    position: absolute;
+    right: -100vw;
+    top: 42vw;
+}
+
+/***SECTION KEY-FIGURES___end***/
+
+/***SECTION SERVICE VISION___start***/
+.service-vision {
+    position: relative;
+    padding-top: 5vw;
+}
+
+.service-vision h2 {
+    padding: 2vw;
+    background-color: var(--secondary-color-opacity);
+    text-shadow: 5px 5px 20px var(--black);
+}
+
+#service-vision-1,
+#service-vision-2,
+#service-vision-3,
+#service-vision-4 {
+    position: absolute;
+    left: -100vw;
+    font-family: var(--primary-title);
+    font-size: 3vw;
+    color: var(--white);
+    text-shadow: 2px 2px 10px var(--black);
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#service-vision-1 {
+    top: 20vw;
+}
+
+#service-vision-2 {
+    top: 26vw;
+}
+
+#service-vision-3 {
+    top: 32vw;
+}
+
+#service-vision-4 {
+    top: 38vw;
+}
+
+#service-vision-contact {
+    position: absolute;
+    right: -100vw;
+    top: 42vw;
+}
+/***SECTION SERVICE VISION___end***/
+
+/***SECTION ACTIVITIES___start***/
+.activities {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
+    background-color: var(--white);
+}
+
+.activities-all {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    text-align: center;
+    padding-bottom: 2vw;
+}
+
+.activities-concierge,
+.activities-stewardship {
+    width: 50vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.concierge-title {
+    color: var(--tertiary-color);
+}
+.stewardship-title {
+    color: var(--quaternary-color);
+}
+
+.concierge-text,
+.stewardship-text {
+    font-family: var(--secondary-title);
+    font-size: 1.2vw;
+    margin: 0.5vw;
+}
+
+.concierge-pictograms,
+.stewardship-pictograms {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-items: center;
+    padding-bottom: 2vw;
+}
+
+.concierge-pictograms figure,
+.stewardship-pictograms figure {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5vw;
+    padding: 0.5vw;
+    width: 10vw;
+    height: 6vw;
+    overflow: hidden;
+    font-family: var(--secondary-title);
+    font-size: 0.8vw;
+    color: var(--black);
+}
+
+.concierge-pictograms figure img,
+.stewardship-pictograms figure img {
+    width: 40%;
+}
+
+.concierge-more-infos,
+.stewardship-more-infos {
+    font-family: var(--primary-title);
+    font-size: 1.2vw;
+    padding: 1vw;
+    transition: all 0.5s ease-in-out;
+}
+
+.concierge-more-infos span,
+.stewardship-more-infos span {
+    text-transform: uppercase;
+}
+
+.concierge-more-infos {
+    color: var(--tertiary-color);
+}
+
+.stewardship-more-infos {
+    color: var(--quaternary-color);
+}
+
+.concierge-more-infos:hover,
+.stewardship-more-infos:hover {
+    transform: scale(1.2);
+    text-decoration: underline;
+}
+
+/***SECTION ACTIVITIES___end***/
+
+/***SECTION PARTNERS___start***/
+.partners {
+    text-align: center;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
+    background-color: var(--primary-color);
+}
+
+.partners-booking,
+.partners-others {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
+.partners-booking-all,
+.partners-others-all {
+    display: none;
+    grid-template-columns: repeat(5, 1fr);
+    justify-items: center;
+}
+
+.partners nav a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1vw;
+    padding: 0.5vw;
+    width: 7vw;
+    height: 7vw;
+    border-radius: 100%;
+    overflow: hidden;
+    background-color: var(--white);
+    transition: all 0.3s;
+}
+
+.partners nav a:hover {
+    transform: scale(1.3);
+    box-shadow: 5px 5px 20px var(--black);
+}
+
+.partners nav a img {
+    width: 100%;
+}
+
+#partners-booking-all-button,
+#partners-others-all-button {
+    width: 3vw;
+    height: 3vw;
+    border-radius: 100%;
+    font-family: var(--primary-text);
+    font-size: 2vw;
+    text-align: center;
+    border: none;
+    transition: all 0.3s;
+}
+
+#partners-booking-all-button:hover,
+#partners-others-all-button:hover {
+    transform: scale(1.1);
+    color: var(--white);
+    background-color: var(--black);
+}
+/***SECTION PARTNERS___end***/

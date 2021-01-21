@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/conciergeStyle.css">
+{% endblock %}
+
+{% block title %}Conciergerie - {{ parent() }}{% endblock %}
+
+{% block body %}
+<section class="generalInfo">
+    <div class="left">
+        <img id="conciergeImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
+        <div class="hidden">
+            <p id="textPostingOnline" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Posting online
+            </p>
+            <p id="textBookingManagement" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Booking Management
+            </p>
+            <p id="textBookingOptimization" class="textPicto">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                    elit, sed do eiusmod tempor incididunt. Booking Optimization
+            </p>
+            <p id="textWelcoming" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Welcome
+            </p>
+            <p id="textAssistance" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Assistance
+            </p>
+            <p id="textFoodBasket" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Food Basket
+            </p>
+            <p id="textLinens" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Linens
+            </p>
+            <p id="textCleaning" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Cleaning
+            </p>
+            <p id="textStewardship" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Stewardship
+            </p>
+        </div>
+    </div>
+    <div class="right">
+        <h2>Conciergerie</h2>
+        <hr />
+        <h3 class="title">Services</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <div class="conciergeDetails">
+            <figure>
+                <img id="pictoPostingOnline" src="/assets/images/services/conciergerie/1-creation-et-mise-en-ligne-de-votre-annonce.png">
+                <figcaption>Création et mise en ligne de votre annonce</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoBookingManagement" src="/assets/images/services/conciergerie/2-gestion-des-reservations-et-communication.png">
+                        <figcaption>Gestion des réservations et communication</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoBookingOptimization" src="/assets/images/services/conciergerie/3-optimisation-des-reservations.png">
+                <figcaption>Optimisation des réservations</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoWelcoming" src="/assets/images/services/conciergerie/4.communication-et-assistance.png">
+                <figcaption>Communication et assistance</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoAssistance" src="/assets/images/services/conciergerie/5-accueil-et-depart-des-voyageurs.png">
+                <figcaption>Accueil et départ des voyageurs</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoFoodBasket" src="/assets/images/services/conciergerie/6-panier-de-bienvenue.png">
+                <figcaption>Panier de bienvenue</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoLinens" src="/assets/images/services/conciergerie/7-linge-de-maison.png">
+                <figcaption>Linge de maison</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoCleaning" src="/assets/images/services/conciergerie/8-menage-professionnel.png">
+                <figcaption>Ménage professionnel</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoStewardship" src="/assets/images/services/conciergerie/9-services-intendance.png">
+                <figcaption>Service intendance</figcaption>
+            </figure>
+        </div>
+        <h3 class="title">Formules</h3>
+        <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
+        <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>
+    </div>
+</section>
+<section class="tariffSection">
+    <h3>Tarifs</h3>
+    <hr/>
+    <p class="texTariff">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+        sed do eiusmod tempor incididunt ut labore et dolore magna 
+        aliqua. Ut enim ad minim veniam, quis ...
+    </p>
+    <img class="imgTariff" src="/assets/images/concierge/exempleTarif.png">
+</section>
+<section class="fullServicesLayingOut">
+    <div class="contentParts">
+        <div class="fullServicesPart">
+            <h3>Services Complémentaires</h3>
+            <img class="imgFullServicesLayout" src="/assets/images/concierge/fullService.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+        <div class="layoutPart">
+            <h3> Aménagement et décoration</h3>
+            <img class="imgFullServicesLayout" src="/assets/images/concierge/AmenagementInterieur.jpg">
+            <p class="textFullServicesLayout">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+                sed do eiusmod tempor incididunt ut labore et dolore magna 
+                aliqua. Ut enim ad minim veniam, quis ...
+            </p>
+        </div>
+    </div>
+    <button class="linkQuote"  onclick="location.href='#contact';">Je demande un devis</button>
+</section>
+<section class="profitabilityRentalLegislation">
+    <div class="profitabilityRentalPart">
+        <h3>Rentabilité de la location saisonnière</h3>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/concierge/legislationImage.jpg">
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ...
+        </p>
+    </div>
+    <div class="legislationPart">
+        <h3 class="titleLegislationPart">Législation</h3>
+        <p class="textProfitabilityRentalPart">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna 
+            aliqua. Ut enim ad minim veniam, quis ..
+        </P>
+        <img class="imgProfitabilityRentalPart" src="/assets/images/concierge/legislationImage.jpg">
+    </div>
+</section>
+{% include "/home/_contact.html.twig" %}
+{% endblock %}
+
+{% block javascripts  %}
+    <script src="/assets/js/concierge.js"></script>
+{% endblock %}

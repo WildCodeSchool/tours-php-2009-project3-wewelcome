@@ -1,0 +1,217 @@
+/* START picture and picto with explication of concierge */
+.generalInfo {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 1em;
+}
+
+.left {
+    width: 50%;
+}
+
+.left img {
+    width: 100%;
+    height: 40rem;
+}
+
+.right {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.conciergeDetails {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    row-gap: 8px;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+.conciergeDetails img {
+    width: 35%;
+}
+
+.conciergeDetails img:hover {
+    transform: scale(1.1);
+    transition-duration: 1s;
+    cursor: pointer;
+}
+
+.blue {
+    color: var(--tertiary-color);
+    font-weight: bold;
+    font-family: var(--secondary-title);
+}
+
+.title {
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.right p {
+    padding-bottom: 15px;
+}
+
+.textPicto {
+    position:absolute;
+    top:40%;
+    width:45%;
+    height:auto;
+    padding: 5px 5px 5px 5px;
+    z-index:2;
+    font-size:150%;
+    margin-left: 2.5%;
+    font-weight: bold;
+    border-radius: 20%;
+    visibility: hidden;
+    text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+/* END picture and picto with explication of concierge */
+
+/* START button which send to contact form */
+.contactButton {
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 40%;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contactButton:hover {
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
+}
+/* END button which send to contact form */
+
+/*** section Tariff ***/
+.tariffSection {
+    margin-top: 0;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    text-align: center;
+    justify-items: center;
+    background-color:  lightgray;
+}
+
+.texTariff {
+    width: 20%;
+    text-align: center;
+    margin: auto;
+}
+
+.imgTariff {
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+/*** End section Tariff ***/
+
+/*** section full services / deco ***/
+.fullServicesLayingOut {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.contentParts {
+    display: flex;
+    justify-content: center;
+}
+
+.fullServicesPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.layoutPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+    margin-bottom: 2em;
+}
+
+.imgFullServicesLayout {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 90%;
+    height: 50%;
+    overflow: hidden;
+}
+
+.textFullServicesLayout{
+    width: 90%;
+    margin: auto;
+}
+
+.linkQuote {
+    background-color: var(--primary-color-tint1);
+    color: whitesmoke;
+    font-family: var(--primary-text);
+    font-weight: bold;
+    border-radius: 5px;
+    width: 20%;
+    height: 40px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.linkQuote:hover {
+    cursor: pointer;
+    border-color: var(--primary-color-tint1);
+    background-color: whitesmoke;
+    color: var(--primary-color-tint1);
+}
+/*** End section Full services / laying out ***/
+
+/*** Section profitability Rental Legislation ***/
+.profitabilityRentalLegislation {
+    display: flex;
+    justify-content: center;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    background-color:  lightgray;
+}
+
+.profitabilityRentalPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.legislationPart {
+    width: 40%;
+    text-align: center;
+    justify-content: center;
+}
+
+.titleLegislationPart {
+    margin-bottom: 1.3em;
+}
+
+.textProfitabilityRentalPart {
+    width: 50%;
+    margin: auto;
+}
+
+.imgProfitabilityRentalPart {
+    width: 80%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+/*** End section profitability Rental Legislation ***/

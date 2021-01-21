@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/stewardStyle.css">
+{% endblock %}
+
+{% block title %}Intendance - {{ parent() }}{% endblock %}
+
+{% block body %}
+<section class="generalInfo">
+    <div class="left">
+        <h2>Intendance</h2>
+        <hr />
+        <h3 class="title">Services</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem
+        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
+        <div class="stewardDetails">
+            <figure>
+                <img id="pictoRegularMonitoring" src="/assets/images/services/intendance/1-surveillance-reguliere.png">
+                <figcaption>Surveillance régulière</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoTurnOnOff" src="/assets/images/services/intendance/2-mise-en-route-et-veille.png">
+                <figcaption>Mise en route et veille</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoEntretienIntExt" src="/assets/images/services/intendance/3-entretien-menager-interieur-et-exterieur.png">
+                <figcaption>Entretien ménager intérieur et extérieur</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoGarden" src="/assets/images/services/intendance/4-entretien-du-jardin.png">
+                <figcaption>Entretien du jardin</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoPool" src="/assets/images/services/intendance/5-entretien-de-la-piscine.png">
+                <figcaption>Entretien de la piscine</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoShopping" src="/assets/images/services/intendance/6-courses.png">
+                <figcaption>Courses</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoLittleWork" src="/assets/images/services/intendance/7-petits-travaux-de-reparation.png">
+                <figcaption>Petits travaux de réparation</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoFollowUpWork" src="/assets/images/services/intendance/8-suivi-de-travaux.png">
+                <figcaption>Suivi de travaux</figcaption>
+            </figure>
+            <figure>
+                <img id="pictoStewardshipAssistance" src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
+                <figcaption>Communication et assistance</figcaption>
+            </figure>
+        </div>
+        <h3 class="title">Formules</h3>
+        <p><span class="green">A la carte</span></p>
+        <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>
+    </div>
+    <div class="right">
+        <img class="imgFull" id="stewardImg" src="/assets/images/stewardship/stewardShipIndex.jpg" alt="Photo d'un salon avec miroir">
+        <div class="hidden">
+            <p id="textRegularMonitoring" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. textRegularMonitoring
+            </p>
+            <p id="textMiseRouteVeille" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. miseRoutVeille
+            </p>
+            <p id="textEntretienIntExt" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Entretien Int Ext
+            </p>
+            <p id="textGarden" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Garden
+            </p>
+            <p id="textPool" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Pool
+            </p>
+            <p id="textShopping" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. course
+            </p>
+            <p id="textLittleWork" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Little work
+            </p>
+            <p id="textFollowUpWork" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Follow up work
+            </p>
+            <p id="textStewardAssistance" class="textPicto">
+                Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit, sed do eiusmod tempor incididunt. Steward Assistance
+            </p>
+        </div>
+    </div>
+</section>
+<section class="stewardTariffTaxation">
+    <div class="tariffStewardPart">
+        <h3 class="subTittle">Tarifs</h3>
+        <p class="textTaxationTariff">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis
+        </p>
+        <img class="imgTaxationTariff" src="/assets/images/stewardship/tariffTaxationSteward.png">
+    </div>
+    <div class="taxationStewardPart">
+        <h3 class="subTittle">Fiscalité</h3>
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
+            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis
+        </p>
+        <img class="imgTaxationTariff" src="/assets/images/stewardship/tariffTaxationSteward.png">
+    </div>
+</section>
+<!--Formulaire de contact-->
+    {% include 'home/_contact.html.twig' %}
+{% endblock %}
+
+{% block javascripts %}
+<script src="/assets/js/stewardship.js"></script>
+{% endblock %}

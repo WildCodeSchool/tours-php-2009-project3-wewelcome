@@ -1,8 +1,249 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Home{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/indexStyle.css">
+{% endblock %}
+
+{% block title %}WeWelcome{% endblock %}
 
 {% block body %}
-    <h1>Welcome on your project 3</h1>
-    <img src="https://media.giphy.com/media/hS58Kb2OOCMPS/giphy.gif" alt="Dewey dancing">
+    <section class="home">
+        <div class="home-carousel">
+            <div>
+                <h2 class="home-text">Conciergerie locative & Intendance pour maisons et appartements</h2>
+                <a class="button-contact" href="#contact">Nous contacter</a>
+            </div>
+            <figure>
+                <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+                <img src="/assets/images/home-intendance.jpg" alt="photo de l'extérieur d'une maison"/>
+                <img src="/assets/images/home-region.jpg" alt="photo de personnes faisant du vélo sur le bord de la loire"/>
+                <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+            </figure>
+        </div>
+    </section>
+
+    <section class="purpose section-except-home">
+        <section>
+            <article class="purpose-text">
+                <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
+                <span>WeWelcome est votre assistant dédié !</span><br>
+                Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+            </article>
+            <article class="purpose-picture">
+                <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+            </article>
+        </section>
+        <a class="button-contact" href="#contact">Nous contacter</a>
+    </section>
+
+    <section class="key-figures section-except-home"
+    style="background-image: url(/assets/images/Touraine.png);">
+        <h2 class="h2-primary-color">Implanté en Touraine</h2>
+        <hr class="hr-primary-color">
+        <p id="key-figure-1">+50</p>
+        <p id="key-figure-11">propriétaires déjà satisfaits</p>
+        <p id="key-figure-2">+500</p>
+        <p id="key-figure-21">voyageurs conquis</p>
+        <p id="key-figure-3">+90%</p>
+        <p id="key-figure-31">de taux d'occupation</p>
+        <p id="key-figure-4">7j/7</p>
+        <p id="key-figure-41">disponible pour vous</p>
+        <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
+    </section>
+
+    <section class="values section-except-home">
+        <section>
+            <article class="values-picture">
+                <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+            </article>
+            <article class="values-text">
+                <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+                <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+            </article>
+        </section>
+        <a class="button-contact" href="#contact">Nous contacter</a>
+    </section>
+
+    <section class="service-vision section-except-home"
+    style="background-image: url(/assets/images/section-key-figures.jpg);">
+        <h2 class="h2-white">WeWelcome, la tranquilité assurée !</h2>
+        <p id="service-vision-1">confiance</p>
+        <p id="service-vision-2">qualité</p>
+        <p id="service-vision-3">efficacité</p>
+        <p id="service-vision-4">proximité</p>
+        <a class="button-contact" id="service-vision-contact" href="#contact">Nous contacter</a>
+    </section>
+
+    <section class="activities">
+        <h2 class="h2-primary-color">Les offres WeWelcome</h2>
+        <hr class="hr-primary-color">
+        <section class="activities-all">
+            <section class="activities-concierge">
+                <h3 class="concierge-title">Conciergerie</h3>
+                <div class="concierge-text">
+                    <p>Vous voulez mettre un logement en location.</p>
+                    <p>Confiez-nous votre bien et nous rentabiliserons vos absences.</p>
+                </div>
+                <div class="concierge-pictograms">
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/1-creation-et-mise-en-ligne-de-votre-annonce.png">
+                        <figcaption>Création et mise en ligne de votre annonce</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/2-gestion-des-reservations-et-communication.png">
+                        <figcaption>Gestion des réservations et communication</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/3-optimisation-des-reservations.png">
+                        <figcaption>Optimisation des réservations</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/4.communication-et-assistance.png">
+                        <figcaption>Communication et assistance</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/5-accueil-et-depart-des-voyageurs.png">
+                        <figcaption>Accueil et départ des voyageurs</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/6-panier-de-bienvenue.png">
+                        <figcaption>Panier de bienvenue</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/7-linge-de-maison.png">
+                        <figcaption>Linge de maison</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/8-menage-professionnel.png">
+                        <figcaption>Ménage professionnel</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/9-services-intendance.png">
+                        <figcaption>Service intendance</figcaption>
+                    </figure>
+                </div>
+                <a class="concierge-more-infos" href="{{ path('concierge') }}">Voir plus d'informations<br> sur la page <span>conciergerie</span></a>
+            </section>
+            <section class="activities-stewardship">
+                <h3 class="stewardship-title">Intendance</h3>
+                <div class="stewardship-text">
+                    <p>Votre résidence principale ou secondaire est peu ou pas occupée.</p>
+                    <p>Confiez-nous votre bien et nous en prendrons soin.</p>
+                </div>
+                <div class="stewardship-pictograms">
+                    <figure>
+                        <img src="/assets/images/services/intendance/1-surveillance-reguliere.png">
+                        <figcaption>Surveillance régulière</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/2-mise-en-route-et-veille.png">
+                        <figcaption>Mise en route et veille</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/3-entretien-menager-interieur-et-exterieur.png">
+                        <figcaption>Entretien ménager intérieur et extérieur</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/4-entretien-du-jardin.png">
+                        <figcaption>Entretien du jardin</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/5-entretien-de-la-piscine.png">
+                        <figcaption>Entretien de la piscine</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/6-courses.png">
+                        <figcaption>Courses</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/7-petits-travaux-de-reparation.png">
+                        <figcaption>Petits travaux de réparation</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/8-suivi-de-travaux.png">
+                        <figcaption>Suivi de travaux</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
+                        <figcaption>Communication et assistance</figcaption>
+                    </figure>
+                </div>
+                <a class="stewardship-more-infos" href="">Voir plus d'informations<br> sur la page <span>intendance</span></a>
+            </section>
+        </section>
+        <a class="button-contact" href="#contact">Nous contacter</a>
+    </section>
+
+    <section class="partners">
+        <h2 class="h2-white">Nos partenaires</h2>
+        <hr class="hr-white">
+        <nav class="partners-booking">
+            <a href=""><img src="/assets/images/partenaireAbritel.jpeg" alt="Abritel"></a>
+            <a href=""><img src="/assets/images/partenaireAirbnb.jpg" alt="Airbnb"></a>
+            <a href=""><img src="/assets/images/partenaireBooking.png" alt="Booking"></a>
+            <a href=""><img src="/assets/images/partenaireFewo-direkt.png" alt="Fewo-direkt"></a>
+            <a href=""><img src="/assets/images/partenaireGites.jpg" alt="Gites.fr"></a>
+        </nav>
+        <input type="button" id="partners-booking-all-button" value="+">
+        <nav class="partners-booking-all">
+            <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays"></a>
+            <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO"></a>
+            {% for partner in hostingPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
+        </nav>
+        <hr class="hr-white">
+        <nav class="partners-others">
+            <a href=""><img src="/assets/images/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire"></a>
+            <a href=""><img src="/assets/images/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire"></a>
+            <a href=""><img src="/assets/images/partenaireValLoireFrance.png" alt="Val de Loire France"></a>
+            <a href=""><img src="/assets/images/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire"></a>
+            <a href=""><img src="/assets/images/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray"></a>
+        </nav>
+        <input type="button" id="partners-others-all-button" value="+">
+        <nav class="partners-others-all">
+        {% for partner in otherPartners %}
+            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+            {% if app.user %}
+            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                <button class="btn">Effacer</button>
+            </form>
+            {% endif %}
+        {% endfor %}
+        </nav>
+        <!-- Add a new partner -->
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
+                {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+                {{ form_widget(partnerForm.name) }}
+                {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+                {{ form_widget(partnerForm.url) }}
+                {{ form_label(partnerForm.logoFile, 'Logo au format png ou jpeg :') }}
+                {{ form_widget(partnerForm.logoFile) }}
+                {{ form_label(partnerForm.type, 'Type :') }}
+                {{ form_widget(partnerForm.type) }}
+                <input type='submit' value='Ajouter'>
+            {{ form_end(partnerForm) }}
+            </div>
+        </div>
+        {% endif %}
+    </section>
+
+    {% include 'home/_contact.html.twig' %}
+{% endblock %}
+
+{% block javascripts  %}
+    <script src="/assets/js/index.js"></script>
+    <script src="/assets/js/indexPartner.js"></script> 
 {% endblock %}
