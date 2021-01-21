@@ -17,6 +17,9 @@ use App\Repository\PartnerRepository;
 use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use App\Repository\HomeRepository;
+use App\Entity\Home;
+use App\Form\CarouselType;
 
 class HomeController extends AbstractController
 {
@@ -28,12 +31,19 @@ class HomeController extends AbstractController
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
         PartnerRepository $partnerRepository,
-        FileManager $fileManager
+        FileManager $fileManager,
+        HomeRepository $homeRepository
     ): Response {
         $error = '';
 
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
+        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
+        //Creation of a carousel object if one does not exist in the database
+        //Otherwise sending the carousel in the view will not work
+        if ($carousel == null) {
+            $carousel = new Home();
+        }
 
         /** Display the add partner form and add it in the DB */
         $partner = new Partner();
@@ -79,7 +89,8 @@ class HomeController extends AbstractController
             'partnerForm' => $partnerForm->createView(),
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
-            'error' => $error
+            'error' => $error,
+            'carousel' => $carousel
         ]);
     }
 
@@ -101,5 +112,78 @@ class HomeController extends AbstractController
         }
 
         return $this->redirectToRoute('home');
+    }
+
+    /**
+     * This method is used to modify the default carousel.
+     * The database is therefore empty by default.
+     * If there is a carousel in the database, we delete the files that are in the upload folder.
+     * Then we remove the carousel that there is in comic book then we add the new one.
+     * @Route("/edit-carousel", name="edit_carousel", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editCarousel(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager,
+        HomeRepository $homeRepository
+    ): Response {
+
+        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
+        //Creation of a carousel object if one does not exist in the database
+        //Otherwise sending the carousel in the view will not work
+        if ($carousel == null) {
+            $carousel = new Home();
+        }
+        $editCarousel = new Home();
+        $carouselForm = $this->createForm(CarouselType::class, $editCarousel);
+        $carouselForm->handleRequest($request);
+        if ($carouselForm->isSubmitted() && $carouselForm->isValid()) {
+            //Delete photos in the home folder if there are any
+            if ($carousel->getPictureOne() !== null) {
+                $fileManager->deleteFile($carousel->getPictureOne(), $this->getParameter('home_directory'));
+            }
+            if ($carousel->getPictureTwo() !== null) {
+                $fileManager->deleteFile($carousel->getPictureTwo(), $this->getParameter('home_directory'));
+            }
+            if ($carousel->getPictureThree() !== null) {
+                $fileManager->deleteFile($carousel->getPictureThree(), $this->getParameter('home_directory'));
+            }
+            //Deleting the carousel object from the database
+            $entityManager->remove($carousel);
+            //Saving uploader photos
+            $pictureOne = $carouselForm->get('pictureOne')->getData();
+            $pictureTwo = $carouselForm->get('pictureTwo')->getData();
+            $pictureThree = $carouselForm->get('pictureThree')->getData();
+            //Saving photos in the home folder
+            $addPictureOne = $fileManager->saveFile(
+                'pictureOne',
+                $pictureOne,
+                $this->getParameter('home_directory')
+            );
+            $addPictureTwo = $fileManager->saveFile(
+                'pictureTwo',
+                $pictureTwo,
+                $this->getParameter('home_directory')
+            );
+            $addPictureThree = $fileManager->saveFile(
+                'pictureThree',
+                $pictureThree,
+                $this->getParameter('home_directory')
+            );
+            //Saving photos in the database
+            $editCarousel->setPictureOne($addPictureOne['fileName']);
+            $editCarousel->setPictureTwo($addPictureTwo['fileName']);
+            $editCarousel->setPictureThree($addPictureThree['fileName']);
+            $editCarousel->setType('carousel');
+
+            $entityManager->persist($editCarousel);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('home/editCarousel.html.twig', [
+            'carouselForm' => $carouselForm->createView()
+        ]);
     }
 }

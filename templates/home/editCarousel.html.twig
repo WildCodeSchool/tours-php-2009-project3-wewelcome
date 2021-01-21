@@ -1,0 +1,25 @@
+<div class="adminPanel">
+    <div class="add">
+        <h3>Formulaire de modification du carousel</h3>
+        {{ form_start(carouselForm, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(carouselForm.title, 'Titre :') }}
+            {{ form_widget(carouselForm.title) }}
+            {{ form_label(carouselForm.pictureOne, 'Photo n°1 :') }}
+            {{ form_widget(carouselForm.pictureOne) }}
+            {{ form_label(carouselForm.legendPictureOne, 'Légende :') }}
+            {{ form_widget(carouselForm.legendPictureOne) }}
+            {{ form_label(carouselForm.pictureTwo, 'Photo n°2 :') }}
+            {{ form_widget(carouselForm.pictureTwo) }}
+            {{ form_label(carouselForm.legendPictureTwo, 'Légende :') }}
+            {{ form_widget(carouselForm.legendPictureTwo) }}
+            {{ form_label(carouselForm.pictureThree, 'Photo n°3 :') }}
+            {{ form_widget(carouselForm.pictureThree) }}
+            {{ form_label(carouselForm.legendPictureThree, 'Légende :') }}
+            {{ form_widget(carouselForm.legendPictureThree) }}
+            <button>Valider</button>
+        {{ form_end(carouselForm) }}
+        <a href="{{ path('home') }}">
+            <input type="button" value="Retour">
+        </a>
+    </div>
+</div>
