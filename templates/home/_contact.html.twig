@@ -8,13 +8,13 @@
         </div>
         <div class="contact-inputs">
             <div>
-                {{ form_label(form.firstName, 'Prénom') }}
+                {{ form_label(form.firstName, 'Prénom :') }}
                 {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre prénom ici'}}) }}
-                {{ form_label(form.lastName, 'Nom') }}
+                {{ form_label(form.lastName, 'Nom :') }}
                 {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre nom ici'}}) }}
-                {{ form_label(form.phone, 'Téléphone') }}
+                {{ form_label(form.phone, 'Téléphone :') }}
                 {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre numéro de téléphone ici'}}) }}
-                {{ form_label(form.email, 'Email') }}
+                {{ form_label(form.email, 'Email :') }}
                 {{ form_widget(form.email, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre email ici'}}) }}
             </div>
             <div>
