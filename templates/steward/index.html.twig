@@ -8,7 +8,7 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left">
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
         <h2>Intendance</h2>
         <hr />
         <h3 class="title">Services</h3>
@@ -51,9 +51,10 @@
                 <img id="pictoStewardshipAssistance" src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
                 <figcaption>Communication et assistance</figcaption>
             </figure>
+            {% set i = 0 %}
             {% for service in services %}
             <figure>
-                <img id="pictoStewardship" src="/assets/images/servicesImg/{{ service.logo }}">
+                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'steward'}) }}">Modifier</a></button>
@@ -63,6 +64,7 @@
                     <button class="btn">Effacer</button>
                 </form>
                 {% endif %}
+                {% set i = i +1 %}
             </figure>
             {% endfor %}
         </div>
@@ -74,7 +76,7 @@
         <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>
     </div>
     <div class="right">
-        <img class="imgFull" id="stewardImg" src="/assets/images/stewardship/stewardShipIndex.jpg" alt="Photo d'un salon avec miroir">
+        <img class="imgFull" id="defaultServiceImg" src="/assets/images/stewardship/stewardShipIndex.jpg" alt="Photo d'un salon avec miroir">
         <div class="hidden">
             <p id="textRegularMonitoring" class="textPicto">
                 Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -121,6 +123,11 @@
                 elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
                 elit, sed do eiusmod tempor incididunt. Steward Assistance
             </p>
+            {% set j =0 %}
+            {% for service in services %}
+                <p id="text{{ j }}" class="textPicto">{{ service.description }}</p>
+                {% set j = j +1 %}
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -149,5 +156,5 @@
 {% endblock %}
 
 {% block javascripts %}
-<script src="/assets/js/stewardship.js"></script>
+<script src="/assets/js/services.js"></script>
 {% endblock %}

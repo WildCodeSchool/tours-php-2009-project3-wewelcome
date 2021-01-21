@@ -78,10 +78,17 @@ class StewardController extends AbstractController
             return $this->redirectToRoute('steward');
         }
 
+        $photos = [];
+
+        foreach ($services as $service) {
+            $photos[] = $service->getPhoto();
+        }
+
         return $this->render('steward/index.html.twig', [
             'form' => $form->createView(),
             'serviceForm' => $serviceForm->createView(),
-            'services' => $services
+            'services' => $services,
+            'photos' => $photos
         ]);
     }
 }

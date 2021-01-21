@@ -1,4 +1,4 @@
-const leftDiv = document.querySelector('.left');
+const leftDiv = document.querySelector('.hiddenText');
 const photos = JSON.parse(leftDiv.dataset.photos);
 let picto = [];
 
@@ -9,7 +9,7 @@ for (i = 0; i < photos.length; i++) {
 function showImgText(id)
 {
     let myText = document.getElementById('text' + id);
-    let myImg = document.getElementById('conciergeImg');
+    let myImg = document.getElementById('defaultServiceImg');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';

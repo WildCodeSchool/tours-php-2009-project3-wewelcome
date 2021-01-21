@@ -8,8 +8,8 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left" data-photos="{{ photos|json_encode }}">
-        <img id="conciergeImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
+        <img id="defaultServiceImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
         <div class="hidden">
             <p id="textPostingOnline" class="textPicto">
                 Lorem ipsum dolor sit amet, consectetur adipiscing
@@ -188,6 +188,5 @@
 {% endblock %}
 
 {% block javascripts  %}
-    <!--<script src="/assets/js/concierge.js"></script>-->
-    <script src="/assets/js/concierge2.js"></script>
+    <script src="/assets/js/services.js"></script>
 {% endblock %}
