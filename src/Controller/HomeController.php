@@ -21,6 +21,7 @@ use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
 use App\Form\PurposeType;
+use App\Services\HomeManager;
 
 class HomeController extends AbstractController
 {
@@ -82,14 +83,14 @@ class HomeController extends AbstractController
         $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
         //Creation of a carousel object if one does not exist in the database
         //Otherwise sending the carousel in the view will not work
-        if ($carousel == null) {
+        if ($carousel === null) {
             $carousel = new Home();
         }
 
         $purpose = $homeRepository->findOneBy(['type' => 'purpose']);
         //Creation of a carousel object if one does not exist in the database
         //Otherwise sending the carousel in the view will not work
-        if ($purpose == null) {
+        if ($purpose === null) {
             $purpose = new Home();
         }
 
@@ -142,7 +143,7 @@ class HomeController extends AbstractController
         $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
         //Creation of a carousel object if one does not exist in the database
         //Otherwise sending the carousel in the view will not work
-        if ($carousel == null) {
+        if ($carousel === null) {
             $carousel = new Home();
         }
         $editCarousel = new Home();
@@ -151,13 +152,13 @@ class HomeController extends AbstractController
         if ($carouselForm->isSubmitted() && $carouselForm->isValid()) {
             //Delete photos in the home folder if there are any
             if ($carousel->getPictureOne() !== null) {
-                $fileManager->deleteFile($carousel->getPictureOne(), $this->getParameter('home_directory'));
+                $fileManager->deleteFile($carousel->getPictureOne(), $this->getParameter('carousel_directory'));
             }
             if ($carousel->getPictureTwo() !== null) {
-                $fileManager->deleteFile($carousel->getPictureTwo(), $this->getParameter('home_directory'));
+                $fileManager->deleteFile($carousel->getPictureTwo(), $this->getParameter('carousel_directory'));
             }
             if ($carousel->getPictureThree() !== null) {
-                $fileManager->deleteFile($carousel->getPictureThree(), $this->getParameter('home_directory'));
+                $fileManager->deleteFile($carousel->getPictureThree(), $this->getParameter('carousel_directory'));
             }
             //Deleting the carousel object from the database
             $entityManager->remove($carousel);
@@ -169,17 +170,17 @@ class HomeController extends AbstractController
             $addPictureOne = $fileManager->saveFile(
                 'pictureOne',
                 $pictureOne,
-                $this->getParameter('home_directory')
+                $this->getParameter('carousel_directory')
             );
             $addPictureTwo = $fileManager->saveFile(
                 'pictureTwo',
                 $pictureTwo,
-                $this->getParameter('home_directory')
+                $this->getParameter('carousel_directory')
             );
             $addPictureThree = $fileManager->saveFile(
                 'pictureThree',
                 $pictureThree,
-                $this->getParameter('home_directory')
+                $this->getParameter('carousel_directory')
             );
             //Saving photos in the database
             $editCarousel->setPictureOne($addPictureOne['fileName']);
@@ -200,40 +201,16 @@ class HomeController extends AbstractController
     /**
      * This method allows you to reset the carousel to default.
      * If there is a carousel in the database, it is deleted.
+     * You must enter the type of content and the destination folder.
      * @Route("/default-carousel", name="default_carousel", methods={"GET"})
      * @IsGranted("ROLE_ADMIN")
      */
     public function defaultCarousel(
-        EntityManagerInterface $entityManager,
-        HomeRepository $homeRepository,
-        FileManager $fileManager
+        HomeManager $homeManager
     ): Response {
 
-        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
-        //Creation of a carousel object if one does not exist in the database
-        //Otherwise sending the carousel in the view will not work
-        if ($carousel == null) {
-            $carousel = new Home();
-        }
-        //Delete photos in the home folder if there are any
-        if ($carousel != null) {
-            //Delete photos in the home folder if there are any
-            if ($carousel->getPictureOne() !== null) {
-                $fileManager->deleteFile($carousel->getPictureOne(), $this->getParameter('home_directory'));
-            }
-            if ($carousel->getPictureTwo() !== null) {
-                $fileManager->deleteFile($carousel->getPictureTwo(), $this->getParameter('home_directory'));
-            }
-            if ($carousel->getPictureThree() !== null) {
-                $fileManager->deleteFile($carousel->getPictureThree(), $this->getParameter('home_directory'));
-            }
-        }
-        //Deleting the carousel object from the database if not null
-        if ($carousel != null) {
-            $entityManager->remove($carousel);
-        }
-        $entityManager->flush();
-
+        $carousel = new Home();
+        $homeManager->removeDataAndFolder($carousel, 'carousel', 'carousel_directory');
         return $this->redirectToRoute('home');
     }
 
@@ -255,7 +232,7 @@ class HomeController extends AbstractController
         $purpose = $homeRepository->findOneBy(['type' => 'purpose']);
         //Creation of a purpose object if one does not exist in the database
         //Otherwise sending the purpose in the view will not work
-        if ($purpose == null) {
+        if ($purpose === null) {
             $purpose = new Home();
         }
         $editPurpose = new Home();
@@ -288,5 +265,21 @@ class HomeController extends AbstractController
         return $this->render('home/editPurpose.html.twig', [
             'purposeForm' => $purposeForm->createView()
         ]);
+    }
+
+    /**
+     * This method allows you to reset the purpose section to default.
+     * If there is a purpose in the database, it is deleted.
+     * You must enter the type of content and the destination folder.
+     * @Route("/default-purpose", name="default_purpose", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function defaultPurpose(
+        HomeManager $homeManager
+    ): Response {
+
+        $purpose = new Home();
+        $homeManager->removeDataAndFolder($purpose, 'purpose', 'purpose_directory');
+        return $this->redirectToRoute('home');
     }
 }
