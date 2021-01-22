@@ -268,7 +268,7 @@ class HomeController extends AbstractController
             $entityManager->persist($editPurpose);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirect($this->generateUrl('home') . '#section-purpose');
         }
         return $this->render('home/editPurpose.html.twig', [
             'purposeForm' => $purposeForm->createView()
@@ -288,7 +288,7 @@ class HomeController extends AbstractController
 
         $purpose = new Home();
         $homeManager->removeDataAndFolder($purpose, 'purpose', 'purpose_directory');
-        return $this->redirectToRoute('home');
+        return $this->redirect($this->generateUrl('home') . '#section-purpose');
     }
 
     /**
@@ -337,7 +337,7 @@ class HomeController extends AbstractController
             $entityManager->persist($editValues);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirect($this->generateUrl('home') . '#section-values');
         }
         return $this->render('home/editValues.html.twig', [
             'valuesForm' => $valuesForm->createView()
@@ -357,6 +357,6 @@ class HomeController extends AbstractController
 
         $values = new Home();
         $homeManager->removeDataAndFolder($values, 'values', 'values_directory');
-        return $this->redirectToRoute('home');
+        return $this->redirect($this->generateUrl('home') . '#section-values');
     }
 }
