@@ -100,14 +100,31 @@
     <section class="values section-except-home">
         <section>
             <article class="values-picture">
-                <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% if values.pictureOne %}
+                    <img src="/assets/images/values/{{values.pictureOne}}" alt="{{values.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% endif %}
             </article>
             <article class="values-text">
-                <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
-                <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% if values.text %}
+                    <p>{{values.text}}</p>
+                {% else %}
+                    <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+                    <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% endif %}
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Values modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_values') }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_values') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
     <section class="service-vision section-except-home"

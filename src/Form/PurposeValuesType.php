@@ -10,7 +10,7 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Validator\Constraints\File;
 
-class PurposeType extends AbstractType
+class PurposeValuesType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {

@@ -20,7 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
-use App\Form\PurposeType;
+use App\Form\PurposeValuesType;
 use App\Services\HomeManager;
 
 class HomeController extends AbstractController
@@ -88,10 +88,17 @@ class HomeController extends AbstractController
         }
 
         $purpose = $homeRepository->findOneBy(['type' => 'purpose']);
-        //Creation of a carousel object if one does not exist in the database
-        //Otherwise sending the carousel in the view will not work
+        //Creation of a purpose object if one does not exist in the database
+        //Otherwise sending the purpose in the view will not work
         if ($purpose === null) {
             $purpose = new Home();
+        }
+
+        $values = $homeRepository->findOneBy(['type' => 'values']);
+        //Creation of a values object if one does not exist in the database
+        //Otherwise sending the values in the view will not work
+        if ($values === null) {
+            $values = new Home();
         }
 
         return $this->render('home/index.html.twig', [
@@ -101,7 +108,8 @@ class HomeController extends AbstractController
             'otherPartners' => $othersPartners,
             'error' => $error,
             'carousel' => $carousel,
-            'purpose' => $purpose
+            'purpose' => $purpose,
+            'values' => $values
         ]);
     }
 
@@ -215,10 +223,10 @@ class HomeController extends AbstractController
     }
 
     /**
-     * This method is used to modify the default carousel.
+     * This method is used to modify the default purpose.
      * The database is therefore empty by default.
-     * If there is a carousel in the database, we delete the files that are in the upload folder.
-     * Then we remove the carousel that there is in comic book then we add the new one.
+     * If there is a purpose in the database, we delete the files that are in the upload folder.
+     * Then we remove the purpose that there is in comic book then we add the new one.
      * @Route("/edit-purpose", name="edit_purpose", methods={"GET", "POST"})
      * @IsGranted("ROLE_ADMIN")
      */
@@ -236,7 +244,7 @@ class HomeController extends AbstractController
             $purpose = new Home();
         }
         $editPurpose = new Home();
-        $purposeForm = $this->createForm(PurposeType::class, $editPurpose);
+        $purposeForm = $this->createForm(PurposeValuesType::class, $editPurpose);
         $purposeForm->handleRequest($request);
         if ($purposeForm->isSubmitted() && $purposeForm->isValid()) {
             //Delete photos in the home folder if there are any
@@ -280,6 +288,75 @@ class HomeController extends AbstractController
 
         $purpose = new Home();
         $homeManager->removeDataAndFolder($purpose, 'purpose', 'purpose_directory');
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * This method is used to modify the default values.
+     * The database is therefore empty by default.
+     * If there is a values in the database, we delete the files that are in the upload folder.
+     * Then we remove the values that there is in comic book then we add the new one.
+     * @Route("/edit-values", name="edit_values", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editValues(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager,
+        HomeRepository $homeRepository
+    ): Response {
+
+        $values = $homeRepository->findOneBy(['type' => 'values']);
+        //Creation of a purpose object if one does not exist in the database
+        //Otherwise sending the purpose in the view will not work
+        if ($values === null) {
+            $values = new Home();
+        }
+        $editValues = new Home();
+        $valuesForm = $this->createForm(PurposeValuesType::class, $editValues);
+        $valuesForm->handleRequest($request);
+        if ($valuesForm->isSubmitted() && $valuesForm->isValid()) {
+            //Delete photos in the home folder if there are any
+            if ($values->getPictureOne() !== null) {
+                $fileManager->deleteFile($values->getPictureOne(), $this->getParameter('values_directory'));
+            }
+            //Deleting the values object from the database
+            $entityManager->remove($values);
+            //Saving uploader photos
+            $pictureOne = $valuesForm->get('pictureOne')->getData();
+            //Saving photos in the home folder
+            $addPictureOne = $fileManager->saveFile(
+                'pictureOne',
+                $pictureOne,
+                $this->getParameter('values_directory')
+            );
+            //Saving photos in the database
+            $editValues->setPictureOne($addPictureOne['fileName']);
+            $editValues->setType('values');
+
+            $entityManager->persist($editValues);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('home/editValues.html.twig', [
+            'valuesForm' => $valuesForm->createView()
+        ]);
+    }
+
+    /**
+     * This method allows you to reset the values section to default.
+     * If there is a values in the database, it is deleted.
+     * You must enter the type of content and the destination folder.
+     * @Route("/default-values", name="default_values", methods={"GET"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function defaultValues(
+        HomeManager $homeManager
+    ): Response {
+
+        $values = new Home();
+        $homeManager->removeDataAndFolder($values, 'values', 'values_directory');
         return $this->redirectToRoute('home');
     }
 }
