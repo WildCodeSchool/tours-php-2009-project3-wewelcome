@@ -1,0 +1,17 @@
+<div class="adminPanel">
+    <div class="add">
+        <h3>Formulaire de modification de la partie "BUT"</h3>
+        {{ form_start(purposeForm, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(purposeForm.text, 'Texte :') }}
+            {{ form_widget(purposeForm.text) }}
+            {{ form_label(purposeForm.pictureOne, 'Photo :') }}
+            {{ form_widget(purposeForm.pictureOne) }}
+            {{ form_label(purposeForm.legendPictureOne, 'Légende :') }}
+            {{ form_widget(purposeForm.legendPictureOne) }}
+            <button>Valider</button>
+        {{ form_end(purposeForm) }}
+        <a href="{{ path('home') }}">
+            <input type="button" value="Retour">
+        </a>
+    </div>
+</div>

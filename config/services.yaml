@@ -7,6 +7,7 @@ parameters:
     housing_directory: '%kernel.project_dir%/public/assets/images/housing/'
     partners_directory: '%kernel.project_dir%/public/assets/images/partners/'
     home_directory: '%kernel.project_dir%/public/assets/images/home/'
+    purpose_directory: '%kernel.project_dir%/public/assets/images/purpose/'
 
 services:
     # default configuration for services in *this* file

@@ -20,6 +20,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
+use App\Form\PurposeType;
 
 class HomeController extends AbstractController
 {
@@ -38,12 +39,6 @@ class HomeController extends AbstractController
 
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
-        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
-        //Creation of a carousel object if one does not exist in the database
-        //Otherwise sending the carousel in the view will not work
-        if ($carousel == null) {
-            $carousel = new Home();
-        }
 
         /** Display the add partner form and add it in the DB */
         $partner = new Partner();
@@ -84,13 +79,28 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+        $carousel = $homeRepository->findOneBy(['type' => 'carousel']);
+        //Creation of a carousel object if one does not exist in the database
+        //Otherwise sending the carousel in the view will not work
+        if ($carousel == null) {
+            $carousel = new Home();
+        }
+
+        $purpose = $homeRepository->findOneBy(['type' => 'purpose']);
+        //Creation of a carousel object if one does not exist in the database
+        //Otherwise sending the carousel in the view will not work
+        if ($purpose == null) {
+            $purpose = new Home();
+        }
+
         return $this->render('home/index.html.twig', [
             'form' => $form->createView(),
             'partnerForm' => $partnerForm->createView(),
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
             'error' => $error,
-            'carousel' => $carousel
+            'carousel' => $carousel,
+            'purpose' => $purpose
         ]);
     }
 
@@ -225,5 +235,58 @@ class HomeController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute('home');
+    }
+
+    /**
+     * This method is used to modify the default carousel.
+     * The database is therefore empty by default.
+     * If there is a carousel in the database, we delete the files that are in the upload folder.
+     * Then we remove the carousel that there is in comic book then we add the new one.
+     * @Route("/edit-purpose", name="edit_purpose", methods={"GET", "POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editPurpose(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager,
+        HomeRepository $homeRepository
+    ): Response {
+
+        $purpose = $homeRepository->findOneBy(['type' => 'purpose']);
+        //Creation of a purpose object if one does not exist in the database
+        //Otherwise sending the purpose in the view will not work
+        if ($purpose == null) {
+            $purpose = new Home();
+        }
+        $editPurpose = new Home();
+        $purposeForm = $this->createForm(PurposeType::class, $editPurpose);
+        $purposeForm->handleRequest($request);
+        if ($purposeForm->isSubmitted() && $purposeForm->isValid()) {
+            //Delete photos in the home folder if there are any
+            if ($purpose->getPictureOne() !== null) {
+                $fileManager->deleteFile($purpose->getPictureOne(), $this->getParameter('purpose_directory'));
+            }
+            //Deleting the purpose object from the database
+            $entityManager->remove($purpose);
+            //Saving uploader photos
+            $pictureOne = $purposeForm->get('pictureOne')->getData();
+            //Saving photos in the home folder
+            $addPictureOne = $fileManager->saveFile(
+                'pictureOne',
+                $pictureOne,
+                $this->getParameter('purpose_directory')
+            );
+            //Saving photos in the database
+            $editPurpose->setPictureOne($addPictureOne['fileName']);
+            $editPurpose->setType('purpose');
+
+            $entityManager->persist($editPurpose);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('home');
+        }
+        return $this->render('home/editPurpose.html.twig', [
+            'purposeForm' => $purposeForm->createView()
+        ]);
     }
 }

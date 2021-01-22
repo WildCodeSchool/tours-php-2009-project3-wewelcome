@@ -43,10 +43,10 @@
         <!-- Carousel modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
             <a href="{{ path('edit_carousel') }}">
-                <input type="button" value="Editer le carousel" class="">
+                <input type="button" value="Editer" class="">
             </a>
             <a href="{{ path('default_carousel') }}">
-                <input type="button" value="Carousel par défaut" class="">
+                <input type="button" value="Par défaut" class="">
             </a>
         {% endif %}
     </section>
@@ -54,15 +54,29 @@
     <section class="purpose section-except-home">
         <section>
             <article class="purpose-text">
-                <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
-                <span>WeWelcome est votre assistant dédié !</span><br>
-                Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% if purpose.text %}
+                    <p>{{purpose.text}}</p>
+                {% else %}
+                    <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
+                    <span>WeWelcome est votre assistant dédié !</span><br>
+                    Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% endif %}
             </article>
             <article class="purpose-picture">
-                <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% if purpose.pictureOne %}
+                    <img src="/assets/images/purpose/{{purpose.pictureOne}}" alt="{{purpose.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% endif %}
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Purpose modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_purpose') }}">
+                <input type="button" value="Editer" class="">
+            </a>
+        {% endif %}
     </section>
 
     <section class="key-figures section-except-home"
