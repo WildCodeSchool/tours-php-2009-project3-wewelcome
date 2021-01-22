@@ -15,13 +15,13 @@ use App\Entity\Partner;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\PartnerRepository;
 use App\Services\FileManager;
-use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
 use App\Form\PurposeValuesType;
 use App\Services\HomeManager;
+use App\Repository\ServiceRepository;
 
 class HomeController extends AbstractController
 {
@@ -32,11 +32,15 @@ class HomeController extends AbstractController
         Request $request,
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
+        ServiceRepository $serviceRepository,
         PartnerRepository $partnerRepository,
         FileManager $fileManager,
         HomeRepository $homeRepository
     ): Response {
         $error = '';
+
+        $servicesConcierge = $serviceRepository->findBy(['relatedTo' => 'concierge']);
+        $servicesSteward = $serviceRepository->findBy(['relatedTo' => 'steward']);
 
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
@@ -106,10 +110,12 @@ class HomeController extends AbstractController
             'partnerForm' => $partnerForm->createView(),
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
-            'error' => $error,
             'carousel' => $carousel,
             'purpose' => $purpose,
-            'values' => $values
+            'values' => $values,
+            'servicesConcierge' => $servicesConcierge,
+            'servicesSteward' => $servicesSteward,
+            'error' => $error
         ]);
     }
 

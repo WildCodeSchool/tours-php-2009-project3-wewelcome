@@ -9,6 +9,8 @@ parameters:
     carousel_directory: '%kernel.project_dir%/public/assets/images/carousel/'
     purpose_directory: '%kernel.project_dir%/public/assets/images/purpose/'
     values_directory: '%kernel.project_dir%/public/assets/images/values/'
+    services_directory: '%kernel.project_dir%/public/assets/images/servicesImg/'
+    temp_directory: '%kernel.project_dir%/public/temp/'
 
 services:
     # default configuration for services in *this* file

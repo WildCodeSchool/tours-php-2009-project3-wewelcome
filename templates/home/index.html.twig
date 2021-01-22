@@ -184,6 +184,12 @@
                         <img src="/assets/images/services/conciergerie/9-services-intendance.png">
                         <figcaption>Service intendance</figcaption>
                     </figure>
+                    {% for service in servicesConcierge %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
                 </div>
                 <a class="concierge-more-infos" href="{{ path('concierge') }}">Voir plus d'informations<br> sur la page <span>conciergerie</span></a>
             </section>
@@ -230,6 +236,12 @@
                         <img src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
                         <figcaption>Communication et assistance</figcaption>
                     </figure>
+                    {% for service in servicesSteward %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
                 </div>
                 <a class="stewardship-more-infos" href="">Voir plus d'informations<br> sur la page <span>intendance</span></a>
             </section>
