@@ -1,10 +1,11 @@
 const mybutton = document.getElementById('returnTop');
 const myLogo = document.querySelector('#topLogo img');
 const myNav = document.querySelector('.navBar');
-const myNavLinks = document.querySelectorAll('.navLink');
+const myNavLinks = document.querySelectorAll('.link');
 let i = 0;
 
 function scrollFunction() {
+  if (window.matchMedia("(min-width: 813px)").matches) {
     if (document.documentElement.scrollTop > 300) {
       mybutton.style.display = "block";
       myLogo.style.width = "10vw";
@@ -29,6 +30,7 @@ function scrollFunction() {
       }
     }
   }
+}
   
   //when click on "go top" button, return to the top of the page
   function topFunction() {

@@ -63,51 +63,59 @@ hr {
     background-color: var(--secondary-color);
 }
 
-
-/* START nav bar style */
-.navBar {
-    display: flex;
-    align-items: start;
-    width: 100%;
-    position: fixed;
-    z-index: 10;
-    padding: 0vw 1vw;
-}
-
-#topLogo {
-    transition: all 0.3s ease-in-out;
-}
-
-#topLogo:hover {
-    transform: scale(1.1);
-}
-
-#topLogo img {
-    width: 20vw;
-}
-
-.navBar nav {
-    position: absolute;
+/* START burger menu */
+.openButton {
+    margin : 8px 8px 0 8px;
+    top: 0;
     right: 0;
-    width: 70%;
+    cursor: pointer;
+    position: fixed;
+    z-index: 15;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--primary-color-tint2);
+    border-radius: 10px;
+    margin: 6px 6px;
+}
+
+.closeButton {
+  font-size: 3rem;
+  margin : 8px;
+  padding: 3px;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 16;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.nav {
     display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    height: 70%;
+    list-style: none;
 }
 
 .navLink {
-    width: 20%;
-    padding: 0.5vw 0;
     text-align: center;
-    color: var(--primary-color);
+    font-size: larger;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
 }
-
-.navLink:hover {
-    background-color: var(--primary-color-tint2);
-    color: var(--white);
-    transform: scale(1.1);
-}
-/* END nav bar style*/
+/* END burger menu */
 
 /* START back to top style */
 #returnTop {
@@ -418,3 +426,69 @@ footer {
 }
 /* END admin forms */
 
+@media screen and (min-width: 813px)
+{
+    /* START nav bar style */
+    .navBar {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        position: fixed;
+        z-index: 10;
+        padding: 0vw 1vw;
+    }
+
+    #topLogo {
+        transition: all 0.3s ease-in-out;
+    }
+
+    #topLogo:hover {
+        transform: scale(1.1);
+    }
+
+    #topLogo img {
+        width: 20vw;
+    }
+
+    .navBar nav {
+        position: absolute;
+        right: 0;
+        width: 70%;
+        display: flex;
+        background-color:rgba(83, 81, 81, 0)
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-evenly;
+        flex-direction: row;
+        width: 100%;
+        height: 100%;
+    }
+
+    .nav li {
+        width: 25%;
+    }
+
+    .link {
+        padding: 0.5vw 0;
+        color: var(--primary-color);
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .link:hover {
+        background-color: var(--primary-color-tint2);
+        color: var(--white);
+        transform: scale(1.1);
+    }
+
+    .bar1, .bar2, .bar3 {
+        display: none;
+    }
+
+    .closeButton {
+        display: none;
+    }
+    /* END nav bar style*/
+}
