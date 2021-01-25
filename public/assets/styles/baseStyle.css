@@ -121,6 +121,27 @@ hr {
 }
 /* END burger menu */
 
+/* START admin Logged div */
+#adminLogged {
+    color: rgba(83, 81, 81, 0.897);
+    margin: 1rem;
+    position: fixed;
+    top: 55px;
+    left: 20px;
+    z-index: 1;
+    border: solid;
+    background-color: var(--white);
+    padding: 1px;
+    border-radius: 5%;
+}
+
+#adminLogged a {
+    color : var(--primary-color);
+    cursor: pointer;
+    text-decoration: underline;
+}
+/* END admin Logged div */
+
 /* START back to top style */
 #returnTop {
     color: rgba(83, 81, 81, 0.897);

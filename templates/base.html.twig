@@ -26,9 +26,12 @@
                 <li class="navLink"><a class="link" href="#contact">Contact</a></li>
             </ul>
         </nav>
-        <!--{% if app.user %}
-            <p>ADMIN PANEL</p>
-        {% endif %}-->
+        {% if app.user %}
+            <div id="adminLogged">
+                <p>Espace Administration</p>
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
     </section>
     {% block body %}
     {% endblock %}
@@ -56,11 +59,6 @@
             <a href="">Plan du site</a>
             <a href="">Mentions légales</a>
             <a href="">CGU</a>
-            {% if app.user %}
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            {% else %}
-                <a href="{{ path('app_login') }}">Admin panel</a>
-            {% endif %}
         </nav>
     </footer>
     <script src="/assets/js/base.js"></script>
