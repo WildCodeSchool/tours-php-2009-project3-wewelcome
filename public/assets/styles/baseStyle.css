@@ -64,6 +64,10 @@ hr {
 }
 
 /* START burger menu */
+#topLogo img {
+    width: 60vw;
+}
+
 .openButton {
     margin : 8px 8px 0 8px;
     top: 0;
@@ -453,34 +457,38 @@ footer {
     .navBar nav {
         position: absolute;
         right: 0;
-        width: 70%;
+        width: 60%;
         display: flex;
         background-color:rgba(83, 81, 81, 0)
     }
 
     .nav {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: space-between;
         flex-direction: row;
         width: 100%;
-        height: 100%;
+        height: 95%;
     }
 
-    .nav li {
+    .navLink {
+        display: flex;
         width: 25%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
     }
 
     .link {
         padding: 0.5vw 0;
         color: var(--primary-color);
         font-weight: bold;
-        transition: all 0.3s ease-in-out;
     }
 
-    .link:hover {
+    .navLink:hover {
         background-color: var(--primary-color-tint2);
         color: var(--white);
         transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
     }
 
     .bar1, .bar2, .bar3 {
