@@ -18,7 +18,7 @@ class CarouselType extends AbstractType
             ->add('title', TextType::class, ['required' => true])
             ->add('pictureOne', FileType::class, [
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',
@@ -33,7 +33,7 @@ class CarouselType extends AbstractType
             ->add('legendPictureOne', TextType::class, ['required' => false])
             ->add('pictureTwo', FileType::class, [
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',
@@ -48,7 +48,7 @@ class CarouselType extends AbstractType
             ->add('legendPictureTwo', TextType::class, ['required' => false])
             ->add('pictureThree', FileType::class, [
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',

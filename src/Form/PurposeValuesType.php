@@ -18,7 +18,7 @@ class PurposeValuesType extends AbstractType
             ->add('text', TextType::class, ['required' => true])
             ->add('pictureOne', FileType::class, [
                 'mapped' => false,
-                'required' => true,
+                'required' => false,
                 'constraints' => [
                     new File([
                         'maxSize' => '200k',

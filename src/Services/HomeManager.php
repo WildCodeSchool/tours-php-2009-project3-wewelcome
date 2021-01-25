@@ -29,17 +29,11 @@ class HomeManager
         $this->fileManager = $fileManager;
     }
 
-    public function removeDataAndFolder(Home $home, string $type, string $directory): void
+    public function removeHome(Home $home, string $type, string $directory): void
     {
         $home = $this->homeRepository->findOneBy(['type' => $type]);
-        //Creation of a home object if one does not exist in the database
-        //Otherwise sending the home object in the view will not work
-        if ($home === null) {
-            $home = new Home();
-        }
-        //Delete photos in the home folder if there are any
+
         if ($home !== null) {
-            //Delete photos in the home folder if there are any
             if ($home->getPictureOne() !== null) {
                 $this->fileManager->deleteFile($home->getPictureOne(), $this->params->get($directory));
             }
@@ -49,9 +43,7 @@ class HomeManager
             if ($home->getPictureThree() !== null) {
                 $this->fileManager->deleteFile($home->getPictureThree(), $this->params->get($directory));
             }
-        }
-        //Deleting the home object from the database if not null
-        if ($home !== null) {
+
             $this->entityManager->remove($home);
         }
         $this->entityManager->flush();

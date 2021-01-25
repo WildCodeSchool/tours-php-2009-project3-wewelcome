@@ -42,7 +42,7 @@
         </div>
         <!-- Carousel modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('edit_carousel') }}">
+            <a href="{{ path('edit_carousel', {'idCarousel': carousel.id }) }}">
                 <input type="button" value="Editer" class="">
             </a>
             <a href="{{ path('default_carousel') }}">
@@ -73,7 +73,7 @@
         <a class="button-contact" href="#contact">Nous contacter</a>
         <!-- Purpose modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('edit_purpose') }}">
+            <a href="{{ path('edit_purpose', {'idPurpose': purpose.id }) }}">
                 <input type="button" value="Editer" class="">
             </a>
             <a href="{{ path('default_purpose') }}">
@@ -118,7 +118,7 @@
         <a class="button-contact" href="#contact">Nous contacter</a>
         <!-- Values modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-            <a href="{{ path('edit_values') }}">
+            <a href="{{ path('edit_values', {'idValues': values.id }) }}">
                 <input type="button" value="Editer" class="">
             </a>
             <a href="{{ path('default_values') }}">
