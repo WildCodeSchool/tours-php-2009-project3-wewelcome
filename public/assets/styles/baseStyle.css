@@ -184,8 +184,8 @@ footer {
     color: var(--white);
 }
 
-.socialNetwork {
-    width: 40%;
+.socialNetwork div {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -387,7 +387,7 @@ footer {
     color: var(--primary-color);
 }
 
-/* START contact form */
+/* END contact form */
 
 #contactApply {
     padding-top: 0vw;
@@ -450,6 +450,12 @@ footer {
     margin-right: 5px;
 }
 /* END admin forms */
+
+/* STAR socialNetworksAdmin */
+.socialNetwork {
+    display: block;
+}
+/* END socialNetworksAdmin */
 
 @media screen and (min-width: 813px)
 {

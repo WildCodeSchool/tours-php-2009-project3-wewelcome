@@ -44,15 +44,7 @@
             <a id="numero" for="telephone" href="tel:">06 63 64 62 20</a>
         </address>
         <nav class="socialNetwork">
-            <a href="https://www.facebook.com/wewelcome.fr">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-facebook-white.png" alt="Logo Facebook">
-            </a>
-            <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-linkedin-white.png" alt="Logo LinkdIn">
-            </a>
-            <a href="">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-instagram-white.png" alt="Logo Instagram">
-            </a>
+            {{ render(controller('App\\Controller\\FooterController::getSocialNetworks')) }}
         </nav>
         <nav class="footerRight">
             <a href="{{ path('work_with_us') }}">Nous rejoindre</a>
