@@ -266,7 +266,9 @@
             </div>
             {% endfor %}
         </nav>
+        {% if hostingPartners|length > 5 %}
         <input type="button" id="partners-booking-all-button" value="+">
+        {% endif %}
         <nav class="partners-booking-all">
             {% for partner in hostingPartners|slice(5, hostingPartners|length) %}
             <div>
@@ -296,7 +298,9 @@
             </div>
             {% endfor %}
         </nav>
+        {% if otherPartners|length > 5 %}
         <input type="button" id="partners-others-all-button" value="+">
+        {% endif %}
         <nav class="partners-others-all">
         {% for partner in otherPartners|slice(5, otherPartners|length) %}
             <div>
