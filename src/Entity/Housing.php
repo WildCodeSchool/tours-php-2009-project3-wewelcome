@@ -23,7 +23,7 @@ class Housing
     private string $photo;
 
     /**
-     * @ORM\Column(type="string", length=1000)
+     * @ORM\Column(type="string", length=2000)
      */
     private string $description;
 

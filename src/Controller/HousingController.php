@@ -38,23 +38,51 @@ class HousingController extends AbstractController
         /** Display the add housing form and add it in the DB */
         $housing = new Housing();
         $housingForm = $this->createForm(HousingFormType::class, $housing);
-        $housingForm->handleRequest($request);
 
-        if ($housingForm->isSubmitted() && $housingForm->isValid()) {
-            $photoHousingFile = $housingForm->get('photoFile')->getData();
+        if ($request->request->get('isBusinessTravel') == null) {
+            $housingForm->handleRequest($request);
 
-            $results = $fileManager->saveFile(
-                'housing',
-                $photoHousingFile,
-                $this->getParameter('housing_directory')
-            );
+            if ($housingForm->isSubmitted() && $housingForm->isValid()) {
+                $photoHousingFile = $housingForm->get('photoFile')->getData();
 
-            $housing->setPhoto($results['fileName']);
-            $housing->setIsBusinessTravel(false);
-            $entityManager->persist($housing);
-            $entityManager->flush();
+                $results = $fileManager->saveFile(
+                    'housing',
+                    $photoHousingFile,
+                    $this->getParameter('housing_directory')
+                );
 
-            return $this->redirectToRoute('housing');
+                $housing->setPhoto($results['fileName']);
+                $housing->setIsBusinessTravel(false);
+                $entityManager->persist($housing);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('housing');
+            }
+        }
+
+        /** Display the add businessTrip form and add it in the DB */
+        $business = new Housing();
+        $businessTripForm = $this->createForm(HousingFormType::class, $business);
+
+        if ($request->request->get('isBusinessTravel') == true) {
+            $businessTripForm->handleRequest($request);
+
+            if ($businessTripForm->isSubmitted() && $businessTripForm->isValid()) {
+                $photoBusinessFile = $businessTripForm->get('photoFile')->getData();
+
+                $results = $fileManager->saveFile(
+                    'business',
+                    $photoBusinessFile,
+                    $this->getParameter('housing_directory')
+                );
+
+                $business->setPhoto($results['fileName']);
+                $business->setIsBusinessTravel(true);
+                $entityManager->persist($business);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('housing');
+            }
         }
 
         /** generate contact form and send a mail */
@@ -78,6 +106,7 @@ class HousingController extends AbstractController
         return $this->render('housing/index.html.twig', [
             'form' => $form->createView(),
             'housingForm' => $housingForm->createView(),
+            'businessTripForm' => $businessTripForm->createView(),
             'houses' => $houses,
             'businessTrip' => $businessTrip,
             'error' => $error
