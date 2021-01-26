@@ -10,30 +10,76 @@
     <section class="home">
         <div class="home-carousel">
             <div>
+            {% if carousel.title %}
+                <h2 class="home-text">{{ carousel.title }}</h2>
+            {% else %}
                 <h2 class="home-text">Conciergerie locative & Intendance pour maisons et appartements</h2>
+            {% endif %}
                 <a class="button-contact" href="#contact">Nous contacter</a>
             </div>
             <figure>
+            {% if carousel.pictureOne %}
+                <img src="/assets/images/carousel/{{carousel.pictureOne}}" alt="{{carousel.legendPictureOne}}"/>
+            {% else %}
                 <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+            {% endif %}
+            {% if carousel.pictureTwo %}
+                <img src="/assets/images/carousel/{{carousel.pictureTwo}}" alt="{{carousel.legendPictureTwo}}"/>
+            {% else %}
                 <img src="/assets/images/home-intendance.jpg" alt="photo de l'extérieur d'une maison"/>
-                <img src="/assets/images/home-region.jpg" alt="photo de personnes faisant du vélo sur le bord de la loire"/>
+            {% endif %}
+            {% if carousel.pictureThree %}
+                <img src="/assets/images/carousel/{{carousel.pictureThree}}" alt="{{carousel.legendPictureThree}}"/>
+            {% else %}
+                <img src="/assets/images/home-region.jpg" alt="photo d'un pont en pierre au-dessus de la loire"/>
+            {% endif %}
+            {% if carousel.pictureOne %}
+                <img src="/assets/images/carousel/{{carousel.pictureOne}}" alt="{{carousel.legendPictureOne}}"/>
+            {% else %}
                 <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+            {% endif %}
             </figure>
         </div>
+        <!-- Carousel modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_carousel', {'idCarousel': carousel.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_carousel') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
-    <section class="purpose section-except-home">
+    <section class="purpose section-except-home" id="section-purpose">
         <section>
             <article class="purpose-text">
-                <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
-                <span>WeWelcome est votre assistant dédié !</span><br>
-                Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% if purpose.text %}
+                    <p>{{purpose.text}}</p>
+                {% else %}
+                    <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
+                    <span>WeWelcome est votre assistant dédié !</span><br>
+                    Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% endif %}
             </article>
             <article class="purpose-picture">
-                <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% if purpose.pictureOne %}
+                    <img src="/assets/images/purpose/{{purpose.pictureOne}}" alt="{{purpose.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% endif %}
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Purpose modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_purpose', {'idPurpose': purpose.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_purpose') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
     <section class="key-figures section-except-home"
@@ -51,17 +97,34 @@
         <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
     </section>
 
-    <section class="values section-except-home">
+    <section class="values section-except-home" id="section-values">
         <section>
             <article class="values-picture">
-                <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% if values.pictureOne %}
+                    <img src="/assets/images/values/{{values.pictureOne}}" alt="{{values.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% endif %}
             </article>
             <article class="values-text">
-                <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
-                <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% if values.text %}
+                    <p>{{values.text}}</p>
+                {% else %}
+                    <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+                    <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% endif %}
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Values modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_values', {'idValues': values.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_values') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
     <section class="service-vision section-except-home"
@@ -121,6 +184,12 @@
                         <img src="/assets/images/services/conciergerie/9-services-intendance.png">
                         <figcaption>Service intendance</figcaption>
                     </figure>
+                    {% for service in servicesConcierge %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
                 </div>
                 <a class="concierge-more-infos" href="{{ path('concierge') }}">Voir plus d'informations<br> sur la page <span>conciergerie</span></a>
             </section>
@@ -167,6 +236,12 @@
                         <img src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
                         <figcaption>Communication et assistance</figcaption>
                     </figure>
+                    {% for service in servicesSteward %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
                 </div>
                 <a class="stewardship-more-infos" href="">Voir plus d'informations<br> sur la page <span>intendance</span></a>
             </section>

@@ -102,9 +102,9 @@
             <img src="assets/images/housing/{{ businessTrip.photo }}">
             <p>{{ businessTrip.description }}</p>
         </div>
-        {% endif %}
-        {% if app.user %}
-        <button class="update"><a href="{{ path('business_trip_edit', {'id': businessTrip.id }) }}">Modifier</a></button>
+            {% if app.user %}
+            <button class="update"><a href="{{ path('business_trip_edit', {'id': businessTrip.id }) }}">Modifier</a></button>
+            {% endif %}
         {% endif %}
     </section>
    

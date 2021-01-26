@@ -1,102 +1,58 @@
-# Project 3 - Starter Kit - Symfony 5.*
+# WeWelcome
 
-![Wild Code School](https://wildcodeschool.fr/wp-content/uploads/2019/01/logo_pink_176x60.png)
+### This project is a showcase site for the company WeWelcome.
 
-This starter kit is here to easily start a repository for your students.
+The manager of the company wants :
 
-It's symfony website-skeleton project with some additional tools to validate code standards.
+* be able to directly modify the content of the pages (texts, photos, links, etc.) => admin login and modification forms.
+* be able to be contacted directly via the site => mail sending.
+* be able to contact the manager to work with him and send him documents directly via the site.
 
-* GrumPHP, as pre-commit hook, will run 2 tools when `git commit` is run :
-  
-    * PHP_CodeSniffer to check PSR12 
-    * PHPStan focuses on finding errors in your code (without actually running it)
-    * PHPmd will check if you follow PHP best practices
-     
-  If tests fail, the commit is canceled and a warning message is displayed to developper.
+This project was made with symfony 5.
 
-* Github Action as Continuous Integration will be run when a branch with active pull request is updated on github. It will run :
+## Requirements
 
-    * Tasks to check if vendor, .idea, env.local are not versionned,
-    * PHP_CodeSniffer, PHPStan and PHPmd with same configuration as GrumPHP.
- 
+- Php ^7.2 http://php.net/manual/fr/install.php;
+- Composer https://getcomposer.org/download/;
 
-## Getting Started for Students
+## Installation
 
-### Prerequisites
+1. Clone the current repository.
 
-1. Check composer is installed
-2. Check yarn & node are installed
+2. With mysql, create a wewelcome database and create a user. Don't forget to give the rights to the user.
+> If you want to use another service, see the official symfony documentation
 
-### Install
+3. Move into the directory and create an `.env.local` file (copy env file). **This one is not committed to the shared repository.**
 
-1. Clone this project
-2. Run `composer install`
-3. Run `yarn install`
-4. Run `yarn encore dev` to build assets
+4. Line 32, set `db_name` to **wewelcome** and set the user `db_user` and the password `db_password`.
+> Make sure the connection with the base is functional
 
-### Working
+5. Uncomment line 37, replace `smtp` with gmail and replace `localhost` by your email address. Then enter the password for your email address.
+> Line 37 should look like this: MAILER_DSN=gmail://your adress mail:your password@default
 
-1. Run `symfony server:start` to launch your local php web server
-2. Run `yarn run dev --watch` to launch your local server for assets
+6. Execute the following commands in your working folder to install the project:
 
-### Testing
+```bash
+# Install dependencies
+composer install
 
-1. Run `.vendor/bin/phpcs` to launch PHP code sniffer
-2. Run `.vendor/bin/phpstan analyse src --level max` to launch PHPStan
-3. Run `.vendor/bin/phpmd src text phpmd.xml` to launch PHP Mess Detector
-3. Run `./node_modules/.bin/eslint assets/js` to launch ESLint JS linter
-3. Run `../node_modules/.bin/sass-lint -c sass-linter.yml -v` to launch Sass-lint SASS/CSS linter
+# Create 'wewelcome' DB
+php bin/console d:d:c
 
-### Windows Users
+# Execute migrations and create tables
+php bin/console d:m:m
+```
 
-If you develop on Windows, you should edit you git configuration to change your end of line rules with this command :
+7. Go on the /init page and register you as an admin user : you have to put an email address and a password
 
-`git config --global core.autocrlf true`
+> Reminder: Don't use composer update to avoid problem
 
-## Built With
+> Assets are directly into _public/_ directory, **we will not use** Webpack with this project
 
-* [Symfony](https://github.com/symfony/symfony)
-* [GrumPHP](https://github.com/phpro/grumphp)
-* [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer)
-* [PHPStan](https://github.com/phpstan/phpstan)
-* [PHPMD](http://phpmd.org)
-* [ESLint](https://eslint.org/)
-* [Sass-Lint](https://github.com/sasstools/sass-lint)
+## Usage
 
-## Contributing
+Launch the server with the command below
 
-Please read [CONTRIBUTING.md](https://gist.github.com/PurpleBooth/b24679402957c63ec426) for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-
-## Authors
-
-Wild Code School trainers team
-
-## License
-
-MIT License
-
-Copyright (c) 2019 aurelien@wildcodeschool.fr
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-## Acknowledgments
-
+```bash
+$ symfony server:start
+```
