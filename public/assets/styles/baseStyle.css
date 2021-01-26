@@ -63,51 +63,84 @@ hr {
     background-color: #bdb2a7;
 }
 
-
-/* START nav bar style */
-.navBar {
-    display: flex;
-    align-items: start;
-    width: 100%;
-    position: fixed;
-    z-index: 10;
-    padding: 0vw 1vw;
-}
-
-#topLogo {
-    transition: all 0.3s ease-in-out;
-}
-
-#topLogo:hover {
-    transform: scale(1.1);
-}
-
+/* START burger menu */
 #topLogo img {
-    width: 20vw;
+    width: 60vw;
 }
 
-.navBar nav {
-    position: absolute;
+.openButton {
+    margin : 8px 8px 0 8px;
+    top: 0;
     right: 0;
-    width: 70%;
+    cursor: pointer;
+    position: fixed;
+    z-index: 15;
+}
+
+.bar1, .bar2, .bar3 {
+    width: 35px;
+    height: 5px;
+    background-color: var(--primary-color-tint2);
+    border-radius: 10px;
+    margin: 6px 6px;
+}
+
+.closeButton {
+  font-size: 3rem;
+  margin : 8px;
+  padding: 3px;
+}
+
+.sideNav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 16;
+    top: 0;
+    right: 0;
+    background-color: var(--primary-color);
+    overflow-x: hidden;
+    transition: 0.5s;
+}
+
+.nav {
     display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    padding: 0;
+    height: 70%;
+    list-style: none;
 }
 
 .navLink {
-    width: 20%;
-    padding: 0.5vw 0;
     text-align: center;
-    color: var(--primary-color);
+    font-size: larger;
     font-weight: bold;
-    transition: all 0.3s ease-in-out;
+}
+/* END burger menu */
+
+/* START admin Logged div */
+#adminLogged {
+    color: rgba(83, 81, 81, 0.897);
+    margin: 1rem;
+    position: fixed;
+    top: 55px;
+    left: 20px;
+    z-index: 1;
+    border: solid;
+    background-color: var(--white);
+    padding: 1px;
+    border-radius: 5%;
 }
 
-.navLink:hover {
-    background-color: var(--primary-color-tint2);
-    color: var(--white);
-    transform: scale(1.1);
+#adminLogged a {
+    color : var(--primary-color);
+    cursor: pointer;
+    text-decoration: underline;
 }
-/* END nav bar style*/
+/* END admin Logged div */
 
 /* START back to top style */
 #returnTop {
@@ -418,3 +451,73 @@ footer {
 }
 /* END admin forms */
 
+@media screen and (min-width: 813px)
+{
+    /* START nav bar style */
+    .navBar {
+        display: flex;
+        align-items: start;
+        width: 100%;
+        position: fixed;
+        z-index: 10;
+        padding: 0vw 1vw;
+    }
+
+    #topLogo {
+        transition: all 0.3s ease-in-out;
+    }
+
+    #topLogo:hover {
+        transform: scale(1.1);
+    }
+
+    #topLogo img {
+        width: 20vw;
+    }
+
+    .navBar nav {
+        position: absolute;
+        right: 0;
+        width: 60%;
+        display: flex;
+        background-color:rgba(83, 81, 81, 0)
+    }
+
+    .nav {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        width: 100%;
+        height: 95%;
+    }
+
+    .navLink {
+        display: flex;
+        width: 25%;
+        height: 100%;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .link {
+        padding: 0.5vw 0;
+        color: var(--primary-color);
+        font-weight: bold;
+    }
+
+    .navLink:hover {
+        background-color: var(--primary-color-tint2);
+        color: var(--white);
+        transform: scale(1.1);
+        transition: all 0.3s ease-in-out;
+    }
+
+    .bar1, .bar2, .bar3 {
+        display: none;
+    }
+
+    .closeButton {
+        display: none;
+    }
+    /* END nav bar style*/
+}
