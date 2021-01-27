@@ -47,31 +47,98 @@ class FooterController extends AbstractController
 
         $socialNetworks = $footerRepository->findBy(['isSocialNetwork' => true]);
 
-        return $this->render('_socialNetworks.html.twig', [
+        return $this->render('footer/_socialNetworks.html.twig', [
             'socialNetworks' => $socialNetworks,
             'socialNetworkForm' => $socialNetworkForm->createView(),
         ]);
     }
 
+    public function getContactInfo(
+        FooterRepository $footerRepository
+    ): Response {
+        $contactInfo = $footerRepository->findOneBy(['isSocialNetwork' => false]);
+
+        return $this->render('footer/_contactInfo.html.twig', ['contactInfo' => $contactInfo]);
+    }
+
     /**
-     * @Route("/socialNetwork/{id}", name="social_network_delete", methods={"DELETE"})
+     * @Route("/footer/{id}", name="footer_delete", methods={"DELETE"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function deleteSocialNetwork(
+    public function deleteFooter(
         RequestStack $requestStack,
         EntityManagerInterface $entityManager,
-        Footer $socialNetwork,
+        Footer $footer,
         FooterRepository $footerRepository
     ): Response {
         $request = $requestStack->getMasterRequest();
 
         if ($request != null) {
-            if ($this->isCsrfTokenValid('delete' . $socialNetwork->getId(), $request->request->get('_token'))) {
-                $entityManager->remove($socialNetwork);
+            if ($this->isCsrfTokenValid('delete' . $footer->getId(), $request->request->get('_token'))) {
+                $entityManager->remove($footer);
                 $entityManager->flush();
             }
         }
 
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/footer/{id}/edit", name="footer_edit", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editFooter(
+        RequestStack $requestStack,
+        Footer $footer,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $request = $requestStack->getMasterRequest();
+
+        if ($request != null) {
+            $footerForm = $this->createForm(FooterType::class, $footer);
+            $footerForm->handleRequest($request);
+
+            if ($footerForm->isSubmitted() && $footerForm->isValid()) {
+                $entityManager->flush();
+
+                return $this->redirectToRoute('home');
+            }
+
+            return $this->render('footer/editFooter.html.twig', [
+                'footer' => $footer,
+                'footerForm' => $footerForm->createView(),
+            ]);
+        }
+        return $this->redirectToRoute('home');
+    }
+
+    /**
+     * @Route("/footer/add", name="footer_add", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function addFooter(
+        RequestStack $requestStack,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $request = $requestStack->getMasterRequest();
+
+        if ($request != null) {
+            $footer = new Footer();
+            $footerForm = $this->createForm(FooterType::class, $footer);
+            $footerForm->handleRequest($request);
+
+            if ($footerForm->isSubmitted() && $footerForm->isValid()) {
+                $footer->setIsSocialNetwork(false);
+                $entityManager->persist($footer);
+                $entityManager->flush();
+
+                return $this->redirectToRoute('home');
+            }
+
+            return $this->render('footer/editFooter.html.twig', [
+                'footerForm' => $footerForm->createView(),
+            ]);
+        }
         return $this->redirectToRoute('home');
     }
 }
