@@ -9,6 +9,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 
 class FooterType extends AbstractType
 {
@@ -24,6 +25,7 @@ class FooterType extends AbstractType
             ])
             ->add('phone', TelType::class, ['required' => false,])
             ->add('url', UrlType::class, ['required' => false,])
+            ->add('text', TextType::class, ['required' => false,])
         ;
     }
 

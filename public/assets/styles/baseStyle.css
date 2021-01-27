@@ -192,6 +192,11 @@ footer {
     align-items: center;
 }
 
+#socialNetwork {
+    display: flex;
+    flex-direction: column;
+}
+
 .socialNetworkLogo {
     margin: 0 3vw;
     width: 4vw;

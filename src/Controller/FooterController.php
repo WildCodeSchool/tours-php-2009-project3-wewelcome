@@ -5,18 +5,20 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Footer;
 use App\Repository\FooterRepository;
 use App\Form\FooterType;
 use App\Services\FileManager;
 use Doctrine\ORM\EntityManagerInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class FooterController extends AbstractController
 {
     public function getSocialNetworks(
         RequestStack $requestStack,
         EntityManagerInterface $entityManager,
-        FileManager $fileManager,
         FooterRepository $footerRepository
     ): Response {
         /** Display the add social network form and add it in the DB */
@@ -49,5 +51,27 @@ class FooterController extends AbstractController
             'socialNetworks' => $socialNetworks,
             'socialNetworkForm' => $socialNetworkForm->createView(),
         ]);
+    }
+
+    /**
+     * @Route("/socialNetwork/{id}", name="social_network_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deleteSocialNetwork(
+        RequestStack $requestStack,
+        EntityManagerInterface $entityManager,
+        Footer $socialNetwork,
+        FooterRepository $footerRepository
+    ): Response {
+        $request = $requestStack->getMasterRequest();
+
+        if ($request != null) {
+            if ($this->isCsrfTokenValid('delete' . $socialNetwork->getId(), $request->request->get('_token'))) {
+                $entityManager->remove($socialNetwork);
+                $entityManager->flush();
+            }
+        }
+
+        return $this->redirectToRoute('home');
     }
 }

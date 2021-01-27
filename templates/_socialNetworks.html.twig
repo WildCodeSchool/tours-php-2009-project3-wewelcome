@@ -4,6 +4,13 @@
         <a href="{{ socialNetwork.url }}" target="blank">
             <img class="socialNetworkLogo" src="/assets/images/socialNetworks/{{ socialNetwork.logo }}" alt="Logo {{ socialNetwork.title }}">
         </a>
+        {% if app.user %}
+        <form method="post" action="{{ path('social_network_delete', {'id' : socialNetwork.id}) }}" onsubmit="return confirm('{{ socialNetwork.title }} sera supprimé définitivement. Êtes-vous sur ?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialNetwork.id) }}">
+            <button class="btn">Effacer</button>
+        </form>
+        {% endif %}
     </div>
     {% endfor %}
 </div>
