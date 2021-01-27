@@ -51,7 +51,7 @@
         {% endif %}
     </section>
 
-    <section class="purpose section-except-home" id="section-purpose">
+    <section class="purpose">
         <section>
             <article class="purpose-text">
                 {% if purpose.text %}
@@ -82,7 +82,7 @@
         {% endif %}
     </section>
 
-    <section class="key-figures section-except-home"
+    <section class="key-figures"
     style="background-image: url(/assets/images/Touraine.png);">
         <h2 class="h2-primary-color">Implanté en Touraine</h2>
         <hr class="hr-primary-color">
@@ -97,7 +97,7 @@
         <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
     </section>
 
-    <section class="values section-except-home" id="section-values">
+    <section class="values">
         <section>
             <article class="values-picture">
                 {% if values.pictureOne %}
@@ -127,7 +127,7 @@
         {% endif %}
     </section>
 
-    <section class="service-vision section-except-home"
+    <section class="service-vision"
     style="background-image: url(/assets/images/section-key-figures.jpg);">
         <h2 class="h2-white">WeWelcome, la tranquilité assurée !</h2>
         <p id="service-vision-1">confiance</p>
@@ -249,50 +249,70 @@
         <a class="button-contact" href="#contact">Nous contacter</a>
     </section>
 
-    <section class="partners">
+    <section id="partners" class="partners">
         <h2 class="h2-white">Nos partenaires</h2>
         <hr class="hr-white">
         <nav class="partners-booking">
-            <a href=""><img src="/assets/images/partenaireAbritel.jpeg" alt="Abritel"></a>
-            <a href=""><img src="/assets/images/partenaireAirbnb.jpg" alt="Airbnb"></a>
-            <a href=""><img src="/assets/images/partenaireBooking.png" alt="Booking"></a>
-            <a href=""><img src="/assets/images/partenaireFewo-direkt.png" alt="Fewo-direkt"></a>
-            <a href=""><img src="/assets/images/partenaireGites.jpg" alt="Gites.fr"></a>
+            {% for partner in hostingPartners|slice(0, 5) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </nav>
+        {% if hostingPartners|length > 5 %}
         <input type="button" id="partners-booking-all-button" value="+">
+        {% endif %}
         <nav class="partners-booking-all">
-            <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays"></a>
-            <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO"></a>
-            {% for partner in hostingPartners %}
-            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
-            {% if app.user %}
-            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                <button class="btn">Effacer</button>
-            </form>
-            {% endif %}
+            {% for partner in hostingPartners|slice(5, hostingPartners|length) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
         {% endfor %}
         </nav>
         <hr class="hr-white">
         <nav class="partners-others">
-            <a href=""><img src="/assets/images/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireValLoireFrance.png" alt="Val de Loire France"></a>
-            <a href=""><img src="/assets/images/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray"></a>
+            {% for partner in otherPartners|slice(0, 5) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </nav>
+        {% if otherPartners|length > 5 %}
         <input type="button" id="partners-others-all-button" value="+">
+        {% endif %}
         <nav class="partners-others-all">
-        {% for partner in otherPartners %}
-            <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
-            {% if app.user %}
-            <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                <button class="btn">Effacer</button>
-            </form>
-            {% endif %}
+        {% for partner in otherPartners|slice(5, otherPartners|length) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
         {% endfor %}
         </nav>
         <!-- Add a new partner -->
