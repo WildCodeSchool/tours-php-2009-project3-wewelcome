@@ -26,15 +26,18 @@ class FooterController extends AbstractController
         $socialNetworkForm->handleRequest($request);
 
         if ($socialNetworkForm->isSubmitted() && $socialNetworkForm->isValid()) {
-            $logoSocialFile = $socialNetworkForm->get('logoFile')->getData();
+            switch ($socialNetwork->getTitle()) {
+                case 'Facebook':
+                    $socialNetwork->setLogo('facebookDefault.png');
+                    break;
+                case 'Instagram':
+                    $socialNetwork->setLogo('instaDefault.png');
+                    break;
+                case 'LinkedIn':
+                    $socialNetwork->setLogo('linkedinDefault.png');
+                    break;
+            }
 
-            $results = $fileManager->saveFile(
-                $socialNetwork->getTitle(),
-                $logoSocialFile,
-                $this->getParameter('footer_directory')
-            );
-
-            $socialNetwork->setLogo($results['fileName']);
             $socialNetwork->setIsSocialNetwork(true);
             $entityManager->persist($socialNetwork);
             $entityManager->flush();
@@ -42,12 +45,9 @@ class FooterController extends AbstractController
 
         $socialNetworks = $footerRepository->findBy(['isSocialNetwork' => true]);
 
-        return $this->render(
-            '_socialNetworks.html.twig',
-            [
+        return $this->render('_socialNetworks.html.twig', [
             'socialNetworks' => $socialNetworks,
             'socialNetworkForm' => $socialNetworkForm->createView(),
-            ]
-        );
+        ]);
     }
 }

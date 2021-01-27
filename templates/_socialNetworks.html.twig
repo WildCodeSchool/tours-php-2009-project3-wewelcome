@@ -1,7 +1,7 @@
 <div>
     {% for socialNetwork in socialNetworks %}
     <div id="socialNetwork">
-        <a href="{{ socialNetwork.url }}">
+        <a href="{{ socialNetwork.url }}" target="blank">
             <img class="socialNetworkLogo" src="/assets/images/socialNetworks/{{ socialNetwork.logo }}" alt="Logo {{ socialNetwork.title }}">
         </a>
     </div>
@@ -15,8 +15,6 @@
         {{ form_widget(socialNetworkForm.title) }}
         {{ form_label(socialNetworkForm.url, 'Lien vers le site :') }}
         {{ form_widget(socialNetworkForm.url) }}
-        {{ form_label(socialNetworkForm.logoFile, 'Logo au format png ou jpeg :') }}
-        {{ form_widget(socialNetworkForm.logoFile) }}
         {{ form_row(socialNetworkForm._token) }}
         <input type='submit' value='Ajouter'>
     {{ form_end(socialNetworkForm, {'render_rest': false}) }}
