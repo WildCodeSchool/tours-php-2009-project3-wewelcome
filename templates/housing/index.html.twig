@@ -62,10 +62,9 @@
             </div>
             {% for house in houses %}
             <div>
-                <a href="{{ house.url }}" target="blank">
-                    <img src="assets/images/housing/{{ house.photo }}" alt="">
-                </a>
+                <img src="assets/images/housing/{{ house.photo }}" alt="">
                 <p>{{ house.description }}</p>
+                <a class="housingLink" href="{{ house.url }}" target="blank">Voir l'annonce</a>
                 {% if app.user %}
                 <button class="update"><a href="{{ path('housing_edit', {'id': house.id }) }}">Modifier</a></button>
                 <form method="post" action="{{ path('housing_delete', {'id' : house.id}) }}" onsubmit="return confirm('Ce logement sera supprimé définitivement. Êtes-vous sur ?');">
@@ -105,6 +104,14 @@
         </div>
             {% if app.user %}
             <button class="update"><a href="{{ path('business_trip_edit', {'id': businessTrip.id }) }}">Modifier</a></button>
+            {% endif %}
+        {% else %}
+            {% if app.user %}
+            <div class="adminPanel">
+                <div class="add">
+                {{ include('housing/_formBusiness.html.twig', {'button_label': 'Ajouter un voyage d\'affaire'}) }}
+                </div>
+            </div>
             {% endif %}
         {% endif %}
     </section>

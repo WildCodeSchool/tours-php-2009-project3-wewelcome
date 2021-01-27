@@ -13,6 +13,14 @@ h3 {
     text-align: center;
 }
 
+.housingLink {
+    color: var(--primary-color);
+}
+
+.housingLink:hover {
+    text-decoration: underline;
+}
+
 
 /* They Trust Us */
 
