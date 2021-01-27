@@ -1,0 +1,52 @@
+<div class="adminPanel">
+    <div class="add">
+        {% if keysVision.type == 'keys' %}
+        <h3>Formulaire de modification de la partie "Chiffres Clés"</h3>
+        {% else %}
+        <h3>Formulaire de modification de la partie "Vision Wewelcome"</h3>
+        {% endif %}
+        {{ form_start(keysVisionForm, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(keysVisionForm.title, 'Titre :') }}
+            {{ form_widget(keysVisionForm.title) }}
+            {{ form_label(keysVisionForm.photo, 'Photo :') }}
+            {{ form_widget(keysVisionForm.photo) }}
+            {% if keysVision.type == 'keys' %}
+                {{ form_label(keysVisionForm.text5, '1er chiffre :') }}
+            {% endif %}
+            {% if keysVision.type == 'keys' %}
+                {{ form_widget(keysVisionForm.text5) }}
+            {% endif %}
+            {{ form_label(keysVisionForm.text1, '1er texte :') }}
+            {{ form_widget(keysVisionForm.text1) }}
+            {% if keysVision.type == 'keys' %}
+                {{ form_label(keysVisionForm.text6, '2ème chiffre :') }}
+                {{ form_widget(keysVisionForm.text6) }}
+            {% endif %}
+            {{ form_label(keysVisionForm.text2, '2ème texte :') }}
+            {{ form_widget(keysVisionForm.text2) }}
+            {% if keysVision.type == 'keys' %}
+                {{ form_label(keysVisionForm.text7, '3ème chiffre :') }}
+                {{ form_widget(keysVisionForm.text7) }}
+            {% endif %}
+            {{ form_label(keysVisionForm.text3, '3ème texte :') }}
+            {{ form_widget(keysVisionForm.text3) }}
+            {% if keysVision.type == 'keys' %}
+                {{ form_label(keysVisionForm.text8, '4ème chiffre :') }}
+                {{ form_widget(keysVisionForm.text8) }}
+            {% endif %}
+            {{ form_label(keysVisionForm.text4, '4ème texte :') }}
+            {{ form_widget(keysVisionForm.text4) }}
+            <button>Valider</button>
+        {{ form_end(keysVisionForm) }}
+        {% if keysVision.type == 'keys' %}
+            <a href="{{ path('home') }}#section-keys">
+                <input type="button" value="Retour">
+            </a>
+        {% endif %}
+        {% if keysVision.type == 'vision' %}
+            <a href="{{ path('home') }}#section-vision">
+                <input type="button" value="Retour">
+            </a>
+        {% endif %}
+    </div>
+</div>
