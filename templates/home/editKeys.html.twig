@@ -1,0 +1,31 @@
+<div class="adminPanel">
+    <div class="add">
+        <h3>Formulaire de modification de la partie "Chiffres Clés"</h3>
+        {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(form.title, 'Titre :') }}
+            {{ form_widget(form.title) }}
+            {{ form_label(form.photo, 'Photo :') }}
+            {{ form_widget(form.photo) }}
+            {{ form_label(form.text5, '1er chiffre :') }}
+            {{ form_widget(form.text5) }}
+            {{ form_label(form.text1, '1er texte :') }}
+            {{ form_widget(form.text1) }}
+            {{ form_label(form.text6, '2ème chiffre :') }}
+            {{ form_widget(form.text6) }}
+            {{ form_label(form.text2, '2ème texte :') }}
+            {{ form_widget(form.text2) }}
+            {{ form_label(form.text7, '3ème chiffre :') }}
+            {{ form_widget(form.text7) }}
+            {{ form_label(form.text3, '3ème texte :') }}
+            {{ form_widget(form.text3) }}
+            {{ form_label(form.text8, '4ème chiffre :') }}
+            {{ form_widget(form.text8) }}
+            {{ form_label(form.text4, '4ème texte :') }}
+            {{ form_widget(form.text4) }}
+            <button>Valider</button>
+        {{ form_end(form) }}
+        <a href="{{ path('home') }}#section-keys">
+            <input type="button" value="Retour">
+        </a>
+    </div>
+</div>

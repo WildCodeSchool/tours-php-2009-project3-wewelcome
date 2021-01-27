@@ -1,0 +1,27 @@
+<div class="adminPanel">
+    <div class="add">
+        {% if type == 'purpose' %}
+        <h3>Formulaire de modification de la partie "Valeurs Wewelcome"</h3>
+        {% else %}
+        <h3>Formulaire de modification de la partie "But Wewelcome"</h3>
+        {% endif %}
+        {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(form.text, 'Texte :') }}
+            {{ form_widget(form.text) }}
+            {{ form_label(form.pictureOne, 'Photo :') }}
+            {{ form_widget(form.pictureOne) }}
+            {{ form_label(form.legendPictureOne, 'Légende :') }}
+            {{ form_widget(form.legendPictureOne) }}
+            <button>Valider</button>
+        {{ form_end(form) }}
+        {% if type == 'purpose' %}
+        <a href="{{ path('home') }}#section-purpose">
+            <input type="button" value="Retour">
+        </a>
+        {% else %}
+        <a href="{{ path('home') }}#section-values">
+            <input type="button" value="Retour">
+        </a>
+        {% endif %}
+    </div>
+</div>
