@@ -29,6 +29,23 @@ h3 {
     margin: 1vw;
 }
 
+#lightbox {
+    display: none;
+}
+
+#lightbox:target {
+    display: block;
+    text-align: center;
+    
+}
+
+#lightboxImage {
+    position: fixed;
+    top: 3vw;
+    width: 70vw;
+    background: rgba(0, 0, 0, 0.8);
+}
+
 
 /* Business Trips */
 
