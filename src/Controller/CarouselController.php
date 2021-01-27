@@ -12,13 +12,14 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
-use App\Services\HomeManager;
 use App\Services\FileManager;
 
 class CarouselController extends AbstractController
 {
     /**
+     * This method allows you to create new content for the carousel part.
      * @Route("/new-carousel", name="new_carousel", methods={"GET","POST"})
+     * @IsGranted("ROLE_ADMIN")
      */
     public function newCarousel(
         Request $request,
@@ -64,8 +65,7 @@ class CarouselController extends AbstractController
     }
 
     /**
-     * This method allows you to modify the default home object.
-     * But also to completely modify it.
+     * This method allows you to modify an edited carousel part.
      * @Route("{idCarousel}/edit-carousel", name="edit_carousel", methods={"GET", "POST"})
      * @ParamConverter("home", class="App\Entity\Home", options={"mapping": {"idCarousel": "id"}})
      * @IsGranted("ROLE_ADMIN")

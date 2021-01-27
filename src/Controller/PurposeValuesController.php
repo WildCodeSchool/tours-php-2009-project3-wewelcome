@@ -12,120 +12,127 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\PurposeValuesType;
-use App\Services\HomeManager;
 use App\Services\FileManager;
 
 class PurposeValuesController extends AbstractController
 {
     /**
-     * This method allows you to modify an edited carousel.
-     * @Route("{idPurpose}/edit-purpose", name="edit_purpose", methods={"GET", "POST"})
-     * @ParamConverter("home", class="App\Entity\Home", options={"mapping": {"idPurpose": "id"}})
+     * This method allows you to create new content for the purpose part or values part.
+     * @Route("/new-purpose-values/{type}", name="new_purpose-values", methods={"GET","POST"})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function editPurpose(
+    public function newPurposeValues(
         Request $request,
         EntityManagerInterface $entityManager,
         FileManager $fileManager,
-        Home $home
+        string $type
+    ): Response {
+        $home = new Home();
+        $form = $this->createForm(PurposeValuesType::class, $home);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pictureOne = $form->get('pictureOne')->getData();
+            $addPictureOne = $fileManager->saveFile(
+                'pictureOne',
+                $pictureOne,
+                $this->getParameter('purpose-values_directory')
+            );
+            $home->setPictureOne($addPictureOne['fileName']);
+
+            switch ($type) {
+                case "purpose":
+                    $home->setType('purpose');
+                    break;
+                case "values":
+                    $home->setType('values');
+                    break;
+            }
+            $entityManager->persist($home);
+            $entityManager->flush();
+            if ($type === "purpose") {
+                return $this->redirect($this->generateUrl('home') . '#section-purpose');
+            } else {
+                return $this->redirect($this->generateUrl('home') . '#section-values');
+            }
+        }
+        return $this->render('home/editPurposeValues.html.twig', [
+            'form' => $form->createView(),
+            'home' => $home,
+            'type' => $type
+        ]);
+    }
+
+    /**
+     * This method allows you to modify an edited the purpose part or values part.
+     * @Route("{idPurposeValues}/edit-purpose-values/{type}", name="edit_purpose-values", methods={"GET", "POST"})
+     * @ParamConverter("home", class="App\Entity\Home", options={"mapping": {"idPurposeValues": "id"}})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editPurposeValues(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        FileManager $fileManager,
+        Home $home,
+        string $type
     ): Response {
 
-        $purposeForm = $this->createForm(PurposeValuesType::class, $home);
-        $purposeForm->handleRequest($request);
+        $form = $this->createForm(PurposeValuesType::class, $home);
+        $form->handleRequest($request);
 
-        if ($purposeForm->isSubmitted() && $purposeForm->isValid()) {
-            $pictureOne = $purposeForm->get('pictureOne')->getData();
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pictureOne = $form->get('pictureOne')->getData();
             if (
                 $pictureOne !== null &&
                 $home->getPictureOne() !== null
             ) {
-                $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('purpose_directory'));
+                $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('purpose-values_directory'));
                 $addPictureOne = $fileManager->saveFile(
                     'pictureOne',
                     $pictureOne,
-                    $this->getParameter('purpose_directory')
+                    $this->getParameter('purpose-values_directory')
                 );
                 $home->setPictureOne($addPictureOne['fileName']);
             }
 
             $entityManager->flush();
 
-            return $this->redirect($this->generateUrl('home') . '#section-purpose');
+            if ($home->getType() === "purpose") {
+                return $this->redirect($this->generateUrl('home') . '#section-purpose');
+            } else {
+                return $this->redirect($this->generateUrl('home') . '#section-values');
+            }
         }
-        return $this->render('home/editPurpose.html.twig', [
-            'purposeForm' => $purposeForm->createView(),
-            'purpose' => $home
+        return $this->render('home/editPurposeValues.html.twig', [
+            'form' => $form->createView(),
+            'home' => $home,
+            'type' => $type
         ]);
     }
 
     /**
      * This method deletes the current object and therefore the default content is displayed in the view.
-     * @Route("/default-purpose", name="default_purpose", methods={"GET"})
+     * @Route("{idPurposeValues}/default-purpose-values/{type}", name="default_purpose-values", methods={"DELETE"})
+     * @ParamConverter("home", class="App\Entity\Home", options={"mapping": {"idPurposeValues": "id"}})
      * @IsGranted("ROLE_ADMIN")
      */
-    public function defaultPurpose(
-        HomeManager $homeManager
-    ): Response {
-
-        $purpose = new Home();
-        $purpose->setType('purpose');
-        $homeManager->removeHome($purpose, 'purpose', 'purpose_directory');
-        return $this->redirect($this->generateUrl('home') . '#section-purpose');
-    }
-
-    /**
-     * This method allows you to modify an edited carousel.
-     * @Route("{idValues}/edit-values", name="edit_values", methods={"GET", "POST"})
-     * @ParamConverter("home", class="App\Entity\Home", options={"mapping": {"idValues": "id"}})
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function editValues(
+    public function defaultPurposeValues(
         Request $request,
         EntityManagerInterface $entityManager,
         FileManager $fileManager,
-        Home $home
+        Home $home,
+        string $type
     ): Response {
-
-        $valuesForm = $this->createForm(PurposeValuesType::class, $home);
-        $valuesForm->handleRequest($request);
-
-        if ($valuesForm->isSubmitted() && $valuesForm->isValid()) {
-            $pictureOne = $valuesForm->get('pictureOne')->getData();
-            if (
-                $pictureOne !== null &&
-                $home->getPictureOne() !== null
-            ) {
-                $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('values_directory'));
-                $addPictureOne = $fileManager->saveFile(
-                    'pictureOne',
-                    $pictureOne,
-                    $this->getParameter('values_directory')
-                );
-                $home->setPictureOne($addPictureOne['fileName']);
+        if ($this->isCsrfTokenValid('delete' . $home->getId(), $request->request->get('_token'))) {
+            if ($home->getPictureOne() !== null) {
+                $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('purpose-values_directory'));
             }
-
+            $entityManager->remove($home);
             $entityManager->flush();
-
+        }
+        if ($type === "purpose") {
+            return $this->redirect($this->generateUrl('home') . '#section-purpose');
+        } else {
             return $this->redirect($this->generateUrl('home') . '#section-values');
         }
-        return $this->render('home/editValues.html.twig', [
-            'valuesForm' => $valuesForm->createView(),
-            'values' => $home
-        ]);
-    }
-
-    /**
-     * This method deletes the current object and therefore the default content is displayed in the view.
-     * @Route("/default-values", name="default_values", methods={"GET"})
-     * @IsGranted("ROLE_ADMIN")
-     */
-    public function defaultValues(
-        HomeManager $homeManager
-    ): Response {
-
-        $values = new Home();
-        $values->setType('values');
-        $homeManager->removeHome($values, 'values', 'values_directory');
-        return $this->redirect($this->generateUrl('home') . '#section-values');
     }
 }

@@ -63,8 +63,8 @@
     <section class="purpose section-except-home" id="section-purpose">
         <section>
             <article class="purpose-text">
-                {% if purpose.text %}
-                <p>{{purpose.text}}</p>
+                {% if purpose is not empty and purpose[0].text %}
+                <p>{{purpose[0].text}}</p>
                 {% else %}
                 <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
                 <span>WeWelcome est votre assistant dédié !</span><br>
@@ -72,8 +72,8 @@
                 {% endif %}
             </article>
             <article class="purpose-picture">
-                {% if purpose.pictureOne %}
-                <img src="/assets/images/purpose/{{purpose.pictureOne}}" alt="{{purpose.legendPictureOne}}">
+                {% if purpose is not empty and purpose[0].pictureOne %}
+                <img src="/assets/images/purpose-values/{{purpose[0].pictureOne}}" alt="{{purpose[0].legendPictureOne}}">
                 {% else %}
                 <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
                 {% endif %}
@@ -82,90 +82,112 @@
         <a class="button-contact" href="#contact">Nous contacter</a>
         <!-- Purpose modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('edit_purpose', {'idPurpose': purpose.id }) }}">
-            <input type="button" value="Editer" class="">
-        </a>
-        <a href="{{ path('default_purpose') }}">
-            <input type="button" value="Par défaut" class="">
-        </a>
+            {% if purpose is empty %}
+            <a href="{{ path('new_purpose-values', {'type': 'purpose'}) }}">
+                <input type="button" value="Nouveau contenu" class="">
+            </a>
+            {% endif %}
+            {% if purpose is not empty %}
+            <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purpose[0].id) }}">
+                <input type="submit" value="Contenu par défaut">
+            </form>
+            <a href="{{ path('edit_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}">
+                <input type="button" value="Editer le contenu" class="">
+            </a>
+            {% endif %}
         {% endif %}
     </section>
 
-    {% if keys.photo %}
+    {% if keys is not empty and keys[0].photo %}
     <section class="key-figures section-except-home"
-    style="background-image: url(/assets/images/keys-vision/{{keys.photo}});"
+    style="background-image: url(/assets/images/keys-vision/{{keys[0].photo}});"
     id="section-keys">
     {% else %}
     <section class="key-figures section-except-home"
     style="background-image: url(/assets/images/Touraine.png);"
     id="section-keys">
     {% endif %}
-        {% if keys.title %}
-        <h2 class="h2-primary-color">{{keys.title}}</h2>
+        {% if keys[0].title %}
+        <h2 class="h2-primary-color">{{keys[0].title}}</h2>
         {% else %}
         <h2 class="h2-primary-color">Implanté en Touraine</h2>
         {% endif %}
         <hr class="hr-primary-color">
-        {% if keys.text5 %}
-        <p id="key-figure-1">{{keys.text5}}</p>
+        {% if keys[0].text5 %}
+        <p id="key-figure-1">{{keys[0].text5}}</p>
         {% else %}
         <p id="key-figure-1">+50</p>
         {% endif %}
-        {% if keys.text1 %}
-        <p id="key-figure-11">{{keys.text1}}</p>
+        {% if keys[0].text1 %}
+        <p id="key-figure-11">{{keys[0].text1}}</p>
         {% else %}
         <p id="key-figure-11">propriétaires déjà satisfaits</p>
         {% endif %}
-        {% if keys.text6 %}
-        <p id="key-figure-2">{{keys.text6}}</p>
+        {% if keys[0].text6 %}
+        <p id="key-figure-2">{{keys[0].text6}}</p>
         {% else %}
         <p id="key-figure-2">+500</p>
         {% endif %}
-        {% if keys.text2 %}
-        <p id="key-figure-21">{{keys.text2}}</p>
+        {% if keys[0].text2 %}
+        <p id="key-figure-21">{{keys[0].text2}}</p>
         {% else %}
         <p id="key-figure-21">voyageurs conquis</p>
         {% endif %}
-        {% if keys.text7 %}
-        <p id="key-figure-3">{{keys.text7}}</p>
+        {% if keys[0].text7 %}
+        <p id="key-figure-3">{{keys[0].text7}}</p>
         {% else %}
         <p id="key-figure-3">+90%</p>
         {% endif %}
-        {% if keys.text3 %}
-        <p id="key-figure-31">{{keys.text3}}</p>
+        {% if keys[0].text3 %}
+        <p id="key-figure-31">{{keys[0].text3}}</p>
         {% else %}
         <p id="key-figure-31">de taux d'occupation</p>
         {% endif %}
-        {% if keys.text8 %}
-        <p id="key-figure-4">{{keys.text8}}</p>
+        {% if keys[0].text8 %}
+        <p id="key-figure-4">{{keys[0].text8}}</p>
         {% else %}
         <p id="key-figure-4">7j/7</p>
         {% endif %}
-        {% if keys.text4 %}
-        <p id="key-figure-41">{{keys.text4}}</p>
+        {% if keys[0].text4 %}
+        <p id="key-figure-41">{{keys[0].text4}}</p>
         {% else %}
         <p id="key-figure-41">disponible pour vous</p>
         {% endif %}
         <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
+        <!-- Keys modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('edit_keys-vision', {'idKeysVision': keys.id }) }}">
-            <input type="button" value="Editer" class="">
-        </a>
+            {% if keys is empty %}
+            <a href="{{ path('new_keys') }}">
+                <input type="button" value="Nouveau contenu" class="">
+            </a>
+            {% endif %}
+            {% if keys is not empty %}
+            <form method="post" action="{{ path('default_keys', {'idKeys' : keys[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ keys[0].id) }}">
+                <input type="submit" value="Contenu par défaut">
+            </form>
+            <a href="{{ path('edit_keys', {'idKeys': keys[0].id }) }}">
+                <input type="button" value="Editer le contenu" class="">
+            </a>
+            {% endif %}
         {% endif %}
     </section>
 
     <section class="values section-except-home" id="section-values">
         <section>
             <article class="values-picture">
-                {% if values.pictureOne %}
-                <img src="/assets/images/values/{{values.pictureOne}}" alt="{{values.legendPictureOne}}">
+                {% if values is not empty and values[0].pictureOne %}
+                <img src="/assets/images/purpose-values/{{values[0].pictureOne}}" alt="{{values[0].legendPictureOne}}">
                 {% else %}
                 <img src="/assets/images/section-values.jpg" alt="un homme heureux">
                 {% endif %}
             </article>
             <article class="values-text">
-                {% if values.text %}
-                <p>{{values.text}}</p>
+                {% if values is not empty and values[0].text %}
+                <p>{{values[0].text}}</p>
                 {% else %}
                 <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
                 <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
@@ -173,20 +195,30 @@
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Values modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('edit_values', {'idValues': values.id }) }}">
-            <input type="button" value="Editer" class="">
-        </a>
-        <a href="{{ path('default_values') }}">
-            <input type="button" value="Par défaut" class="">
-        </a>
+            {% if values is empty %}
+            <a href="{{ path('new_purpose-values', {'type': 'values'}) }}">
+                <input type="button" value="Nouveau contenu" class="">
+            </a>
+            {% endif %}
+            {% if values is not empty %}
+            <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ values[0].id) }}">
+                <input type="submit" value="Contenu par défaut">
+            </form>
+            <a href="{{ path('edit_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}">
+                <input type="button" value="Editer le contenu" class="">
+            </a>
+            {% endif %}
         {% endif %}
     </section>
 
-    {% if vision.photo %}
+    {% if vision is not empty and vision[0].photo %}
     <section
     class="service-vision section-except-home"
-    style="background-image: url(/assets/images/keys-vision/{{keys.photo}});"
+    style="background-image: url(/assets/images/keys-vision/{{keys[0].photo}});"
     id="section-vision">
     {% else %}
     <section
@@ -194,36 +226,49 @@
     style="background-image: url(/assets/images/section-key-figures.jpg);"
     id="section-vision">
     {% endif %}
-        {% if vision.title %}
-        <h2 class="h2-white">{{vision.title}}</h2>
+        {% if vision[0].title %}
+        <h2 class="h2-white">{{vision[0].title}}</h2>
         {% else %}
         <h2 class="h2-white">WeWelcome, la tranquilité assurée !</h2>
         {% endif %}
-        {% if vision.text1 %}
-        <p id="service-vision-1">{{vision.text1}}</p>
+        {% if vision[0].text1 %}
+        <p id="service-vision-1">{{vision[0].text1}}</p>
         {% else %}
         <p id="service-vision-1">confiance</p>
         {% endif %}
-        {% if vision.text2 %}
-        <p id="service-vision-2">{{vision.text2}}</p>
+        {% if vision[0].text2 %}
+        <p id="service-vision-2">{{vision[0].text2}}</p>
         {% else %}
         <p id="service-vision-2">qualité</p>
         {% endif %}
-        {% if vision.text3 %}
-        <p id="service-vision-3">{{vision.text3}}</p>
+        {% if vision[0].text3 %}
+        <p id="service-vision-3">{{vision[0].text3}}</p>
         {% else %}
         <p id="service-vision-3">efficacité</p>
         {% endif %}
-        {% if vision.text4 %}
-        <p id="service-vision-4">{{vision.text4}}</p>
+        {% if vision[0].text4 %}
+        <p id="service-vision-4">{{vision[0].text4}}</p>
         {% else %}
         <p id="service-vision-4">proximité</p>
         {% endif %}
         <a class="button-contact" id="service-vision-contact" href="#contact">Nous contacter</a>
+        <!-- Values modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
-        <a href="{{ path('edit_keys-vision', {'idKeysVision': vision.id }) }}">
-            <input type="button" value="Editer" class="">
-        </a>
+            {% if vision is empty %}
+            <a href="{{ path('new_vision') }}">
+                <input type="button" value="Nouveau contenu" class="">
+            </a>
+            {% endif %}
+            {% if vision is not empty %}
+            <form method="post" action="{{ path('default_vision', {'idVision' : vision[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ vision[0].id) }}">
+                <input type="submit" value="Contenu par défaut">
+            </form>
+            <a href="{{ path('edit_vision', {'idVision': vision[0].id }) }}">
+                <input type="button" value="Editer le contenu" class="">
+            </a>
+            {% endif %}
         {% endif %}
     </section>
 
