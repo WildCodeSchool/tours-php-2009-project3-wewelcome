@@ -7,14 +7,7 @@
 {% block body %}
 <div class="adminPanel">
     <h1>Modifier "Voyage d'affaires"</h1>
-    {{ form_start(businessTripForm, {'attr' : {'class' : 'adminForm'}}) }}
-        {{ form_label(businessTripForm.photoFile, 'Photo :') }}
-        {{ form_widget(businessTripForm.photoFile) }}
-        {{ form_label(businessTripForm.description, 'Description :') }}
-        {{ form_widget(businessTripForm.description) }}
-        {{ form_row(businessTripForm._token) }}
-        <button>Valider</button>
-    {{ form_end(businessTripForm, {'render_rest': false}) }}
+        {{ include('housing/_formBusiness.html.twig', {'button_label': 'Modifier'}) }}
     <a href="{{ path('housing') }}">Retour</a>
 </div>
 {% endblock %}
