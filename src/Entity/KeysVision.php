@@ -20,115 +20,51 @@ class KeysVision
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 100,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $title;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Assert\NotBlank(message="Vous devez choisir une photo")
-     * @Assert\Length(
-     *      max = 255,
-     *      maxMessage = "Le chemin du dossier est trop long, il dépasse {{ limit }} charactères"
-     * )
      */
     private string $photo;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text1;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text2;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text3;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 50,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text4;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 5,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text5;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 5,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text6;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 5,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text7;
 
     /**
      * @ORM\Column(type="string", length=50, nullable=true)
-     * @Assert\Length(
-     *      min = 2,
-     *      max = 5,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
-     * )
      */
     private string $text8;
 
