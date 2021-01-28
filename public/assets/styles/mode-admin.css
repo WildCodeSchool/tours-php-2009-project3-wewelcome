@@ -73,6 +73,13 @@ li {
     font-style: italic;
 }
 
+p {
+    font-size: 20px;
+    color: blue;
+    font-family: var(--secondary-text);
+    font-style: italic;
+}
+
 @media screen and (min-width: 813px) {
     form {
         width: 50vw;

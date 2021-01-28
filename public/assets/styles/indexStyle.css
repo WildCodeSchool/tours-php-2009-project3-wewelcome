@@ -556,3 +556,29 @@ body {
     }
 }
 /***SECTION PARTNERS___end***/
+
+/***LEGALS TEXTS___start***/
+.legals-texts {
+    margin: 2vw auto;
+    padding: 2vw;
+    width : 50vw;
+    border-radius: 1vw;
+    border: none;
+    background-color: var(--white);
+    font-family: var(--primary-text);
+    font-size: 1.5vw;
+    line-height: 2.5vw;
+}
+
+@media screen and (max-width: 812px) {
+    .legals-texts {
+        margin: 2vw auto;
+        padding: 2vw;
+        width : 90vw;
+        border-radius: 1vw;
+        font-size: 2.5vw;
+        line-height: 3.5vw;
+    }
+}
+
+/***LEGALS TEXTS___end***/
