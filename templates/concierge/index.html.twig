@@ -8,46 +8,49 @@
 
 {% block body %}
 <section class="generalInfo">
+    <div class="headerConciergePage">
+        <h2 class="h2-primary-color">Conciergerie</h2>
+        <hr class="hr-primary-color">
+    </div>
+    <ul class="listPresentationPart">
+        <li>
+            Vous souhaitez louer votre bien en toute sérénité, mais vous manquez de disponibilité, vous êtes
+            éloigné de votre résidence ou vous avez juste envie de profiter de votre temps libre ?
+        </li><br>
+        <li>
+            Vous désirez réaliser un investissement immobilier mais ne savez comment le rentabiliser, tout en le
+            protégeant ?
+        </li><br>
+        <li>
+            Vous êtes professionnel de l&#39;hébergement et vous souhaitez faire une pause dans votre activité ?
+        </li><br>
+        <li>
+            wewelcome a pour mission de vous décharger de toute contrainte, et vous accompagne sur toutes
+            les facettes de la location saisonnière.
+        </li><br>
+        <li>
+            Nous gérons l’ensemble du processus ou seulement une partie, à temps complet ou sur certaines
+            périodes, pour s’adapter aux besoins de chaque propriétaire.
+        </li><br>
+        <li>
+            Les services proposés sont conçus pour assurer un service personnalisé de qualité, disponible et
+            réactif. Nous garantissons également un suivi professionnel de chaque location pour une efficacité
+            optimale.
+        </li>
+    </ul>
     <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
-        <img id="defaultServiceImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
-        <div class="hidden">
-            {% set j =0 %}
-            {% for service in services %}
-                <p id="text{{ j }}" class="textPicto">{{ service.description }}</p>
-                {% set j = j +1 %}
-            {% endfor %}
+        <div id="imgBackground" class="imgBackground">
+            <div class="hidden">
+                {% set j =0 %}
+                {% for service in services %}
+                    <p id="text{{ j }}" class="textPicto">{{ service.description|nl2br }}</p>
+                    {% set j = j +1 %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="right">
-        <h2 class="h2-primary-color">Conciergerie</h2>
-        <hr class="hr-primary-color">
         <h3 class="title">Services</h3>
-        <ul class="listPresentationPart">
-            <li>
-                Vous souhaitez louer votre bien en toute sérénité, mais vous manquez de disponibilité, vous êtes
-                éloigné de votre résidence ou vous avez juste envie de profiter de votre temps libre ?
-            </li><br>
-            <li>
-                Vous désirez réaliser un investissement immobilier mais ne savez comment le rentabiliser, tout en le
-                protégeant ?
-            </li><br>
-            <li>
-                Vous êtes professionnel de l&#39;hébergement et vous souhaitez faire une pause dans votre activité ?
-            </li><br>
-            <li>
-                wewelcome a pour mission de vous décharger de toute contrainte, et vous accompagne sur toutes
-                les facettes de la location saisonnière.
-            </li><br>
-            <li>
-                Nous gérons l’ensemble du processus ou seulement une partie, à temps complet ou sur certaines
-                périodes, pour s’adapter aux besoins de chaque propriétaire.
-            </li><br>
-            <li>
-                Les services proposés sont conçus pour assurer un service personnalisé de qualité, disponible et
-                réactif. Nous garantissons également un suivi professionnel de chaque location pour une efficacité
-                optimale.
-            </li>
-        </ul>
         <div class="conciergeDetails">
             {% set i = 0 %}
             {% for service in services %}
@@ -56,7 +59,11 @@
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">Modifier</a></button>
-                <form method="post" action="{{ path('service_delete', {'id' : service.id}) }}" onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');">
+                <form 
+                    method="post"
+                    action="{{ path('service_delete', {'id' : service.id}) }}"
+                    onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');"
+                >
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
                     <button class="btn">Effacer</button>
@@ -69,9 +76,11 @@
         {% if app.user %}
         {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
         {% endif %}
-        <h3 class="title">Formules</h3>
-        <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
-        <button class="contactButton button-contact" onclick="location.href='#contact';">Je souhaite plus d'information</button>
+        <div class="needSpace">
+            <h3 class="title">Formules</h3>
+            <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
+            <button class="contactButton button-contact paddingBottom" onclick="location.href='#contact';">Je souhaite plus d'information</button>
+        </div>
     </div>
 </section>
 <section class="tariffSection">
