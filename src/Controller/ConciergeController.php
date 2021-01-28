@@ -15,6 +15,10 @@ use App\Entity\Service;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
 use App\Services\FileManager;
+use App\Repository\ConciergeRepository;
+use App\Entity\Concierge;
+use App\Form\ConciergeType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class ConciergeController extends AbstractController
 {
@@ -26,9 +30,13 @@ class ConciergeController extends AbstractController
         MailerInterface $mailer,
         ServiceRepository $serviceRepository,
         EntityManagerInterface $entityManager,
-        FileManager $fileManager
+        FileManager $fileManager,
+        ConciergeRepository $conciergeRepository
     ): Response {
         $services = $serviceRepository->findBy(['relatedTo' => 'concierge']);
+
+        $pricesNoStress = $conciergeRepository->findOneBy(['type' => 'nostress']);
+        $pricesOpen = $conciergeRepository->findOneBy(['type' => 'open']);
 
         /** Display the add service form and add it in the DB */
         $service = new Service();
@@ -88,7 +96,79 @@ class ConciergeController extends AbstractController
             'form' => $form->createView(),
             'serviceForm' => $serviceForm->createView(),
             'services' => $services,
-            'photos' => $photos
+            'photos' => $photos,
+            'pricesNoStress' => $pricesNoStress,
+            'pricesOpen' => $pricesOpen
         ]);
+    }
+
+    /**
+     * @Route("/prices/{id}", name="prices_delete", methods={"DELETE"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function deletePrices(
+        Request $request,
+        Concierge $concierge,
+        EntityManagerInterface $entityManager
+    ): Response {
+        if ($this->isCsrfTokenValid('delete' . $concierge->getId(), $request->request->get('_token'))) {
+            $entityManager->remove($concierge);
+            $entityManager->flush();
+        }
+
+        return $this->redirect($request->server->get('HTTP_REFERER'));
+    }
+
+    /**
+     * @Route("/prices/{id}/edit", name="prices_edit", methods={"POST", "GET"})
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function editPrices(
+        Request $request,
+        Concierge $concierge,
+        EntityManagerInterface $entityManager
+    ): Response {
+        $form = $this->createForm(ConciergeType::class, $concierge);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager->flush();
+
+            return $this->redirectToRoute('concierge');
+        }
+
+        return $this->render('concierge/editPrices.html.twig', [
+            'concierge' => $concierge,
+            'pricesForm' => $form->createView(),
+        ]);
+    }
+
+    /**
+     * @Route("/prices/add/{source}", name="prices_add")
+     * @IsGranted("ROLE_ADMIN")
+     */
+    public function addPrices(
+        Request $request,
+        EntityManagerInterface $entityManager,
+        string $source
+    ): Response {
+        $concierge = new Concierge();
+        $form = $this->createForm(ConciergeType::class, $concierge);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            if ($source == 'nostress') {
+                $concierge->setType('nostress');
+            } elseif ($source == 'open') {
+                $concierge->setType('open');
+            }
+
+            $entityManager->persist($concierge);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('concierge');
+        }
+
+        return $this->render('concierge/editPrices.html.twig', ['pricesForm' => $form->createView()]);
     }
 }

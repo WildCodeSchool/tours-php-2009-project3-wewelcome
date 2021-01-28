@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Admin - {{ parent() }}{% endblock %}
+
+{% block body %}
+<div class="adminPanel">
+    <div class="add">
+        <h3>Formulaire de modification des prix</h3>
+        {{ form_start(pricesForm, {'attr' : {'class' : 'adminForm'}}) }}
+            {{ form_label(pricesForm.title, 'Titre :') }}
+            {{ form_widget(pricesForm.title) }}
+            {{ form_label(pricesForm.text, 'Texte :') }}
+            {{ form_widget(pricesForm.text) }}
+            <button>Valider</button>
+        {{ form_end(pricesForm) }}
+        <a href="{{ path('concierge') }}">
+            <input type="button" value="Retour">
+        </a>
+    </div>
+</div>
+{% endblock %}
