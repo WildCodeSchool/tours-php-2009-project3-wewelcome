@@ -1,33 +1,101 @@
+/* General */
+
 .h2housing {
     text-align: center;
-    padding-top: 5rem;
+    padding-top: 7vw;
 }
 
 .hrTitleHousing {
-    padding-bottom: 4rem;
+    padding-bottom: 2vw;
 }
 
 h3 {
     text-align: center;
 }
 
-.theyTrustUs, .businessTrips {
-    margin: 1rem;
+.housingLink {
+    color: var(--primary-color);
+}
+
+.housingLink:hover {
+    text-decoration: underline;
+}
+
+
+/* They Trust Us */
+
+.theyTrustUs {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
+.theyTrustUs img {
+    width: 31vw;
+}
+
+.theyTrustUs div {
+    margin: 1vw;
+}
+
+
+/* Business Trips */
+
 .businessTripsWithTitle {
     background-color: lightgray;
-    padding: 2rem 0rem;
+    padding: 2vw 0;
 }
 
-.theyTrustUs img, .businessTrips img {
-    width: 28rem;
+.businessTrips {
+    margin: 1vw;
 }
 
-.theyTrustUs div, .businessTrips div {
-    margin: 1rem;
+.businessTrips img {
+    width: 40vw;
 }
+
+.businessTrips {
+    display: flex;
+    flex-direction: row;
+}
+
+.businessTrips p {
+    margin-left: 1vw;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 600px) {
+
+    .theyTrustUs {
+        margin: 1vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .theyTrustUs img {
+        width: 96vw;
+    }
+
+    .theyTrustUs div {
+        margin-top: 5vw;
+    }
+
+
+    .businessTrips {
+        margin: 2vw;
+    }
+
+    .businessTrips img {
+        width: 96vw;
+    }
+
+    .businessTrips {
+        display: flex;
+        flex-direction: column;
+    }
+
+}
+
 
 

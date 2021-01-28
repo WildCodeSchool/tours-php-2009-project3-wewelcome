@@ -1,25 +1,27 @@
-<h2 id="contact">Contact</h2>
-<hr class="contact-hr">
-{{ form_start(form, {'attr' : {'class' : 'contactForm'}}) }}
-    <div class="contact-objet">
-        {{ form_label(form.subject, 'Sur quels sujets voulez-vous des renseignements ?') }}
-        {{ form_widget(form.subject, {'attr' : {'class' : 'contact-radios'}}) }}
-    </div>
-    <div class="contact-inputs">
-        <div>
-            {{ form_label(form.firstName, 'Prénom') }}
-            {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre prénom ici'}}) }}
-            {{ form_label(form.lastName, 'Nom') }}
-            {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre nom ici'}}) }}
-            {{ form_label(form.phone, 'Téléphone') }}
-            {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre numéro de téléphone ici'}}) }}
-            {{ form_label(form.email, 'Email') }}
-            {{ form_widget(form.email, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre email ici'}}) }}
+<section class="contact">
+    <h2 class="h2-primary-color" id="contact">Nous contacter</h2>
+    <hr class="hr-primary-color">
+    {{ form_start(form, {'attr' : {'class' : 'contactForm'}}) }}
+        <div class="contact-objet">
+            {{ form_label(form.subject, 'Sur quels sujets voulez-vous des renseignements ?') }}
+            {{ form_widget(form.subject, {'attr' : {'class' : 'contact-radios'}}) }}
         </div>
-        <div>
-            {{ form_label(form.message, 'Message : ') }}
-            {{ form_widget(form.message, {'attr' : {'class' : 'inputContact message', 'placeholder' : 'Saisissez l\'objet de votre message ici'}}) }}
+        <div class="contact-inputs">
+            <div>
+                {{ form_label(form.firstName, 'Prénom :') }}
+                {{ form_widget(form.firstName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre prénom ici'}}) }}
+                {{ form_label(form.lastName, 'Nom :') }}
+                {{ form_widget(form.lastName, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre nom ici'}}) }}
+                {{ form_label(form.phone, 'Téléphone :') }}
+                {{ form_widget(form.phone, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre numéro de téléphone ici'}}) }}
+                {{ form_label(form.email, 'Email :') }}
+                {{ form_widget(form.email, {'attr' : {'class' : 'inputContact', 'placeholder' : 'Saisissez votre email ici'}}) }}
+            </div>
+            <div>
+                {{ form_label(form.message, 'Message : ') }}
+                {{ form_widget(form.message, {'attr' : {'class' : 'inputContact message', 'placeholder' : 'Saisissez l\'objet de votre message ici'}}) }}
+            </div>
         </div>
-    </div>
-    <input class="button-contact" type='submit' value='Envoyer'>
-{{ form_end(form) }}
+        <input class="button-contact" type='submit' value='Envoyer'>
+    {{ form_end(form) }}
+</section>

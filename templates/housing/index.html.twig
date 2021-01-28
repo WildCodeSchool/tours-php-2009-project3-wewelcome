@@ -4,13 +4,10 @@
 <link rel="stylesheet" href="/assets/styles/housingStyle.css">
 {% endblock %}
 
-
-
 {% block body %}
 
-    <h2 class="h2housing">Logement</h2>
+    <h2 class="h2housing">Logements</h2>
     <hr class="hrTitleHousing">
-
     <section class="theyTrustUsWithTitle">
         <h3>Ils nous font confiance</h3>
         <div class="theyTrustUs">
@@ -26,25 +23,96 @@
                 <img src="assets/images/home-conciergerie.jpg" alt="">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
             </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            <div>
+                <img src="assets/images/home-conciergerie.jpg" alt="">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
+            </div>
+            {% for house in houses %}
+            <div>
+                <img src="assets/images/housing/{{ house.photo }}" alt="">
+                <p>{{ house.description }}</p>
+                <a class="housingLink" href="{{ house.url }}" target="blank">Voir l'annonce</a>
+                {% if app.user %}
+                <button class="update"><a href="{{ path('housing_edit', {'id': house.id }) }}">Modifier</a></button>
+                <form method="post" action="{{ path('housing_delete', {'id' : house.id}) }}" onsubmit="return confirm('Ce logement sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ house.id) }}">
+                    <input type="submit" value="Effacer">
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </div>
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
+            </div>
+        </div>
+        {% endif %}
     </section>
-
     <section class="businessTripsWithTitle">
         <h3>Voyages d'affaires</h3>
         <div class="businessTrips">
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
+            <img src="assets/images/student-849825_1920.jpg" alt="">
+            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Laboriosam modi hic nihil perspiciatis, atque non ab maxime sunt, libero praesentium similique rem ipsam quo voluptatem ducimus vitae sapiente minus voluptates.
+            Illum minima veritatis sit ad similique esse veniam atque culpa adipisci, corrupti laboriosam, quos officiis ducimus reiciendis reprehenderit dolorum aspernatur? Tempora aliquam repellat natus perferendis at labore animi commodi ducimus?
+            Minima porro nam commodi inventore ea impedit laborum? Aliquam dolorum deleniti dolores nam sequi accusamus nihil, tenetur rerum odio expedita, commodi et veniam distinctio dolorem asperiores impedit atque excepturi consequatur?
+            Dolorem quis debitis adipisci recusandae vitae a beatae quo nesciunt distinctio alias veniam, voluptates tempora eligendi ad similique. Voluptatum sunt eos animi ipsam vel obcaecati! Excepturi aperiam omnis alias ex.
+            Ducimus expedita quidem ullam, harum quod nihil exercitationem recusandae! Est minus aliquam atque assumenda quos quia quaerat doloribus omnis, praesentium alias fugit officiis quasi eum earum rerum, odio minima dolore.
+            Obcaecati at non aliquid, quo, ipsam voluptate commodi quos laborum distinctio nesciunt unde consequatur praesentium quam deleniti delectus incidunt? Veniam neque impedit facere similique cumque iste adipisci fugiat eveniet nesciunt.
+            Quos deleniti qui porro reiciendis et, corrupti error dicta excepturi. Vel optio ea repellendus asperiores quo eaque maxime, ullam deleniti numquam mollitia excepturi molestiae reiciendis sunt, voluptate dicta dolorem quas.
+            </p>
         </div>
+        {% if businessTrip %}
+        <div class="businessTrips">
+            <img src="assets/images/housing/{{ businessTrip.photo }}">
+            <p>{{ businessTrip.description }}</p>
+        </div>
+            {% if app.user %}
+            <button class="update"><a href="{{ path('business_trip_edit', {'id': businessTrip.id }) }}">Modifier</a></button>
+            {% endif %}
+        {% else %}
+            {% if app.user %}
+            <div class="adminPanel">
+                <div class="add">
+                {{ include('housing/_formBusiness.html.twig', {'button_label': 'Ajouter un voyage d\'affaire'}) }}
+                </div>
+            </div>
+            {% endif %}
+        {% endif %}
     </section>
    
 {% include "/home/_contact.html.twig" %}

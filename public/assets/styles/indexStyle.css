@@ -1,9 +1,12 @@
 @import 'variables.css';
 
+body {
+    background-color: var(--secondary-color-tint1);
+}
 /***SECTION HOME___start***/
 .home-carousel {
     position: relative;
-    height: 100vh;
+    height: 50vw;
     overflow: hidden;
     margin: 0 auto;
 }
@@ -13,16 +16,19 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .home-text {
-    margin: 30vh auto 10vh;
-    width: 70vw;
+    margin: 5vw auto;
+    width: 70%;
     font-family: var(--primary-title);
-    font-size: 3.5rem;
+    font-size: 3.5vw;
     color: var(--white);
-    letter-spacing: 0.5rem;
+    letter-spacing: 0.5vw;
     text-shadow: 5px 5px 20px var(--black);
 }
 
@@ -43,6 +49,17 @@
     float: left;
 }
 
+@media screen and (max-width: 812px) {
+    .home-text {
+        margin: 5vw auto;
+        width: 80%;
+        font-size: 5vw;
+        color: var(--white);
+        letter-spacing: 0.5vw;
+        text-shadow: 5px 5px 20px var(--black);
+    }
+}
+
 @keyframes slidy {
     0% { left: 0%; }
     20% { left: 0%; }
@@ -58,79 +75,125 @@
 }
 /***SECTION HOME___end***/
 
-/***ALL SECTIONS EXCEPT HOME___start***/
-.section-except-home { 
-    height: 100vh;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-/***ALL SECTIONS EXCEPT HOME___start***/
 
 /***SECTION VALUES AND PURPOSE___start***/
 .purpose,
 .values {
-    text-align: center;
-    padding-top: 20vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10vw 2vw;
 }
 
 .purpose section,
 .values section {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     justify-content: center;
     align-items: center;
-    padding-bottom: 5vh;
-}
-
-.purpose,
-.values {
+    justify-items: center;
+    text-align: center;
+    padding: 1vw;
     background-color: var(--secondary-color-tint1);
     color: var(--black);
 }
 
 .purpose-text,
 .values-text {
-    padding: 2vw;
+    padding: 1vw;
     font-family: var(--primary-text);
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 1.8vw;
+    line-height: 3vw;
     text-align: justify;
 }
 
 .purpose-text span,
 .values-text span {
     font-family: var(--secondary-title);
-    font-size: 2rem;
+    font-size: 2vw;
     color: var(--primary-color);
-    line-height: 3.5rem;
+    line-height: 3.5vw;
 }
 
 .purpose-picture,
 .values-picture {
-    padding: 2vw;
+    padding: 1vw;
+    overflow: hidden;
 }
 
 .purpose-picture img,
 .values-picture img {
-    height: 60vh;
+    width: 100%;
+}
+
+@media screen and (max-width: 812px) {
+    .purpose section,
+    .values section {
+        display: flex;
+        flex-direction: column;
+    }
+
+    hr {
+        transform: scale(2);
+    }
+
+    .purpose-text,
+    .values-text {
+        font-size: 2.5vw;
+        line-height: 3.5vw;
+        width: 90%;
+    }
+
+    .purpose-text span,
+    .values-text span {
+        font-size: 2.8vw;
+        line-height: 4vw;
+    }
+
+    .purpose-picture img,
+    .values-picture img {
+        width: 90%;
+    }
 }
 
 /***SECTION VALUES AND PURPOSE___end***/
 
-/***SECTION KEY-FIGURES___start***/
-.key-figures {
+/***SECTION KEY-FIGURES - SERVICE VISION___start***/
+.key-figures,
+.service-vision {
     position: relative;
-    padding-top: 20vh;
+    height: 50vw;
+    padding-bottom: 5vw;
+    background-repeat: no-repeat;
     background-color: var(--white);
+    background-size: 100%;
 }
 
 .key-figures h2 {
+    font-size: 4.5vw;
+}
+
+.service-vision h2 {
+    padding: 5vw 0 2vw;
+    background-color: var(--secondary-color-opacity);
+    text-shadow: 5px 5px 20px var(--black);
+}
+
+#key-figure-1,
+#key-figure-2,
+#key-figure-3,
+#key-figure-4,
+#service-vision-1,
+#service-vision-2,
+#service-vision-3,
+#service-vision-4 {
+    position: absolute;
+    padding: 0.2vw;
+    left: -100vw;
     font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--primary-color);
-    letter-spacing: 0.5rem;
-    text-shadow: 2px 2px 10px var(--white);
+    font-size: 3vw;
+    color: var(--white);
     text-align: center;
 }
 
@@ -138,14 +201,16 @@
 #key-figure-2,
 #key-figure-3,
 #key-figure-4 {
-    position: absolute;
-    left: -100vw;
-    width: 200px;
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--white);
     background-color: var(--primary-color);
-    text-align: center;
+    width: 4em;
+}
+
+#service-vision-1,
+#service-vision-2,
+#service-vision-3,
+#service-vision-4 {
+    text-shadow: 2px 2px 10px var(--black);
+    text-transform: uppercase;
 }
 
 #key-figure-11,
@@ -153,177 +218,259 @@
 #key-figure-31,
 #key-figure-41 {
     position: absolute;
-    right: -100vw;
-    width: 800px;
+    left: -100vw;
+    width: 40vw;
     font-family: var(--primary-text);
-    font-size: 1.8rem;
-    line-height: 3rem;
+    font-size: 1.8vw;
+    line-height: 3vw;
     color: var(--black);
 }
 
 #key-figure-1,
-#key-figure-11 {
-    top: 40vh;
+#key-figure-11,
+#service-vision-1 {
+    top: 20vw;
 }
 
 #key-figure-2,
-#key-figure-21 {
-    top: 55vh;
+#key-figure-21,
+#service-vision-2 {
+    top: 26vw;
 }
 
 #key-figure-3,
-#key-figure-31 {
-    top: 70vh;
+#key-figure-31,
+#service-vision-3 {
+    top: 32vw;
 }
 
 #key-figure-4,
-#key-figure-41 {
-    top: 85vh;
-}
-
-#key-figure-contact {
-    position: absolute;
-    right: -100vw;
-    top: 85vh;
-}
-
-/***SECTION KEY-FIGURES___end***/
-
-/***SECTION SERVICE VISION___start***/
-.service-vision {
-    position: relative;
-    padding-top: 20vh;
-}
-
-.service-vision h2 {
-    padding: 2vh;
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--primary-color);
-    letter-spacing: 0.5rem;
-    text-shadow: 2px 2px 10px var(--white);
-    text-align: center;
-    background-color: var(--secondary-color-opacity);
-}
-
-#service-vision-1,
-#service-vision-2,
-#service-vision-3,
+#key-figure-41,
 #service-vision-4 {
-    position: absolute;
-    left: -100vw;
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--white);
-    text-shadow: 2px 2px 10px var(--black);
-    text-align: center;
-    text-transform: uppercase;
+    top: 38vw;
 }
 
-#service-vision-1 {
-    top: 40vh;
-}
-
-#service-vision-2 {
-    top: 55vh;
-}
-
-#service-vision-3 {
-    top: 70vh;
-}
-
-#service-vision-4 {
-    top: 85vh;
-}
-
+#key-figure-contact,
 #service-vision-contact {
     position: absolute;
-    right: -100vw;
-    top: 85vh;
+    left: 60vw;
+    top: 42vw;
 }
-/***SECTION SERVICE VISION___end***/
+/***SECTION KEY-FIGURES - SERVICE VISION___end***/
 
-/***SECTION ACTIVITY___start***/
+/***SECTION ACTIVITIES___start***/
+@media screen and (min-width: 813px) {
+    .activities {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding-top: 5vw;
+        padding-bottom: 10vw;
+        background-color: var(--white);
+    }
 
-.activities h2 {
-    text-align: center;
-    margin: 3rem;
+    .activities-all {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        text-align: center;
+    }
+
+    .activities-concierge,
+    .activities-stewardship {
+        width: 50vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .concierge-title {
+        color: var(--tertiary-color);
+    }
+    .stewardship-title {
+        color: var(--quaternary-color);
+    }
+
+    .concierge-text,
+    .stewardship-text {
+        font-family: var(--secondary-title);
+        font-size: 1.2vw;
+        padding: 2vw;
+        line-height: 2vw;
+    }
+
+    .concierge-pictograms,
+    .stewardship-pictograms {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+
+    .concierge-pictograms figure,
+    .stewardship-pictograms figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0.5vw;
+        padding: 0.5vw;
+        width: 10vw;
+        height: 6vw;
+        overflow: hidden;
+        font-family: var(--secondary-title);
+        font-size: 0.8vw;
+        color: var(--black);
+    }
+
+    .concierge-pictograms figure img,
+    .stewardship-pictograms figure img {
+        width: 40%;
+    }
+
+    .concierge-more-infos,
+    .stewardship-more-infos {
+        font-family: var(--primary-title);
+        font-size: 1.2vw;
+        margin-bottom: 5vw;
+        padding: 1vw;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .concierge-more-infos span,
+    .stewardship-more-infos span {
+        text-transform: uppercase;
+    }
+
+    .concierge-more-infos {
+        color: var(--tertiary-color);
+    }
+
+    .stewardship-more-infos {
+        color: var(--quaternary-color);
+    }
+
+    .concierge-more-infos:hover,
+    .stewardship-more-infos:hover {
+        transform: scale(1.2);
+        text-decoration: underline;
+    }
 }
 
-.activities a {
-    color: black;
+@media screen and (max-width: 812px) {
+    .activities {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        align-items: center;
+        padding-top: 5vw;
+        padding-bottom: 10vw;
+        background-color: var(--white);
+    }
+    .activities h2 {
+        font-size: 4.5vw;
+    }
+
+    .activities-all {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr);
+        text-align: center;
+    }
+
+    .activities-concierge,
+    .activities-stewardship {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .concierge-title {
+        color: var(--tertiary-color);
+        font-size: 4vw;
+    }
+    .stewardship-title {
+        color: var(--quaternary-color);
+        font-size: 4vw;
+    }
+
+    .concierge-text,
+    .stewardship-text {
+        font-family: var(--secondary-title);
+        font-size: 2vw;
+        padding: 2vw;
+        line-height: 3vw;
+    }
+
+    .concierge-pictograms,
+    .stewardship-pictograms {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        justify-items: center;
+    }
+
+    .concierge-pictograms figure,
+    .stewardship-pictograms figure {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0.5vw;
+        padding: 0.5vw;
+        width: 20vw;
+        height: 15vw;
+        overflow: hidden;
+        font-family: var(--secondary-title);
+        font-size: 0.8vw;
+        color: var(--black);
+    }
+
+    .concierge-pictograms figure img,
+    .stewardship-pictograms figure img {
+        width: 40%;
+    }
+
+    .activities figcaption {
+        font-size: 1.8vw;
+    }
+
+    .concierge-more-infos,
+    .stewardship-more-infos {
+        font-family: var(--primary-title);
+        font-size: 2vw;
+        margin-bottom: 5vw;
+        padding: 1vw;
+        transition: all 0.5s ease-in-out;
+    }
+
+    .concierge-more-infos span,
+    .stewardship-more-infos span {
+        text-transform: uppercase;
+    }
+
+    .concierge-more-infos {
+        color: var(--tertiary-color);
+    }
+
+    .stewardship-more-infos {
+        color: var(--quaternary-color);
+    }
+
+    .concierge-more-infos:hover,
+    .stewardship-more-infos:hover {
+        transform: scale(1.2);
+        text-decoration: underline;
+    }
 }
 
-.activities {
-    display: flex;
-    margin: 1rem;
-}
-
-.activities img, figcaption {
-    display: block;
-    margin: auto;
-    width: 4rem;
-    text-align: center;
-}
-
-.activities figure:hover {
-    transform: scale(1.2);
-    transition-duration: 1s;
-}
-
-.pictogramConcierge, .pictogramStewardship{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 10px;
-}
-
-.moreInfos {
-    text-align: right;
-}
-
-.takeContact {
-    text-align: center;
-    font-size: 2rem;
-}
-
-.conciergePresentation, .stewardshipPresentation {
-    opacity: 0.5;
-}
-
-.conciergePresentation:hover, .stewardshipPresentation:hover {
-    opacity: 1;
-    transition-duration: 1s;
-    background-color: white;
-}
-
-.textIntendance, .takeContact, .moreInfos {
-    margin-top: 1rem;
-}
-
-/***SECTION ACTIVITY___end***/
+/***SECTION ACTIVITIES___end***/
 
 /***SECTION PARTNERS___start***/
+
 .partners {
     text-align: center;
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    padding-top: 5vw;
+    padding-bottom: 10vw;
     background-color: var(--primary-color);
-}
-
-.partners h2 {
-    font-family: var(--primary-title);
-    font-size: 3rem;
-    color: var(--white);
-    letter-spacing: 0.5rem;
-    text-align: center;
-}
-
-.partners-hr {
-    display: block;
-    border: 0;
-    border-top: 1vh solid var(--white);
-    width: 20vw;
-    margin: 2vw auto;
 }
 
 .partners-booking,
@@ -355,7 +502,7 @@
 }
 
 .partners nav a:hover {
-    transform: scale(1.3);
+    transform: scale(1.2);
     box-shadow: 5px 5px 20px var(--black);
 }
 
@@ -368,16 +515,44 @@
     width: 3vw;
     height: 3vw;
     border-radius: 100%;
-    border: solid 1rem var(--primary-color);
     font-family: var(--primary-text);
-    font-size: 2rem;
+    font-size: 2vw;
     text-align: center;
     border: none;
+    transition: all 0.3s;
 }
 
 #partners-booking-all-button:hover,
 #partners-others-all-button:hover {
-    transform: scale(1.2);
-    box-shadow: 5px 5px 20px var(--black);
+    transform: scale(1.1);
+    color: var(--white);
+    background-color: var(--black);
+}
+
+@media screen and (max-width: 812px) {
+    .partners h2 {
+        font-size: 4.5vw;
+    }
+
+    hr {
+        transform: scale(2);
+    }
+
+    .partners-booking,
+    .partners-others {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .partners-booking-all,
+    .partners-others-all {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .partners nav a {
+        margin: 1vw;
+        padding: 1vw;
+        width: 12vw;
+        height: 12vw;
+    }
 }
 /***SECTION PARTNERS___end***/

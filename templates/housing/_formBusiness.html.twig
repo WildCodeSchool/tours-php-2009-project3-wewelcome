@@ -1,0 +1,9 @@
+{{ form_start(businessTripForm, {'attr' : {'class' : 'adminForm'}}) }}
+    {{ form_label(businessTripForm.photoFile, 'Photo :') }}
+    {{ form_widget(businessTripForm.photoFile) }}
+    {{ form_label(businessTripForm.description, 'Description :') }}
+    {{ form_widget(businessTripForm.description) }}
+    {{ form_row(businessTripForm._token) }}
+    <input type="hidden" name="isBusinessTravel" value="true" >
+    <button>{{ button_label }}</button>
+{{ form_end(businessTripForm, {'render_rest': false}) }}

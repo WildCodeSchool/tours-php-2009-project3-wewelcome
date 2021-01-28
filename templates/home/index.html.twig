@@ -10,35 +10,82 @@
     <section class="home">
         <div class="home-carousel">
             <div>
-                <p class="home-text">Conciergerie locative & Intendance pour maisons et appartements</p>
-                <a class="button-contact" href="#contact">Contactez-nous</a>
+            {% if carousel.title %}
+                <h2 class="home-text">{{ carousel.title }}</h2>
+            {% else %}
+                <h2 class="home-text">Conciergerie locative & Intendance pour maisons et appartements</h2>
+            {% endif %}
+                <a class="button-contact" href="#contact">Nous contacter</a>
             </div>
             <figure>
+            {% if carousel.pictureOne %}
+                <img src="/assets/images/carousel/{{carousel.pictureOne}}" alt="{{carousel.legendPictureOne}}"/>
+            {% else %}
                 <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+            {% endif %}
+            {% if carousel.pictureTwo %}
+                <img src="/assets/images/carousel/{{carousel.pictureTwo}}" alt="{{carousel.legendPictureTwo}}"/>
+            {% else %}
                 <img src="/assets/images/home-intendance.jpg" alt="photo de l'extérieur d'une maison"/>
-                <img src="/assets/images/home-region.jpg" alt="photo de personnes faisant du vélo sur le bord de la loire"/>
+            {% endif %}
+            {% if carousel.pictureThree %}
+                <img src="/assets/images/carousel/{{carousel.pictureThree}}" alt="{{carousel.legendPictureThree}}"/>
+            {% else %}
+                <img src="/assets/images/home-region.jpg" alt="photo d'un pont en pierre au-dessus de la loire"/>
+            {% endif %}
+            {% if carousel.pictureOne %}
+                <img src="/assets/images/carousel/{{carousel.pictureOne}}" alt="{{carousel.legendPictureOne}}"/>
+            {% else %}
                 <img src="/assets/images/home-conciergerie.jpg" alt="photo de l'intérieur d'une maison"/>
+            {% endif %}
             </figure>
         </div>
+        <!-- Carousel modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_carousel', {'idCarousel': carousel.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_carousel') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
-    <section class="purpose section-except-home">
+    <section class="purpose">
         <section>
             <article class="purpose-text">
-                <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
-                <span>WeWelcome est votre assistant dédié !</span><br>
-                Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% if purpose.text %}
+                    <p>{{purpose.text}}</p>
+                {% else %}
+                    <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
+                    <span>WeWelcome est votre assistant dédié !</span><br>
+                    Nous sommes une agence implantée en Touraine qui propose des services de proximité à la carte, afin de vous simplifier la gestion et l’intendance de votre logement.</p>
+                {% endif %}
             </article>
             <article class="purpose-picture">
-                <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% if purpose.pictureOne %}
+                    <img src="/assets/images/purpose/{{purpose.pictureOne}}" alt="{{purpose.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-purpose.jpg" alt="une femme heureuse">
+                {% endif %}
             </article>
         </section>
-        <a class="button-contact" href="#contact">Contactez-nous</a>
+        <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Purpose modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_purpose', {'idPurpose': purpose.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_purpose') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
-    <section class="key-figures section-except-home"
+    <section class="key-figures"
     style="background-image: url(/assets/images/Touraine.png);">
-        <h2>Implanté en Touraine</h2>
+        <h2 class="h2-primary-color">Implanté en Touraine</h2>
+        <hr class="hr-primary-color">
         <p id="key-figure-1">+50</p>
         <p id="key-figure-11">propriétaires déjà satisfaits</p>
         <p id="key-figure-2">+500</p>
@@ -47,169 +94,248 @@
         <p id="key-figure-31">de taux d'occupation</p>
         <p id="key-figure-4">7j/7</p>
         <p id="key-figure-41">disponible pour vous</p>
-        <a class="button-contact" id="key-figure-contact" href="#contact">Contactez-nous</a>
+        <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
     </section>
 
-    <section class="values section-except-home">
+    <section class="values">
         <section>
             <article class="values-picture">
-                <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% if values.pictureOne %}
+                    <img src="/assets/images/values/{{values.pictureOne}}" alt="{{values.legendPictureOne}}">
+                {% else %}
+                    <img src="/assets/images/section-values.jpg" alt="un homme heureux">
+                {% endif %}
             </article>
             <article class="values-text">
-                <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
-                <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% if values.text %}
+                    <p>{{values.text}}</p>
+                {% else %}
+                    <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
+                    <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
+                {% endif %}
             </article>
         </section>
-        <a class="button-contact" href="#contact">Contactez-nous</a>
+        <a class="button-contact" href="#contact">Nous contacter</a>
+        <!-- Values modification form -->
+        {% if app.user and is_granted("ROLE_ADMIN") %}
+            <a href="{{ path('edit_values', {'idValues': values.id }) }}">
+                <input type="button" value="Editer" class="">
+            </a>
+            <a href="{{ path('default_values') }}">
+                <input type="button" value="Par défaut" class="">
+            </a>
+        {% endif %}
     </section>
 
-    <section class="service-vision section-except-home"
-    style="background-image: url(/assets/images/hammock-425773_1920.jpg);">
-        <h2>WeWelcome, la tranquilité assurée !</h2>
+    <section class="service-vision"
+    style="background-image: url(/assets/images/section-key-figures.jpg);">
+        <h2 class="h2-white">WeWelcome, la tranquilité assurée !</h2>
         <p id="service-vision-1">confiance</p>
         <p id="service-vision-2">qualité</p>
         <p id="service-vision-3">efficacité</p>
         <p id="service-vision-4">proximité</p>
-        <a class="button-contact" id="service-vision-contact" href="#contact">Contactez-nous</a>
+        <a class="button-contact" id="service-vision-contact" href="#contact">Nous contacter</a>
     </section>
 
     <section class="activities">
-        <div class="conciergePresentation">
-            <h2>Conciergerie</h2>
-            <div class="pictogramConcierge">
-                <figure>
-                    <img src="/assets/images/accueil_depart_voyageurs.png" alt="Accueil des voyageurs">
-                    <figcaption>Accueil des voyageurs</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/assistance.png" alt="Assistance des voyageurs">
-                    <figcaption>Assistance des voyageurs</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/general.png" alt="général">
-                    <figcaption>Général</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/Linge.png" alt="Linge">
-                    <figcaption>Linge</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/menage.png" alt="Ménage">
-                    <figcaption>Ménage</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/panierBienvenue.png" alt="Panier de bienvenue">
-                    <figcaption>Panier de bienvenue</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/serviceIntendance.png" alt="service d'intendance">
-                    <figcaption>Service d'intendance</figcaption>
-                </figure>
-            </div>
-            <div class="textIntendance">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                </p>
-                <div class="moreInfos">
-                    <a href="">Plus d'infos</a>
+        <h2 class="h2-primary-color">Les offres WeWelcome</h2>
+        <hr class="hr-primary-color">
+        <section class="activities-all">
+            <section class="activities-concierge">
+                <h3 class="concierge-title">Conciergerie</h3>
+                <div class="concierge-text">
+                    <p>Vous voulez mettre un logement en location.</p>
+                    <p>Confiez-nous votre bien et nous rentabiliserons vos absences.</p>
                 </div>
-            </div>
-            <div class="takeContact">
-                <a href="">Prendre contact</a>
-            </div>
-        </div>
-        <div class="stewardshipPresentation">
-            <h2>Intendance</h2>
-            <div class="pictogramStewardship">
-                <figure>
-                    <img src="/assets/images/assistanceIntendance.png" alt="Assistance">
-                    <figcaption>Assistance</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/course.png" alt="Courses">
-                    <figcaption>Courses</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/picsine.png" alt="Entretien picsine">
-                    <figcaption>Entretien piscine</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/jardin.png" alt="Entretien jardin">
-                    <figcaption>Entretien jardin</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/entretienIntExt.png" alt="Entretien intérieur et Extérieur">
-                    <figcaption>Entretien intérieur et extérieur</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/generalInt.png" alt="Général">
-                    <figcaption>Général</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/miseRouteVeille.png" alt="Mise en route/veille">
-                    <figcaption>Mise en route/veille</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/petitTravaux.png" alt="Petits travaux">
-                    <figcaption>Petits travaux</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/suiviTravaux.png" alt="Suivi de travaux">
-                    <figcaption>Suivi de travaux</figcaption>
-                </figure>
-                <figure>
-                    <img src="/assets/images/surveillanceRegulier.png" alt="Surveillance régulière">
-                    <figcaption>Surveillance régulière</figcaption>
-                </figure>
-            </div>
-            <div class="textStewardship">
-                <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt<br>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt
-                </p>
-                <div class="moreInfos">
-                    <a href="">Plus d'infos</a>
+                <div class="concierge-pictograms">
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/1-creation-et-mise-en-ligne-de-votre-annonce.png">
+                        <figcaption>Création et mise en ligne de votre annonce</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/2-gestion-des-reservations-et-communication.png">
+                        <figcaption>Gestion des réservations et communication</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/3-optimisation-des-reservations.png">
+                        <figcaption>Optimisation des réservations</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/4.communication-et-assistance.png">
+                        <figcaption>Communication et assistance</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/5-accueil-et-depart-des-voyageurs.png">
+                        <figcaption>Accueil et départ des voyageurs</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/6-panier-de-bienvenue.png">
+                        <figcaption>Panier de bienvenue</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/7-linge-de-maison.png">
+                        <figcaption>Linge de maison</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/8-menage-professionnel.png">
+                        <figcaption>Ménage professionnel</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/conciergerie/9-services-intendance.png">
+                        <figcaption>Service intendance</figcaption>
+                    </figure>
+                    {% for service in servicesConcierge %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
                 </div>
-            </div>
-            <div class="takeContact">
-                <a href="">Prendre contact</a>
-            </div>
-        </div>
+                <a class="concierge-more-infos" href="{{ path('concierge') }}">Voir plus d'informations<br> sur la page <span>conciergerie</span></a>
+            </section>
+            <section class="activities-stewardship">
+                <h3 class="stewardship-title">Intendance</h3>
+                <div class="stewardship-text">
+                    <p>Votre résidence principale ou secondaire est peu ou pas occupée.</p>
+                    <p>Confiez-nous votre bien et nous en prendrons soin.</p>
+                </div>
+                <div class="stewardship-pictograms">
+                    <figure>
+                        <img src="/assets/images/services/intendance/1-surveillance-reguliere.png">
+                        <figcaption>Surveillance régulière</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/2-mise-en-route-et-veille.png">
+                        <figcaption>Mise en route et veille</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/3-entretien-menager-interieur-et-exterieur.png">
+                        <figcaption>Entretien ménager intérieur et extérieur</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/4-entretien-du-jardin.png">
+                        <figcaption>Entretien du jardin</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/5-entretien-de-la-piscine.png">
+                        <figcaption>Entretien de la piscine</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/6-courses.png">
+                        <figcaption>Courses</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/7-petits-travaux-de-reparation.png">
+                        <figcaption>Petits travaux de réparation</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/8-suivi-de-travaux.png">
+                        <figcaption>Suivi de travaux</figcaption>
+                    </figure>
+                    <figure>
+                        <img src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
+                        <figcaption>Communication et assistance</figcaption>
+                    </figure>
+                    {% for service in servicesSteward %}
+                    <figure>
+                        <img src="/assets/images/servicesImg/{{ service.logo }}">
+                        <figcaption>{{ service.title }}</figcaption>
+                    </figure>
+                    {% endfor %}
+                </div>
+                <a class="stewardship-more-infos" href="">Voir plus d'informations<br> sur la page <span>intendance</span></a>
+            </section>
+        </section>
+        <a class="button-contact" href="#contact">Nous contacter</a>
     </section>
 
-    <section class="partners">
-        <h2>Nos partenaires</h2>
-        <hr class="partners-hr">
+    <section id="partners" class="partners">
+        <h2 class="h2-white">Nos partenaires</h2>
+        <hr class="hr-white">
         <nav class="partners-booking">
-            <a href=""><img src="/assets/images/partenaireAbritel.png" alt="Abritel"></a>
-            <a href=""><img src="/assets/images/partenaireAirbnb.jpg" alt="Airbnb"></a>
-            <a href=""><img src="/assets/images/partenaireBooking.png" alt="Booking"></a>
-            <a href=""><img src="/assets/images/partenaireFewo-direkt.png" alt="Fewo-direkt"></a>
-            <a href=""><img src="/assets/images/partenaireGites.jpg" alt="Gites.fr"></a>
+            {% for partner in hostingPartners|slice(0, 5) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </nav>
+        {% if hostingPartners|length > 5 %}
         <input type="button" id="partners-booking-all-button" value="+">
+        {% endif %}
         <nav class="partners-booking-all">
-            <a href=""><img src="/assets/images/partenaireHomelidays.png" alt="Homelidays"></a>
-            <a href=""><img src="/assets/images/partenaireVRBO.png" alt="VRBO"></a>
+            {% for partner in hostingPartners|slice(5, hostingPartners|length) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+        {% endfor %}
         </nav>
-        <hr class="partners-hr">
+        <hr class="hr-white">
         <nav class="partners-others">
-            <a href=""><img src="/assets/images/partenaireODTToursVaLoire.png" alt="ODT Tours Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireTouraineVaLoire.jpg" alt="Touraine Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireValLoireFrance.png" alt="Val de Loire France"></a>
-            <a href=""><img src="/assets/images/partenaireODTAmboiseVaLoire.jpg" alt="ODT Amboise Val de Loire"></a>
-            <a href=""><img src="/assets/images/partenaireODTMontlouisVouvray.png" alt="ODT Mont luis Vouvray"></a>
+            {% for partner in otherPartners|slice(0, 5) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+            {% endfor %}
         </nav>
+        {% if otherPartners|length > 5 %}
         <input type="button" id="partners-others-all-button" value="+">
+        {% endif %}
         <nav class="partners-others-all">
+        {% for partner in otherPartners|slice(5, otherPartners|length) %}
+            <div>
+                <a href="{{ partner.url }}" target="blank"><img src="/assets/images/partners/{{ partner.logo }}" class = "imgPartner" alt="{{ partner.name }}"></a>
+                {% if app.user %}
+                <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+            </div>
+        {% endfor %}
         </nav>
+        <!-- Add a new partner -->
+        {% if app.user %}
+        <div class="adminPanel">
+            <div class="add">
+            {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
+                {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+                {{ form_widget(partnerForm.name) }}
+                {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+                {{ form_widget(partnerForm.url) }}
+                {{ form_label(partnerForm.logoFile, 'Logo au format png ou jpeg :') }}
+                {{ form_widget(partnerForm.logoFile) }}
+                {{ form_label(partnerForm.type, 'Type :') }}
+                {{ form_widget(partnerForm.type) }}
+                <input type='submit' value='Ajouter'>
+            {{ form_end(partnerForm) }}
+            </div>
+        </div>
+        {% endif %}
     </section>
 
-    <!--Formulaire de contact-->
-    <section class="contact">
-        {% include 'home/_contact.html.twig' %}
-    </section>
+    {% include 'home/_contact.html.twig' %}
 {% endblock %}
 
 {% block javascripts  %}
