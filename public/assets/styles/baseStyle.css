@@ -184,12 +184,17 @@ footer {
     color: var(--white);
 }
 
-.socialNetwork {
-    width: 40%;
+.socialNetwork div {
+    width: 100%;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
+}
+
+#socialNetwork {
+    display: flex;
+    flex-direction: column;
 }
 
 .socialNetworkLogo {
@@ -576,6 +581,12 @@ footer {
     margin-right: 5px;
 }
 /* END admin forms */
+
+/* STAR socialNetworksAdmin */
+.socialNetwork {
+    display: block;
+}
+/* END socialNetworksAdmin */
 
 @media screen and (min-width: 813px)
 {
