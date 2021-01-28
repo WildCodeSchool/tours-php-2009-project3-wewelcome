@@ -15,7 +15,7 @@ class CarouselType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, ['required' => true])
+            ->add('title', TextType::class)
             ->add('pictureOne', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -26,11 +26,12 @@ class CarouselType extends AbstractType
                             'image/png',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                        'maxSizeMessage' => 'La photo dépasse la limite de 200k !',
+                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
                     ])
                 ],
             ])
-            ->add('legendPictureOne', TextType::class, ['required' => false])
+            ->add('legendPictureOne', TextType::class)
             ->add('pictureTwo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -41,11 +42,12 @@ class CarouselType extends AbstractType
                             'image/png',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                        'maxSizeMessage' => 'La photo dépasse la limite de 200k !',
+                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
                     ])
                 ],
             ])
-            ->add('legendPictureTwo', TextType::class, ['required' => false])
+            ->add('legendPictureTwo', TextType::class)
             ->add('pictureThree', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -56,11 +58,12 @@ class CarouselType extends AbstractType
                             'image/png',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                        'maxSizeMessage' => 'La photo dépasse la limite de 200k !',
+                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
                     ])
                 ],
             ])
-            ->add('legendPictureThree', TextType::class, ['required' => false])
+            ->add('legendPictureThree', TextType::class)
         ;
     }
 

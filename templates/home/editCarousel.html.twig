@@ -1,25 +1,40 @@
-<div class="adminPanel">
-    <div class="add">
-        <h3>Formulaire de modification du carousel</h3>
-        {{ form_start(carouselForm, {'attr' : {'class' : 'adminForm'}}) }}
-            {{ form_label(carouselForm.title, 'Titre :') }}
-            {{ form_widget(carouselForm.title) }}
-            {{ form_label(carouselForm.pictureOne, 'Photo n°1 :') }}
-            {{ form_widget(carouselForm.pictureOne) }}
-            {{ form_label(carouselForm.legendPictureOne, 'Légende :') }}
-            {{ form_widget(carouselForm.legendPictureOne) }}
-            {{ form_label(carouselForm.pictureTwo, 'Photo n°2 :') }}
-            {{ form_widget(carouselForm.pictureTwo) }}
-            {{ form_label(carouselForm.legendPictureTwo, 'Légende :') }}
-            {{ form_widget(carouselForm.legendPictureTwo) }}
-            {{ form_label(carouselForm.pictureThree, 'Photo n°3 :') }}
-            {{ form_widget(carouselForm.pictureThree) }}
-            {{ form_label(carouselForm.legendPictureThree, 'Légende :') }}
-            {{ form_widget(carouselForm.legendPictureThree) }}
-            <button>Valider</button>
-        {{ form_end(carouselForm) }}
-        <a href="{{ path('home') }}">
-            <input type="button" value="Retour">
-        </a>
-    </div>
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/mode-admin.css">
+{% endblock %}
+<div class="mode-admin">
+    <h3>Formulaire de modification du carousel</h3>
+    {{ form_start(carouselForm, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(carouselForm.title, 'Titre :') }}
+        {{ form_widget(carouselForm.title) }}
+        {{ form_errors(carouselForm.title) }}
+        {{ form_help(carouselForm.title) }}
+        {{ form_label(carouselForm.pictureOne, 'Photo n°1 :') }}
+        {{ form_widget(carouselForm.pictureOne) }}
+        {{ form_errors(carouselForm.pictureOne) }}
+        {{ form_help(carouselForm.pictureOne) }}
+        {{ form_label(carouselForm.legendPictureOne, 'Légende :') }}
+        {{ form_widget(carouselForm.legendPictureOne) }}
+        {{ form_errors(carouselForm.legendPictureOne) }}
+        {{ form_help(carouselForm.legendPictureOne) }}
+        {{ form_label(carouselForm.pictureTwo, 'Photo n°2 :') }}
+        {{ form_widget(carouselForm.pictureTwo) }}
+        {{ form_errors(carouselForm.pictureTwo) }}
+        {{ form_help(carouselForm.pictureTwo) }}
+        {{ form_label(carouselForm.legendPictureTwo, 'Légende :') }}
+        {{ form_widget(carouselForm.legendPictureTwo) }}
+        {{ form_errors(carouselForm.legendPictureTwo) }}
+        {{ form_help(carouselForm.legendPictureTwo) }}
+        {{ form_label(carouselForm.pictureThree, 'Photo n°3 :') }}
+        {{ form_widget(carouselForm.pictureThree) }}
+        {{ form_errors(carouselForm.pictureThree) }}
+        {{ form_help(carouselForm.pictureThree) }}
+        {{ form_label(carouselForm.legendPictureThree, 'Légende :') }}
+        {{ form_widget(carouselForm.legendPictureThree) }}
+        {{ form_errors(carouselForm.legendPictureThree) }}
+        {{ form_help(carouselForm.legendPictureThree) }}
+        <button>Valider</button>
+    {{ form_end(carouselForm) }}
+    <a href="{{ path('home') }}">
+        <input type="button" value="Retour">
+    </a>
 </div>
