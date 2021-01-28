@@ -11,58 +11,10 @@
     <section class="theyTrustUsWithTitle">
         <h3>Ils nous font confiance</h3>
         <div class="theyTrustUs">
-            <div>
-                <a href="#lightbox" id="thumbnail"><img src="assets/images/home-conciergerie.jpg" alt=""></a>
-                <a href="#thumbnail" id="lightbox"><img id="lightboxImage" src="assets/images/home-conciergerie.jpg" alt=""></a>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sit, fuga enim. Molestiae magni, necessitatibus a error placeat porro officia nobis velit sint obcaecati praesentium distinctio beatae consequuntur eveniet nesciunt sunt recusandae esse commodi, ratione ipsum eum dolorum culpa. Nemo soluta non quidem atque neque ducimus ad esse alias voluptas ratione!</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
-            <div>
-                <img src="assets/images/home-conciergerie.jpg" alt="">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Deserunt suscipit asperiores ipsam hic nemo vel quia necessitatibus temporibus. Ab, explicabo distinctio ratione aspernatur soluta, repellat necessitatibus iste assumenda nobis deleniti id quaerat similique aut asperiores nemo autem praesentium, officiis dicta? Illo molestias, iure placeat corporis nemo rerum et eos nam?</p>
-            </div>
             {% for house in houses %}
             <div>
-                <img src="assets/images/housing/{{ house.photo }}" alt="">
+                <a href="#lightbox{{house.id}}"><img src="assets/images/housing/{{ house.photo }}" alt=""></a>
+                <a href="#_" class="lightbox" id="lightbox{{house.id}}"><img id="lightboxImage" src="assets/images/housing/{{ house.photo }}" alt=""></a>
                 <p>{{ house.description }}</p>
                 <a class="housingLink" href="{{ house.url }}" target="blank">Voir l'annonce</a>
                 {% if app.user %}
