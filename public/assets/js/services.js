@@ -9,16 +9,16 @@ for (i = 0; i < photos.length; i++) {
 function showImgText(id)
 {
     let myText = document.getElementById('text' + id);
-    let myImg = document.getElementById('defaultServiceImg');
+    let myImg = document.getElementById('imgBackground');
 
     if (myText.style.visibility === 'visible') {
         myText.style.visibility = 'hidden';
-        myImg.src = "/assets/images/concierge/conciergeIndex.jpg";
+        myImg.style.backgroundImage = 'url("/assets/images/concierge/welcomingImg.jpg")';
         myImg.style.opacity= "1";
 
     } else {
         myText.style.visibility = 'visible';
-        myImg.src = "/assets/images/servicesImg/" + photos[id];
+        myImg.style.backgroundImage = 'url("/assets/images/servicesImg/' + photos[id] +'")';
         myImg.style.opacity = "0.7";
     }
 }

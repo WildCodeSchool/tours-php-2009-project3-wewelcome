@@ -8,49 +8,39 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
+    <div class="headerStewardship">
         <h2>Intendance</h2>
         <hr />
+    </div>
+    <ul class="listPresentationPart">
+        <li>
+            Vous souhaitez louer votre bien en toute sérénité, mais vous manquez de disponibilité, vous êtes
+            éloigné de votre résidence ou vous avez juste envie de profiter de votre temps libre ?
+        </li><br>
+        <li>
+            Vous désirez réaliser un investissement immobilier mais ne savez comment le rentabiliser, tout en le
+            protégeant ?
+        </li><br>
+        <li>
+            Vous êtes professionnel de l&#39;hébergement et vous souhaitez faire une pause dans votre activité ?
+        </li><br>
+        <li>
+            wewelcome a pour mission de vous décharger de toute contrainte, et vous accompagne sur toutes
+            les facettes de la location saisonnière.
+        </li><br>
+        <li>
+            Nous gérons l’ensemble du processus ou seulement une partie, à temps complet ou sur certaines
+            périodes, pour s’adapter aux besoins de chaque propriétaire.
+        </li><br>
+        <li>
+            Les services proposés sont conçus pour assurer un service personnalisé de qualité, disponible et
+            réactif. Nous garantissons également un suivi professionnel de chaque location pour une efficacité
+            optimale.
+        </li>
+    </ul>
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
         <h3 class="title">Services</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         <div class="stewardDetails">
-            <figure>
-                <img id="pictoRegularMonitoring" src="/assets/images/services/intendance/1-surveillance-reguliere.png">
-                <figcaption>Surveillance régulière</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoTurnOnOff" src="/assets/images/services/intendance/2-mise-en-route-et-veille.png">
-                <figcaption>Mise en route et veille</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoEntretienIntExt" src="/assets/images/services/intendance/3-entretien-menager-interieur-et-exterieur.png">
-                <figcaption>Entretien ménager intérieur et extérieur</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoGarden" src="/assets/images/services/intendance/4-entretien-du-jardin.png">
-                <figcaption>Entretien du jardin</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoPool" src="/assets/images/services/intendance/5-entretien-de-la-piscine.png">
-                <figcaption>Entretien de la piscine</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoShopping" src="/assets/images/services/intendance/6-courses.png">
-                <figcaption>Courses</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoLittleWork" src="/assets/images/services/intendance/7-petits-travaux-de-reparation.png">
-                <figcaption>Petits travaux de réparation</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoFollowUpWork" src="/assets/images/services/intendance/8-suivi-de-travaux.png">
-                <figcaption>Suivi de travaux</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoStewardshipAssistance" src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
-                <figcaption>Communication et assistance</figcaption>
-            </figure>
             {% set i = 0 %}
             {% for service in services %}
             <figure>
@@ -76,58 +66,14 @@
         <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>
     </div>
     <div class="right">
-        <img class="imgFull" id="defaultServiceImg" src="/assets/images/stewardship/stewardShipIndex.jpg" alt="Photo d'un salon avec miroir">
-        <div class="hidden">
-            <p id="textRegularMonitoring" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. textRegularMonitoring
-            </p>
-            <p id="textMiseRouteVeille" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. miseRoutVeille
-            </p>
-            <p id="textEntretienIntExt" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Entretien Int Ext
-            </p>
-            <p id="textGarden" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Garden
-            </p>
-            <p id="textPool" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Pool
-            </p>
-            <p id="textShopping" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. course
-            </p>
-            <p id="textLittleWork" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Little work
-            </p>
-            <p id="textFollowUpWork" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Follow up work
-            </p>
-            <p id="textStewardAssistance" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Steward Assistance
-            </p>
-            {% set j =0 %}
-            {% for service in services %}
-                <p id="text{{ j }}" class="textPicto">{{ service.description }}</p>
-                {% set j = j +1 %}
-            {% endfor %}
+        <div id="imgBackground" class="imgBackground">
+            <div class="hidden">
+                {% set j =0 %}
+                {% for service in services %}
+                    <p id="text{{ j }}" class="textPicto">{{ service.description|nl2br }}</p>
+                    {% set j = j +1 %}
+                {% endfor %}
+            </div>
         </div>
     </div>
 </section>

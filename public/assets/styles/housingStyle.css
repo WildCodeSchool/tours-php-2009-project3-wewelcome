@@ -65,7 +65,7 @@ h3 {
 
 /* Responsive */
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 812px) {
 
     .theyTrustUs {
         margin: 1vw;

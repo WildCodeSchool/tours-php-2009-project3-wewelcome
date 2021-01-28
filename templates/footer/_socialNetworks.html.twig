@@ -1,0 +1,30 @@
+<div>
+    {% for socialNetwork in socialNetworks %}
+    <div id="socialNetwork">
+        <a href="{{ socialNetwork.url }}" target="blank">
+            <img class="socialNetworkLogo" src="/assets/images/socialNetworks/{{ socialNetwork.logo }}" alt="Logo {{ socialNetwork.title }}">
+        </a>
+        {% if app.user %}
+        <form method="post" action="{{ path('footer_delete', {'id' : socialNetwork.id}) }}" onsubmit="return confirm('{{ socialNetwork.title }} sera supprimé définitivement. Êtes-vous sur ?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialNetwork.id) }}">
+            <button class="btn">Effacer</button>
+        </form>
+        {% endif %}
+    </div>
+    {% endfor %}
+</div>
+{% if app.user and socialNetworks|length < 3 %}
+<div class="adminPanel socialNetworksAdmin">
+    <div class="add">
+    {{ form_start(socialNetworkForm, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(socialNetworkForm.title, 'Nom du réseau social :') }}
+        {{ form_widget(socialNetworkForm.title) }}
+        {{ form_label(socialNetworkForm.url, 'Lien vers le site :') }}
+        {{ form_widget(socialNetworkForm.url) }}
+        {{ form_row(socialNetworkForm._token) }}
+        <input type='submit' value='Ajouter'>
+    {{ form_end(socialNetworkForm, {'render_rest': false}) }}
+    </div>
+</div>
+{% endif %}
