@@ -8,9 +8,37 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
+    <div class="headerStewardship">
         <h2 class="h2-primary-color">Intendance</h2>
         <hr class="hr-primary-color">
+    </div>
+    <ul class="listPresentationPart">
+        <li>
+            Vous souhaitez louer votre bien en toute sérénité, mais vous manquez de disponibilité, vous êtes
+            éloigné de votre résidence ou vous avez juste envie de profiter de votre temps libre ?
+        </li><br>
+        <li>
+            Vous désirez réaliser un investissement immobilier mais ne savez comment le rentabiliser, tout en le
+            protégeant ?
+        </li><br>
+        <li>
+            Vous êtes professionnel de l&#39;hébergement et vous souhaitez faire une pause dans votre activité ?
+        </li><br>
+        <li>
+            wewelcome a pour mission de vous décharger de toute contrainte, et vous accompagne sur toutes
+            les facettes de la location saisonnière.
+        </li><br>
+        <li>
+            Nous gérons l’ensemble du processus ou seulement une partie, à temps complet ou sur certaines
+            périodes, pour s’adapter aux besoins de chaque propriétaire.
+        </li><br>
+        <li>
+            Les services proposés sont conçus pour assurer un service personnalisé de qualité, disponible et
+            réactif. Nous garantissons également un suivi professionnel de chaque location pour une efficacité
+            optimale.
+        </li>
+    </ul>
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
         <h3 class="title">Services</h3>
         <div class="stewardDetails">
             {% set i = 0 %}
