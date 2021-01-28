@@ -31,6 +31,12 @@
     border-radius: 20px;
 }
 
+.hidden {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
 .right {
     width: 50%;
     display: flex;
@@ -86,15 +92,38 @@
     position:absolute;
     text-align: center;
     margin-top: 1.5em;
-    width:45%;
+    width: 45%;
     height:auto;
     padding: 5px 5px 5px 5px;
     z-index:2;
     font-size:120%;
-    margin-left: 2.5%;
     font-weight: bold;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+@media screen and (max-width: 813px) {
+    .listPresentationPart {
+        width: 90%;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 90%;
+        margin: auto;
+    }
+
+    .imgBackground {
+        height: 70vh;
+    }
+
+    .textPicto {
+        margin: auto;
+        width: 90%;
+    }
 }
 
 /* END picture and picto with explication of concierge */
@@ -406,14 +435,19 @@
     .listNoStyleLayout {
         text-indent: 0;
         padding-left: 1em;
+        padding-bottom: 1.25em;
     }
 
     .contentBeforeAfter {
         width: 80%;
     }
 
+    .contentBeforeAfter {
+        display: none;
+    }
+
     .conciergeCarousel {
-        height: 50vh;
+        display: none;
     }
 }
 /*** End section Full services / laying out ***/
@@ -450,7 +484,7 @@
 
 .textProfitabilityRentalPart {
     width: 75%;
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
     margin: auto;
 }
 
