@@ -6,6 +6,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
@@ -75,10 +76,8 @@ class PurposeValuesController extends AbstractController
         Home $home,
         string $type
     ): Response {
-
         $form = $this->createForm(PurposeValuesType::class, $home);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $pictureOne = $form->get('pictureOne')->getData();
             if (
@@ -93,9 +92,7 @@ class PurposeValuesController extends AbstractController
                 );
                 $home->setPictureOne($addPictureOne['fileName']);
             }
-
             $entityManager->flush();
-
             if ($home->getType() === "purpose") {
                 return $this->redirect($this->generateUrl('home') . '#section-purpose');
             } else {

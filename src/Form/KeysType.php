@@ -15,29 +15,30 @@ class KeysType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, ['required' => true])
+            ->add('title', TextType::class)
             ->add('photo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
                 'constraints' => [
                     new File([
-                        'maxSize' => '200k',
+                        'maxSize' => '150k',
                         'mimeTypes' => [
                             'image/png',
                             'image/jpeg',
                         ],
-                        'mimeTypesMessage' => 'Le format choisi est invalide !',
+                        'maxSizeMessage' => 'La photo dépasse la limite de 150k !',
+                        'mimeTypesMessage' => 'Le format choisi est invalide ! => png ou jpeg uniquement',
                     ])
                 ],
             ])
-            ->add('text1', TextType::class, ['required' => true])
-            ->add('text2', TextType::class, ['required' => true])
-            ->add('text3', TextType::class, ['required' => true])
-            ->add('text4', TextType::class, ['required' => true])
-            ->add('text5', TextType::class, ['required' => true])
-            ->add('text6', TextType::class, ['required' => true])
-            ->add('text7', TextType::class, ['required' => true])
-            ->add('text8', TextType::class, ['required' => true])
+            ->add('text1', TextType::class)
+            ->add('text2', TextType::class)
+            ->add('text3', TextType::class)
+            ->add('text4', TextType::class)
+            ->add('text5', TextType::class)
+            ->add('text6', TextType::class)
+            ->add('text7', TextType::class)
+            ->add('text8', TextType::class)
         ;
     }
 

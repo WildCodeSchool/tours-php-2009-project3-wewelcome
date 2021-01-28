@@ -15,7 +15,7 @@ class VisionType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class, ['required' => true])
+            ->add('title', TextType::class)
             ->add('photo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -30,10 +30,10 @@ class VisionType extends AbstractType
                     ])
                 ],
             ])
-            ->add('text1', TextType::class, ['required' => true])
-            ->add('text2', TextType::class, ['required' => true])
-            ->add('text3', TextType::class, ['required' => true])
-            ->add('text4', TextType::class, ['required' => true])
+            ->add('text1', TextType::class)
+            ->add('text2', TextType::class)
+            ->add('text3', TextType::class)
+            ->add('text4', TextType::class)
         ;
     }
 
