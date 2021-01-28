@@ -1,11 +1,11 @@
-{% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/mode-admin.css">
-{% endblock %}
-<div class="mode-admin">
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="adminPanel">
     {% if type == 'purpose' %}
-    <h3>Formulaire de modification de la partie "Valeurs Wewelcome"</h3>
+    <h1>Formulaire de modification de la partie "Valeurs Wewelcome"</h1>
     {% else %}
-    <h3>Formulaire de modification de la partie "But Wewelcome"</h3>
+    <h1>Formulaire de modification de la partie "But Wewelcome"</h1>
     {% endif %}
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
         {{ form_label(form.text, 'Texte :') }}
@@ -32,3 +32,4 @@
     </a>
     {% endif %}
 </div>
+{% endblock %}

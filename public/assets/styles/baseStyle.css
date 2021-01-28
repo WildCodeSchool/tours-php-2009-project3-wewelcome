@@ -557,6 +557,10 @@ footer {
 /***CALL TO ACTION___end***/
 
 /* START admin forms */
+.adminPanel {
+    padding-left: 5px;
+}
+
 .adminPanel h1 {
     padding-top: 10%;
 }
@@ -576,9 +580,17 @@ footer {
 
 .adminForm label {
     width: 50%;
-    align-self: center;
-    text-align: right;
     margin-right: 5px;
+}
+
+.adminForm textarea {
+    width: 100%;
+    resize: none;
+    height: 300px;
+}
+
+.adminForm input {
+    width: 50%;
 }
 /* END admin forms */
 

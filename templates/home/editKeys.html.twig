@@ -1,8 +1,8 @@
-{% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/mode-admin.css">
-{% endblock %}
-<div class="mode-admin">
-    <h3>Formulaire de modification de la partie "Chiffres Clés"</h3>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="adminPanel">
+    <h1>Formulaire de modification de la partie "Chiffres Clés"</h1>
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
         {{ form_label(form.title, 'Titre :') }}
         {{ form_widget(form.title) }}
@@ -50,3 +50,4 @@
         <input type="button" value="Retour">
     </a>
 </div>
+{% endblock %}
