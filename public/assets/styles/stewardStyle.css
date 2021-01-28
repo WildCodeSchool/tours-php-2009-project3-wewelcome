@@ -108,6 +108,7 @@
     padding-bottom: 2em;
 }
 
+.taxationStewardPart,
 .tariffStewardPart {
     width: 40%;
     justify-content: center;
@@ -118,12 +119,6 @@
     margin-bottom: 1em;
 }
 
-.taxationStewardPart {
-    width: 40%;
-    justify-content: center;
-    text-align: center;
-}
-
 .textTaxationTariff {
     width: 80%;
     margin-left: auto;
@@ -132,5 +127,21 @@
 
 .imgTaxationTariff {
     width: 80%;
+}
+
+@media screen and (max-width: 813px) {
+    .stewardTariffTaxation {
+        flex-direction: column;
+    }
+    
+    .taxationStewardPart,
+    .tariffStewardPart {
+        width: 100%;
+        margin: auto;
+    }
+
+    .tariffStewardPart {
+        background-color: lightgray;
+    }
 }
 /*** End Section Tariff / Taxation ***/
