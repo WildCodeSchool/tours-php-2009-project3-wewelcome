@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HomeRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HomeRepository::class)
@@ -19,26 +20,55 @@ class Home
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 100,
+     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private string $title = "";
 
     /**
      * @ORM\Column(type="string", length=800, nullable=true)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
+     * @Assert\Length(
+     *      min = 2,
+     *      max = 800,
+     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $text = "";
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Vous devez choisir une photo")
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le chemin du dossier est trop long, il dépasse {{ limit }} charactères"
+     * )
      */
     private string $pictureOne = "";
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Vous devez choisir une photo")
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le chemin du dossier est trop long, il dépasse {{ limit }} charactères"
+     * )
      */
     private ?string $pictureTwo = "";
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\NotBlank(message="Vous devez choisir une photo")
+     * @Assert\Length(
+     *      max = 255,
+     *      maxMessage = "Le chemin du dossier est trop long, il dépasse {{ limit }} charactères"
+     * )
      */
     private ?string $pictureThree = "";
 
@@ -49,16 +79,28 @@ class Home
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureOne = "";
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureTwo = "";
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureThree = "";
 
