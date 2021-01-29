@@ -20,11 +20,19 @@ class Home
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre titre ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private string $title = "";
 
     /**
      * @ORM\Column(type="string", length=800, nullable=true)
+     * @Assert\Length(
+     *      max = 800,
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $text = "";
 
@@ -45,21 +53,34 @@ class Home
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Choice({"carousel", "purpose", "values"})
      */
     private string $type = "";
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureOne = "";
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureTwo = "";
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
+     * @Assert\Length(
+     *      max = 100,
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     * )
      */
     private ?string $legendPictureThree = "";
 

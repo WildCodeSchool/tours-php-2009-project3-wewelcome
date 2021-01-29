@@ -29,6 +29,7 @@ class PurposeValuesController extends AbstractController
         string $type
     ): Response {
         $home = new Home();
+        $home->setType($type);
         $form = $this->createForm(PurposeValuesType::class, $home);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,15 +40,6 @@ class PurposeValuesController extends AbstractController
                 $this->getParameter('purpose-values_directory')
             );
             $home->setPictureOne($addPictureOne['fileName']);
-
-            switch ($type) {
-                case "purpose":
-                    $home->setType('purpose');
-                    break;
-                case "values":
-                    $home->setType('values');
-                    break;
-            }
             $entityManager->persist($home);
             $entityManager->flush();
             if ($type === "purpose") {

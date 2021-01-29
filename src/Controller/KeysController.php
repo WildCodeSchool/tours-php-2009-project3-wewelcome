@@ -29,6 +29,7 @@ class KeysController extends AbstractController
         string $type
     ): Response {
         $keysVision = new KeysVision();
+        $keysVision->setType($type);
         $form = $this->createForm(KeysType::class, $keysVision);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -39,7 +40,6 @@ class KeysController extends AbstractController
                 $this->getParameter('keys-vision_directory')
             );
             $keysVision->setPhoto($addPhoto['fileName']);
-            $keysVision->setType('keys');
             $entityManager->persist($keysVision);
             $entityManager->flush();
             return $this->redirect($this->generateUrl('home') . '#section-keys');

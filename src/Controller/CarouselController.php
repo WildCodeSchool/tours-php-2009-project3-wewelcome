@@ -28,6 +28,7 @@ class CarouselController extends AbstractController
         FileManager $fileManager
     ): Response {
         $carousel = new Home();
+        $carousel->setType('carousel');
         $carouselForm = $this->createForm(CarouselType::class, $carousel);
         $carouselForm->handleRequest($request);
         if ($carouselForm->isSubmitted() && $carouselForm->isValid()) {
@@ -54,7 +55,6 @@ class CarouselController extends AbstractController
                 $this->getParameter('carousel_directory')
             );
             $carousel->setPictureThree($addPictureThree['fileName']);
-            $carousel->setType('carousel');
             $entityManager->persist($carousel);
             $entityManager->flush();
             return $this->redirectToRoute('home');
