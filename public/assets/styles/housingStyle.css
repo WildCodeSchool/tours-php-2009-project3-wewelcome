@@ -1,14 +1,5 @@
 /* General */
 
-.h2housing {
-    text-align: center;
-    padding-top: 7vw;
-}
-
-.hrTitleHousing {
-    padding-bottom: 2vw;
-}
-
 h3 {
     text-align: center;
 }
@@ -42,7 +33,7 @@ h3 {
 
 .businessTripsWithTitle {
     background-color: lightgray;
-    padding: 2vw 0;
+    padding: 10vw 2vw 2vw;
 }
 
 .businessTrips {

@@ -58,6 +58,18 @@ hr {
     border-top: 0.5vw solid var(--white);
 }
 
+@media screen and (max-width: 812px) {
+    h2 {
+        font-size: 4.5vw;
+    }
+    hr {
+        border-top: 0.3vw;
+    }
+    h3 {
+        font-size: 3.8vw;
+    }
+}
+
 .adminPanel {
     background-color: #bdb2a7;
 }
@@ -398,14 +410,6 @@ footer {
 }
 
 @media screen and (max-width: 812px) {
-    .contact h2 {
-        font-size: 35px;
-    }
-
-    hr {
-        transform: scale(2);
-    }
-
     .contactForm {
         margin: 1vw auto;
         padding: 1vw;

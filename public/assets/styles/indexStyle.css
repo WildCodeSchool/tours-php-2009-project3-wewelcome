@@ -134,10 +134,6 @@ body {
         flex-direction: column;
     }
 
-    hr {
-        transform: scale(2);
-    }
-
     .purpose-text,
     .values-text {
         font-size: 2.5vw;
@@ -168,10 +164,6 @@ body {
     background-repeat: no-repeat;
     background-color: var(--white);
     background-size: 100%;
-}
-
-.key-figures h2 {
-    font-size: 4.5vw;
 }
 
 .service-vision h2 {
@@ -367,9 +359,6 @@ body {
         padding-bottom: 10vw;
         background-color: var(--white);
     }
-    .activities h2 {
-        font-size: 4.5vw;
-    }
 
     .activities-all {
         display: grid;
@@ -530,13 +519,6 @@ body {
 }
 
 @media screen and (max-width: 812px) {
-    .partners h2 {
-        font-size: 4.5vw;
-    }
-
-    hr {
-        transform: scale(2);
-    }
 
     .partners-booking,
     .partners-others {
