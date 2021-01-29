@@ -84,10 +84,30 @@
     padding: 5px 5px 5px 5px;
     z-index:2;
     font-size:120%;
-    margin-left: 2.5%;
     font-weight: bold;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+@media screen and (max-width: 813px) {
+    .listPresentationPart {
+        width: 95%;
+    }
+    .left {
+        width: 90%;
+        margin: auto;
+        padding-top: 0.5em;
+    }
+
+    .right {
+        width: 100%;
+    }
+
+    .textPicto {
+        width: 90%;
+        margin: auto;
+        padding-left: 1em;
+    }
 }
 
 /* END picture and picto with explication of Stewardship */
@@ -119,24 +139,19 @@
     display: flex;
     background-color: var(--white);
     justify-content: center;
-    padding-top: 2em;
-    padding-bottom: 2em;
 }
 
+.taxationStewardPart,
 .tariffStewardPart {
     width: 40%;
     justify-content: center;
     text-align: center;
+    padding-top: 1.75em;
+    padding-bottom: 1.25em;
 }
 
 .subTittle {
     margin-bottom: 1em;
-}
-
-.taxationStewardPart {
-    width: 40%;
-    justify-content: center;
-    text-align: center;
 }
 
 .textTaxationTariff {
@@ -147,5 +162,24 @@
 
 .imgTaxationTariff {
     width: 80%;
+}
+
+@media screen and (max-width: 813px) {
+    .stewardTariffTaxation {
+        padding-top: 0em;
+    }
+    .stewardTariffTaxation {
+        flex-direction: column;
+    }
+    
+    .taxationStewardPart,
+    .tariffStewardPart {
+        width: 100%;
+        margin: auto;
+    }
+
+    .tariffStewardPart {
+        background-color: lightgray;
+    }
 }
 /*** End Section Tariff / Taxation ***/
