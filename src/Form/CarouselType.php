@@ -16,7 +16,7 @@ class CarouselType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('title', TextType::class)
+            ->add('title', TextType::class, ['required' => true])
             ->add('pictureOne', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -32,7 +32,7 @@ class CarouselType extends AbstractType
                     ])
                 ],
             ])
-            ->add('legendPictureOne', TextType::class)
+            ->add('legendPictureOne', TextType::class, ['required' => false])
             ->add('pictureTwo', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -48,7 +48,7 @@ class CarouselType extends AbstractType
                     ])
                 ],
             ])
-            ->add('legendPictureTwo', TextType::class)
+            ->add('legendPictureTwo', TextType::class, ['required' => false])
             ->add('pictureThree', FileType::class, [
                 'mapped' => false,
                 'required' => false,
@@ -64,8 +64,9 @@ class CarouselType extends AbstractType
                     ])
                 ],
             ])
-            ->add('legendPictureThree', TextType::class)
+            ->add('legendPictureThree', TextType::class, ['required' => false])
             ->add('type', HiddenType::class)
+            ->add('text', HiddenType::class)
         ;
     }
 

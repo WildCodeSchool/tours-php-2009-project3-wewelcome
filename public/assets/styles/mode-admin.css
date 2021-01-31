@@ -78,3 +78,12 @@ li {
         width: 50vw;
     }
 }
+
+.error-upload-photo {
+    padding: 10px 30px;
+    font-family: var(--secondary-title);
+    font-size: 20px;
+    color: red;
+    border-radius: 5px;
+    border: solid 2px red;
+}

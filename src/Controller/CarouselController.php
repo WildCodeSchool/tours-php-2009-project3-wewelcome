@@ -14,6 +14,7 @@ use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\CarouselType;
 use App\Services\FileManager;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class CarouselController extends AbstractController
 {
@@ -29,38 +30,51 @@ class CarouselController extends AbstractController
     ): Response {
         $carousel = new Home();
         $carousel->setType('carousel');
-        $carouselForm = $this->createForm(CarouselType::class, $carousel);
-        $carouselForm->handleRequest($request);
-        if ($carouselForm->isSubmitted() && $carouselForm->isValid()) {
-            $pictureOne = $carouselForm->get('pictureOne')->getData();
-            $pictureTwo = $carouselForm->get('pictureTwo')->getData();
-            $pictureThree = $carouselForm->get('pictureThree')->getData();
-            $addPictureOne = $fileManager->saveFile(
-                'pictureOne',
-                $pictureOne,
-                $this->getParameter('carousel_directory')
-            );
-            $carousel->setPictureOne($addPictureOne['fileName']);
-
-            $addPictureTwo = $fileManager->saveFile(
-                'pictureTwo',
-                $pictureTwo,
-                $this->getParameter('carousel_directory')
-            );
-            $carousel->setPictureTwo($addPictureTwo['fileName']);
-
-            $addPictureThree = $fileManager->saveFile(
-                'pictureThree',
-                $pictureThree,
-                $this->getParameter('carousel_directory')
-            );
-            $carousel->setPictureThree($addPictureThree['fileName']);
+        $carousel->setText('null');//because there is no text in a carousel
+        $form = $this->createForm(CarouselType::class, $carousel);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pictureOne = $form->get('pictureOne')->getData();
+            $pictureTwo = $form->get('pictureTwo')->getData();
+            $pictureThree = $form->get('pictureThree')->getData();
+            try {
+                if (!isset($pictureOne)) {
+                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
+                }
+                $addPictureOne = $fileManager->saveFile(
+                    'fileOne',
+                    $pictureOne,
+                    $this->getParameter('carousel_directory')
+                );
+                $carousel->setPictureOne($addPictureOne['fileName']);
+                if (!isset($pictureTwo)) {
+                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
+                }
+                $addPictureTwo = $fileManager->saveFile(
+                    'fileTwo',
+                    $pictureTwo,
+                    $this->getParameter('carousel_directory')
+                );
+                $carousel->setPictureTwo($addPictureTwo['fileName']);
+                if (!isset($pictureThree)) {
+                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
+                }
+                $addPictureThree = $fileManager->saveFile(
+                    'fileThree',
+                    $pictureThree,
+                    $this->getParameter('carousel_directory')
+                );
+                $carousel->setPictureThree($addPictureThree['fileName']);
+            } catch (Exception $e) {
+                $this->addFlash('error', $e->getMessage());
+                return $this->redirect($request->server->get('HTTP_REFERER'));
+            }
             $entityManager->persist($carousel);
             $entityManager->flush();
             return $this->redirectToRoute('home');
         }
         return $this->render('home/editCarousel.html.twig', [
-            'carouselForm' => $carouselForm->createView(),
+            'form' => $form->createView(),
             'carousel' => $carousel
         ]);
     }
@@ -77,19 +91,19 @@ class CarouselController extends AbstractController
         FileManager $fileManager,
         Home $home
     ): Response {
-        $carouselForm = $this->createForm(CarouselType::class, $home);
-        $carouselForm->handleRequest($request);
-        if ($carouselForm->isSubmitted() && $carouselForm->isValid()) {
-            $pictureOne = $carouselForm->get('pictureOne')->getData();
-            $pictureTwo = $carouselForm->get('pictureTwo')->getData();
-            $pictureThree = $carouselForm->get('pictureThree')->getData();
+        $form = $this->createForm(CarouselType::class, $home);
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+            $pictureOne = $form->get('pictureOne')->getData();
+            $pictureTwo = $form->get('pictureTwo')->getData();
+            $pictureThree = $form->get('pictureThree')->getData();
             if (
                 $pictureOne !== null &&
                 $home->getPictureOne() !== null
             ) {
                 $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('carousel_directory'));
                 $addPictureOne = $fileManager->saveFile(
-                    'pictureOne',
+                    'fileOne',
                     $pictureOne,
                     $this->getParameter('carousel_directory')
                 );
@@ -101,7 +115,7 @@ class CarouselController extends AbstractController
             ) {
                 $fileManager->deleteFile($home->getPictureTwo(), $this->getParameter('carousel_directory'));
                 $addPictureTwo = $fileManager->saveFile(
-                    'pictureTwo',
+                    'fileTwo',
                     $pictureTwo,
                     $this->getParameter('carousel_directory')
                 );
@@ -113,7 +127,7 @@ class CarouselController extends AbstractController
             ) {
                 $fileManager->deleteFile($home->getPictureThree(), $this->getParameter('carousel_directory'));
                 $addPictureThree = $fileManager->saveFile(
-                    'pictureThree',
+                    'fileThree',
                     $pictureThree,
                     $this->getParameter('carousel_directory')
                 );
@@ -123,7 +137,7 @@ class CarouselController extends AbstractController
             return $this->redirectToRoute('home');
         }
         return $this->render('home/editCarousel.html.twig', [
-            'carouselForm' => $carouselForm->createView(),
+            'form' => $form->createView(),
             'carousel' => $home
         ]);
     }

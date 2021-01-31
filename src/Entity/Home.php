@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class Home
 {
+    public const GENRES = ['carousel', 'values', 'purpose'];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -20,69 +22,75 @@ class Home
 
     /**
      * @ORM\Column(type="string", length=100)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
+     *      min = 2,
      *      max = 100,
-     *      maxMessage = "Votre titre ne peut pas faire plus de {{ limit }} charactères"
+     *      minMessage = "Votre titre doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre titre ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private string $title = "";
+    private string $title;
 
     /**
      * @ORM\Column(type="string", length=800, nullable=true)
+     * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
+     *      min = 2,
      *      max = 800,
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private ?string $text = "";
+    private ?string $text;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private string $pictureOne = "";
+    private string $pictureOne;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $pictureTwo = "";
+    private ?string $pictureTwo;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
      */
-    private ?string $pictureThree = "";
+    private ?string $pictureThree;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * @Assert\Choice({"carousel", "purpose", "values"})
+     * @Assert\Choice(choices=Home::GENRES, message = "Type invalide")
      */
-    private string $type = "";
+    private string $type;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\Length(
      *      max = 100,
-     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private ?string $legendPictureOne = "";
+    private ?string $legendPictureOne;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\Length(
      *      max = 100,
-     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private ?string $legendPictureTwo = "";
+    private ?string $legendPictureTwo;
 
     /**
      * @ORM\Column(type="string", length=100, nullable=true)
      * @Assert\Length(
      *      max = 100,
-     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} charactères"
+     *      maxMessage = "Votre légende ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
-    private ?string $legendPictureThree = "";
+    private ?string $legendPictureThree;
 
     public function getId(): ?int
     {

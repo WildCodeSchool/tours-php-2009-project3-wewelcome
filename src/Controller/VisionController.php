@@ -14,6 +14,7 @@ use App\Repository\KeysVisionRepository;
 use App\Entity\KeysVision;
 use App\Form\VisionType;
 use App\Services\FileManager;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class VisionController extends AbstractController
 {
@@ -30,16 +31,28 @@ class VisionController extends AbstractController
     ): Response {
         $keysVision = new KeysVision();
         $keysVision->setType($type);
+        $keysVision->setText5("null");//because there is no text5
+        $keysVision->setText6("null");//because there is no text6
+        $keysVision->setText7("null");//because there is no text7
+        $keysVision->setText8("null");//because there is no text8
         $form = $this->createForm(VisionType::class, $keysVision);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $photo = $form->get('photo')->getData();
-            $addPhoto = $fileManager->saveFile(
-                'photo',
-                $photo,
-                $this->getParameter('keys-vision_directory')
-            );
-            $keysVision->setPhoto($addPhoto['fileName']);
+            try {
+                if (!isset($photo)) {
+                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 1 photo pour valider le formulaire');
+                }
+                $addPhoto = $fileManager->saveFile(
+                    'file',
+                    $photo,
+                    $this->getParameter('keys-vision_directory')
+                );
+                $keysVision->setPhoto($addPhoto['fileName']);
+            } catch (Exception $e) {
+                $this->addFlash('error', $e->getMessage());
+                return $this->redirect($request->server->get('HTTP_REFERER'));
+            }
             $entityManager->persist($keysVision);
             $entityManager->flush();
             return $this->redirect($this->generateUrl('home') . '#section-vision');

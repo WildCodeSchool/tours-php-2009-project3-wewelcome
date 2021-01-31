@@ -8,17 +8,22 @@
     <h3>Formulaire de modification de la partie "But Wewelcome"</h3>
     {% endif %}
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+        {% for label, messages in app.flashes %}
+        {% for message in messages %}
+        <p class="error-upload-photo">{{ message }}</p>
+        {% endfor %}
+        {% endfor %}
+        {{ form_errors(form.text) }}
         {{ form_label(form.text, 'Texte :') }}
         {{ form_widget(form.text) }}
-        {{ form_errors(form.text) }}
         {{ form_help(form.text) }}
         {{ form_label(form.pictureOne, 'Photo :') }}
-        {{ form_widget(form.pictureOne) }}
         {{ form_errors(form.pictureOne) }}
+        {{ form_widget(form.pictureOne) }}
         {{ form_help(form.pictureOne) }}
         {{ form_label(form.legendPictureOne, 'Légende :') }}
-        {{ form_widget(form.legendPictureOne) }}
         {{ form_errors(form.legendPictureOne) }}
+        {{ form_widget(form.legendPictureOne) }}
         {{ form_help(form.legendPictureOne) }}
         <button>Valider</button>
     {{ form_end(form) }}
