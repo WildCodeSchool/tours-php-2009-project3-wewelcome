@@ -9,8 +9,8 @@
 {% block body %}
 <section class="generalInfo">
     <div class="headerConciergePage">
-        <h2>Conciergerie</h2>
-        <hr />
+        <h2 class="h2-primary-color">Conciergerie</h2>
+        <hr class="hr-primary-color">
     </div>
     <ul class="listPresentationPart">
         <li>
@@ -78,7 +78,7 @@
         {% endif %}
         <div class="needSpace">
             <h3 class="title">Formules</h3>
-            <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
+            <p class="needSpace"><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
             <button class="contactButton button-contact paddingBottom" onclick="location.href='#contact';">Je souhaite plus d'information</button>
         </div>
     </div>
@@ -90,6 +90,22 @@
         Parce que chaque propriétaire a des besoins différents, nous vous proposons des formules adaptées
         suivant le type de services recherchés :
     </p>
+    {% if pricesNoStress %}
+    <div class="noStressTariffPart">
+        <h4 class="subtitle4 boldPart">{{ pricesNoStress.title }}</h4>
+        <p>{{ pricesNoStress.text|nl2br }}</p>
+        {% if app.user %}
+        <div>
+            <form method="post" action="{{ path('prices_delete', {'id' : pricesNoStress.id}) }}" onsubmit="return confirm('La partie NOSTRESS sera remise à la valeur par défaut. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesNoStress.id) }}">
+                <button class="btn">Défaut</button>
+            </form>
+            <button class="update"><a href="{{ path('prices_edit', {'id': pricesNoStress.id}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
     <div class="noStressTariffPart">
         <h4 class="subtitle4 boldPart">NOSTRESS : on s’occupe de tout</h4>
         <p class="needSpace">
@@ -134,7 +150,29 @@
                 Un devis détaillé vous sera transmis après rendez-vous dans votre logement.
             </p>
         </div>
+        {% if app.user %}
+        <div>
+            <button class="update"><a href="{{ path('prices_add', {'source' : 'nostress'}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
     </div>
+    {% endif %}
+    {% if pricesOpen %}
+    <div class="openTariffPart">
+        <h4 class="subtitle4 boldPart">{{ pricesOpen.title }}</h4>
+        <p>{{ pricesOpen.text|nl2br }}</p>
+        {% if app.user %}
+        <div>
+            <form method="post" action="{{ path('prices_delete', {'id' : pricesOpen.id}) }}" onsubmit="return confirm('La partie OPEN sera remise à la valeur par défaut. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesOpen.id) }}">
+                <button class="btn">Défaut</button>
+            </form>
+            <button class="update"><a href="{{ path('prices_edit', {'id': pricesOpen.id}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
     <div class="openTariffPart">
         <h4 class="subtitle4 boldPart">OPEN : vous préférez le sur-mesure.</h4>
         <div>
@@ -179,7 +217,13 @@
             Un devis détaillé vous sera transmis après rendez-vous dans votre logement.
             </p>
         </div>
+        {% if app.user %}
+        <div>
+            <button class="update"><a href="{{ path('prices_add', {'source' : 'open'}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
     </div>
+    {% endif %}
 </section>
 <section class="fullServicesLayingOut">
     <div class="fullServicesPart">
