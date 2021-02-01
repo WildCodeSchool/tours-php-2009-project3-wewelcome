@@ -11,6 +11,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  */
 class LegalsTexts
 {
+    public const GENRES = ['cgu', 'legal-notice'];
+
     /**
      * @ORM\Id
      * @ORM\GeneratedValue
@@ -24,8 +26,8 @@ class LegalsTexts
      * @Assert\Length(
      *      min = 2,
      *      max = 50,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
     private string $title;
@@ -36,14 +38,15 @@ class LegalsTexts
      * @Assert\Length(
      *      min = 2,
      *      max = 10000,
-     *      minMessage = "Votre texte doit faire au moins {{ limit }} charactères",
-     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} charactères"
+     *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
+     *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
      * )
      */
     private string $text;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Choice(choices=LegalsTexts::GENRES, message = "Type invalide")
      */
     private string $type;
 

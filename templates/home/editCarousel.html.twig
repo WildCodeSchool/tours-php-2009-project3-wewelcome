@@ -1,8 +1,8 @@
-{% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/mode-admin.css">
-{% endblock %}
-<div class="mode-admin">
-    <h3>Formulaire de modification du carousel</h3>
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="adminPanel">
+    <h1>Formulaire de modification du carousel</h1>
     {{ form_start(carouselForm, {'attr' : {'class' : 'adminForm'}}) }}
         {{ form_label(carouselForm.title, 'Titre :') }}
         {{ form_widget(carouselForm.title) }}
@@ -38,3 +38,4 @@
         <input type="button" value="Retour">
     </a>
 </div>
+{% endblock %}

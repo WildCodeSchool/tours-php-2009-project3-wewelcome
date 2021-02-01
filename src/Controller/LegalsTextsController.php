@@ -14,7 +14,6 @@ use App\Repository\LegalsTextsRepository;
 use App\Entity\LegalsTexts;
 use App\Form\LegalsTextsType;
 use App\Services\FileManager;
-use Twig\Extra\Markdown\MarkdownExtension;
 
 class LegalsTextsController extends AbstractController
 {
@@ -54,24 +53,13 @@ class LegalsTextsController extends AbstractController
         string $type
     ): Response {
         $legalsTexts = new LegalsTexts();
+        $legalsTexts->setType($type);
         $form = $this->createForm(LegalsTextsType::class, $legalsTexts);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            switch ($type) {
-                case "cgu":
-                    $legalsTexts->setType('cgu');
-                    break;
-                case "legal-notice":
-                    $legalsTexts->setType('legal-notice');
-                    break;
-            }
             $entityManager->persist($legalsTexts);
             $entityManager->flush();
-            if ($type === "cgu") {
-                return $this->redirectToRoute('cgu');
-            } else {
-                return $this->redirectToRoute('legal-notice');
-            }
+            return $this->redirectToRoute($type);
         }
         return $this->render('legalsTexts/editLegalsTexts.html.twig', [
             'form' => $form->createView(),
@@ -97,11 +85,7 @@ class LegalsTextsController extends AbstractController
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
-            if ($type === "cgu") {
-                return $this->redirectToRoute('cgu');
-            } else {
-                return $this->redirectToRoute('legal-notice');
-            }
+            return $this->redirectToRoute($type);
         }
         return $this->render('legalsTexts/editLegalsTexts.html.twig', [
             'form' => $form->createView(),
@@ -127,10 +111,6 @@ class LegalsTextsController extends AbstractController
             $entityManager->remove($legalsTexts);
             $entityManager->flush();
         }
-        if ($type === "cgu") {
-            return $this->redirectToRoute('cgu');
-        } else {
-            return $this->redirectToRoute('legal-notice');
-        }
+        return $this->redirectToRoute($type);
     }
 }

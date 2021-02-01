@@ -31,6 +31,12 @@
     border-radius: 20px;
 }
 
+.hidden {
+    width: 90%;
+    text-align: center;
+    margin: auto;
+}
+
 .right {
     width: 50%;
     display: flex;
@@ -86,15 +92,38 @@
     position:absolute;
     text-align: center;
     margin-top: 1.5em;
-    width:45%;
+    width: 45%;
     height:auto;
     padding: 5px 5px 5px 5px;
     z-index:2;
     font-size:120%;
-    margin-left: 2.5%;
     font-weight: bold;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+@media screen and (max-width: 813px) {
+    .listPresentationPart {
+        width: 90%;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 90%;
+        margin: auto;
+    }
+
+    .imgBackground {
+        height: 70vh;
+    }
+
+    .textPicto {
+        margin: auto;
+        width: 90%;
+    }
 }
 
 /* END picture and picto with explication of concierge */
@@ -120,8 +149,7 @@
 .texTariff {
     width: 50%;
     text-align: center;
-    margin-left: auto;
-    margin-right: auto;
+    margin: auto;
     padding-bottom: 2em;
 }
 
@@ -169,6 +197,21 @@
     padding-top: 1em;
     padding-bottom: 1em;
     font-size: 75%;
+}
+
+@media screen and (max-width: 813px) {
+    .texTariff {
+        width: 90%;
+        font-size: 110%;
+    }
+
+    .openTariffPart,
+    .noStressTariffPart {
+        width: 95%;
+    }
+    .noStressTariffPart {
+        margin-bottom: 1em;
+    }
 }
 /*** End section Tariff ***/
 
@@ -255,7 +298,7 @@
     width: 80%;
     padding-top: 1.25em;
     padding-bottom: 2.25em;
-    font-size: 115%;
+    font-size: 110%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -316,8 +359,6 @@
     width: 440%;
     margin: 0;
     padding: 0;
-    font-size: 0;
-    text-align: left;
     left: 0;
     animation: 30s slidy infinite ease-in-out;
 }
@@ -346,6 +387,68 @@
 .linkQuote {
     margin-left: auto;
     margin-right: auto;
+}
+
+@media screen and (max-width: 813px) {
+    .textSpacingSection {
+        font-size: 110%;
+    }
+
+    .detailFullServices {
+        grid-template-columns: repeat(2, 1fr);
+        width: 95%;
+    }
+    .one {
+        grid-column: 1/2;
+        grid-row: 1;
+    }
+    .two {
+        grid-column: 2/3;
+        grid-row: 1;
+    }
+    .three {
+        grid-column: 1/2;
+        grid-row: 2;
+    }
+    .four {
+        grid-column: 2/3;
+        grid-row: 2;
+    }
+    .five {
+        grid-column: 1/2;
+        grid-row: 3;
+    }
+    .six {
+        grid-column: 2/3;
+        grid-row: 3;
+    }
+    .seven {
+        grid-column: 1/3;
+        grid-row: 4;
+    }
+
+    .textMiddleLayout,
+    .listPresentationPartLayout {
+        width: 90%;
+    }
+
+    .listNoStyleLayout {
+        text-indent: 0;
+        padding-left: 1em;
+        padding-bottom: 1.25em;
+    }
+
+    .contentBeforeAfter {
+        width: 80%;
+    }
+
+    .contentBeforeAfter {
+        display: none;
+    }
+
+    .conciergeCarousel {
+        display: none;
+    }
 }
 /*** End section Full services / laying out ***/
 
@@ -381,7 +484,7 @@
 
 .textProfitabilityRentalPart {
     width: 75%;
-    padding-bottom: 1em;
+    padding-bottom: 1.5em;
     margin: auto;
 }
 
@@ -501,5 +604,32 @@
     width: 75%;
     margin: auto;
     padding-top: 1.25em;
+}
+
+@media screen and (max-width: 813px) {
+    .profitabilityRentalPart {
+        width: 95%;
+    }
+
+    .textProfitabilityRentalPart {
+        width: 90%;
+        font-size: 110%;
+    }
+
+    .visionStoreConcierge {
+        display: none;
+    }
+
+    .legislationPart {
+        width: 95%;
+    }
+
+    .sectionDailyTaxation {
+        width: 90%;
+    }
+
+    .textLegislationPart {
+        width: 95%;
+    }
 }
 /*** End section profitability Rental Legislation ***/
