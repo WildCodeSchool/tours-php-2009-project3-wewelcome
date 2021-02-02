@@ -25,7 +25,7 @@ class KeysVision
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
      *      min = 2,
-     *      max = 5,
+     *      max = 50,
      *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
      * )
@@ -89,7 +89,7 @@ class KeysVision
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
-     *      min = 2,
+     *      min = 1,
      *      max = 5,
      *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
@@ -101,7 +101,7 @@ class KeysVision
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
-     *      min = 2,
+     *      min = 1,
      *      max = 5,
      *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
@@ -113,7 +113,7 @@ class KeysVision
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
-     *      min = 2,
+     *      min = 1,
      *      max = 5,
      *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"
@@ -125,7 +125,7 @@ class KeysVision
      * @ORM\Column(type="string", length=50, nullable=true)
      * @Assert\NotBlank(message="Ce champ ne peut pas être vide")
      * @Assert\Length(
-     *      min = 2,
+     *      min = 1,
      *      max = 5,
      *      minMessage = "Votre texte doit faire au moins {{ limit }} caractères",
      *      maxMessage = "Votre texte ne peut pas faire plus de {{ limit }} caractères"

@@ -33,49 +33,42 @@ class CarouselController extends AbstractController
         $carousel->setText('null');//because there is no text in a carousel
         $form = $this->createForm(CarouselType::class, $carousel);
         $form->handleRequest($request);
+        $errorAddPicture = '';
         if ($form->isSubmitted() && $form->isValid()) {
-            $pictureOne = $form->get('pictureOne')->getData();
-            $pictureTwo = $form->get('pictureTwo')->getData();
-            $pictureThree = $form->get('pictureThree')->getData();
-            try {
-                if (!isset($pictureOne)) {
-                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
-                }
+            if (
+                ($form->get('pictureOne')->getData() !== null) &&
+                ($form->get('pictureTwo')->getData() !== null) &&
+                ($form->get('pictureThree')->getData() !== null)
+            ) {
                 $addPictureOne = $fileManager->saveFile(
                     'fileOne',
-                    $pictureOne,
+                    $form->get('pictureOne')->getData(),
                     $this->getParameter('carousel_directory')
                 );
                 $carousel->setPictureOne($addPictureOne['fileName']);
-                if (!isset($pictureTwo)) {
-                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
-                }
                 $addPictureTwo = $fileManager->saveFile(
                     'fileTwo',
-                    $pictureTwo,
+                    $form->get('pictureTwo')->getData(),
                     $this->getParameter('carousel_directory')
                 );
                 $carousel->setPictureTwo($addPictureTwo['fileName']);
-                if (!isset($pictureThree)) {
-                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 3 photos pour valider le formulaire');
-                }
                 $addPictureThree = $fileManager->saveFile(
                     'fileThree',
-                    $pictureThree,
+                    $form->get('pictureThree')->getData(),
                     $this->getParameter('carousel_directory')
                 );
                 $carousel->setPictureThree($addPictureThree['fileName']);
-            } catch (Exception $e) {
-                $this->addFlash('error', $e->getMessage());
-                return $this->redirect($request->server->get('HTTP_REFERER'));
+                $entityManager->persist($carousel);
+                $entityManager->flush();
+                return $this->redirectToRoute('home');
+            } else {
+                $errorAddPicture = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
             }
-            $entityManager->persist($carousel);
-            $entityManager->flush();
-            return $this->redirectToRoute('home');
         }
         return $this->render('home/editCarousel.html.twig', [
             'form' => $form->createView(),
-            'carousel' => $carousel
+            'carousel' => $carousel,
+            'errorAddPicture' => $errorAddPicture
         ]);
     }
 

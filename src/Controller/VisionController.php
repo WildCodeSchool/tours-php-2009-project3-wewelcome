@@ -37,29 +37,26 @@ class VisionController extends AbstractController
         $keysVision->setText8("null");//because there is no text8
         $form = $this->createForm(VisionType::class, $keysVision);
         $form->handleRequest($request);
+        $errorAddPicture = '';
         if ($form->isSubmitted() && $form->isValid()) {
-            $photo = $form->get('photo')->getData();
-            try {
-                if (!isset($photo)) {
-                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 1 photo pour valider le formulaire');
-                }
+            if ($form->get('photo')->getData() !== null) {
                 $addPhoto = $fileManager->saveFile(
                     'file',
-                    $photo,
+                    $form->get('photo')->getData(),
                     $this->getParameter('keys-vision_directory')
                 );
                 $keysVision->setPhoto($addPhoto['fileName']);
-            } catch (Exception $e) {
-                $this->addFlash('error', $e->getMessage());
-                return $this->redirect($request->server->get('HTTP_REFERER'));
+                $entityManager->persist($keysVision);
+                $entityManager->flush();
+                return $this->redirect($this->generateUrl('home') . '#section-vision');
+            } else {
+                $errorAddPicture = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
             }
-            $entityManager->persist($keysVision);
-            $entityManager->flush();
-            return $this->redirect($this->generateUrl('home') . '#section-vision');
         }
         return $this->render('home/editVision.html.twig', [
             'form' => $form->createView(),
-            'keysVision' => $keysVision
+            'keysVision' => $keysVision,
+            'errorAddPicture' => $errorAddPicture
         ]);
     }
 

@@ -4,16 +4,14 @@
 <div class="adminPanel">
     <h1>Formulaire de modification de la partie "Vision Wewelcome"</h1>
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
-        {% for label, messages in app.flashes %}
-        {% for message in messages %}
-        <p class="error-upload-photo">{{ message }}</p>
-        {% endfor %}
-        {% endfor %}
         {{ form_label(form.title, 'Titre :') }}
         {{ form_errors(form.title) }}
         {{ form_widget(form.title) }}
         {{ form_help(form.title) }}
         {{ form_label(form.photo, 'Photo :') }}
+        {% if errorAddPicture is defined %}
+        {{errorAddPicture}}
+        {% endif %}
         {{ form_errors(form.photo) }}
         {{ form_widget(form.photo) }}
         {{ form_help(form.photo) }}

@@ -37,31 +37,28 @@ class PurposeValuesController extends AbstractController
         $home->setLegendPictureTwo("null");//because there is no picture2
         $home->setLegendPictureThree("null");//because there is no picture3
         $form = $this->createForm(PurposeValuesType::class, $home);
+        $errorAddPicture = '';
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $pictureOne = $form->get('pictureOne')->getData();
-            try {
-                if (!isset($pictureOne)) {
-                    throw new Exception('⚠️ ATTENTION: vous devez ajouter 1 photo pour valider le formulaire');
-                }
+            if ($form->get('pictureOne')->getData() !== null) {
                 $addPictureOne = $fileManager->saveFile(
                     'fileOne',
-                    $pictureOne,
+                    $form->get('pictureOne')->getData(),
                     $this->getParameter('purpose-values_directory')
                 );
                 $home->setPictureOne($addPictureOne['fileName']);
-            } catch (Exception $e) {
-                $this->addFlash('error', $e->getMessage());
-                return $this->redirect($request->server->get('HTTP_REFERER'));
+                $entityManager->persist($home);
+                $entityManager->flush();
+                return $this->redirect($this->generateUrl('home') . '#section-' . $type);
+            } else {
+                $errorAddPicture = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
             }
-            $entityManager->persist($home);
-            $entityManager->flush();
-            return $this->redirect($this->generateUrl('home') . '#section-' . $type);
         }
         return $this->render('home/editPurposeValues.html.twig', [
             'form' => $form->createView(),
             'home' => $home,
-            'type' => $type
+            'type' => $type,
+            'errorAddPicture' => $errorAddPicture
         ]);
     }
 
