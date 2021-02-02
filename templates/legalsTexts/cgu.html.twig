@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/indexStyle.css">
+{% endblock %}
+
+{% block title %}CGU{% endblock %}
+
+{% block body %}
+    {% if legalsTexts is not empty and legalsTexts[0].title %}
+    <h2 class="h2-primary-color">{{ legalsTexts[0].title }}</h2>
+    {% else %}
+    <h2 class="h2-primary-color">CGU</h2>
+    {% endif %}
+    <hr class="hr-primary-color">
+    {% if legalsTexts is not empty and legalsTexts[0].text %}
+    <p class="legals-texts">{{ legalsTexts[0].text|nl2br  }}</p>
+    {% else %}
+    <p class="legals-texts">Votre texte ici</p>
+    {% endif %}
+    <!-- Modification form -->
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+        {% if legalsTexts is empty %}
+        <a href="{{ path('new_legals-texts', {'type': 'cgu'}) }}">
+            <input type="button" value="Nouveau contenu" class="">
+        </a>
+        {% endif %}
+        {% if legalsTexts is not empty %}
+        <form method="post" action="{{ path('delete_legals-texts', {'idLegalsTexts' : legalsTexts[0].id, 'type': 'cgu'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir supprimer le contenu ?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ legalsTexts[0].id) }}">
+            <input type="submit" value="Supprimer le contenu">
+        </form>
+        <a href="{{ path('edit_legals-texts', {'idLegalsTexts': legalsTexts[0].id, 'type': 'cgu'}) }}">
+            <input type="button" value="Editer le contenu" class="">
+        </a>
+        {% endif %}
+    {% endif %}
+    </section>
+{% endblock %}
