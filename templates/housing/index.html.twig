@@ -31,7 +31,10 @@
         {% if app.user %}
         <div class="adminPanel">
             <div class="add">
-            {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
+                {% if errorHousing %}
+                <p>{{ errorHousing }}</p>
+                {% endif %}
+                {{ include('housing/_form.html.twig', {'button_label': 'Ajouter'}) }}
             </div>
         </div>
         {% endif %}
@@ -50,7 +53,10 @@
             {% if app.user %}
             <div class="adminPanel">
                 <div class="add">
-                {{ include('housing/_formBusiness.html.twig', {'button_label': 'Ajouter un voyage d\'affaire'}) }}
+                    {% if errorBusiness %}
+                    <p>{{ errorBusiness }}</p>
+                    {% endif %}
+                    {{ include('housing/_formBusiness.html.twig', {'button_label': 'Ajouter un voyage d\'affaire'}) }}
                 </div>
             </div>
             {% endif %}
