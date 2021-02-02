@@ -1,0 +1,31 @@
+{% block stylesheets %}
+<link rel="stylesheet" href="/assets/styles/mode-admin.css">
+{% endblock %}
+<div class="mode-admin">
+    {% if type == 'cgu' %}
+    <h3>Formulaire de modification de la partie "CGU"</h3>
+    {% else %}
+    <h3>Formulaire de modification de la partie "Mentions légales"</h3>
+    {% endif %}
+    {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(form.title, 'Titre :') }}
+        {{ form_widget(form.title) }}
+        {{ form_errors(form.title) }}
+        {{ form_help(form.title) }}
+        {{ form_label(form.text, 'Texte :') }}
+        {{ form_widget(form.text) }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_errors(form.text) }}
+        {{ form_help(form.text) }}
+        <button>Valider</button>
+    {{ form_end(form) }}
+    {% if type == 'cgu' %}
+    <a href="{{ path('cgu') }}">
+        <input type="button" value="Retour">
+    </a>
+    {% else %}
+    <a href="{{ path('legal-notice') }}">
+        <input type="button" value="Retour">
+    </a>
+    {% endif %}
+</div>
