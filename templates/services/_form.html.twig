@@ -1,0 +1,11 @@
+{{ form_start(serviceForm, {'attr' : {'class' : 'adminForm'}}) }}
+    {{ form_label(serviceForm.logoFile, 'Logo : ') }}
+    {{ form_widget(serviceForm.logoFile) }}
+    {{ form_label(serviceForm.title, 'Titre :') }}
+    {{ form_widget(serviceForm.title) }}
+    {{ form_label(serviceForm.photoFile, 'Photo :') }}
+    {{ form_widget(serviceForm.photoFile) }}
+    {{ form_label(serviceForm.description, 'Description :') }}
+    {{ form_widget(serviceForm.description) }}
+    <button>{{ button_label }}</button>
+{{ form_end(serviceForm) }}

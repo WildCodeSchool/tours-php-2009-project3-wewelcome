@@ -2,6 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="/assets/images/logo-wewelcome-24px-color.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
     <link rel="stylesheet" href="/assets/styles/baseStyle.css">
@@ -12,51 +13,46 @@
         <a id="topLogo" href="{{ path('home') }}">
             <img src="/assets/images/logo-wewelcome-color.png" alt="wewelcomeLogo">
         </a>
-        <nav>
-            <a class="navLink" href="{{ path('concierge') }}">Conciergerie</a>
-            <a class="navLink" href="{{ path('steward') }}">Intendance</a>
-            <a class="navLink" href="{{ path('housing') }}">Logement</a>
-            <a class="navLink" href="#contact">Contact</a>
-            <a class="navLink" href="">English</a>
-            {% if app.user %}
-            <p>ADMIN PANEL</p>
-            {% endif %}
+        <div class="openButton">
+            <div class="bar1"></div>
+            <div class="bar2"></div>
+            <div class="bar3"></div>
+        </div>
+        <nav class="sideNav">
+            <a href="javascript:void(0)" class="closeButton">&times;</a>
+            <ul class="nav">
+                <li class="navLink"><a class="link" href="{{ path('concierge') }}">Conciergerie</a></li>
+                <li class="navLink"><a class="link" href="{{ path('steward') }}">Intendance</a></li>
+                <li class="navLink"><a class="link" href="{{ path('housing') }}">Logements</a></li>
+                <li class="navLink"><a class="link" href="#contact">Contact</a></li>
+            </ul>
         </nav>
+        {% if app.user %}
+            <div id="adminLogged">
+                <p>Espace Administration</p>
+                <a href="{{ path('app_logout') }}">Se déconnecter</a>
+            </div>
+        {% endif %}
     </section>
     {% block body %}
     {% endblock %}
     <footer>
-        <button id="returnTop">Top</button>
+        <button id="returnTop">^</button>
         <address class="footerLeft">
-            <p>Alexandre DELALANDES</p>
-            <label for="telephone" id="label-telephone">Cliquer pour voir le numéro de téléphone</label>
-            <input type="checkbox" id="telephone">
-            <a id="numero" for="telephone" href="tel:">06 63 64 62 20</a>
+            {{ render(controller('App\\Controller\\FooterController::getContactInfo')) }}
         </address>
         <nav class="socialNetwork">
-            <a href="https://www.facebook.com/wewelcome.fr">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-facebook-white.png" alt="Logo Facebook">
-            </a>
-            <a href="https://www.linkedin.com/in/alexandre-delalandes/?originalSubdomain=fr">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-linkedin-white.png" alt="Logo LinkdIn">
-            </a>
-            <a href="">
-                <img class="socialNetworkLogo" src="/assets/images/social-networks/logo-instagram-white.png" alt="Logo Instagram">
-            </a>
+            {{ render(controller('App\\Controller\\FooterController::getSocialNetworks')) }}
         </nav>
         <nav class="footerRight">
-            <a href="">Travailler avec moi</a>
+            <a href="{{ path('work_with_us') }}">Nous rejoindre</a>
             <a href="">Plan du site</a>
             <a href="">Mentions légales</a>
             <a href="">CGU</a>
-            {% if app.user %}
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            {% else %}
-                <a href="{{ path('app_login') }}">Admin panel</a>
-            {% endif %}
         </nav>
     </footer>
     <script src="/assets/js/base.js"></script>
+    <script src="/assets/js/burgerMenu.js"></script>
     {% block javascripts %}{% endblock %}
 </body>
 </html>

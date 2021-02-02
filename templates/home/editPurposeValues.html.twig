@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="adminPanel">
+    {% if type == 'purpose' %}
+    <h1>Formulaire de modification de la partie "Valeurs Wewelcome"</h1>
+    {% else %}
+    <h1>Formulaire de modification de la partie "But Wewelcome"</h1>
+    {% endif %}
+    {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(form.text, 'Texte :') }}
+        {{ form_widget(form.text) }}
+        {{ form_errors(form.text) }}
+        {{ form_help(form.text) }}
+        {{ form_label(form.pictureOne, 'Photo :') }}
+        {{ form_widget(form.pictureOne) }}
+        {{ form_errors(form.pictureOne) }}
+        {{ form_help(form.pictureOne) }}
+        {{ form_label(form.legendPictureOne, 'Légende :') }}
+        {{ form_widget(form.legendPictureOne) }}
+        {{ form_errors(form.legendPictureOne) }}
+        {{ form_help(form.legendPictureOne) }}
+        <button>Valider</button>
+    {{ form_end(form) }}
+    {% if type == 'purpose' %}
+    <a href="{{ path('home') }}#section-purpose">
+        <input type="button" value="Retour">
+    </a>
+    {% else %}
+    <a href="{{ path('home') }}#section-values">
+        <input type="button" value="Retour">
+    </a>
+    {% endif %}
+</div>
+{% endblock %}

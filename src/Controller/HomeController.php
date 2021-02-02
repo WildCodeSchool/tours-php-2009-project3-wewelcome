@@ -6,17 +6,19 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use App\FormData\MailMessageData;
-use App\Form\MailMessageType;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Mailer\MailerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
-use App\Form\PartnerType;
-use App\Entity\Partner;
-use Doctrine\ORM\EntityManagerInterface;
+use App\FormData\MailMessageData;
+use App\Form\MailMessageType;
 use App\Repository\PartnerRepository;
+use App\Entity\Partner;
+use App\Form\PartnerType;
+use App\Repository\HomeRepository;
+use App\Repository\ServiceRepository;
+use App\Repository\KeysVisionRepository;
 use App\Services\FileManager;
-use Symfony\Component\Filesystem\Filesystem;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 
 class HomeController extends AbstractController
 {
@@ -27,11 +29,21 @@ class HomeController extends AbstractController
         Request $request,
         MailerInterface $mailer,
         EntityManagerInterface $entityManager,
+        ServiceRepository $serviceRepository,
         PartnerRepository $partnerRepository,
-        FileManager $fileManager
+        FileManager $fileManager,
+        HomeRepository $homeRepository,
+        KeysVisionRepository $keysVisionRepository
     ): Response {
         $error = '';
 
+        $carousel = $homeRepository->findBy(['type' => 'carousel']);
+        $purpose = $homeRepository->findBy(['type' => 'purpose']);
+        $keys = $keysVisionRepository->findBy(['type' => 'keys']);
+        $values = $homeRepository->findBy(['type' => 'values']);
+        $vision = $keysVisionRepository->findBy(['type' => 'vision']);
+        $servicesConcierge = $serviceRepository->findBy(['relatedTo' => 'concierge']);
+        $servicesSteward = $serviceRepository->findBy(['relatedTo' => 'steward']);
         $hostingPartners = $partnerRepository->findBy(['type' => 'hostingPlatform']);
         $othersPartners = $partnerRepository->findBy(['type' => 'other']);
 
@@ -74,12 +86,21 @@ class HomeController extends AbstractController
             return $this->redirectToRoute('home');
         }
 
+        $entityManager->flush();
+
         return $this->render('home/index.html.twig', [
-            'form' => $form->createView(),
-            'partnerForm' => $partnerForm->createView(),
+            'carousel' => $carousel,
+            'purpose' => $purpose,
+            'keys' => $keys,
+            'values' => $values,
+            'vision' => $vision,
+            'servicesConcierge' => $servicesConcierge,
+            'servicesSteward' => $servicesSteward,
             'hostingPartners' => $hostingPartners,
             'otherPartners' => $othersPartners,
-            'error' => $error
+            'error' => $error,
+            'partnerForm' => $partnerForm->createView(),
+            'form' => $form->createView()
         ]);
     }
 

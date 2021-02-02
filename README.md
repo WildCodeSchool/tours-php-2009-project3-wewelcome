@@ -43,6 +43,8 @@ php bin/console d:d:c
 php bin/console d:m:m
 ```
 
+7. Go on the /init page and register you as an admin user : you have to put an email address and a password
+
 > Reminder: Don't use composer update to avoid problem
 
 > Assets are directly into _public/_ directory, **we will not use** Webpack with this project

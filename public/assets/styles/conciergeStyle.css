@@ -1,19 +1,40 @@
 /* START picture and picto with explication of concierge */
+.headerConciergePage {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
 .generalInfo {
     display: flex;
     flex-wrap: wrap;
     width: 100%;
     text-align: center;
-    padding-bottom: 1em;
 }
 
 .left {
+    display: flex;
+    flex-direction: column-reverse;
     width: 50%;
+}
+.imgBackground {
+    max-width: 100%;
+    height: 90vh;
+    background-image: url('/assets/images/concierge/welcomingImg.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
 }
 
 .left img {
     width: 100%;
     height: 40rem;
+    border-radius: 20px;
+}
+
+.hidden {
+    width: 90%;
+    text-align: center;
+    margin: auto;
 }
 
 .right {
@@ -52,67 +73,145 @@
     padding-bottom: 10px;
 }
 
-.right p {
-    padding-bottom: 15px;
+.listPresentationPart {
+    font-size: 120%;
+    width: 75%;
+    padding-top: 1.5em;
+    padding-bottom: 2em;
+    text-align: center;
+    margin: auto;
+    list-style-type: none;
+    line-height: 1.3;
+}
+
+.li {
+    margin-bottom: 10px;
 }
 
 .textPicto {
     position:absolute;
-    top:40%;
-    width:45%;
+    text-align: center;
+    margin-top: 1.5em;
+    width: 45%;
     height:auto;
     padding: 5px 5px 5px 5px;
     z-index:2;
-    font-size:150%;
-    margin-left: 2.5%;
+    font-size:120%;
     font-weight: bold;
-    border-radius: 20%;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+@media screen and (max-width: 813px) {
+    .listPresentationPart {
+        width: 90%;
+    }
+
+    .left {
+        width: 100%;
+    }
+
+    .right {
+        width: 90%;
+        margin: auto;
+    }
+
+    .imgBackground {
+        height: 70vh;
+    }
+
+    .textPicto {
+        margin: auto;
+        width: 90%;
+    }
 }
 
 /* END picture and picto with explication of concierge */
 
 /* START button which send to contact form */
 .contactButton {
-    background-color: var(--primary-color-tint1);
-    color: whitesmoke;
-    font-family: var(--primary-text);
-    font-weight: bold;
-    border-radius: 5px;
-    width: 40%;
-    height: 40px;
     margin-left: auto;
     margin-right: auto;
-}
-
-.contactButton:hover {
-    cursor: pointer;
-    border-color: var(--primary-color-tint1);
-    background-color: whitesmoke;
-    color: var(--primary-color-tint1);
 }
 /* END button which send to contact form */
 
 /*** section Tariff ***/
 .tariffSection {
-    margin-top: 0;
+    display: flex;
+    flex-direction: column;
     padding-top: 2em;
-    padding-bottom: 1em;
+    padding-bottom: 2em;
     text-align: center;
-    justify-items: center;
+    justify-content: center;
     background-color:  lightgray;
 }
 
 .texTariff {
-    width: 20%;
+    width: 50%;
     text-align: center;
     margin: auto;
+    padding-bottom: 2em;
 }
 
-.imgTariff {
-    margin-top: 1em;
-    margin-bottom: 1em;
+.openTariffPart,
+.noStressTariffPart {
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1.5em;
+    padding-bottom: 1.75em;
+    background-color: whitesmoke;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+}
+
+.noStressTariffPart {
+    margin-bottom: 2em;
+}
+
+.subtitle4 {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    text-align: center;
+}
+
+.listNoStyle {
+    list-style-type: none;
+    line-height: 1.5;
+    padding-bottom: 1em;
+    padding-left: 1.75em;
+}
+
+.needSpace {
+    padding-bottom: 1em;
+}
+
+.boldPart {
+    font-weight: bold;
+}
+
+.littleLines {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 75%;
+}
+
+@media screen and (max-width: 813px) {
+    .texTariff {
+        width: 90%;
+        font-size: 110%;
+    }
+
+    .openTariffPart,
+    .noStressTariffPart {
+        width: 95%;
+    }
+    .noStressTariffPart {
+        margin-bottom: 1em;
+    }
 }
 /*** End section Tariff ***/
 
@@ -121,82 +220,262 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    text-align: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-}
-
-.contentParts {
-    display: flex;
-    justify-content: center;
+    padding-top: 1.75em;
 }
 
 .fullServicesPart {
-    width: 40%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
     justify-content: center;
-    margin-bottom: 2em;
+    padding-bottom: 2em;
+}
+
+.textSpacingSection {
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
+}
+
+.detailFullServices {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+.element {
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+    text-align: left;
+}
+.one {
+    grid-column: 1/2;
+    grid-row: 1;
+}
+.two {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.three {
+    grid-column: 3/4;
+    grid-row: 1;
+}
+.four {
+    grid-column: 4/5;
+    grid-row: 1;
+}
+.five {
+    grid-column: 1/2;
+    grid-row: 2;
+}
+.six {
+    grid-column: 2/3;
+    grid-row: 2;
+}
+.seven {
+    grid-column: 3/5;
+    grid-row: 2;
 }
 
 .layoutPart {
-    width: 40%;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     text-align: center;
     justify-content: center;
-    margin-bottom: 2em;
+    background-color: lightgray;
+    padding-top: 1.5em;
+    padding-bottom: 1.5em;
 }
 
-.imgFullServicesLayout {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 90%;
-    height: 50%;
-    overflow: hidden;
-}
-
-.textFullServicesLayout{
-    width: 90%;
-    margin: auto;
-}
-
-.linkQuote {
-    background-color: var(--primary-color-tint1);
-    color: whitesmoke;
-    font-family: var(--primary-text);
-    font-weight: bold;
-    border-radius: 5px;
-    width: 20%;
-    height: 40px;
+.listPresentationPartLayout {
+    list-style: none;
+    line-height: 1.5;
+    width: 80%;
+    padding-top: 1.25em;
+    padding-bottom: 2.25em;
+    font-size: 110%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.linkQuote:hover {
-    cursor: pointer;
-    border-color: var(--primary-color-tint1);
-    background-color: whitesmoke;
-    color: var(--primary-color-tint1);
+.textMiddleLayout {
+    width: 80%;
+    padding-bottom: 1em;
+    font-weight: bold;
+    font-size: 110%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.listNoStyleLayout {
+    list-style: none;
+    text-align: left;
+    line-height: 1.8;
+    text-indent: 8em;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contentBeforeAfter {
+    display: flex;
+    width: 60%;
+    margin: auto;
+    padding-top: 2em;
+    padding-bottom: 1em;
+    font-weight: bold;
+    font-size: 200%;
+}
+.textLeft {
+    width: 50%;
+    text-align: left;
+}
+.textRight {
+    width: 50%;
+    text-align: right;
+}
+
+.contentLimiterBeforeAfter {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Galery before after */
+.conciergeCarousel {
+    position: relative;
+    height: 35vw;
+    overflow: hidden;
+    margin: 0 auto;
+    padding-bottom: 2vh;
+}
+
+.conciergeCarousel figure {
+    position: relative;
+    width: 440%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    animation: 30s slidy infinite ease-in-out;
+}
+
+.conciergeCarousel figure img {
+    width: 12%;
+    height: 550px;
+    float: left;
+}
+
+@keyframes slidy {
+    0% { left: 0%; }
+    20% { left: 0%; }
+
+    28% { left: -107%; }
+    53% { left: -107%; }
+
+    61% { left: -214%; }
+    87% { left: -214%; }
+
+    95% { left: -316.8%; }
+    100% { left: -316.8%; }
+}
+/* End Galery */
+
+.linkQuote {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (max-width: 813px) {
+    .textSpacingSection {
+        font-size: 110%;
+    }
+
+    .detailFullServices {
+        grid-template-columns: repeat(2, 1fr);
+        width: 95%;
+    }
+    .one {
+        grid-column: 1/2;
+        grid-row: 1;
+    }
+    .two {
+        grid-column: 2/3;
+        grid-row: 1;
+    }
+    .three {
+        grid-column: 1/2;
+        grid-row: 2;
+    }
+    .four {
+        grid-column: 2/3;
+        grid-row: 2;
+    }
+    .five {
+        grid-column: 1/2;
+        grid-row: 3;
+    }
+    .six {
+        grid-column: 2/3;
+        grid-row: 3;
+    }
+    .seven {
+        grid-column: 1/3;
+        grid-row: 4;
+    }
+
+    .textMiddleLayout,
+    .listPresentationPartLayout {
+        width: 90%;
+    }
+
+    .listNoStyleLayout {
+        text-indent: 0;
+        padding-left: 1em;
+        padding-bottom: 1.25em;
+    }
+
+    .contentBeforeAfter {
+        width: 80%;
+    }
+
+    .contentBeforeAfter {
+        display: none;
+    }
+
+    .conciergeCarousel {
+        display: none;
+    }
 }
 /*** End section Full services / laying out ***/
 
 /*** Section profitability Rental Legislation ***/
 .profitabilityRentalLegislation {
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    padding-top: 1em;
-    padding-bottom: 1em;
-    background-color:  lightgray;
+    padding-top: 1.75em;
+    padding-bottom: 2.5em;
 }
 
 .profitabilityRentalPart {
-    width: 40%;
+    width: 80%;
     text-align: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .legislationPart {
-    width: 40%;
+    width: 80%;
     text-align: center;
     justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1.25em;
 }
 
 .titleLegislationPart {
@@ -204,14 +483,153 @@
 }
 
 .textProfitabilityRentalPart {
-    width: 50%;
+    width: 75%;
+    padding-bottom: 1.5em;
     margin: auto;
 }
 
-.imgProfitabilityRentalPart {
-    width: 80%;
-    margin-top: 1em;
-    margin-bottom: 1em;
+.gridPriceActiviy {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 1.75em;
+    grid-gap: 15px;
+}
+.elementPrice{
+    grid-column: 1/2;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+}
+.elementActivity {
+    grid-column: 2/3;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
 }
 
+.gridAllowancePersonalServices {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding-bottom: 1.75em;
+    grid-gap: 15px;
+}
+.elementAllowance {
+    grid-column: 1/2;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+}
+.elementPersonalServices {
+    grid-column: 2/3;
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+}
+
+.elementTitleRenta {
+    font-size: 120%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.gridTextProfitabilityRentalPart {
+    width: 90%;
+    padding-left: 1em;
+    padding-bottom: 1em;
+}
+.listRentalSection {
+    list-style: none;
+    text-align: left;
+    padding-left: 2em;
+    padding-bottom: 1em;
+}
+
+.visionStoreConcierge {
+    height: 50vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.imgProfitabilityRentalPart {
+    height: 50vw;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.gridLegislationPart {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: minmax(50px, auto);
+    grid-gap: 15px;
+}
+.blocLegislationGrid {
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+    padding-bottom: 1.75em;
+}
+.elementRentalLegislation {
+    grid-column: 1/2;
+    grid-row: 1;
+}
+.elementFormalities {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.elementTitleTaxation {
+    grid-column: 1/3;
+    grid-row: 2;
+    font-size: 150%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+.elementMicroPlan {
+    grid-column: 1/2;
+    grid-row: 3;
+}
+.elementRealPlan {
+    grid-column: 2/3;
+    grid-row: 3;
+}
+
+.subTitleLegislationPart {
+    font-size: 120%;
+    padding-top: 1em;
+    padding-bottom: 1em;
+}
+
+.textLegislationPart {
+    padding-bottom: 1em;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.sectionDailyTaxation {
+    width: 75%;
+    margin: auto;
+    padding-top: 1.25em;
+}
+
+@media screen and (max-width: 813px) {
+    .profitabilityRentalPart {
+        width: 95%;
+    }
+
+    .textProfitabilityRentalPart {
+        width: 90%;
+        font-size: 110%;
+    }
+
+    .visionStoreConcierge {
+        display: none;
+    }
+
+    .legislationPart {
+        width: 95%;
+    }
+
+    .sectionDailyTaxation {
+        width: 90%;
+    }
+
+    .textLegislationPart {
+        width: 95%;
+    }
+}
 /*** End section profitability Rental Legislation ***/

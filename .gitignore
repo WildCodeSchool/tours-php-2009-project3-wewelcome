@@ -30,4 +30,12 @@ yarn-error.log
 ###>dynamics photo folders ###
 /public/assets/images/partners/
 /public/assets/images/housing/
+/public/assets/images/carousel/
+/public/assets/images/purpose-values/
+/public/assets/images/servicesImg/
+/public/assets/images/keys-vision/
 ###>dynamics photo folders ###
+
+###>temporary files folder ###
+/public/temp/
+###>temporary files folder ###

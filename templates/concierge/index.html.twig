@@ -8,161 +8,585 @@
 
 {% block body %}
 <section class="generalInfo">
-    <div class="left">
-        <img id="conciergeImg" src="/assets/images/concierge/conciergeIndex.jpg" alt="Photo d'un salon avec miroir">
-        <div class="hidden">
-            <p id="textPostingOnline" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Posting online
-            </p>
-            <p id="textBookingManagement" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Booking Management
-            </p>
-            <p id="textBookingOptimization" class="textPicto">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                    elit, sed do eiusmod tempor incididunt. Booking Optimization
-            </p>
-            <p id="textWelcoming" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Welcome
-            </p>
-            <p id="textAssistance" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Assistance
-            </p>
-            <p id="textFoodBasket" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Food Basket
-            </p>
-            <p id="textLinens" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Linens
-            </p>
-            <p id="textCleaning" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Cleaning
-            </p>
-            <p id="textStewardship" class="textPicto">
-                Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit, sed do eiusmod tempor incididunt. Stewardship
-            </p>
+    <div class="headerConciergePage">
+        <h2 class="h2-primary-color">Conciergerie</h2>
+        <hr class="hr-primary-color">
+    </div>
+    <ul class="listPresentationPart">
+        <li>
+            Vous souhaitez louer votre bien en toute sérénité, mais vous manquez de disponibilité, vous êtes
+            éloigné de votre résidence ou vous avez juste envie de profiter de votre temps libre ?
+        </li><br>
+        <li>
+            Vous désirez réaliser un investissement immobilier mais ne savez comment le rentabiliser, tout en le
+            protégeant ?
+        </li><br>
+        <li>
+            Vous êtes professionnel de l&#39;hébergement et vous souhaitez faire une pause dans votre activité ?
+        </li><br>
+        <li>
+            wewelcome a pour mission de vous décharger de toute contrainte, et vous accompagne sur toutes
+            les facettes de la location saisonnière.
+        </li><br>
+        <li>
+            Nous gérons l’ensemble du processus ou seulement une partie, à temps complet ou sur certaines
+            périodes, pour s’adapter aux besoins de chaque propriétaire.
+        </li><br>
+        <li>
+            Les services proposés sont conçus pour assurer un service personnalisé de qualité, disponible et
+            réactif. Nous garantissons également un suivi professionnel de chaque location pour une efficacité
+            optimale.
+        </li>
+    </ul>
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
+        <div id="imgBackground" class="imgBackground">
+            <div class="hidden">
+                {% set j =0 %}
+                {% for service in services %}
+                    <p id="text{{ j }}" class="textPicto">{{ service.description|nl2br }}</p>
+                    {% set j = j +1 %}
+                {% endfor %}
+            </div>
         </div>
     </div>
     <div class="right">
-        <h2>Conciergerie</h2>
-        <hr />
         <h3 class="title">Services</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt. Lorem
-        ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
         <div class="conciergeDetails">
+            {% set i = 0 %}
+            {% for service in services %}
             <figure>
-                <img id="pictoPostingOnline" src="/assets/images/services/conciergerie/1-creation-et-mise-en-ligne-de-votre-annonce.png">
-                <figcaption>Création et mise en ligne de votre annonce</figcaption>
+                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
+                <figcaption>{{ service.title }}</figcaption>
+                {% if app.user %}
+                <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">Modifier</a></button>
+                <form 
+                    method="post"
+                    action="{{ path('service_delete', {'id' : service.id}) }}"
+                    onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');"
+                >
+                    <input type="hidden" name="_method" value="DELETE">
+                    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
+                    <button class="btn">Effacer</button>
+                </form>
+                {% endif %}
+                {% set i = i +1 %}
             </figure>
-            <figure>
-                <img id="pictoBookingManagement" src="/assets/images/services/conciergerie/2-gestion-des-reservations-et-communication.png">
-                        <figcaption>Gestion des réservations et communication</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoBookingOptimization" src="/assets/images/services/conciergerie/3-optimisation-des-reservations.png">
-                <figcaption>Optimisation des réservations</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoWelcoming" src="/assets/images/services/conciergerie/4.communication-et-assistance.png">
-                <figcaption>Communication et assistance</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoAssistance" src="/assets/images/services/conciergerie/5-accueil-et-depart-des-voyageurs.png">
-                <figcaption>Accueil et départ des voyageurs</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoFoodBasket" src="/assets/images/services/conciergerie/6-panier-de-bienvenue.png">
-                <figcaption>Panier de bienvenue</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoLinens" src="/assets/images/services/conciergerie/7-linge-de-maison.png">
-                <figcaption>Linge de maison</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoCleaning" src="/assets/images/services/conciergerie/8-menage-professionnel.png">
-                <figcaption>Ménage professionnel</figcaption>
-            </figure>
-            <figure>
-                <img id="pictoStewardship" src="/assets/images/services/conciergerie/9-services-intendance.png">
-                <figcaption>Service intendance</figcaption>
-            </figure>
+            {% endfor %}
         </div>
-        <h3 class="title">Formules</h3>
-        <p><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
-        <button class="contactButton" onclick="location.href='#contact';">Je demande un devis</button>
+        {% if app.user %}
+        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
+        {% endif %}
+        <div class="needSpace">
+            <h3 class="title">Formules</h3>
+            <p class="needSpace"><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
+            <button class="contactButton button-contact paddingBottom" onclick="location.href='#contact';">Je souhaite plus d'information</button>
+        </div>
     </div>
 </section>
 <section class="tariffSection">
-    <h3>Tarifs</h3>
+    <h3 class="">Tarifs</h3>
     <hr/>
     <p class="texTariff">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-        sed do eiusmod tempor incididunt ut labore et dolore magna 
-        aliqua. Ut enim ad minim veniam, quis ...
+        Parce que chaque propriétaire a des besoins différents, nous vous proposons des formules adaptées
+        suivant le type de services recherchés :
     </p>
-    <img class="imgTariff" src="/assets/images/concierge/exempleTarif.png">
+    {% if pricesNoStress %}
+    <div class="noStressTariffPart">
+        <h4 class="subtitle4 boldPart">{{ pricesNoStress.title }}</h4>
+        <p>{{ pricesNoStress.text|nl2br }}</p>
+        {% if app.user %}
+        <div>
+            <form method="post" action="{{ path('prices_delete', {'id' : pricesNoStress.id}) }}" onsubmit="return confirm('La partie NOSTRESS sera remise à la valeur par défaut. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesNoStress.id) }}">
+                <button class="btn">Défaut</button>
+            </form>
+            <button class="update"><a href="{{ path('prices_edit', {'id': pricesNoStress.id}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="noStressTariffPart">
+        <h4 class="subtitle4 boldPart">NOSTRESS : on s’occupe de tout</h4>
+        <p class="needSpace">
+            Une formule complète qui vous décharge intégralement de la gestion locative :
+        </p>
+        <ul class="listNoStyle">
+            <li>Création et mise en ligne de votre annonce</li>
+            <li>Création et mise à disposition d’un guide d’accueil</li>
+            <li>Gestion de vos annonces</li>
+            <li>Gestion des réservations et communications</li>
+            <li>Optimisation des réservations</li>
+            <li>Accueil et départ des voyageurs</li>
+            <li>Communication et assistance 7j/7</li>
+            <li>Gestion du linge et des paniers de bienvenue</li>
+            <li>Gestion du ménage</li>
+            <li>Etat récapitulatif mensuel des réservations</li>
+        </ul>
+        <p class="needSpace boldPart">
+            Tarif :
+        </p>
+        <div>
+            <ul class="listNoStyle">
+                <li>
+                    20%* des revenus perçus par les propriétaires + charges fixes (linge et paniers de bienvenue)
+                </li>
+                <li>
+                    Les frais de linge et paniers de bienvenue sont à la charge des propriétaires.
+                </li>
+                <li>
+                    Les frais de ménage peuvent être intégralement pris en charge par les voyageurs, et ainsi ne pas
+                    peser sur les charges du propriétaire.
+                </li>
+            </ul>
+        </div>
+        <div class="littleLines">
+            <p class="needSpace">
+                * A partir de
+            </p>
+            <p>
+                Des frais de déplacement peuvent être facturés en fonction de l’éloignement avec la société
+                wewelcome.
+                Un devis détaillé vous sera transmis après rendez-vous dans votre logement.
+            </p>
+        </div>
+        {% if app.user %}
+        <div>
+            <button class="update"><a href="{{ path('prices_add', {'source' : 'nostress'}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
+    {% if pricesOpen %}
+    <div class="openTariffPart">
+        <h4 class="subtitle4 boldPart">{{ pricesOpen.title }}</h4>
+        <p>{{ pricesOpen.text|nl2br }}</p>
+        {% if app.user %}
+        <div>
+            <form method="post" action="{{ path('prices_delete', {'id' : pricesOpen.id}) }}" onsubmit="return confirm('La partie OPEN sera remise à la valeur par défaut. Êtes-vous sur ?');">
+                <input type="hidden" name="_method" value="DELETE">
+                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesOpen.id) }}">
+                <button class="btn">Défaut</button>
+            </form>
+            <button class="update"><a href="{{ path('prices_edit', {'id': pricesOpen.id}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% else %}
+    <div class="openTariffPart">
+        <h4 class="subtitle4 boldPart">OPEN : vous préférez le sur-mesure.</h4>
+        <div>
+            <p class="needSpace">
+                Une offre de prestations à la carte en fonction de vos besoins
+            </p>
+            <p>
+                Création et mise en ligne de votre annonce, conseil en aménagement : 150,00€*
+            </p>
+            <p class="needSpace">
+                Gestion des plateformes de réservation, de vos réservations et communications : 10%* des revenus
+                perçus par les propriétaires.
+            </p>
+            <ul class="listNoStyle">
+                <li>Accueil / Check-in : 25,00€*</li>
+                <li>Départ / Check-out : 25,00€*</li>
+            </ul>
+            <div>
+                <p class="needSpace boldPart">
+                    Linge de maison :
+                </p>
+                <p class="needSpace">
+                    Nous mettons à disposition et entretenons les parures de lit, serviettes de bain et de toilette, tapis de
+                    bain et torchons.
+                </p>
+            </div>
+            <ul class="listNoStyle">
+                <li>Kit lit double : 20,00€</li>
+                <li>Kit lit simple : 15,00€</li>
+                <li>Kit serviettes sans draps : 5,00€</li>
+                <li>Panier de bienvenue : 15,00€*</li>
+                <li>Rangement et ménage : 30,00€*/heure</li>
+            </ul>
+        </div>
+        <div class="littleLines">
+            <p class="needSpace">
+            * A partir de
+            </p>
+            <p>
+            Des frais de déplacement peuvent être facturés en fonction de l’éloignement avec la société
+            wewelcome.
+            Un devis détaillé vous sera transmis après rendez-vous dans votre logement.
+            </p>
+        </div>
+        {% if app.user %}
+        <div>
+            <button class="update"><a href="{{ path('prices_add', {'source' : 'open'}) }}">Modifier</a></button>
+        </div>
+        {% endif %}
+    </div>
+    {% endif %}
 </section>
 <section class="fullServicesLayingOut">
-    <div class="contentParts">
-        <div class="fullServicesPart">
-            <h3>Services Complémentaires</h3>
-            <img class="imgFullServicesLayout" src="/assets/images/concierge/fullService.jpg">
-            <p class="textFullServicesLayout">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna 
-                aliqua. Ut enim ad minim veniam, quis ...
-            </p>
+    <div class="fullServicesPart">
+        <h3>Services Complémentaires</h3>
+        <hr />
+        <p class="textSpacingSection">
+            En complément des services de conciergerie, des services sont proposés aux propriétaires et aux locataires :
+        </p>
+        <div class="detailFullServices">
+            <div class="element one">
+                <h4 class="subtitle4">Transport</h4>
+                <ul class="listNoStyle">
+                    <li>Assurer le transport des voyageurs (gare, aéroport) en direction ou au départ du logement</li><br>
+                    <li>Réservation de taxi, vélo, gyropode, …</li><br>
+                    <li>Dépôt-stockage des bagages après l'horaire de départ</li>
+                </ul>
+            </div>
+            <div class="element two">
+                <h4 class="subtitle4">Restauration</h4>
+                <ul class="listNoStyle">
+                    <li>Réservation de restaurant</li>
+                    <li>Service traiteur, chef à domicile</li>
+                    <li>Petit-déjeuner, en-cas, panier repas…</li>
+                    <li>Livraison de repas à domicile</li>
+                    <li>Courses à domicile</li>
+                </ul>
+            </div>
+            <div class="element three">
+                <h4 class="subtitle4">Enfants</h4>
+                <ul class="listNoStyle">
+                    <li>Equipements de puériculture : lit parapluie, chaise haute, baignoire, matelas à langer, réhausseur</li><br>
+                    <li>Baby-sitting : mise en contact avec une personne de confiance</li>
+                </ul>
+            </div>
+            <div class="element four">
+                <h4 class="subtitle4">Logement</h4>
+                <ul class="listNoStyle">
+                    <li>Ménage et renouvèlement du linge en cours de séjour</li>
+                    <li>Courses à domicile</li>
+                    <li>Intervention d’urgence sur demande</li>
+                    <li>Blanchisserie : housses de canapés et coussins, tapis, couettes, alèses, …</li>
+                    <li>Recherche et encadrement d’artisans</li>
+                    <li>Ménage de printemps</li>
+                </ul>
+            </div>
+            <div class="element five">
+                <h4 class="subtitle4">Loisirs, sorties, culture</h4>
+                <ul class="listNoStyle">
+                    <li>Billetterie : lieux culturel et sportif, spectacle, parc de loisirs, sortie en bateau de Loire, en montgolfière…</li><br>
+                    <li>Beauté, soins et bien-être : Massage, kiné, ostéopathe, Yoga, manucure, coiffeur… à domicile</li>
+                </ul>
+            </div>
+            <div class="element six">
+                <h4 class="subtitle4">Autres</h4>
+                <ul class="listNoStyle">
+                    <li>Pressing : retrait et livraison à domicile</li>
+                </ul>
+            </div>
+            <div class="element seven">
+                <h4 class="subtitle4">Ainsi que les services d'intendance</h4>
+                <ul class="listNoStyle">
+                    <li>Surveillance régulière</li>
+                    <li>Mise en route, mise en veille</li>
+                    <li>Entretien ménager intérieur / extérieur</li>
+                    <li>Entretien du jardin</li>
+                    <li>Entretien de la piscine</li>
+                    <li>Livraison de courses</li>
+                    <li>Petits travaux de réparation et maintenance</li>
+                    <li>Organisation et suivi de travaux</li>
+                </ul>
+            </div>
         </div>
-        <div class="layoutPart">
-            <h3> Aménagement et décoration</h3>
-            <img class="imgFullServicesLayout" src="/assets/images/concierge/AmenagementInterieur.jpg">
-            <p class="textFullServicesLayout">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                sed do eiusmod tempor incididunt ut labore et dolore magna 
-                aliqua. Ut enim ad minim veniam, quis ...
-            </p>
-        </div>
+        <p class="textSpacingSection">
+            D’autres besoins ? WeWelcome est à votre écoute.
+        </p>
+        <p>
+            Tarifs : sur devis.
+        </p>
     </div>
-    <button class="linkQuote"  onclick="location.href='#contact';">Je demande un devis</button>
+    <div class="layoutPart">
+        <h3> Aménagement et décoration</h3>
+        <hr />
+        <ul class="listPresentationPartLayout">
+            <li>
+                Vous venez d’acquérir un bien et vous souhaitez l’aménager pour un projet de location saisonnière ?
+            </li><br>
+            <li>
+                Vous êtes propriétaire d’un logement et vous souhaitez le rénover pour une mise en location de courte durée ?
+            </li><br>
+            <li>
+                Vous ne connaissez pas les besoins spécifiques d’une location saisonnière, mais vous souhaitez accueillir au mieux des vacanciers ?
+            </li><br>
+            <li>
+                Vous souhaitez faire classer votre logement en Meublé de tourisme, et profiter de ses avantages fiscaux ?
+            </li>
+        </ul>
+        <p class="textMiddleLayout">
+            Grâce à son expertise en location de courte durée, et son expérience 
+            en aménagement de biens immobiliers, WeWelcome vous accompagne tout 
+            au long du processus d’aménagement intérieur et extérieur :
+        </p>
+        <ul class="listNoStyleLayout">
+            <li>Définition du projet</li>
+            <li>Proposition de travaux et aménagements</li>
+            <li>Gestion des devis, négociation, proposition des artisans à retenir</li>
+            <li>Détermination de l’enveloppe budgétaire</li>
+            <li>
+                Coordination des travaux dans la cadre d’un contrat de maîtrise 
+                d’ouvrage délégué (suivi des coûts, travaux et délais, gestion des 
+                arbitrages, réception)
+            </li>
+            <li>Ameublement</li>
+            <li>Décoration</li>
+            <li>Préparation et gestion de la visite de classement Meublé de tourisme</li>
+        </ul>
+        <div class="contentBeforeAfter">
+            <p class="textLeft">Avant</p>
+            <p class="textRight">Après</p>
+        </div>
+        <section class="conciergeCarousel">
+            <figure>
+                <img src="/assets/images/concierge/imageSalonOne.jpg">
+                <img src="/assets/images/concierge/imageSalonTwo.jpg">
+                <img src="/assets/images/concierge/imageLivingRoomThree.jpg">
+                <img src="/assets/images/concierge/imageLivingRoomFour.jpg">
+                <img src="/assets/images/concierge/imageRoomFive.jpg">
+                <img src="/assets/images/concierge/imageRoomSix.jpg">
+                <img src="/assets/images/concierge/imageSalonOne.jpg">
+                <img src="/assets/images/concierge/imageSalonTwo.jpg">
+            </figure>
+        </section>
+        <button class="linkQuote button-contact"  onclick="location.href='#contact';">Je souhaite plus d'information</button>
+    </div>
 </section>
 <section class="profitabilityRentalLegislation">
     <div class="profitabilityRentalPart">
         <h3>Rentabilité de la location saisonnière</h3>
-        <img class="imgProfitabilityRentalPart" src="/assets/images/concierge/legislationImage.jpg">
+        <hr />
         <p class="textProfitabilityRentalPart">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna 
-            aliqua. Ut enim ad minim veniam, quis ...
+            La rentabilité de votre logement est pour nous une question fondamentale, 
+            tant du point de vue de la qualité du service à vous offrir, que du propre 
+            intérêt financier de WeWelcome. Rémunérés en fonction du taux de remplissage 
+            de votre logement, nous avons tout intérêt à faire en sorte que celui-ci soit 
+            occupé au maximum.
         </p>
+        <p class="textProfitabilityRentalPart">
+            Ainsi nous nous engageons à prendre en compte tous les 
+            paramètres pour optimiser la rentabilité de votre logement. 
+        </p>
+        <p class="textProfitabilityRentalPart">
+            Deux grands critères sont à considérer pour la rentabilité de 
+            votre logement : le prix de location et le taux d’occupation. 
+            Nous nous engageons à optimiser ces deux critères :
+        </p>
+        <div class="gridPriceActiviy">
+            <div class="elementPrice">
+                <h4 class="elementTitleRenta">Le prix</h4>
+                <p class="gridTextProfitabilityRentalPart">
+                    Celui-ci doit être ajusté en fonction de la 
+                    qualité des prestations proposées, de l’emplacement, de la 
+                    concurrence, de la saisonnalité, des évènements locaux…
+                </p>
+                <ul class="listRentalSection">
+                    <li>
+                        Nous vous proposons de définir ensemble les tarifs de 
+                        location de votre bien, basés sur vos attentes et notre maîtrise du marché.
+                    </li><br>
+                    <li>
+                        Nous optimisons les prix régulièrement afin d’attirer 
+                        toujours plus de voyageurs et d’assurer la meilleure rentabilité de votre bien.
+                    </li>
+                </ul>
+            </div>
+            <div class="elementActivity">
+                <h4 class="elementTitleRenta">Le taux d’occupation</h4>
+                <p class="gridTextProfitabilityRentalPart">
+                    Pour maximiser celui-ci, les 
+                    éléments à prendre en compte (en dehors de la qualité des 
+                    prestations intrinsèques de votre bien) sont :
+                </p>
+                <ul class="listRentalSection">
+                    <li>
+                        Attractivité de l’annonce : texte de qualité et fidèle 
+                        à la réalité, photos professionnelles valorisantes.
+                    </li><br>
+                    <li>
+                        Commentaires positifs des voyageurs et statut de SuperHost, 
+                        grâce à : la rapidité de réponse aux demandes de réservation 
+                        des voyageurs, la qualité d’accueil, l’assistance et la 
+                        disponibilité tout au long du séjour.
+                    </li><br>
+                    <li>
+                        Notation de votre logement (propreté, qualité-prix, 
+                        arrivée, précision, emplacement)
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p class="textProfitabilityRentalPart">
+            Sur la base de notre savoir-faire, nous vous conseillons 
+            sur les prix de location, la décoration et le nécessaire 
+            à avoir pour garantir les meilleurs commentaires. Cela 
+            participe activement à votre rentabilité.
+        </p>
+        <p class="textProfitabilityRentalPart">
+            La qualité de nos services vous permettra d’augmenter 
+            votre taux d’occupation et ainsi d’augmenter votre rentabilité locative.
+        </p>
+        <div class="gridAllowancePersonalServices">
+            <div class="elementAllowance">
+                <h4 class="elementTitleRenta">Une prestation déductible et sans engagement</h4>
+                <p class="textProfitabilityRentalPart">
+                    Nos services professionnels font systématiquement l’objet 
+                    d’une facture. Vous pouvez ainsi déduire les frais de conciergerie 
+                    de vos revenus locatifs, si vous avez fiscalement opté pour une déclaration au réel.
+                </p>
+            </div>
+            <div class="elementPersonalServices">
+                <h4  class="elementTitleRenta">Services à la personne</h4>
+                <p class="textProfitabilityRentalPart">
+                    Une location saisonnière ne peut être le lieu de services à 
+                    la personne pour la personne qui y réside temporairement 
+                    (article L.7231-1). A contrario, les prestations réalisées pour 
+                    les propriétaires jouissant de leur propriété, et donc hors cadre 
+                    de la gestion locative, sont éligibles à la réduction ou au crédit d’impôt.
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="visionStoreConcierge" 
+        style="background-image: url(/assets/images/concierge/coverConciergeStore.jpg);">
     </div>
     <div class="legislationPart">
         <h3 class="titleLegislationPart">Législation</h3>
-        <p class="textProfitabilityRentalPart">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-            sed do eiusmod tempor incididunt ut labore et dolore magna 
-            aliqua. Ut enim ad minim veniam, quis ..
-        </P>
-        <img class="imgProfitabilityRentalPart" src="/assets/images/concierge/legislationImage.jpg">
+        <hr />
+        <div class="gridLegislationPart">
+            <div class="elementRentalLegislation blocLegislationGrid">
+                <h4 class="subTitleLegislationPart">Durée de location</h4>
+                <p class="textProfitabilityRentalPart">
+                    Dans le cadre d’une résidence principale, le propriétaire ne peut louer 
+                    plus de 120 jours par an. Alors que pour une résidence secondaire il 
+                    peut louer son logement toute l’année.
+                </P>
+                <p>
+                    Pour les communes de + de 200 000 habitants, le propriétaire ne peut 
+                    louer sa résidence secondaire au-delà de 120 jours par an sans avoir 
+                    fait un changement d’usage de son habitation. Ce cas de figure 
+                    n’existe donc pas en Indre-et-Loire.
+                </p>
+            </div>
+            <div class="elementFormalities blocLegislationGrid">
+                <h4 class="subTitleLegislationPart">Formalités</h4>
+                <p class="textProfitabilityRentalPart">
+                    Toute activité de location de meublé de tourisme doit faire l’objet 
+                    d’une déclaration à l'administration par son propriétaire. Pour cela, 
+                    le propriétaire du meublé doit remplir le formulaire Cerfa 14004-04 ; 
+                    et l'adresser au Maire de la commune du logement concerné, en application 
+                    des articles L.324-1-1 et D.324-1-1 du code du tourisme.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Exception : si le logement concerné constitue la résidence principale 
+                    du propriétaire (qui doit l'occuper plus de huit mois par an) la 
+                    déclaration en mairie n'est pas obligatoire.
+                </p>
+                <p>
+                    Le propriétaire du meublé doit également remplir le formulaire à 
+                    destination du Greffe du Tribunal de Commerce (cerfa_11921-04).
+                </p>
+            </div>
+            <h4 class="elementTitleTaxation">Fiscalité</h4>
+            <div class="elementMicroPlan blocLegislationGrid">
+                <h4 class="subTitleLegislationPart">Le régime micro des locations meublées</h4>
+                <p class="textProfitabilityRentalPart">
+                    Si vos revenus de l’année précédente ou de l’avant-dernière année 
+                    ne dépassent pas 70 000 € pour une location meublée classique ou 
+                    170 000 € pour des meublés de tourisme classés ou des chambres 
+                    d’hôte, vous pouvez opter pour le régime micro.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Avec ce régime, un abattement de 50 % pour les locaux meublés 
+                    classiques ou de 71 % pour les meublés de tourisme classés 
+                    (classement Meublé de tourisme) est automatiquement appliqué sur 
+                    les revenus tirés de cette location. Son montant minimum est de 305 €.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Cet abattement forfaitaire représente la totalité de vos charges. 
+                    Vous ne pouvez donc déduire aucune charge de ces revenus. Vous 
+                    devez déclarer le montant total des loyers perçus, charges locatives comprises.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Si vos revenus de locations meublées sont soumis aux contributions sociales 
+                    par les organismes sociaux, les revenus correspondants ne seront pas soumis 
+                    aux prélèvements sociaux par la DGFiP. Dans le cas contraire, vos revenus 
+                    seront soumis aux prélèvements sociaux au taux global de 17,2 %.
+                </p>
+                <p>
+                    Les personnes exerçant une activité de location meublée de courte durée 
+                    dont les recettes sont supérieures à 23 000 € par an sont soumises aux 
+                    cotisations sociales et aux contributions sociales au titre des revenus 
+                    d'activité par les organismes sociaux (code de la sécurité sociale, art. L. 611-1, 6°).
+                </p>
+            </div>
+            <div class="elementRealPlan blocLegislationGrid">
+                <h4 class="subTitleLegislationPart">Le régime réel</h4>
+                <p class="textProfitabilityRentalPart">
+                    Le régime réel s'applique lorsque vos revenus dépassent les limites 
+                    d'application du régime micro BIC ou lorsque vous souhaitez déduire 
+                    le montant précis de vos charges ou amortir votre bien.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Le loueur en meublé imposé d'après un régime réel peut, sous certaines 
+                    conditions, déduire des loyers de ses locations meublées certaines 
+                    charges qu’il a effectivement supportées dans l’intérêt de son activité.
+                </p>
+                <p class="textProfitabilityRentalPart">
+                    Les charges déductibles ne font l'objet d'aucune liste indicative mais 
+                    doivent répondre aux conditions générales de déduction des charges en BIC. Elles doivent :
+                </p>
+                <ul class="listRentalSection">
+                    <li>Être exposées dans l'intérêt direct de l'exploitation ou se rattacher à la gestion normale de l'entreprise</li><br>
+                    <li>Correspondre à une charge effective et être appuyées de justifications suffisantes</li><br>
+                    <li>Être comprises dans les charges de l'exercice au cours duquel elles ont été engagées.</li>
+                </ul>
+                <div class="textProfitabilityRentalPart">
+                    <p>
+                        Les frais de conciergerie peuvent ainsi rentrer dans ce cadre.
+                    </p>
+                    <p>
+                        Il peut également déduire l’amortissement du prix d’achat des biens 
+                        (meubles et immeubles) à la condition que ceux-ci soient inscrits à l’actif de son bilan.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="sectionDailyTaxation">
+            <h4 class="subTitleLegislationPart">Taxe de séjour</h4>
+            <div class="textLegislationPart">
+                <p>
+                    La plupart des communes ont mis en place une taxe de séjour pour les locations 
+                    saisonnières. Cette taxe est redevable par le propriétaire, qui doit la reverser auprès de la collectivité.
+                </p>
+                <p>
+                    Le montant de la taxe de séjour est déterminé par la commune ou la communauté de communes.
+                </p>
+                <p>
+                    Les plateformes « intermédiaires de paiement » (ex : Airbnb, Abritel, Booking ...) 
+                    doivent collecter la taxe de séjour dans les mêmes conditions que les hébergeurs professionnels.
+                </p>
+            </div>
+            <p class="textLegislationPart">
+                Si le propriétaire s’occupe directement du paiement de la location, charge à lui 
+                de collecter la taxe de séjour et de la reverser auprès de la collectivité.
+            </p>
+            <p>
+                Dans les deux cas, le propriétaire doit déclarer périodiquement (au mois 
+                ou au trimestre) les séjours réalisés au sein de son hébergement.
+            </p>
+        </div>
     </div>
 </section>
 {% include "/home/_contact.html.twig" %}
 {% endblock %}
 
 {% block javascripts  %}
-    <script src="/assets/js/concierge.js"></script>
+    <script src="/assets/js/services.js"></script>
 {% endblock %}

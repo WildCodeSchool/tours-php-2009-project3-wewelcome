@@ -6,6 +6,11 @@
 parameters:
     housing_directory: '%kernel.project_dir%/public/assets/images/housing/'
     partners_directory: '%kernel.project_dir%/public/assets/images/partners/'
+    carousel_directory: '%kernel.project_dir%/public/assets/images/carousel/'
+    purpose-values_directory: '%kernel.project_dir%/public/assets/images/purpose-values/'
+    services_directory: '%kernel.project_dir%/public/assets/images/servicesImg/'
+    temp_directory: '%kernel.project_dir%/public/temp/'
+    keys-vision_directory: '%kernel.project_dir%/public/assets/images/keys-vision/'
 
 services:
     # default configuration for services in *this* file

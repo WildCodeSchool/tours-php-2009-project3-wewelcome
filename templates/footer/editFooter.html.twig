@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="adminPanel">
+    <h1>Modifier les informations de contact</h1>
+    {{ form_start(footerForm, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(footerForm.text, 'Nom :') }}
+        {{ form_widget(footerForm.text) }}
+        {{ form_label(footerForm.phone, 'Téléphone :') }}
+        {{ form_widget(footerForm.phone) }}
+        {{ form_row(footerForm._token) }}
+        <button>Modifier</button>
+    {{ form_end(footerForm, {'render_rest': false}) }}
+    <a href="{{ path('home') }}">Retour</a>
+</div>
+{% endblock %}
