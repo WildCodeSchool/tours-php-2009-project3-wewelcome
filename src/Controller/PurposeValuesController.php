@@ -14,6 +14,7 @@ use App\Repository\HomeRepository;
 use App\Entity\Home;
 use App\Form\PurposeValuesType;
 use App\Services\FileManager;
+use Symfony\Component\Config\Definition\Exception\Exception;
 
 class PurposeValuesController extends AbstractController
 {
@@ -29,37 +30,35 @@ class PurposeValuesController extends AbstractController
         string $type
     ): Response {
         $home = new Home();
+        $home->setType($type);
+        $home->setTitle("null");//because there is no title
+        $home->setPictureTwo("null");//because there is no picture2
+        $home->setPictureThree("null");//because there is no picture3
+        $home->setLegendPictureTwo("null");//because there is no picture2
+        $home->setLegendPictureThree("null");//because there is no picture3
         $form = $this->createForm(PurposeValuesType::class, $home);
+        $errorAddPicture = '';
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $pictureOne = $form->get('pictureOne')->getData();
-            $addPictureOne = $fileManager->saveFile(
-                'pictureOne',
-                $pictureOne,
-                $this->getParameter('purpose-values_directory')
-            );
-            $home->setPictureOne($addPictureOne['fileName']);
-
-            switch ($type) {
-                case "purpose":
-                    $home->setType('purpose');
-                    break;
-                case "values":
-                    $home->setType('values');
-                    break;
-            }
-            $entityManager->persist($home);
-            $entityManager->flush();
-            if ($type === "purpose") {
-                return $this->redirect($this->generateUrl('home') . '#section-purpose');
+            if ($form->get('pictureOne')->getData() !== null) {
+                $addPictureOne = $fileManager->saveFile(
+                    'fileOne',
+                    $form->get('pictureOne')->getData(),
+                    $this->getParameter('purpose-values_directory')
+                );
+                $home->setPictureOne($addPictureOne['fileName']);
+                $entityManager->persist($home);
+                $entityManager->flush();
+                return $this->redirect($this->generateUrl('home') . '#section-' . $type);
             } else {
-                return $this->redirect($this->generateUrl('home') . '#section-values');
+                $errorAddPicture = '⚠️ ATTENTION: vous devez ajouter une photo pour valider le formulaire';
             }
         }
         return $this->render('home/editPurposeValues.html.twig', [
             'form' => $form->createView(),
             'home' => $home,
-            'type' => $type
+            'type' => $type,
+            'errorAddPicture' => $errorAddPicture
         ]);
     }
 
@@ -86,18 +85,14 @@ class PurposeValuesController extends AbstractController
             ) {
                 $fileManager->deleteFile($home->getPictureOne(), $this->getParameter('purpose-values_directory'));
                 $addPictureOne = $fileManager->saveFile(
-                    'pictureOne',
+                    'fileOne',
                     $pictureOne,
                     $this->getParameter('purpose-values_directory')
                 );
                 $home->setPictureOne($addPictureOne['fileName']);
             }
             $entityManager->flush();
-            if ($home->getType() === "purpose") {
-                return $this->redirect($this->generateUrl('home') . '#section-purpose');
-            } else {
-                return $this->redirect($this->generateUrl('home') . '#section-values');
-            }
+            return $this->redirect($this->generateUrl('home') . '#section-' . $type);
         }
         return $this->render('home/editPurposeValues.html.twig', [
             'form' => $form->createView(),
@@ -126,10 +121,6 @@ class PurposeValuesController extends AbstractController
             $entityManager->remove($home);
             $entityManager->flush();
         }
-        if ($type === "purpose") {
-            return $this->redirect($this->generateUrl('home') . '#section-purpose');
-        } else {
-            return $this->redirect($this->generateUrl('home') . '#section-values');
-        }
+        return $this->redirect($this->generateUrl('home') . '#section-' . $type);
     }
 }
