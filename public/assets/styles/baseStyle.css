@@ -674,3 +674,17 @@ footer {
     }
     /* END nav bar style*/
 }
+
+.message-infos {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1vw;
+    background-color: var(--secondary-color-tint1);
+    font-size: 1.3vw;
+}
+
+@media screen and (max-width: 813px) {
+    .message-infos {
+        font-size: 2.5vw;
+    }
+}
