@@ -8,17 +8,20 @@
     <h1>Formulaire de modification de la partie "But Wewelcome"</h1>
     {% endif %}
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_errors(form.text) }}
         {{ form_label(form.text, 'Texte :') }}
         {{ form_widget(form.text) }}
-        {{ form_errors(form.text) }}
         {{ form_help(form.text) }}
         {{ form_label(form.pictureOne, 'Photo :') }}
-        {{ form_widget(form.pictureOne) }}
+        {% if errorAddPicture is defined %}
+        {{errorAddPicture}}
+        {% endif %}
         {{ form_errors(form.pictureOne) }}
+        {{ form_widget(form.pictureOne) }}
         {{ form_help(form.pictureOne) }}
         {{ form_label(form.legendPictureOne, 'Légende :') }}
-        {{ form_widget(form.legendPictureOne) }}
         {{ form_errors(form.legendPictureOne) }}
+        {{ form_widget(form.legendPictureOne) }}
         {{ form_help(form.legendPictureOne) }}
         <button>Valider</button>
     {{ form_end(form) }}

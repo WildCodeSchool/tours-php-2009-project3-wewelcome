@@ -5,28 +5,31 @@
     <h1>Formulaire de modification de la partie "Vision Wewelcome"</h1>
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
         {{ form_label(form.title, 'Titre :') }}
-        {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
         {{ form_help(form.title) }}
         {{ form_label(form.photo, 'Photo :') }}
-        {{ form_widget(form.photo) }}
+        {% if errorAddPicture is defined %}
+        {{errorAddPicture}}
+        {% endif %}
         {{ form_errors(form.photo) }}
+        {{ form_widget(form.photo) }}
         {{ form_help(form.photo) }}
         {{ form_label(form.text1, '1er texte :') }}
-        {{ form_widget(form.text1) }}
         {{ form_errors(form.text1) }}
+        {{ form_widget(form.text1) }}
         {{ form_help(form.text1) }}
         {{ form_label(form.text2, '2ème texte :') }}
-        {{ form_widget(form.text2) }}
         {{ form_errors(form.text2) }}
+        {{ form_widget(form.text2) }}
         {{ form_help(form.text2) }}
         {{ form_label(form.text3, '3ème texte :') }}
-        {{ form_widget(form.text3) }}
         {{ form_errors(form.text3) }}
+        {{ form_widget(form.text3) }}
         {{ form_help(form.text3) }}
         {{ form_label(form.text4, '4ème texte :') }}
-        {{ form_widget(form.text4) }}
         {{ form_errors(form.text4) }}
+        {{ form_widget(form.text4) }}
         {{ form_help(form.text4) }}
         <button>Valider</button>
     {{ form_end(form) }}
