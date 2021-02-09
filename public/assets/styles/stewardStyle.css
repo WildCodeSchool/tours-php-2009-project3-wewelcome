@@ -40,6 +40,7 @@
     display: flex;
     flex-direction: column;
     padding-top: 50px;
+    padding-bottom: 0.75em;
 }
 
 .stewardDetails {
@@ -142,17 +143,23 @@
 /*** Section Tariff / Taxation ***/
 .stewardTariffTaxation {
     display: flex;
+    flex-direction: column;
     background-color: var(--white);
     justify-content: center;
 }
 
 .taxationStewardPart,
 .tariffStewardPart {
-    width: 40%;
+    width: 100%;
     justify-content: center;
     text-align: center;
+    margin: auto;
     padding-top: 1.75em;
-    padding-bottom: 1.25em;
+    padding-bottom: 1.75em;
+}
+
+.tariffStewardPart {
+    background-color: lightgray;
 }
 
 .subTittle {
@@ -165,8 +172,120 @@
     margin-right: auto;
 }
 
-.imgTaxationTariff {
-    width: 80%;
+.gridTariffSteward {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+    padding-bottom: 1.5em;
+}
+.blocTariff {
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--quaternary-color), 0 3px 8px 0 var(--quaternary-color);
+    padding-top: 1.25em;
+    padding-bottom: 1.75em;
+    padding-right: 1em;
+    padding-left: 1em;
+}
+.tariffOne {
+    grid-column: 1/2;
+    grid-row: 1;
+}
+.tariffTwo {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.tariffThree {
+    grid-column: 3/4;
+    grid-row: 1;
+}
+.tariffFour {
+    grid-column: 1/2;
+    grid-row: 2;
+}
+.tariffFive {
+    grid-template: 2/3;
+    grid-row: 2;
+}
+.tariffSix {
+    grid-template: 3/4;
+    grid-row: 2;
+}
+.tariffSeven {
+    grid-template: 1/2;
+    grid-row: 3;
+}
+.tariffHeight {
+    grid-template: 2/3;
+    grid-row: 3;
+}
+.tariffNine {
+    grid-template: 3/4;
+    grid-row: 3;
+}
+
+.textBold {
+    font-weight: bold;
+    padding-bottom: 0.5em;
+}
+
+.textEndTariffSection {
+    font-size: 110%;
+    line-height: 1.6;
+}
+
+/* taxation Part */
+
+.gridTaxationPart {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 15px;
+    padding-bottom: 1.5em;
+    width: 90%;
+    margin: auto;
+}
+.taxationElementOne {
+    grid-column: 1/2;
+    grid-row: 1;
+}
+.taxationElementTwo {
+    grid-column: 2/3;
+    grid-row: 1;
+}
+.taxationElementThree {
+    grid-column: 1/2;
+    grid-row: 2;
+}
+.taxationElementFour {
+    grid-column: 2/3;
+    grid-row: 2;
+}
+.taxationElementFive {
+    grid-column: 1/2;
+    grid-row: 3;
+}
+.taxationElementSix {
+    grid-column: 2/3;
+    grid-row: 3;
+}
+.taxationElementSeven {
+    width: 40%;
+    margin: auto;
+}
+
+.needSpaceBelow {
+    padding-bottom: 0.75em;
+}
+
+.ListNostyleTaxationPart {
+    list-style: none;
+    text-align: left;
+    line-height: 1.5;
+    padding-top: 1.5em;
+    padding-left: 1.75em;
+}
+
+.sourceStyle {
+    margin: auto;
 }
 
 @media screen and (max-width: 813px) {
@@ -183,8 +302,88 @@
         margin: auto;
     }
 
-    .tariffStewardPart {
-        background-color: lightgray;
+    .gridTariffSteward {
+        grid-template-columns: 1fr;
+    }
+    .tariffOne {
+        grid-column: 1/2;
+        grid-row: 1;
+    }
+    .tariffTwo {
+        grid-column: 1/2;
+        grid-row: 2;
+    }
+    .tariffThree {
+        grid-column: 1/2;
+        grid-row: 3;
+    }
+    .tariffFour {
+        grid-column: 1/2;
+        grid-row: 4;
+    }
+    .tariffFive {
+        grid-column: 1/2;
+        grid-row: 5;
+    }
+    .tariffSix {
+        grid-column: 1/2;
+        grid-row: 6;
+    }
+    .tariffSeven {
+        grid-template: 1/2;
+        grid-row: 7;
+    }
+    .tariffHeight {
+        grid-column: 1/2;
+        grid-row: 8;
+    }
+    .tariffNine {
+        grid-column: 1/2;
+        grid-row: 9;
+    }
+
+    .textEndTariffSection {
+        padding-left: 0.75em;
+        padding-right: 0.75em;
+    }
+    
+    .gridTaxationPart {
+        grid-template-columns: 1fr;
+    }
+    .taxationElementOne {
+        grid-column: 1/2;
+        grid-row: 1;
+    }
+    .taxationElementTwo {
+        grid-column: 1/2;
+        grid-row: 2;
+    }
+    .taxationElementThree {
+        grid-column: 1/2;
+        grid-row: 3;
+    }
+    .taxationElementFour {
+        grid-column: 1/2;
+        grid-row: 4;
+    }
+    .taxationElementFive {
+        grid-column: 1/2;
+        grid-row: 5;
+    }
+    .taxationElementSix {
+        grid-column: 1/2;
+        grid-row: 6;
+    }
+    .taxationElementSeven {
+        width: 80%;
+        margin: auto;
+    }
+
+    .sourceStyle {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
     }
 }
 /*** End Section Tariff / Taxation ***/
