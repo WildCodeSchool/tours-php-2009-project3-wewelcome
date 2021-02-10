@@ -243,6 +243,8 @@ footer {
 
 #telephone:checked + #numero {
     display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .footerRight a {
@@ -272,6 +274,19 @@ footer {
 
     #telephone-logo {
         width: 10vw;
+    }
+
+    #numero {
+        font-size: 3vw;
+        width: 100%;
+    }
+
+    footer {
+        padding-bottom: 4vw;
+    }
+
+    .socialNetworkLogo {
+        width: 6.5vw;
     }
 
     .footerRight a {
