@@ -52,10 +52,6 @@
     padding-right: 6px;
 }
 
-.conciergeDetails img {
-    width: 35%;
-}
-
 .conciergeDetails img:hover {
     transform: scale(1.1);
     transition-duration: 1s;
@@ -100,6 +96,11 @@
     font-weight: bold;
     visibility: hidden;
     text-shadow: -1px 0 #59ace365, 0 2px #59ace365, 2px 0 #59ace365, 0 -2px #59ace365;
+}
+
+.servicePicto {
+    height: 10vh;
+    width: 10vh;
 }
 
 @media screen and (max-width: 813px) {
