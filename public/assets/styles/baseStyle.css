@@ -181,6 +181,24 @@ hr {
     color: var(--primary-color);
     cursor: pointer;
 }
+
+@media screen and (max-width: 812px) {
+    #returnTop {
+        display: none;
+        color: rgba(83, 81, 81, 0.897);
+        bottom: 15px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 45px;
+    }
+
+    #returnTop:hover {
+        transform: none;
+        color: rgba(83, 81, 81, 0.897);
+    }
+}
+
 /* END back to top */
 
 /* START footer */
