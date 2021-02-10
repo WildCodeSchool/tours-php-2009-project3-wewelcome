@@ -49,7 +49,7 @@
             </div>
         </div>
     </div>
-    <div class="right">
+    <div class="right" id="section-pictograms">
         <h3 class="title">Services</h3>
         <div class="conciergeDetails">
             {% set i = 0 %}
@@ -58,7 +58,6 @@
                 <img class="servicePicto" id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
-                <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">Modifier</a></button>
                 <form 
                     method="post"
                     action="{{ path('service_delete', {'id' : service.id}) }}"
@@ -66,16 +65,16 @@
                 >
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
-                    <button class="btn">Effacer</button>
+                    <input type="submit" value="Supprimer" class="button-delete-mini">
                 </form>
+                <a href="{{ path('service_edit', {'id': service.id, 'source': 'concierge'}) }}">
+                    <input type="button" value="Modifier" class="button-edit-mini">
+                </a>
                 {% endif %}
                 {% set i = i +1 %}
             </figure>
             {% endfor %}
         </div>
-        {% if app.user %}
-        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
-        {% endif %}
         <div class="needSpace">
             <h3 class="title">Formules</h3>
             <p class="needSpace"><span class="blue">Tout compris</span> ou <span class="blue">A la carte</span></p>
@@ -83,7 +82,13 @@
         </div>
     </div>
 </section>
-<section class="tariffSection">
+{% if app.user %}
+    <section class="formAdmin">
+        <h1>Formulaire d'ajout de <span>Pictogramme</span></h1>
+        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
+    </section>
+{% endif %}
+<section class="tariffSection" id="section-tarifs">
     <h3 class="">Tarifs</h3>
     <hr/>
     <p class="texTariff">
@@ -95,14 +100,17 @@
         <h4 class="subtitle4 boldPart">{{ pricesNoStress.title }}</h4>
         <p>{{ pricesNoStress.text|nl2br }}</p>
         {% if app.user %}
-        <div>
+        <section class="buttons-admin">
+            <p>Mode édition</p>
             <form method="post" action="{{ path('prices_delete', {'id' : pricesNoStress.id}) }}" onsubmit="return confirm('La partie NOSTRESS sera remise à la valeur par défaut. Êtes-vous sur ?');">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesNoStress.id) }}">
-                <button class="btn">Défaut</button>
+                <button class="button-delete">Par défaut</button>
             </form>
-            <button class="update"><a href="{{ path('prices_edit', {'id': pricesNoStress.id}) }}">Modifier</a></button>
-        </div>
+            <a href="{{ path('prices_edit', {'id': pricesNoStress.id}) }}">
+                <input type="button" value="Modifier" class="button-edit">
+            </a>
+        </section>
         {% endif %}
     </div>
     {% else %}
@@ -151,9 +159,12 @@
             </p>
         </div>
         {% if app.user %}
-        <div>
-            <button class="update"><a href="{{ path('prices_add', {'source' : 'nostress'}) }}">Modifier</a></button>
-        </div>
+        <section class="buttons-admin">
+            <p>Mode édition</p>
+            <a href="{{ path('prices_add', {'source' : 'nostress'}) }}">
+                <input type="button" value="Modifier" class="button-edit">
+            </a>
+        </section>
         {% endif %}
     </div>
     {% endif %}
@@ -162,14 +173,17 @@
         <h4 class="subtitle4 boldPart">{{ pricesOpen.title }}</h4>
         <p>{{ pricesOpen.text|nl2br }}</p>
         {% if app.user %}
-        <div>
+        <section class="buttons-admin">
+            <p>Mode édition</p>
             <form method="post" action="{{ path('prices_delete', {'id' : pricesOpen.id}) }}" onsubmit="return confirm('La partie OPEN sera remise à la valeur par défaut. Êtes-vous sur ?');">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ pricesOpen.id) }}">
-                <button class="btn">Défaut</button>
+                <button class="button-delete">Par défaut</button>
             </form>
-            <button class="update"><a href="{{ path('prices_edit', {'id': pricesOpen.id}) }}">Modifier</a></button>
-        </div>
+            <a href="{{ path('prices_edit', {'id': pricesOpen.id}) }}">
+                <input type="button" value="Modifier" class="button-edit">
+            </a>
+        </section>
         {% endif %}
     </div>
     {% else %}
@@ -218,9 +232,12 @@
             </p>
         </div>
         {% if app.user %}
-        <div>
-            <button class="update"><a href="{{ path('prices_add', {'source' : 'open'}) }}">Modifier</a></button>
-        </div>
+        <section class="buttons-admin">
+            <p>Mode édition</p>
+            <a href="{{ path('prices_add', {'source' : 'open'}) }}">
+                <input type="button" value="Modifier" class="button-edit">
+            </a>
+        </section>
         {% endif %}
     </div>
     {% endif %}

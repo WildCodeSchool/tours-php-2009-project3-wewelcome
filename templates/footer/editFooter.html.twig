@@ -1,16 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    Formulaire de modification des <span>Coordonnées</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <h1>Modifier les informations de contact</h1>
-    {{ form_start(footerForm, {'attr' : {'class' : 'adminForm'}}) }}
+    {{ form_start(footerForm) }}
         {{ form_label(footerForm.text, 'Nom :') }}
         {{ form_widget(footerForm.text) }}
         {{ form_label(footerForm.phone, 'Téléphone :') }}
         {{ form_widget(footerForm.phone) }}
         {{ form_row(footerForm._token) }}
-        <button>Modifier</button>
+        <div class="buttons">
+            <a href="{{ path('home') }}#footer"><input type="button" value="Retour"></a>
+            <button>Modifier</button>
+        </div>
     {{ form_end(footerForm, {'render_rest': false}) }}
-    <a href="{{ path('home') }}">Retour</a>
-</div>
 {% endblock %}

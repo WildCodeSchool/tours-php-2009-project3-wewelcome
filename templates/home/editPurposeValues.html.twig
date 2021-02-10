@@ -1,38 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    {% if type == 'purpose' %}
+        Formulaire de modification de la partie <span>Valeurs</span>
+    {% else %}
+        Formulaire de modification de la partie <span>But</span>
+    {% endif %}
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    {% if type == 'purpose' %}
-    <h1>Formulaire de modification de la partie "Valeurs Wewelcome"</h1>
-    {% else %}
-    <h1>Formulaire de modification de la partie "But Wewelcome"</h1>
-    {% endif %}
-    {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
-        {{ form_errors(form.text) }}
+    {{ form_start(form) }}
         {{ form_label(form.text, 'Texte :') }}
+        {{ form_errors(form.text) }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
         {{ form_widget(form.text) }}
         {{ form_help(form.text) }}
+        <hr>
         {{ form_label(form.pictureOne, 'Photo :') }}
         {% if errorAddPicture is defined %}
-        {{errorAddPicture}}
+            <li>{{errorAddPicture}}</li>
         {% endif %}
         {{ form_errors(form.pictureOne) }}
         {{ form_widget(form.pictureOne) }}
         {{ form_help(form.pictureOne) }}
+        <hr>
         {{ form_label(form.legendPictureOne, 'Légende :') }}
         {{ form_errors(form.legendPictureOne) }}
         {{ form_widget(form.legendPictureOne) }}
         {{ form_help(form.legendPictureOne) }}
-        <button>Valider</button>
+        <div class="buttons">
+            {% if type == 'purpose' %}
+                <a href="{{ path('home') }}#section-purpose"><input type="button" value="Retour"></a>
+            {% else %}
+                <a href="{{ path('home') }}#section-values"><input type="button" value="Retour"></a>
+            {% endif %}
+            <button>Valider</button>
+        </div>
     {{ form_end(form) }}
-    {% if type == 'purpose' %}
-    <a href="{{ path('home') }}#section-purpose">
-        <input type="button" value="Retour">
-    </a>
-    {% else %}
-    <a href="{{ path('home') }}#section-values">
-        <input type="button" value="Retour">
-    </a>
-    {% endif %}
-</div>
 {% endblock %}

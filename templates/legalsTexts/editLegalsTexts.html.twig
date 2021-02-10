@@ -1,31 +1,32 @@
-{% block stylesheets %}
-<link rel="stylesheet" href="/assets/styles/mode-admin.css">
-{% endblock %}
-<div class="mode-admin">
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
     {% if type == 'cgu' %}
-    <h3>Formulaire de modification de la partie "CGU"</h3>
+        Formulaire de modification de la partie <span>CGU</span>
     {% else %}
-    <h3>Formulaire de modification de la partie "Mentions légales"</h3>
+        Formulaire de modification de la partie <span>Mentions Légales</span>
     {% endif %}
+{% endblock %}
+
+{% block body %}
     {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
         {{ form_label(form.title, 'Titre :') }}
-        {{ form_widget(form.title) }}
         {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
         {{ form_help(form.title) }}
+        <hr>
         {{ form_label(form.text, 'Texte :') }}
-        {{ form_widget(form.text) }}
-        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
         {{ form_errors(form.text) }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_widget(form.text) }}
         {{ form_help(form.text) }}
-        <button>Valider</button>
+        <div class="buttons">
+            {% if type == 'cgu' %}
+                <a href="{{ path('cgu') }}"><input type="button" value="Retour"></a>
+            {% else %}
+                <a href="{{ path('legal-notice') }}"><input type="button" value="Retour"></a>
+            {% endif %}
+            <button>Valider</button>
+        </div>
     {{ form_end(form) }}
-    {% if type == 'cgu' %}
-    <a href="{{ path('cgu') }}">
-        <input type="button" value="Retour">
-    </a>
-    {% else %}
-    <a href="{{ path('legal-notice') }}">
-        <input type="button" value="Retour">
-    </a>
-    {% endif %}
-</div>
+{% endblock %}

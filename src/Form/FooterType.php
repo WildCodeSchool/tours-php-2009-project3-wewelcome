@@ -24,7 +24,7 @@ class FooterType extends AbstractType
                 ],
             ])
             ->add('phone', TelType::class, ['required' => false,])
-            ->add('url', UrlType::class, ['required' => false,])
+            ->add('url', UrlType::class, ['required' => true,])
             ->add('text', TextType::class, ['required' => false,])
         ;
     }

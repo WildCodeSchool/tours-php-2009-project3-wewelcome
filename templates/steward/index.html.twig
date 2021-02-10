@@ -38,7 +38,7 @@
             optimale.
         </li>
     </ul>
-    <div class="left hiddenText" data-photos="{{ photos|json_encode }}">
+    <div class="left hiddenText" data-photos="{{ photos|json_encode }}" id="section-pictograms">
         <h3 class="title">Services</h3>
         <div class="stewardDetails">
             {% set i = 0 %}
@@ -47,20 +47,19 @@
                 <img class="servicePicto" id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
-                <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'steward'}) }}">Modifier</a></button>
                 <form method="post" action="{{ path('service_delete', {'id' : service.id}) }}" onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ service.id) }}">
-                    <button class="btn">Effacer</button>
+                    <input type="submit" value="Supprimer" class="button-delete-mini">
                 </form>
+                <a href="{{ path('service_edit', {'id': service.id, 'source': 'steward'}) }}">
+                    <input type="button" value="Modifier" class="button-edit-mini">
+                </a>
                 {% endif %}
                 {% set i = i +1 %}
             </figure>
             {% endfor %}
         </div>
-        {% if app.user %}
-        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
-        {% endif %}
         <h3 class="title">Formules</h3>
         <p><span class="green">A la carte</span></p>
         <button class="linkQuote button-contact" onclick="location.href='#contact';">Je souhaite plus d'information</button>
@@ -77,6 +76,12 @@
         </div>
     </div>
 </section>
+{% if app.user %}
+    <section class="formAdmin">
+        <h1>Formulaire d'ajout de<span>Pictogramme</span></h1>
+        {{ include ('/services/_form.html.twig', {'button_label': 'Ajouter'}) }}
+    </section>
+{% endif %}
 <section class="stewardTariffTaxation">
     <div class="tariffStewardPart">
         <h3 class="subTittle">Tarifs</h3>

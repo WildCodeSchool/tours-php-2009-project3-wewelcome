@@ -5,12 +5,14 @@
 </label><input type="checkbox" id="telephone">
 <a id="numero" for="telephone" href="tel:">0{{ contactInfo.phone }}</a>
     {% if app.user %}
-    <button class="update"><a href="{{ path('footer_edit', {'id': contactInfo.id }) }}">Modifier</a></button>
-    <form method="post" action="{{ path('footer_delete', {'id' : contactInfo.id}) }}" onsubmit="return confirm('Les informations de contact seront remises par défault. Êtes-vous sur ?');">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contactInfo.id) }}">
-        <button class="btn">Défault</button>
-    </form>
+        <form method="post" action="{{ path('footer_delete', {'id' : contactInfo.id}) }}" onsubmit="return confirm('Les informations de contact seront remises par défault. Êtes-vous sur ?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ contactInfo.id) }}">
+            <button class="button-delete-mini">Par défaut</button>
+        </form>
+        <a href="{{ path('footer_edit', {'id': contactInfo.id }) }}">
+            <input type="button" value="Modifier" class="button-edit-mini">
+        </a>
     {% endif %}
 {% else %}
     <p>Alexandre Delalandes</p>
@@ -20,6 +22,8 @@
     <input type="checkbox" id="telephone">
     <a id="numero" for="telephone" href="tel:">06 63 64 62 20</a>
     {% if app.user %}
-    <button class="update"><a href="{{ path('footer_add') }}">Modifier</a></button>
+    <a href="{{ path('footer_add') }}">
+        <input type="button" value="Modifier" class="button-edit-mini">
+    </a>
     {% endif %}
 {% endif %}

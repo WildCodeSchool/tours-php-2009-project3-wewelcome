@@ -580,44 +580,6 @@ footer {
 
 /***CALL TO ACTION___end***/
 
-/* START admin forms */
-.adminPanel {
-    padding-left: 5px;
-}
-
-.adminPanel h1 {
-    padding-top: 10%;
-}
-
-.update a {
-    color: gray;
-}
-
-.adminForm {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    width: 80%;
-    max-width: 700px;
-    flex-wrap: wrap;
-}
-
-.adminForm label {
-    width: 50%;
-    margin-right: 5px;
-}
-
-.adminForm textarea {
-    width: 100%;
-    resize: none;
-    height: 300px;
-}
-
-.adminForm input {
-    width: 50%;
-}
-/* END admin forms */
-
 /* STAR socialNetworksAdmin */
 .socialNetwork {
     display: block;
@@ -708,3 +670,123 @@ footer {
         font-size: 2.5vw;
     }
 }
+
+/***BUTTONS ADD-EDIT-DELETE___start***/
+.buttons-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(66, 66, 66);
+}
+
+.buttons-admin p {
+    margin: 5px 20px;
+    padding: 5px;
+    font-family: var(--secondary-text);
+    font-size: 25px;
+    color: var(--white);
+    text-align: left;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.button-add,
+.button-edit,
+.button-delete {
+    margin: 10px 20px;
+    padding: 10px;
+    width: 250px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    font-family: var(--primary-text);
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+.button-add {
+    background-color: rgb(18, 173, 78);
+}
+
+.button-edit {
+    background-color: gold;
+    color:rgb(66, 66, 66);
+}
+
+.button-delete {
+    background-color: rgb(223, 16, 16);
+}
+
+.button-add:hover,
+.button-edit:hover,
+.button-delete:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1450px) {
+    .buttons-admin {
+        flex-direction: column;
+    }
+    .buttons-admin p,
+    .button-add,
+    .button-edit,
+    .button-delete {
+        font-size: 15px;
+        width: 200px;
+        text-align: center;
+    }
+}
+
+/*buttons-mini*/
+.button-add-mini,
+.button-edit-mini,
+.button-delete-mini {
+    margin: 5px 10px;
+    padding: 5px;
+    width: 100px;
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    font-family: var(--primary-text);
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+.button-add-mini {
+    background-color: rgb(18, 173, 78);
+}
+
+.button-edit-mini {
+    background-color: gold;
+    color:rgb(66, 66, 66);
+}
+
+.button-delete-mini {
+    background-color: rgb(223, 16, 16);
+}
+
+.button-add-mini:hover,
+.button-edit-mini:hover,
+.button-delete-mini:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 813px) {
+    .buttons-admin-mini {
+        flex-direction: column;
+    }
+    .buttons-admin-mini p,
+    .button-add-mini,
+    .button-edit-mini,
+    .button-delete-mini {
+        transform: scale(0.6);
+    }
+}
+
+/***BUTTONS ADD-EDIT-DELETE___end***/

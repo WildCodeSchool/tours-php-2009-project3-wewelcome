@@ -1,15 +1,27 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
 
-{% block title %}WeWelcome{% endblock %}
+{% block titleForm %}
+    Formulaire de modification d'un <span>Service</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <h1>Modifier un service</h1>
-    {{ include ('/services/_form.html.twig', {'button_label': 'Modifier'}) }}
-    {% if service.relatedTo == 'concierge' %}
-    <a href="{{ path('concierge') }}">Retour</a>
-    {% else %}
-    <a href="{{ path('steward') }}">Retour</a>
-    {% endif %}
-</div>
+    {{ form_start(serviceForm) }}
+    {{ form_label(serviceForm.logoFile, 'Logo : ') }}
+    {{ form_widget(serviceForm.logoFile) }}
+    {{ form_label(serviceForm.title, 'Titre :') }}
+    {{ form_widget(serviceForm.title) }}
+    {{ form_label(serviceForm.photoFile, 'Photo :') }}
+    {{ form_widget(serviceForm.photoFile) }}
+    {{ form_label(serviceForm.description, 'Description :') }}
+    <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+    {{ form_widget(serviceForm.description) }}
+    <div class="buttons">
+        {% if service.relatedTo == 'concierge' %}
+            <a href="{{ path('concierge') }}"><input type="button" value="Retour"></a>
+        {% else %}
+            <a href="{{ path('steward') }}"><input type="button" value="Retour"></a>
+        {% endif %}
+        <button>Modifier</button>
+    </div>
+    {{ form_end(serviceForm) }}
 {% endblock %}

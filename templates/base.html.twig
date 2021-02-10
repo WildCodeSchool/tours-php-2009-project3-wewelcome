@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="/assets/images/logo-wewelcome-24px-color.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
     <link rel="stylesheet" href="/assets/styles/baseStyle.css">
+    <link rel="stylesheet" href="/assets/styles/formAdmin.css">
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -33,7 +34,7 @@
     </section>
     {% block body %}
     {% endblock %}
-    <footer>
+    <footer id="footer">
         <button id="returnTop">^</button>
         <address class="footerLeft">
             {{ render(controller('App\\Controller\\FooterController::getContactInfo')) }}

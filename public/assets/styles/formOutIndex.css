@@ -1,0 +1,32 @@
+/*Cette feuille de style sert à styliser les formulaires EN DEHORS DES INDEX*/
+
+@import 'variables.css';
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(235, 235, 235);
+}
+
+header {
+    display: grid;
+    align-items: center;
+    background-color: rgb(66, 66, 66);
+}
+
+@media screen and (min-width: 813px) {
+    header {
+        grid-template-columns: 1fr 2fr;
+        grid-template-rows: 1fr;
+        padding: 0 30px;
+    }
+}
+
+@media screen and (max-width: 813px) {
+    header {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 2fr;
+        justify-items: center;
+        text-align: center;
+    }
+}

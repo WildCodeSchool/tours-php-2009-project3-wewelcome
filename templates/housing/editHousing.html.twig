@@ -1,9 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    Formulaire de modification d'un <span>Logement</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <h1>Modifier un logement</h1>
-    {{ include('housing/_form.html.twig', {'button_label': 'Modifier'}) }}
-    <a href="{{ path('housing') }}">Retour</a>
-</div>
+
+    {{ form_start(housingForm) }}
+        {{ form_label(housingForm.photoFile, 'Photo :') }}
+        {{ form_widget(housingForm.photoFile) }}
+        {{ form_label(housingForm.url, 'Lien vers l\'annonce :') }}
+        {{ form_widget(housingForm.url) }}
+        {{ form_label(housingForm.description, 'Description :') }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_widget(housingForm.description) }}
+        <div class="buttons">
+            <a href="{{ path('housing') }}#section-housing"><input type="button" value="Retour"></a>
+            <button>Modifier</button>
+        </div>
+    {{ form_end(housingForm) }}
 {% endblock %}

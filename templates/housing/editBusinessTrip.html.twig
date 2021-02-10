@@ -1,9 +1,22 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    Formulaire de modification d'un <span>Voyage d'affaire</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <h1>Modifier "Voyage d'affaires"</h1>
-        {{ include('housing/_formBusiness.html.twig', {'button_label': 'Modifier'}) }}
-    <a href="{{ path('housing') }}">Retour</a>
-</div>
+
+    {{ form_start(businessTripForm) }}
+        {{ form_label(businessTripForm.photoFile, 'Photo :') }}
+        {{ form_widget(businessTripForm.photoFile) }}
+        {{ form_label(businessTripForm.description, 'Description :') }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_widget(businessTripForm.description) }}
+        {{ form_row(businessTripForm._token) }}
+        <input type="hidden" name="isBusinessTravel" value="true" >
+        <div class="buttons">
+            <a href="{{ path('housing') }}#section-businessTrip"><input type="button" value="Retour"></a>
+            <button>Modifier</button>
+        </div>
+    {{ form_end(businessTripForm, {'render_rest': false}) }}
 {% endblock %}
