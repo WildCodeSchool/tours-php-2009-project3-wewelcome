@@ -1,7 +1,8 @@
-{{ form_start(businessTripForm, {'attr' : {'class' : 'adminForm'}}) }}
+{{ form_start(businessTripForm) }}
     {{ form_label(businessTripForm.photoFile, 'Photo :') }}
     {{ form_widget(businessTripForm.photoFile) }}
     {{ form_label(businessTripForm.description, 'Description :') }}
+    <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
     {{ form_widget(businessTripForm.description) }}
     {{ form_row(businessTripForm._token) }}
     <input type="hidden" name="isBusinessTravel" value="true" >

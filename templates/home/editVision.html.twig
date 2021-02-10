@@ -1,40 +1,46 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    Formulaire de modification de la partie <span>Vision</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <h1>Formulaire de modification de la partie "Vision Wewelcome"</h1>
-    {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+    {{ form_start(form) }}
         {{ form_label(form.title, 'Titre :') }}
         {{ form_errors(form.title) }}
         {{ form_widget(form.title) }}
         {{ form_help(form.title) }}
+        <hr>
         {{ form_label(form.photo, 'Photo :') }}
         {% if errorAddPicture is defined %}
-        {{errorAddPicture}}
+            <li>{{errorAddPicture}}</li>
         {% endif %}
         {{ form_errors(form.photo) }}
         {{ form_widget(form.photo) }}
         {{ form_help(form.photo) }}
+        <hr>
         {{ form_label(form.text1, '1er texte :') }}
         {{ form_errors(form.text1) }}
         {{ form_widget(form.text1) }}
         {{ form_help(form.text1) }}
+        <hr>
         {{ form_label(form.text2, '2ème texte :') }}
         {{ form_errors(form.text2) }}
         {{ form_widget(form.text2) }}
         {{ form_help(form.text2) }}
+        <hr>
         {{ form_label(form.text3, '3ème texte :') }}
         {{ form_errors(form.text3) }}
         {{ form_widget(form.text3) }}
         {{ form_help(form.text3) }}
+        <hr>
         {{ form_label(form.text4, '4ème texte :') }}
         {{ form_errors(form.text4) }}
         {{ form_widget(form.text4) }}
         {{ form_help(form.text4) }}
-        <button>Valider</button>
+        <div class="buttons">
+            <a href="{{ path('home') }}#section-vision"><input type="button" value="Retour"></a>
+            <button>Valider</button>
+        </div>
     {{ form_end(form) }}
-    <a href="{{ path('home') }}#section-vision">
-        <input type="button" value="Retour">
-    </a>
-</div>
 {% endblock %}

@@ -1,0 +1,154 @@
+@import 'variables.css';
+
+.formAdmin {
+    margin: 0 auto;
+    background-color: rgb(66, 66, 66);
+    padding: 10px 0;
+}
+
+.formAdmin h1 {
+    padding: 10px;
+    font-family: var(--primary-title);
+    font-size: 30px;
+    color: var(--white);
+    background-color: rgb(66, 66, 66);
+    text-align: center;
+}
+
+.formAdmin h1 span {
+    font-size: 140%;
+    color: gold;
+}
+
+.formAdmin form {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    padding: 2vw;
+    background-color: rgb(235, 235, 235);
+    color: var(--black);
+    border-radius: 10px;
+}
+
+@media screen and (min-width: 813px) {
+    .formAdmin form {
+        width: 800px;
+    }
+}
+
+.formAdmin label {
+    margin: 10px 0 2px;
+    padding: 10px;
+    font-family: var(--primary-text);
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.formAdmin input,
+.formAdmin textarea,
+.formAdmin button,
+.formAdmin select {
+    margin: 2px 0 10px;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    font-family: var(--primary-text);
+    font-size: 20px;
+}
+
+.formAdmin input[type="text"],
+.formAdmin textarea,
+.formAdmin select {
+    text-align: center;
+    border: solid 2px var(--white);
+}
+
+.formAdmin input[type="text"]:hover,
+.formAdmin textarea:hover,
+.formAdmin select:hover {
+    border: solid 2px var(--primary-color);
+}
+
+.formAdmin textarea {
+    resize: none;
+    height: 300px;
+}
+
+.formAdmin input[type="file"] {
+    border: solid 2px var(--white);
+}
+
+.formAdmin input[type="file"]:hover {
+    cursor: pointer;
+    border: solid 2px var(--primary-color);
+}
+
+.formAdmin .buttons {
+    display: flex;
+    padding: 30px 0;
+    justify-content: space-between;
+}
+
+.formAdmin input[type="button"],
+.formAdmin button {
+    width: 250px;
+    color: white;
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+@media screen and (max-width: 813px) {
+    .formAdmin input[type="button"],
+    .formAdmin button {
+        width: 150px;
+    }
+}
+
+.formAdmin input[type="button"]:hover,
+.formAdmin button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.formAdmin input[type="button"] {
+    background-color: rgb(223, 16, 16);
+}
+
+.formAdmin button {
+    background-color: rgb(18, 173, 78);
+}
+
+.formAdmin li {
+    font-size: 20px;
+    color: rgb(223, 16, 16);
+    font-family: var(--secondary-text);
+    font-style: italic;
+    list-style: none;
+}
+
+.formAdmin p {
+    font-size: 20px;
+    color: blue;
+    font-family: var(--secondary-text);
+    font-style: italic;
+}
+
+.formAdmin hr {
+    display: block;
+    width: 30%;
+    border-top: 3px solid rgb(66, 66, 66);
+}
+
+@media screen and (max-width: 813px) {
+    .formAdmin h1 {
+        font-size: 18px;
+    }
+    .formAdmin label,
+    .formAdmin input,
+    .formAdmin textarea,
+    .formAdmin button,
+    .formAdmin select {
+        font-size: 15px;
+    }
+}

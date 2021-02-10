@@ -1,19 +1,19 @@
-{% extends 'base.html.twig' %}
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    Formulaire de modification des <span>Tarifs</span>
+{% endblock %}
 
 {% block body %}
-<div class="adminPanel">
-    <div class="add">
-        <h1>Formulaire de modification des prix</h1>
-        {{ form_start(pricesForm, {'attr' : {'class' : 'adminForm'}}) }}
-            {{ form_label(pricesForm.title, 'Titre :') }}
-            {{ form_widget(pricesForm.title) }}
-            {{ form_label(pricesForm.text, 'Texte :') }}
-            {{ form_widget(pricesForm.text) }}
+    {{ form_start(pricesForm, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(pricesForm.title, 'Titre :') }}
+        {{ form_widget(pricesForm.title) }}
+        {{ form_label(pricesForm.text, 'Texte :') }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_widget(pricesForm.text) }}
+        <div class="buttons">
+            <a href="{{ path('concierge') }}#section-tarifs"><input type="button" value="Retour"></a>
             <button>Valider</button>
-        {{ form_end(pricesForm) }}
-        <a href="{{ path('concierge') }}">
-            <input type="button" value="Retour">
-        </a>
-    </div>
-</div>
+        </div>
+    {{ form_end(pricesForm) }}
 {% endblock %}

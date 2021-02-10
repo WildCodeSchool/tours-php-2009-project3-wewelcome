@@ -65,7 +65,7 @@ class HomeController extends AbstractController
             $entityManager->persist($partner);
             $entityManager->flush();
 
-            return $this->redirectToRoute('home');
+            return $this->redirect($this->generateUrl('home') . '#partners');
         }
 
         /** display the contact form and send an email to Alexandre */
@@ -121,6 +121,6 @@ class HomeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirect($this->generateUrl('home') . '#partners');
     }
 }

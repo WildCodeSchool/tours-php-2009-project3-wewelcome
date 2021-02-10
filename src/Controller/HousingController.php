@@ -58,7 +58,7 @@ class HousingController extends AbstractController
                 );
 
                 if ($errorHousing == '') {
-                    return $this->redirectToRoute('housing');
+                    return $this->redirect($this->generateUrl('housing') . '#section-housing');
                 }
             }
         }
@@ -83,7 +83,7 @@ class HousingController extends AbstractController
                 );
 
                 if ($errorBusiness == '') {
-                    return $this->redirectToRoute('housing');
+                    return $this->redirect($this->generateUrl('housing') . '#section-businnesTrip');
                 }
             }
         }
@@ -123,7 +123,7 @@ class HousingController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('housing');
+        return $this->redirect($this->generateUrl('housing') . '#section-housing');
     }
 
     /**
@@ -156,7 +156,7 @@ class HousingController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('housing');
+            return $this->redirect($this->generateUrl('housing') . '#section-housing');
         }
 
         return $this->render('housing/editHousing.html.twig', [
@@ -195,7 +195,7 @@ class HousingController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('housing');
+            return $this->redirect($this->generateUrl('housing') . '#section-businessTrip');
         }
 
         return $this->render('housing/editBusinessTrip.html.twig', [

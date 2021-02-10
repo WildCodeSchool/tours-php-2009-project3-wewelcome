@@ -42,21 +42,24 @@
         </div>
         <!-- Carousel modification form -->
         {% if app.user and is_granted("ROLE_ADMIN") %}
+        <section class="buttons-admin">
+            <p>Mode édition</p>
             {% if carousel is empty %}
             <a href="{{ path('new_carousel') }}">
-                <input type="button" value="Nouveau carousel" class="">
+                <input type="button" value="Nouveau carousel" class="button-add">
             </a>
             {% endif %}
             {% if carousel is not empty %}
             <form method="post" action="{{ path('default_carousel', {'idCarousel' : carousel[0].id}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au carousel par défaut?');">
                 <input type="hidden" name="_method" value="DELETE">
                 <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ carousel[0].id) }}">
-                <input type="submit" value="Carousel par défaut">
+                <input type="submit" value="Carousel par défaut" class="button-delete">
             </form>
             <a href="{{ path('edit_carousel', {'idCarousel': carousel[0].id }) }}">
-                <input type="button" value="Editer le carousel" class="">
+                <input type="button" value="Editer le carousel" class="button-edit">
             </a>
             {% endif %}
+            </section>
         {% endif %}
     </section>
 
@@ -64,7 +67,7 @@
         <section>
             <article class="purpose-text">
                 {% if purpose is not empty and purpose[0].text %}
-                <p>{{purpose[0].text}}</p>
+                <p>{{purpose[0].text|nl2br}}</p>
                 {% else %}
                 <p>Vous êtes propriétaire et vous recherchez une personne de confiance, à qui confier en toute tranquillité la gestion locative de votre bien immobilier et/ou l’entretien de votre propriété ?<br>
                 <span>WeWelcome est votre assistant dédié !</span><br>
@@ -80,25 +83,28 @@
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
-        <!-- Purpose modification form -->
-        {% if app.user and is_granted("ROLE_ADMIN") %}
-            {% if purpose is empty %}
-            <a href="{{ path('new_purpose-values', {'type': 'purpose'}) }}">
-                <input type="button" value="Nouveau contenu" class="">
-            </a>
-            {% endif %}
-            {% if purpose is not empty %}
-            <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purpose[0].id) }}">
-                <input type="submit" value="Contenu par défaut">
-            </form>
-            <a href="{{ path('edit_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}">
-                <input type="button" value="Editer le contenu" class="">
-            </a>
-            {% endif %}
-        {% endif %}
     </section>
+    <!-- Purpose modification form -->
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+    <section class="buttons-admin">
+        <p>Mode édition</p>
+        {% if purpose is empty %}
+        <a href="{{ path('new_purpose-values', {'type': 'purpose'}) }}">
+            <input type="button" value="Nouveau contenu" class="button-add">
+        </a>
+        {% endif %}
+        {% if purpose is not empty %}
+        <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ purpose[0].id) }}">
+            <input type="submit" value="Contenu par défaut" class="button-delete">
+        </form>
+        <a href="{{ path('edit_purpose-values', {'idPurposeValues' : purpose[0].id, 'type': 'purpose'}) }}">
+            <input type="button" value="Editer le contenu" class="button-edit">
+        </a>
+        {% endif %}
+    </section> 
+    {% endif %}
 
     {% if keys is not empty and keys[0].photo %}
     <section class="key-figures section-except-home"
@@ -156,25 +162,28 @@
         <p id="key-figure-41">disponible pour vous</p>
         {% endif %}
         <a class="button-contact" id="key-figure-contact" href="#contact">Nous contacter</a>
-        <!-- Keys modification form -->
-        {% if app.user and is_granted("ROLE_ADMIN") %}
-            {% if keys is empty %}
-            <a href="{{ path('new_keys', {'type': 'keys'}) }}">
-                <input type="button" value="Nouveau contenu" class="">
-            </a>
-            {% endif %}
-            {% if keys is not empty %}
-            <form method="post" action="{{ path('default_keys', {'idKeys' : keys[0].id, 'type': 'keys'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ keys[0].id) }}">
-                <input type="submit" value="Contenu par défaut">
-            </form>
-            <a href="{{ path('edit_keys', {'idKeys': keys[0].id, 'type': 'keys'}) }}">
-                <input type="button" value="Editer le contenu" class="">
-            </a>
-            {% endif %}
+    </section>
+    <!-- Keys modification form -->
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+    <section class="buttons-admin">
+        <p>Mode édition</p>
+        {% if keys is empty %}
+        <a href="{{ path('new_keys', {'type': 'keys'}) }}">
+            <input type="button" value="Nouveau contenu" class="button-add">
+        </a>
+        {% endif %}
+        {% if keys is not empty %}
+        <form method="post" action="{{ path('default_keys', {'idKeys' : keys[0].id, 'type': 'keys'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ keys[0].id) }}">
+            <input type="submit" value="Contenu par défaut" class="button-delete">
+        </form>
+        <a href="{{ path('edit_keys', {'idKeys': keys[0].id, 'type': 'keys'}) }}">
+            <input type="button" value="Editer le contenu" class="button-edit">
+        </a>
         {% endif %}
     </section>
+    {% endif %}
 
     <section class="values" id="section-values">
         <section>
@@ -187,7 +196,7 @@
             </article>
             <article class="values-text">
                 {% if values is not empty and values[0].text %}
-                <p>{{values[0].text}}</p>
+                <p>{{values[0].text|nl2br}}</p>
                 {% else %}
                 <p><span>WeWelcome</span> vous propose un partenariat fondé sur sa vision du service qui implique confiance, qualité, efficacité et proximité.<br>
                 <span>WeWelcome</span> est une entreprise à taille humaine. Cette spécificité nous permet d'être à l'écoute de nos clients pour mieux les accompagner, pour maîtriser nos coûts et nos délais d'intervention.</p>
@@ -195,25 +204,28 @@
             </article>
         </section>
         <a class="button-contact" href="#contact">Nous contacter</a>
-        <!-- Values modification form -->
-        {% if app.user and is_granted("ROLE_ADMIN") %}
-            {% if values is empty %}
-            <a href="{{ path('new_purpose-values', {'type': 'values'}) }}">
-                <input type="button" value="Nouveau contenu" class="">
-            </a>
-            {% endif %}
-            {% if values is not empty %}
-            <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ values[0].id) }}">
-                <input type="submit" value="Contenu par défaut">
-            </form>
-            <a href="{{ path('edit_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}">
-                <input type="button" value="Editer le contenu" class="">
-            </a>
-            {% endif %}
+    </section>
+    <!-- Values modification form -->
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+    <section class="buttons-admin">
+        <p>Mode édition</p>
+        {% if values is empty %}
+        <a href="{{ path('new_purpose-values', {'type': 'values'}) }}">
+            <input type="button" value="Nouveau contenu" class="button-add">
+        </a>
+        {% endif %}
+        {% if values is not empty %}
+        <form method="post" action="{{ path('default_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ values[0].id) }}">
+            <input type="submit" value="Contenu par défaut" class="button-delete">
+        </form>
+        <a href="{{ path('edit_purpose-values', {'idPurposeValues' : values[0].id, 'type': 'values'}) }}">
+            <input type="button" value="Editer le contenu" class="button-edit">
+        </a>
         {% endif %}
     </section>
+    {% endif %}
 
     {% if vision is not empty and vision[0].photo %}
     <section
@@ -252,25 +264,28 @@
         <p id="service-vision-4">proximité</p>
         {% endif %}
         <a class="button-contact" id="service-vision-contact" href="#contact">Nous contacter</a>
-        <!-- Values modification form -->
-        {% if app.user and is_granted("ROLE_ADMIN") %}
-            {% if vision is empty %}
-            <a href="{{ path('new_vision', {'type': 'vision'}) }}">
-                <input type="button" value="Nouveau contenu" class="">
-            </a>
-            {% endif %}
-            {% if vision is not empty %}
-            <form method="post" action="{{ path('default_vision', {'idVision' : vision[0].id, 'type': 'vision'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
-                <input type="hidden" name="_method" value="DELETE">
-                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ vision[0].id) }}">
-                <input type="submit" value="Contenu par défaut">
-            </form>
-            <a href="{{ path('edit_vision', {'idVision': vision[0].id, 'type': 'vision' }) }}">
-                <input type="button" value="Editer le contenu" class="">
-            </a>
-            {% endif %}
+    </section>
+    <!-- Values modification form -->
+    {% if app.user and is_granted("ROLE_ADMIN") %}
+    <section class="buttons-admin">
+    <p>Mode édition</p>
+        {% if vision is empty %}
+        <a href="{{ path('new_vision', {'type': 'vision'}) }}">
+            <input type="button" value="Nouveau contenu" class="button-add">
+        </a>
+        {% endif %}
+        {% if vision is not empty %}
+        <form method="post" action="{{ path('default_vision', {'idVision' : vision[0].id, 'type': 'vision'}) }}" onsubmit="return confirm('Êtes-vous sur de vouloir revenir au contenu par défaut?');">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ vision[0].id) }}">
+            <input type="submit" value="Contenu par défaut" class="button-delete">
+        </form>
+        <a href="{{ path('edit_vision', {'idVision': vision[0].id, 'type': 'vision' }) }}">
+            <input type="button" value="Editer le contenu" class="button-edit">
+        </a>
         {% endif %}
     </section>
+    {% endif %}
 
     <section class="activities">
         <h2 class="h2-primary-color">Les offres WeWelcome</h2>
@@ -395,7 +410,7 @@
                 <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                    <button class="btn">Effacer</button>
+                    <button class="button-delete-mini">Supprimer</button>
                 </form>
                 {% endif %}
             </div>
@@ -412,7 +427,7 @@
                 <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                    <button class="btn">Effacer</button>
+                    <button class="button-delete-mini">Supprimer</button>
                 </form>
                 {% endif %}
             </div>
@@ -427,7 +442,7 @@
                 <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                    <button class="btn">Effacer</button>
+                    <button class="button-delete-mini">Supprimer</button>
                 </form>
                 {% endif %}
             </div>
@@ -444,7 +459,7 @@
                 <form method="post" action="{{ path('partner_delete', {'id' : partner.id}) }}" onsubmit="return confirm('{{ partner.name }} sera supprimé définitivement. Êtes-vous sur ?');">
                     <input type="hidden" name="_method" value="DELETE">
                     <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ partner.id) }}">
-                    <button class="btn">Effacer</button>
+                    <button class="button-delete-mini">Supprimer</button>
                 </form>
                 {% endif %}
             </div>
@@ -452,21 +467,33 @@
         </nav>
         <!-- Add a new partner -->
         {% if app.user %}
-        <div class="adminPanel">
-            <div class="add">
-            {{ form_start(partnerForm, {'attr' : {'class' : 'adminForm'}}) }}
-                {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
-                {{ form_widget(partnerForm.name) }}
-                {{ form_label(partnerForm.url, 'Lien vers le site :') }}
-                {{ form_widget(partnerForm.url) }}
-                {{ form_label(partnerForm.logoFile, 'Logo au format png ou jpeg :') }}
-                {{ form_widget(partnerForm.logoFile) }}
-                {{ form_label(partnerForm.type, 'Type :') }}
-                {{ form_widget(partnerForm.type) }}
-                <input type='submit' value='Ajouter'>
-            {{ form_end(partnerForm) }}
-            </div>
-        </div>
+            <section class="formAdmin">
+                <h1>Formulaire d'ajout et de suppresion des <span>Partenaires</span></h1>
+                {{ form_start(partnerForm) }}
+                    {{ form_label(partnerForm.name, 'Nom du partenaire :') }}
+                    {{ form_errors(partnerForm.name) }}
+                    {{ form_widget(partnerForm.name) }}
+                    {{ form_help(partnerForm.name) }}
+
+                    {{ form_label(partnerForm.url, 'Lien vers le site :') }}
+                    {{ form_errors(partnerForm.url) }}
+                    {{ form_widget(partnerForm.url) }}
+                    {{ form_help(partnerForm.url) }}
+
+                    {{ form_label(partnerForm.logoFile, 'Logo au format png ou jpeg :') }}
+                    {{ form_errors(partnerForm.logoFile) }}
+                    {{ form_widget(partnerForm.logoFile) }}
+                    {{ form_help(partnerForm.logoFile) }}
+
+                    {{ form_label(partnerForm.type, 'Type :') }}
+                    {{ form_errors(partnerForm.type) }}
+                    {{ form_widget(partnerForm.type) }}
+                    {{ form_help(partnerForm.type) }}
+                    <div class="buttons">
+                        <button>Valider</button>
+                    </div>
+                {{ form_end(partnerForm) }}
+            </section>
         {% endif %}
     </section>
 

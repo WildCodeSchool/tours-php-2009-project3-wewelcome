@@ -43,6 +43,9 @@ class FooterController extends AbstractController
             $socialNetwork->setIsSocialNetwork(true);
             $entityManager->persist($socialNetwork);
             $entityManager->flush();
+            $request = $requestStack->getMasterRequest();
+            $socialNetwork = new Footer();
+            $socialNetworkForm = $this->createForm(FooterType::class, $socialNetwork);
         }
 
         $socialNetworks = $footerRepository->findBy(['isSocialNetwork' => true]);
@@ -80,7 +83,7 @@ class FooterController extends AbstractController
             }
         }
 
-        return $this->redirectToRoute('home');
+        return $this->redirect($this->generateUrl('home') . '#footer');
     }
 
     /**
@@ -101,7 +104,7 @@ class FooterController extends AbstractController
             if ($footerForm->isSubmitted() && $footerForm->isValid()) {
                 $entityManager->flush();
 
-                return $this->redirectToRoute('home');
+                return $this->redirect($this->generateUrl('home') . '#footer');
             }
 
             return $this->render('footer/editFooter.html.twig', [
@@ -132,7 +135,7 @@ class FooterController extends AbstractController
                 $entityManager->persist($footer);
                 $entityManager->flush();
 
-                return $this->redirectToRoute('home');
+                return $this->redirect($this->generateUrl('home') . '#footer');
             }
 
             return $this->render('footer/editFooter.html.twig', [
