@@ -13,7 +13,11 @@
         <div class="theyTrustUs">
             {% for house in houses %}
             <div>
-                <a href="#lightbox{{house.id}}"><img src="assets/images/housing/{{ house.photo }}" alt=""></a>
+                <div class="divPhoto">
+                    <a href="#lightbox{{house.id}}">
+                        <img class="housingPhoto" src="assets/images/housing/{{ house.photo }}" alt="">
+                    </a>
+                </div>
                 <a href="#_" class="lightbox" id="lightbox{{house.id}}"><img id="lightboxImage" src="assets/images/housing/{{ house.photo }}" alt=""></a>
                 <p>{{ house.description }}</p>
                 <a class="housingLink" href="{{ house.url }}" target="blank">Voir l'annonce</a>
