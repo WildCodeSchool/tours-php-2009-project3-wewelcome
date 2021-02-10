@@ -6,6 +6,7 @@
     <link rel="icon" type="image/png" href="/assets/images/logo-wewelcome-24px-color.png" />
     <title>{% block title %}WeWelcome{% endblock %}</title>
     <link rel="stylesheet" href="/assets/styles/baseStyle.css">
+    <link rel="stylesheet" href="/assets/styles/formAdmin.css">
     {% block stylesheets %}{% endblock %}
 </head>
 <body>
@@ -25,18 +26,15 @@
                 <li class="navLink"><a class="link" href="{{ path('steward') }}">Intendance</a></li>
                 <li class="navLink"><a class="link" href="{{ path('housing') }}">Logements</a></li>
                 <li class="navLink"><a class="link" href="#contact">Contact</a></li>
+                {% if app.user %}
+                <li><a class="link" href="{{ path('app_logout') }}">Admin / Se déconnecter</a></li>
+                {% endif %}
             </ul>
         </nav>
-        {% if app.user %}
-            <div id="adminLogged">
-                <p>Espace Administration</p>
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            </div>
-        {% endif %}
     </section>
     {% block body %}
     {% endblock %}
-    <footer>
+    <footer id="footer">
         <button id="returnTop">^</button>
         <address class="footerLeft">
             {{ render(controller('App\\Controller\\FooterController::getContactInfo')) }}
@@ -46,9 +44,8 @@
         </nav>
         <nav class="footerRight">
             <a href="{{ path('work_with_us') }}">Nous rejoindre</a>
-            <a href="">Plan du site</a>
-            <a href="">Mentions légales</a>
-            <a href="">CGU</a>
+            <a href="{{ path('cgu') }}">CGU</a>
+            <a href="{{ path('legal-notice') }}">Mentions légales</a>
         </nav>
     </footer>
     <script src="/assets/js/base.js"></script>

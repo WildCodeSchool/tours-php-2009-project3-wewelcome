@@ -57,7 +57,7 @@ class StewardController extends AbstractController
             $entityManager->persist($service);
             $entityManager->flush();
 
-            return $this->redirectToRoute('steward');
+            return $this->redirect($this->generateUrl('steward') . '#section-pictograms');
         }
 
         /** display the contact form and send an email to Alexandre */

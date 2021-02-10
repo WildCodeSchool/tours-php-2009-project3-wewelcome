@@ -1,0 +1,32 @@
+{% extends 'baseForm.html.twig' %}
+
+{% block titleForm %}
+    {% if type == 'cgu' %}
+        Formulaire de modification de la partie <span>CGU</span>
+    {% else %}
+        Formulaire de modification de la partie <span>Mentions Légales</span>
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {{ form_start(form, {'attr' : {'class' : 'adminForm'}}) }}
+        {{ form_label(form.title, 'Titre :') }}
+        {{ form_errors(form.title) }}
+        {{ form_widget(form.title) }}
+        {{ form_help(form.title) }}
+        <hr>
+        {{ form_label(form.text, 'Texte :') }}
+        {{ form_errors(form.text) }}
+        <p>Remarque: vous pouvez sauter une ou plusieurs lignes en tappant entrée</p>
+        {{ form_widget(form.text) }}
+        {{ form_help(form.text) }}
+        <div class="buttons">
+            {% if type == 'cgu' %}
+                <a href="{{ path('cgu') }}"><input type="button" value="Retour"></a>
+            {% else %}
+                <a href="{{ path('legal-notice') }}"><input type="button" value="Retour"></a>
+            {% endif %}
+            <button>Valider</button>
+        </div>
+    {{ form_end(form) }}
+{% endblock %}

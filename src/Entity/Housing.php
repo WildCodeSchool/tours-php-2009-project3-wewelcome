@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\HousingRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=HousingRepository::class)
@@ -29,6 +30,7 @@ class Housing
 
     /**
      * @ORM\Column(type="string", length=255, nullable=true)
+     * @Assert\Url(message = "Le lien '{{ value }}' n'est pas un lien valide", protocols = {"http", "https", "ftp"})
      */
     private ?string $url = null;
 

@@ -65,7 +65,7 @@ class ConciergeController extends AbstractController
             $entityManager->persist($service);
             $entityManager->flush();
 
-            return $this->redirectToRoute('concierge');
+            return $this->redirect($this->generateUrl('concierge') . '#section-pictograms');
         }
 
         /** display the contact form and send an email to Alexandre */
@@ -116,7 +116,7 @@ class ConciergeController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirect($request->server->get('HTTP_REFERER'));
+        return $this->redirect($this->generateUrl('concierge') . '#section-tarifs');
     }
 
     /**
@@ -134,7 +134,7 @@ class ConciergeController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->flush();
 
-            return $this->redirectToRoute('concierge');
+            return $this->redirect($this->generateUrl('concierge') . '#section-tarifs');
         }
 
         return $this->render('concierge/editPrices.html.twig', [
@@ -166,7 +166,7 @@ class ConciergeController extends AbstractController
             $entityManager->persist($concierge);
             $entityManager->flush();
 
-            return $this->redirectToRoute('concierge');
+            return $this->redirect($this->generateUrl('concierge') . '#section-tarifs');
         }
 
         return $this->render('concierge/editPrices.html.twig', ['pricesForm' => $form->createView()]);

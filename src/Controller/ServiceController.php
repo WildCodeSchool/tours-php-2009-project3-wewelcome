@@ -81,9 +81,9 @@ class ServiceController extends AbstractController
             $entityManager->flush();
 
             if ($source === 'concierge') {
-                return $this->redirectToRoute('concierge');
+                return $this->redirect($this->generateUrl('concierge') . '#section-pictograms');
             } elseif ($source === 'steward') {
-                return $this->redirectToRoute('steward');
+                return $this->redirect($this->generateUrl('steward') . '#section-pictograms');
             }
         }
 

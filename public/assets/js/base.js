@@ -24,9 +24,29 @@ function scrollFunction() {
       myLogo.setAttribute("src", "/assets/images/logo-wewelcome-color.png");
       myNav.style.backgroundColor = "rgba(255, 255, 255, 0)";
       myNav.style.alignItems = "start";
-      
+
       for (i = 0; i < myNavLinks.length; ++i) {
         myNavLinks[i].style.color = "var(--primary-color)";
+      }
+    }
+  } else {
+
+    if (window.matchMedia("(max-width: 813px)").matches) {
+
+      for (i = 0; i < myNavLinks.length; ++i) {
+        myNavLinks[i].style.color = "whitesmoke";
+      }
+
+      if (document.documentElement.scrollTop > 300) {
+        mybutton.style.display = "block";
+        myLogo.style.width = "20vw";
+        myLogo.style.transition = "width 1s ease-in-out";
+        myLogo.setAttribute("src", "/assets/images/logo-wewelcome-white.png");
+      } else {
+        mybutton.style.display = "none";
+        myLogo.style.width = "60vw";
+        myLogo.style.transition = "width 1s ease-in-out";
+        myLogo.setAttribute("src", "/assets/images/logo-wewelcome-color.png");
       }
     }
   }

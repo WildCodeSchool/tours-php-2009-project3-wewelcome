@@ -17,6 +17,8 @@ use App\Repository\HousingRepository;
 use App\Services\FileManager;
 use Symfony\Component\Filesystem\Filesystem;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
+use Symfony\Component\Form\FormInterface;
 
 class HousingController extends AbstractController
 {
@@ -30,7 +32,8 @@ class HousingController extends AbstractController
         HousingRepository $housingRepository,
         FileManager $fileManager
     ): Response {
-        $error = '';
+        $errorHousing = '';
+        $errorBusiness = '';
 
         $houses = $housingRepository->findBy(['isBusinessTravel' => false]);
         $businessTrip = $housingRepository->findOneBy(['isBusinessTravel' => true]);
@@ -45,18 +48,18 @@ class HousingController extends AbstractController
             if ($housingForm->isSubmitted() && $housingForm->isValid()) {
                 $photoHousingFile = $housingForm->get('photoFile')->getData();
 
-                $results = $fileManager->saveFile(
-                    'housing',
+                $errorHousing = $this->housingForms(
                     $photoHousingFile,
-                    $this->getParameter('housing_directory')
+                    $entityManager,
+                    $housing,
+                    $fileManager,
+                    'housing',
+                    false
                 );
 
-                $housing->setPhoto($results['fileName']);
-                $housing->setIsBusinessTravel(false);
-                $entityManager->persist($housing);
-                $entityManager->flush();
-
-                return $this->redirectToRoute('housing');
+                if ($errorHousing == '') {
+                    return $this->redirect($this->generateUrl('housing') . '#section-housing');
+                }
             }
         }
 
@@ -70,18 +73,18 @@ class HousingController extends AbstractController
             if ($businessTripForm->isSubmitted() && $businessTripForm->isValid()) {
                 $photoBusinessFile = $businessTripForm->get('photoFile')->getData();
 
-                $results = $fileManager->saveFile(
-                    'business',
+                $errorBusiness = $this->housingForms(
                     $photoBusinessFile,
-                    $this->getParameter('housing_directory')
+                    $entityManager,
+                    $business,
+                    $fileManager,
+                    'businessTravel',
+                    true
                 );
 
-                $business->setPhoto($results['fileName']);
-                $business->setIsBusinessTravel(true);
-                $entityManager->persist($business);
-                $entityManager->flush();
-
-                return $this->redirectToRoute('housing');
+                if ($errorBusiness == '') {
+                    return $this->redirect($this->generateUrl('housing') . '#section-businnesTrip');
+                }
             }
         }
 
@@ -90,18 +93,7 @@ class HousingController extends AbstractController
         $form = $this->createForm(MailMessageType::class, $mailMessage);
         $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $email = (new TemplatedEmail())
-            ->from($mailMessage->getEmail())
-            ->to('wewelcome.test@gmail.com')
-            ->subject('Message client : ' . $mailMessage->getSubject())
-            ->htmlTemplate('emails/contact.html.twig')
-            ->context(['message' => $mailMessage]);
-
-            $mailer->send($email);
-
-            return $this->redirectToRoute('home');
-        }
+        $this->sendMail($form, $mailer, $mailMessage);
 
         return $this->render('housing/index.html.twig', [
             'form' => $form->createView(),
@@ -109,7 +101,8 @@ class HousingController extends AbstractController
             'businessTripForm' => $businessTripForm->createView(),
             'houses' => $houses,
             'businessTrip' => $businessTrip,
-            'error' => $error
+            'errorHousing' => $errorHousing,
+            'errorBusiness' => $errorBusiness
             ]);
     }
 
@@ -130,7 +123,7 @@ class HousingController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('housing');
+        return $this->redirect($this->generateUrl('housing') . '#section-housing');
     }
 
     /**
@@ -163,7 +156,7 @@ class HousingController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('housing');
+            return $this->redirect($this->generateUrl('housing') . '#section-housing');
         }
 
         return $this->render('housing/editHousing.html.twig', [
@@ -202,12 +195,55 @@ class HousingController extends AbstractController
 
             $entityManager->flush();
 
-            return $this->redirectToRoute('housing');
+            return $this->redirect($this->generateUrl('housing') . '#section-businessTrip');
         }
 
         return $this->render('housing/editBusinessTrip.html.twig', [
             'businessTrip' => $businessTrip,
             'businessTripForm' => $form->createView(),
         ]);
+    }
+
+    private function housingForms(
+        ?UploadedFile $photoFile,
+        EntityManagerInterface $entityManager,
+        Housing $business,
+        FileManager $fileManager,
+        string $fileName,
+        bool $isBusiness
+    ): string {
+        if ($photoFile != null) {
+            $results = $fileManager->saveFile(
+                $fileName,
+                $photoFile,
+                $this->getParameter('housing_directory')
+            );
+
+            $business->setPhoto($results['fileName']);
+            $business->setIsBusinessTravel($isBusiness);
+            $entityManager->persist($business);
+            $entityManager->flush();
+
+            return '';
+        } else {
+            return 'Veuillez sélectionner un photo';
+        }
+    }
+
+    private function sendMail(FormInterface $form, MailerInterface $mailer, MailMessageData $mailMessage): ?Response
+    {
+        if ($form->isSubmitted() && $form->isValid()) {
+            $email = (new TemplatedEmail())
+            ->from($mailMessage->getEmail())
+            ->to('wewelcome.test@gmail.com')
+            ->subject('Message client : ' . $mailMessage->getSubject())
+            ->htmlTemplate('emails/contact.html.twig')
+            ->context(['message' => $mailMessage]);
+
+            $mailer->send($email);
+
+            return $this->redirectToRoute('home');
+        }
+        return null;
     }
 }

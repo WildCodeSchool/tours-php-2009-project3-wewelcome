@@ -97,9 +97,9 @@ hr {
 }
 
 .closeButton {
-  font-size: 3rem;
-  margin : 8px;
-  padding: 3px;
+    font-size: 3rem;
+    margin : 8px;
+    padding: 3px;
 }
 
 .sideNav {
@@ -132,27 +132,6 @@ hr {
 }
 /* END burger menu */
 
-/* START admin Logged div */
-#adminLogged {
-    color: rgba(83, 81, 81, 0.897);
-    margin: 1rem;
-    position: fixed;
-    top: 55px;
-    left: 20px;
-    z-index: 1;
-    border: solid;
-    background-color: var(--white);
-    padding: 1px;
-    border-radius: 5%;
-}
-
-#adminLogged a {
-    color : var(--primary-color);
-    cursor: pointer;
-    text-decoration: underline;
-}
-/* END admin Logged div */
-
 /* START back to top style */
 #returnTop {
     color: rgba(83, 81, 81, 0.897);
@@ -181,6 +160,24 @@ hr {
     color: var(--primary-color);
     cursor: pointer;
 }
+
+@media screen and (max-width: 812px) {
+    #returnTop {
+        display: none;
+        color: rgba(83, 81, 81, 0.897);
+        bottom: 15px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 45px;
+    }
+
+    #returnTop:hover {
+        transform: none;
+        color: rgba(83, 81, 81, 0.897);
+    }
+}
+
 /* END back to top */
 
 /* START footer */
@@ -257,12 +254,15 @@ footer {
 #label-telephone {
     font-size: 80%;
 }
+
 #telephone {
     display: none;
 }
 
 #telephone:checked + #numero {
     display: block;
+    margin: 0;
+    padding: 0;
 }
 
 .footerRight a {
@@ -278,6 +278,41 @@ footer {
     color: var(--primary-color);
     text-decoration: underline;
 }
+
+@media screen and (max-width: 813px) {
+
+    #nameFooter {
+        font-size: 3vw;
+    }
+    
+
+    #label-telephone {
+        font-size: 2vw;
+    }
+
+    #telephone-logo {
+        width: 10vw;
+    }
+
+    #numero {
+        font-size: 3vw;
+        width: 100%;
+    }
+
+    footer {
+        padding-bottom: 4vw;
+    }
+
+    .socialNetworkLogo {
+        width: 6.5vw;
+    }
+
+    .footerRight a {
+        font-size: 2vw;
+        margin-bottom: 3vw;
+    }
+}
+
 
 /* END footer */
 
@@ -560,44 +595,6 @@ footer {
 
 /***CALL TO ACTION___end***/
 
-/* START admin forms */
-.adminPanel {
-    padding-left: 5px;
-}
-
-.adminPanel h1 {
-    padding-top: 10%;
-}
-
-.update a {
-    color: gray;
-}
-
-.adminForm {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    display: flex;
-    width: 80%;
-    max-width: 700px;
-    flex-wrap: wrap;
-}
-
-.adminForm label {
-    width: 50%;
-    margin-right: 5px;
-}
-
-.adminForm textarea {
-    width: 100%;
-    resize: none;
-    height: 300px;
-}
-
-.adminForm input {
-    width: 50%;
-}
-/* END admin forms */
-
 /* STAR socialNetworksAdmin */
 .socialNetwork {
     display: block;
@@ -674,3 +671,137 @@ footer {
     }
     /* END nav bar style*/
 }
+
+.message-infos {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1vw;
+    background-color: var(--secondary-color-tint1);
+    font-size: 1.3vw;
+}
+
+@media screen and (max-width: 813px) {
+    .message-infos {
+        font-size: 2.5vw;
+    }
+}
+
+/***BUTTONS ADD-EDIT-DELETE___start***/
+.buttons-admin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(66, 66, 66);
+}
+
+.buttons-admin p {
+    margin: 5px 20px;
+    padding: 5px;
+    font-family: var(--secondary-text);
+    font-size: 25px;
+    color: var(--white);
+    text-align: left;
+    text-transform: uppercase;
+    font-style: italic;
+}
+
+.button-add,
+.button-edit,
+.button-delete {
+    margin: 10px 20px;
+    padding: 10px;
+    width: 250px;
+    border-radius: 30px;
+    border: none;
+    font-size: 20px;
+    font-family: var(--primary-text);
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+.button-add {
+    background-color: rgb(18, 173, 78);
+}
+
+.button-edit {
+    background-color: gold;
+    color:rgb(66, 66, 66);
+}
+
+.button-delete {
+    background-color: rgb(223, 16, 16);
+}
+
+.button-add:hover,
+.button-edit:hover,
+.button-delete:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 1450px) {
+    .buttons-admin {
+        flex-direction: column;
+    }
+    .buttons-admin p,
+    .button-add,
+    .button-edit,
+    .button-delete {
+        font-size: 15px;
+        width: 200px;
+        text-align: center;
+    }
+}
+
+/*buttons-mini*/
+.button-add-mini,
+.button-edit-mini,
+.button-delete-mini {
+    margin: 5px 10px;
+    padding: 5px;
+    width: 100px;
+    border-radius: 30px;
+    border: none;
+    font-size: 15px;
+    font-family: var(--primary-text);
+    text-align: center;
+    color: var(--white);
+    font-weight: bold;
+    transition: 0.2s ease-in;
+}
+
+.button-add-mini {
+    background-color: rgb(18, 173, 78);
+}
+
+.button-edit-mini {
+    background-color: gold;
+    color:rgb(66, 66, 66);
+}
+
+.button-delete-mini {
+    background-color: rgb(223, 16, 16);
+}
+
+.button-add-mini:hover,
+.button-edit-mini:hover,
+.button-delete-mini:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+@media screen and (max-width: 813px) {
+    .buttons-admin-mini {
+        flex-direction: column;
+    }
+    .buttons-admin-mini p,
+    .button-add-mini,
+    .button-edit-mini,
+    .button-delete-mini {
+        transform: scale(0.6);
+    }
+}
+
+/***BUTTONS ADD-EDIT-DELETE___end***/

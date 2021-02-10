@@ -8,23 +8,24 @@
         <form method="post" action="{{ path('footer_delete', {'id' : socialNetwork.id}) }}" onsubmit="return confirm('{{ socialNetwork.title }} sera supprimé définitivement. Êtes-vous sur ?');">
             <input type="hidden" name="_method" value="DELETE">
             <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ socialNetwork.id) }}">
-            <button class="btn">Effacer</button>
+            <button class="button-delete-mini">Supprimer</button>
         </form>
         {% endif %}
     </div>
     {% endfor %}
 </div>
 {% if app.user and socialNetworks|length < 3 %}
-<div class="adminPanel socialNetworksAdmin">
-    <div class="add">
-    {{ form_start(socialNetworkForm, {'attr' : {'class' : 'adminForm'}}) }}
-        {{ form_label(socialNetworkForm.title, 'Nom du réseau social :') }}
-        {{ form_widget(socialNetworkForm.title) }}
-        {{ form_label(socialNetworkForm.url, 'Lien vers le site :') }}
-        {{ form_widget(socialNetworkForm.url) }}
-        {{ form_row(socialNetworkForm._token) }}
-        <input type='submit' value='Ajouter'>
-    {{ form_end(socialNetworkForm, {'render_rest': false}) }}
-    </div>
-</div>
+    <section class="formAdmin">
+        <h1>Formulaire d'ajout et de suppresion des <span>Réseaux Sociaux</span></h1>
+        {{ form_start(socialNetworkForm) }}
+            {{ form_label(socialNetworkForm.title, 'Nom du réseau social :') }}
+            {{ form_widget(socialNetworkForm.title) }}
+            {{ form_label(socialNetworkForm.url, 'Lien vers le site :') }}
+            {{ form_widget(socialNetworkForm.url) }}
+            {{ form_row(socialNetworkForm._token) }}
+            <div class="buttons">
+                <button>Valider</button>
+            </div>
+        {{ form_end(socialNetworkForm, {'render_rest': false}) }}
+    </section>
 {% endif %}
