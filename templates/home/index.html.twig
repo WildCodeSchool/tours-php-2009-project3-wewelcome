@@ -282,43 +282,10 @@
                     <p>Vous voulez mettre un logement en location.</p>
                     <p>Confiez-nous votre bien et nous rentabiliserons vos absences.</p>
                 </div>
+                {% if app.user %}
+                    <p class="message-infos">ℹ️ Pour ajouter des pictogrammes, rendez-vous sur la page "Conciergerie"</p>
+                {% endif %}
                 <div class="concierge-pictograms">
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/1-creation-et-mise-en-ligne-de-votre-annonce.png">
-                        <figcaption>Création et mise en ligne de votre annonce</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/2-gestion-des-reservations-et-communication.png">
-                        <figcaption>Gestion des réservations et communication</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/3-optimisation-des-reservations.png">
-                        <figcaption>Optimisation des réservations</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/4.communication-et-assistance.png">
-                        <figcaption>Communication et assistance</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/5-accueil-et-depart-des-voyageurs.png">
-                        <figcaption>Accueil et départ des voyageurs</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/6-panier-de-bienvenue.png">
-                        <figcaption>Panier de bienvenue</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/7-linge-de-maison.png">
-                        <figcaption>Linge de maison</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/8-menage-professionnel.png">
-                        <figcaption>Ménage professionnel</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/conciergerie/9-services-intendance.png">
-                        <figcaption>Service intendance</figcaption>
-                    </figure>
                     {% for service in servicesConcierge %}
                     <figure>
                         <img src="/assets/images/servicesImg/{{ service.logo }}">
@@ -334,43 +301,10 @@
                     <p>Votre résidence principale ou secondaire est peu ou pas occupée.</p>
                     <p>Confiez-nous votre bien et nous en prendrons soin.</p>
                 </div>
+                {% if app.user %}
+                    <p class="message-infos">ℹ️ Pour ajouter des pictogrammes, rendez-vous sur la page "Intendance"</p>
+                {% endif %}
                 <div class="stewardship-pictograms">
-                    <figure>
-                        <img src="/assets/images/services/intendance/1-surveillance-reguliere.png">
-                        <figcaption>Surveillance régulière</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/2-mise-en-route-et-veille.png">
-                        <figcaption>Mise en route et veille</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/3-entretien-menager-interieur-et-exterieur.png">
-                        <figcaption>Entretien ménager intérieur et extérieur</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/4-entretien-du-jardin.png">
-                        <figcaption>Entretien du jardin</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/5-entretien-de-la-piscine.png">
-                        <figcaption>Entretien de la piscine</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/6-courses.png">
-                        <figcaption>Courses</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/7-petits-travaux-de-reparation.png">
-                        <figcaption>Petits travaux de réparation</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/8-suivi-de-travaux.png">
-                        <figcaption>Suivi de travaux</figcaption>
-                    </figure>
-                    <figure>
-                        <img src="/assets/images/services/intendance/9-communication-et-assistance-7j-7.png">
-                        <figcaption>Communication et assistance</figcaption>
-                    </figure>
                     {% for service in servicesSteward %}
                     <figure>
                         <img src="/assets/images/servicesImg/{{ service.logo }}">
