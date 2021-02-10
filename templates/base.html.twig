@@ -26,14 +26,11 @@
                 <li class="navLink"><a class="link" href="{{ path('steward') }}">Intendance</a></li>
                 <li class="navLink"><a class="link" href="{{ path('housing') }}">Logements</a></li>
                 <li class="navLink"><a class="link" href="#contact">Contact</a></li>
+                {% if app.user %}
+                <li><a class="link" href="{{ path('app_logout') }}">Admin / Se déconnecter</a></li>
+                {% endif %}
             </ul>
         </nav>
-        {% if app.user %}
-            <div id="adminLogged">
-                <p>Espace Administration</p>
-                <a href="{{ path('app_logout') }}">Se déconnecter</a>
-            </div>
-        {% endif %}
     </section>
     {% block body %}
     {% endblock %}

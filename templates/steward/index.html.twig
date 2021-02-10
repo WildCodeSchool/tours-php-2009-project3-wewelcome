@@ -44,7 +44,7 @@
             {% set i = 0 %}
             {% for service in services %}
             <figure>
-                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
+                <img class="servicePicto" id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <form method="post" action="{{ path('service_delete', {'id' : service.id}) }}" onsubmit="return confirm('{{ service.title }} sera supprimé définitivement. Êtes-vous sur ?');">
@@ -190,10 +190,14 @@
                 <h4 class="needSpaceBelow">Le plafond fiscal</h4>
                 <p>
                     L’avantage fiscal en crédit d’impôt sur le revenu (égal à 50 % des dépenses engagées) 
-                    est limité à 12°000 € de dépense par an (loi de finances 2017) pour des prestations de services à la personne.<br>
+                    est limité à 12°000 € de dépense par an (loi de finances 2017) pour des prestations de services à la personne.
+                </p><br>
+                <p>
                     Des majorations du plafond annuel de dépenses (jusqu’à 20 000 € maximum) peuvent intervenir en fonction du nombre 
                     d’enfants à charge, de la présence d’enfants handicapés, d’ascendants vivant au domicile du déclarant… 
-                    (article 199 sexdecies du code général des impôts).<br>
+                    (article 199 sexdecies du code général des impôts).
+                </p><br>
+                <p>
                     Ce plafond est applicable pour toutes les activités de services à la personne, sauf pour :
                     <ul class="ListNostyleTaxationPart">
                         <li>Le petit jardinage à domicile : plafond limité à 5 000 €</li><br>

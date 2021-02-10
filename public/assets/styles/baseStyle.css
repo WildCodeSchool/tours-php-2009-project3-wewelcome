@@ -97,9 +97,9 @@ hr {
 }
 
 .closeButton {
-  font-size: 3rem;
-  margin : 8px;
-  padding: 3px;
+    font-size: 3rem;
+    margin : 8px;
+    padding: 3px;
 }
 
 .sideNav {
@@ -132,27 +132,6 @@ hr {
 }
 /* END burger menu */
 
-/* START admin Logged div */
-#adminLogged {
-    color: rgba(83, 81, 81, 0.897);
-    margin: 1rem;
-    position: fixed;
-    top: 55px;
-    left: 20px;
-    z-index: 1;
-    border: solid;
-    background-color: var(--white);
-    padding: 1px;
-    border-radius: 5%;
-}
-
-#adminLogged a {
-    color : var(--primary-color);
-    cursor: pointer;
-    text-decoration: underline;
-}
-/* END admin Logged div */
-
 /* START back to top style */
 #returnTop {
     color: rgba(83, 81, 81, 0.897);
@@ -181,6 +160,24 @@ hr {
     color: var(--primary-color);
     cursor: pointer;
 }
+
+@media screen and (max-width: 812px) {
+    #returnTop {
+        display: none;
+        color: rgba(83, 81, 81, 0.897);
+        bottom: 15px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 45px;
+    }
+
+    #returnTop:hover {
+        transform: none;
+        color: rgba(83, 81, 81, 0.897);
+    }
+}
+
 /* END back to top */
 
 /* START footer */
@@ -257,6 +254,7 @@ footer {
 #label-telephone {
     font-size: 80%;
 }
+
 #telephone {
     display: none;
 }
@@ -278,6 +276,28 @@ footer {
     color: var(--primary-color);
     text-decoration: underline;
 }
+
+@media screen and (max-width: 813px) {
+
+    #nameFooter {
+        font-size: 3vw;
+    }
+    
+
+    #label-telephone {
+        font-size: 2vw;
+    }
+
+    #telephone-logo {
+        width: 10vw;
+    }
+
+    .footerRight a {
+        font-size: 2vw;
+        margin-bottom: 3vw;
+    }
+}
+
 
 /* END footer */
 
@@ -635,6 +655,20 @@ footer {
         display: none;
     }
     /* END nav bar style*/
+}
+
+.message-infos {
+    width: 80%;
+    margin: 0 auto;
+    padding: 1vw;
+    background-color: var(--secondary-color-tint1);
+    font-size: 1.3vw;
+}
+
+@media screen and (max-width: 813px) {
+    .message-infos {
+        font-size: 2.5vw;
+    }
 }
 
 /***BUTTONS ADD-EDIT-DELETE___start***/

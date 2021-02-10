@@ -55,7 +55,7 @@
             {% set i = 0 %}
             {% for service in services %}
             <figure>
-                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
+                <img class="servicePicto" id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <form 
@@ -396,7 +396,7 @@
             Nous nous engageons à optimiser ces deux critères :
         </p>
         <div class="gridPriceActivity">
-            <div class="elementPrice">
+            <div class="elementPrice bloc">
                 <h4 class="elementTitleRenta">Le prix</h4>
                 <p class="gridTextProfitabilityRentalPart">
                     Celui-ci doit être ajusté en fonction de la 
@@ -414,7 +414,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="elementActivity">
+            <div class="elementActivity bloc">
                 <h4 class="elementTitleRenta">Le taux d’occupation</h4>
                 <p class="gridTextProfitabilityRentalPart">
                     Pour maximiser celui-ci, les 

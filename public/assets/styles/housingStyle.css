@@ -21,8 +21,15 @@ h3 {
     text-align: center;
 }
 
-.theyTrustUs img {
-    width: 31vw;
+.divPhoto {
+    width: 100%;
+    height: 21vw;
+    overflow: hidden;
+}
+
+.divPhoto .housingPhoto {
+    width: 100%;
+    min-height: 100%;
 }
 
 .theyTrustUs div {
@@ -107,5 +114,16 @@ h3 {
 
     .businessTrips img {
         width: 96vw;
+    }
+
+    .divPhoto {
+        width: 100%;
+        height: 60vw;
+        overflow: hidden;
+    }
+    
+    .divPhoto .housingPhoto {
+        width: 100%;
+        min-height: 100%;
     }
 }
