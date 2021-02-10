@@ -97,9 +97,9 @@ hr {
 }
 
 .closeButton {
-  font-size: 3rem;
-  margin : 8px;
-  padding: 3px;
+    font-size: 3rem;
+    margin : 8px;
+    padding: 3px;
 }
 
 .sideNav {
@@ -236,6 +236,7 @@ footer {
 #label-telephone {
     font-size: 80%;
 }
+
 #telephone {
     display: none;
 }
@@ -257,6 +258,28 @@ footer {
     color: var(--primary-color);
     text-decoration: underline;
 }
+
+@media screen and (max-width: 813px) {
+
+    #nameFooter {
+        font-size: 3vw;
+    }
+    
+
+    #label-telephone {
+        font-size: 2vw;
+    }
+
+    #telephone-logo {
+        width: 10vw;
+    }
+
+    .footerRight a {
+        font-size: 2vw;
+        margin-bottom: 3vw;
+    }
+}
+
 
 /* END footer */
 
