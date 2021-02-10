@@ -51,10 +51,6 @@
     padding-right: 6px;
 }
 
-.stewardDetails img {
-    width: 20%;
-}
-
 .stewardDetails img:hover {
     transform: scale(1.1);
     transition-duration: 1s;
@@ -65,6 +61,11 @@
     color: var(--quaternary-color);
     font-weight: bold;
     font-family: var(--secondary-title);
+}
+
+.servicePicto {
+    height: 10vh;
+    width: 10vh;
 }
 
 .title {

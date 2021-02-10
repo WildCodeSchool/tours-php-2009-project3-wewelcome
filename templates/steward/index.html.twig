@@ -44,7 +44,7 @@
             {% set i = 0 %}
             {% for service in services %}
             <figure>
-                <img id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
+                <img class="servicePicto" id="picto{{ i }}" src="/assets/images/servicesImg/{{ service.logo }}">
                 <figcaption>{{ service.title }}</figcaption>
                 {% if app.user %}
                 <button class="update"><a href="{{ path('service_edit', {'id': service.id, 'source': 'steward'}) }}">Modifier</a></button>
