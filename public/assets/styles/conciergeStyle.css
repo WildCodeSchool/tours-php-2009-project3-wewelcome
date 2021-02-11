@@ -496,11 +496,16 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     line-height: 1.4;
-    padding-top: 1.25em;
     padding-bottom: 1.75em;
+    grid-gap: 0.75em;
+}
+.bloc {
+    background-color: white;
+    box-shadow: 0 2px 4px 0 var(--tertiary-color), 0 3px 10px 0 var(--tertiary-color);
+    padding-top: 1.25em;
+    padding-bottom: 1em;
     padding-right: 1em;
     padding-left: 1em;
-    grid-gap: 0.75em;
 }
 .elementPrice {
     grid-column: 1/2;
